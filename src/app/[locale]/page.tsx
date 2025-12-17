@@ -58,6 +58,12 @@ export default async function LocaleHome({
           >
             Example generator: factura / endesa (bill complaint)
           </Link>
+          <Link
+            className="underline underline-offset-4"
+            href={`/${locale}/garantia/zara`}
+          >
+            Example generator: garantia / zara (3-year warranty)
+          </Link>
         </div>
       </section>
     </main>

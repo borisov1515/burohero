@@ -172,6 +172,25 @@ const BillComplaintFormSchema = z.object({
   extra_details: z.preprocess(emptyToUndefined, z.string().optional()),
 });
 
+const Warranty3yFormSchema = z.object({
+  buyer_full_name: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  buyer_id: z.preprocess(emptyToUndefined, z.string().min(3).optional()),
+  buyer_address: z.preprocess(emptyToUndefined, z.string().min(5).optional()),
+  seller_name: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  seller_address: z.preprocess(emptyToUndefined, z.string().min(5).optional()),
+  order_or_invoice_number: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  product_description: z.preprocess(emptyToUndefined, z.string().min(3).optional()),
+  purchase_date: z.preprocess(emptyToUndefined, z.string().min(4).optional()),
+  delivery_date: z.preprocess(emptyToUndefined, z.string().min(4).optional()),
+  defect_description: z.preprocess(emptyToUndefined, z.string().min(5).optional()),
+  defect_discovered_date: z.preprocess(emptyToUndefined, z.string().min(4).optional()),
+  contacted_support_before: z.preprocess(emptyToUndefined, z.string().optional()),
+  contacted_support_details: z.preprocess(emptyToUndefined, z.string().optional()),
+  requested_solution: z.preprocess(emptyToUndefined, z.string().optional()),
+  desired_outcome: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  extra_details: z.preprocess(emptyToUndefined, z.string().optional()),
+});
+
 function buildCancelTelcoFacts(input: {
   locale: string;
   company: string;
@@ -347,6 +366,34 @@ function buildBillComplaintFacts(input: {
   return lines.join("\n");
 }
 
+function buildWarranty3yFacts(input: {
+  locale: string;
+  company: string;
+  form: z.infer<typeof Warranty3yFormSchema>;
+}) {
+  const f = input.form;
+  const lines: string[] = [];
+  lines.push(`Use case: consumer warranty claim (3 years) (${input.company}).`);
+  if (f.buyer_full_name) lines.push(`Buyer full name: ${f.buyer_full_name}`);
+  if (f.buyer_id) lines.push(`Buyer ID (DNI/NIE/Passport): ${f.buyer_id}`);
+  if (f.buyer_address) lines.push(`Buyer address: ${f.buyer_address}`);
+  if (f.seller_name) lines.push(`Seller/merchant name: ${f.seller_name}`);
+  if (f.seller_address) lines.push(`Seller/merchant address: ${f.seller_address}`);
+  if (f.order_or_invoice_number) lines.push(`Order / invoice number: ${f.order_or_invoice_number}`);
+  if (f.product_description) lines.push(`Product: ${f.product_description}`);
+  if (f.purchase_date) lines.push(`Purchase date: ${f.purchase_date}`);
+  if (f.delivery_date) lines.push(`Delivery date: ${f.delivery_date}`);
+  if (f.defect_description) lines.push(`Defect description: ${f.defect_description}`);
+  if (f.defect_discovered_date) lines.push(`Defect discovered on: ${f.defect_discovered_date}`);
+  if (f.contacted_support_before === "yes") lines.push("Contacted support before: yes");
+  if (f.contacted_support_before === "no") lines.push("Contacted support before: no");
+  if (f.contacted_support_details) lines.push(`Support contact details: ${f.contacted_support_details}`);
+  if (f.requested_solution) lines.push(`Requested solution: ${f.requested_solution}`);
+  if (f.desired_outcome) lines.push(`Desired outcome: ${f.desired_outcome}`);
+  if (f.extra_details) lines.push(`Additional details: ${f.extra_details}`);
+  return lines.join("\n");
+}
+
 const GenerateRequestSchema = z.object({
   locale: z.string().min(2),
   category: z.string().min(1),
@@ -437,6 +484,19 @@ export async function POST(req: Request) {
       }
       parsedForm = parsed.data;
       facts = buildBillComplaintFacts({
+        locale: input.locale,
+        company: input.company,
+        form: parsed.data,
+      });
+    }
+
+    if (input.category === "garantia" && input.form) {
+      const parsed = Warranty3yFormSchema.safeParse(input.form);
+      if (!parsed.success) {
+        throw new Error(JSON.stringify(parsed.error.issues, null, 2));
+      }
+      parsedForm = parsed.data;
+      facts = buildWarranty3yFacts({
         locale: input.locale,
         company: input.company,
         form: parsed.data,

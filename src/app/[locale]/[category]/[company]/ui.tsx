@@ -39,6 +39,12 @@ import {
   defaultBillComplaintForm,
   type BillComplaintForm,
 } from "./usecases/billComplaint";
+import {
+  Warranty3yFormSection,
+  buildWarranty3yFacts,
+  defaultWarranty3yForm,
+  type Warranty3yForm,
+} from "./usecases/warranty3y";
 
 type Props = {
   locale: AppLocale;
@@ -62,6 +68,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
   const [billComplaintForm, setBillComplaintForm] = useState<BillComplaintForm>(
     defaultBillComplaintForm,
   );
+  const [warranty3yForm, setWarranty3yForm] = useState<Warranty3yForm>(defaultWarranty3yForm);
   const [isLoading, setIsLoading] = useState(false);
   const [orderId, setOrderId] = useState<string | null>(null);
   const [isPaid, setIsPaid] = useState(false);
@@ -78,6 +85,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
     if (category === "reparacion") return buildRepairDemandFacts(repairForm);
     if (category === "rescision") return buildLeaseTerminationFacts(leaseTerminationForm);
     if (category === "factura") return buildBillComplaintFacts(billComplaintForm, company);
+    if (category === "garantia") return buildWarranty3yFacts(warranty3yForm, company);
     return facts;
   }, [
     category,
@@ -89,6 +97,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
     repairForm,
     leaseTerminationForm,
     billComplaintForm,
+    warranty3yForm,
   ]);
 
   const canGenerate = useMemo(() => builtFacts.trim().length >= 10, [builtFacts]);
@@ -206,6 +215,27 @@ export default function GeneratorClient({ locale, category, company }: Props) {
           }));
         } else if (category === "factura") {
           setBillComplaintForm((prev) => ({ ...prev, extra_details: String(snap.facts ?? "") }));
+        } else if (category === "garantia" && snap.form) {
+          const f = snap.form as Partial<Warranty3yForm>;
+          setWarranty3yForm((prev) => ({
+            ...prev,
+            ...Object.fromEntries(
+              Object.entries(f).map(([k, v]) => [k, String(v ?? "")]),
+            ),
+            contacted_support_before:
+              f.contacted_support_before === "yes" || f.contacted_support_before === "no"
+                ? f.contacted_support_before
+                : "",
+            requested_solution:
+              f.requested_solution === "repair" ||
+              f.requested_solution === "replacement" ||
+              f.requested_solution === "refund" ||
+              f.requested_solution === "price_reduction"
+                ? f.requested_solution
+                : "",
+          }));
+        } else if (category === "garantia") {
+          setWarranty3yForm((prev) => ({ ...prev, extra_details: String(snap.facts ?? "") }));
         }
         setEs(String(snap.spanish_legal_text ?? ""));
         setNative(String(snap.native_user_translation ?? ""));
@@ -276,6 +306,14 @@ export default function GeneratorClient({ locale, category, company }: Props) {
                         form: billComplaintForm,
                         facts: builtFacts,
                       }
+                    : category === "garantia"
+                      ? {
+                          locale,
+                          category,
+                          company,
+                          form: warranty3yForm,
+                          facts: builtFacts,
+                        }
           : { locale, category, company, facts };
 
       setDebugLastRequest(payload);
@@ -367,6 +405,12 @@ export default function GeneratorClient({ locale, category, company }: Props) {
           <BillComplaintFormSection
             form={billComplaintForm}
             setForm={(u) => setBillComplaintForm(u)}
+            builtFacts={builtFacts}
+          />
+        ) : category === "garantia" ? (
+          <Warranty3yFormSection
+            form={warranty3yForm}
+            setForm={(u) => setWarranty3yForm(u)}
             builtFacts={builtFacts}
           />
         ) : (
