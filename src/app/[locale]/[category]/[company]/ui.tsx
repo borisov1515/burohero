@@ -57,6 +57,12 @@ import {
   defaultFlightDelayForm,
   type FlightDelayForm,
 } from "./usecases/flightDelay";
+import {
+  InsuranceCancelFormSection,
+  buildInsuranceCancelFacts,
+  defaultInsuranceCancelForm,
+  type InsuranceCancelForm,
+} from "./usecases/insuranceCancel";
 
 type Props = {
   locale: AppLocale;
@@ -83,6 +89,9 @@ export default function GeneratorClient({ locale, category, company }: Props) {
   const [warranty3yForm, setWarranty3yForm] = useState<Warranty3yForm>(defaultWarranty3yForm);
   const [nonDeliveryForm, setNonDeliveryForm] = useState<NonDeliveryForm>(defaultNonDeliveryForm);
   const [flightDelayForm, setFlightDelayForm] = useState<FlightDelayForm>(defaultFlightDelayForm);
+  const [insuranceCancelForm, setInsuranceCancelForm] = useState<InsuranceCancelForm>(
+    defaultInsuranceCancelForm,
+  );
   const [isLoading, setIsLoading] = useState(false);
   const [orderId, setOrderId] = useState<string | null>(null);
   const [isPaid, setIsPaid] = useState(false);
@@ -102,6 +111,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
     if (category === "garantia") return buildWarranty3yFacts(warranty3yForm, company);
     if (category === "noentrega") return buildNonDeliveryFacts(nonDeliveryForm, company);
     if (category === "vuelo") return buildFlightDelayFacts(flightDelayForm, company);
+    if (category === "seguro") return buildInsuranceCancelFacts(insuranceCancelForm, company);
     return facts;
   }, [
     category,
@@ -116,6 +126,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
     warranty3yForm,
     nonDeliveryForm,
     flightDelayForm,
+    insuranceCancelForm,
   ]);
 
   const canGenerate = useMemo(() => builtFacts.trim().length >= 10, [builtFacts]);
@@ -294,6 +305,16 @@ export default function GeneratorClient({ locale, category, company }: Props) {
           }));
         } else if (category === "vuelo") {
           setFlightDelayForm((prev) => ({ ...prev, extra_details: String(snap.facts ?? "") }));
+        } else if (category === "seguro" && snap.form) {
+          const f = snap.form as Partial<InsuranceCancelForm>;
+          setInsuranceCancelForm((prev) => ({
+            ...prev,
+            ...Object.fromEntries(
+              Object.entries(f).map(([k, v]) => [k, String(v ?? "")]),
+            ),
+          }));
+        } else if (category === "seguro") {
+          setInsuranceCancelForm((prev) => ({ ...prev, extra_details: String(snap.facts ?? "") }));
         }
         setEs(String(snap.spanish_legal_text ?? ""));
         setNative(String(snap.native_user_translation ?? ""));
@@ -388,6 +409,14 @@ export default function GeneratorClient({ locale, category, company }: Props) {
                               form: flightDelayForm,
                               facts: builtFacts,
                             }
+                          : category === "seguro"
+                            ? {
+                                locale,
+                                category,
+                                company,
+                                form: insuranceCancelForm,
+                                facts: builtFacts,
+                              }
           : { locale, category, company, facts };
 
       setDebugLastRequest(payload);
@@ -497,6 +526,12 @@ export default function GeneratorClient({ locale, category, company }: Props) {
           <FlightDelayFormSection
             form={flightDelayForm}
             setForm={(u) => setFlightDelayForm(u)}
+            builtFacts={builtFacts}
+          />
+        ) : category === "seguro" ? (
+          <InsuranceCancelFormSection
+            form={insuranceCancelForm}
+            setForm={(u) => setInsuranceCancelForm(u)}
             builtFacts={builtFacts}
           />
         ) : (

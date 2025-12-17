@@ -233,6 +233,23 @@ const FlightDelayFormSchema = z.object({
   extra_details: z.preprocess(emptyToUndefined, z.string().optional()),
 });
 
+const InsuranceCancelFormSchema = z.object({
+  policyholder_full_name: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  policyholder_id: z.preprocess(emptyToUndefined, z.string().min(3).optional()),
+  policyholder_address: z.preprocess(emptyToUndefined, z.string().min(5).optional()),
+  insurer_name: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  policy_number: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  insurance_type: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  contract_start_date: z.preprocess(emptyToUndefined, z.string().min(4).optional()),
+  renewal_date: z.preprocess(emptyToUndefined, z.string().min(4).optional()),
+  cancellation_request_date: z.preprocess(emptyToUndefined, z.string().min(4).optional()),
+  cancellation_method: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  reason: z.preprocess(emptyToUndefined, z.string().optional()),
+  desired_outcome: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  iban: z.preprocess(emptyToUndefined, z.string().optional()),
+  extra_details: z.preprocess(emptyToUndefined, z.string().optional()),
+});
+
 function buildCancelTelcoFacts(input: {
   locale: string;
   company: string;
@@ -496,6 +513,31 @@ function buildFlightDelayFacts(input: {
   return lines.join("\n");
 }
 
+function buildInsuranceCancelFacts(input: {
+  locale: string;
+  company: string;
+  form: z.infer<typeof InsuranceCancelFormSchema>;
+}) {
+  const f = input.form;
+  const lines: string[] = [];
+  lines.push(`Use case: insurance policy cancellation (${input.company}).`);
+  if (f.policyholder_full_name) lines.push(`Policyholder full name: ${f.policyholder_full_name}`);
+  if (f.policyholder_id) lines.push(`Policyholder ID (DNI/NIE/Passport): ${f.policyholder_id}`);
+  if (f.policyholder_address) lines.push(`Policyholder address: ${f.policyholder_address}`);
+  if (f.insurer_name) lines.push(`Insurer name: ${f.insurer_name}`);
+  if (f.policy_number) lines.push(`Policy number: ${f.policy_number}`);
+  if (f.insurance_type) lines.push(`Insurance type: ${f.insurance_type}`);
+  if (f.contract_start_date) lines.push(`Contract start date: ${f.contract_start_date}`);
+  if (f.renewal_date) lines.push(`Renewal date: ${f.renewal_date}`);
+  if (f.cancellation_request_date) lines.push(`Cancellation requested on: ${f.cancellation_request_date}`);
+  if (f.cancellation_method) lines.push(`Cancellation method: ${f.cancellation_method}`);
+  if (f.reason) lines.push(`Reason (optional): ${f.reason}`);
+  if (f.desired_outcome) lines.push(`Desired outcome: ${f.desired_outcome}`);
+  if (f.iban) lines.push(`IBAN for refunds (optional): ${f.iban}`);
+  if (f.extra_details) lines.push(`Additional details: ${f.extra_details}`);
+  return lines.join("\n");
+}
+
 const GenerateRequestSchema = z.object({
   locale: z.string().min(2),
   category: z.string().min(1),
@@ -625,6 +667,19 @@ export async function POST(req: Request) {
       }
       parsedForm = parsed.data;
       facts = buildFlightDelayFacts({
+        locale: input.locale,
+        company: input.company,
+        form: parsed.data,
+      });
+    }
+
+    if (input.category === "seguro" && input.form) {
+      const parsed = InsuranceCancelFormSchema.safeParse(input.form);
+      if (!parsed.success) {
+        throw new Error(JSON.stringify(parsed.error.issues, null, 2));
+      }
+      parsedForm = parsed.data;
+      facts = buildInsuranceCancelFacts({
         locale: input.locale,
         company: input.company,
         form: parsed.data,

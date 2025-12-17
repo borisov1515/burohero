@@ -76,6 +76,12 @@ export default async function LocaleHome({
           >
             Example generator: vuelo / ryanair (flight delay)
           </Link>
+          <Link
+            className="underline underline-offset-4"
+            href={`/${locale}/seguro/mapfre`}
+          >
+            Example generator: seguro / mapfre (insurance cancellation)
+          </Link>
         </div>
       </section>
     </main>
