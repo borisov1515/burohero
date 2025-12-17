@@ -32,6 +32,7 @@ export async function POST(req: Request) {
         locale: input.locale,
         category: input.category,
         company: input.company,
+        facts: input.facts,
         ...result,
       },
     });

@@ -1,7 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import type { AppLocale } from "@/i18n/routing";
 
 type Props = {
@@ -12,6 +12,7 @@ type Props = {
 
 export default function GeneratorClient({ locale, category, company }: Props) {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [facts, setFacts] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [orderId, setOrderId] = useState<string | null>(null);
@@ -21,6 +22,44 @@ export default function GeneratorClient({ locale, category, company }: Props) {
   const [error, setError] = useState<string | null>(null);
 
   const canGenerate = useMemo(() => facts.trim().length >= 10, [facts]);
+
+  useEffect(() => {
+    const id = searchParams.get("orderId");
+    if (!id) return;
+
+    let cancelled = false;
+
+    (async () => {
+      setError(null);
+      setIsLoading(true);
+      try {
+        const res = await fetch(
+          `/api/orders/get?orderId=${encodeURIComponent(id)}`,
+        );
+        const json = await res.json();
+        if (!res.ok) throw new Error(json?.error ?? "Failed to load order");
+
+        const snap = (json.content_snapshot ?? {}) as any;
+        if (cancelled) return;
+
+        setOrderId(String(json.orderId));
+        setIsPaid(json.status === "paid");
+        setFacts(String(snap.facts ?? ""));
+        setEs(String(snap.spanish_legal_text ?? ""));
+        setNative(String(snap.native_user_translation ?? ""));
+      } catch (e) {
+        if (!cancelled) {
+          setError(e instanceof Error ? e.message : "Unknown error");
+        }
+      } finally {
+        if (!cancelled) setIsLoading(false);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [searchParams]);
 
   async function onGenerate() {
     setError(null);

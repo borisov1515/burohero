@@ -106,7 +106,9 @@ export default async function CheckoutResultPage({
         {snapshot.category && snapshot.company ? (
           <Link
             className="underline underline-offset-4"
-            href={`/${locale}/${snapshot.category}/${snapshot.company}`}
+            href={`/${locale}/${snapshot.category}/${snapshot.company}?orderId=${encodeURIComponent(
+              data.id,
+            )}`}
           >
             Back to generator
           </Link>
