@@ -23,6 +23,7 @@ export async function generateDualLanguageLegalText(input: {
     "Твоя задача — принять жалобу на языке пользователя, извлечь факты и составить формальную претензию на испанском.",
     "Пиши как готовый документ для отправки: без плейсхолдеров вида [Nombre], [Dirección] и т.п.",
     "Если каких-то данных не хватает — пропусти строку или используй 'N/D' (но НЕ добавляй плейсхолдеры в скобках).",
+    "Никогда не используй квадратные скобки [] в тексте. Если нужна текущая дата — напиши 'a fecha de hoy'.",
     "Верни СТРОГО JSON-объект с полями:",
     '"spanish_legal_text" (string) и "native_user_translation" (string).',
     "Никаких дополнительных ключей, текста вне JSON или markdown.",
@@ -72,6 +73,17 @@ export async function generateDualLanguageLegalText(input: {
     throw new Error("DeepSeek error: content is not valid JSON");
   }
 
-  return DeepSeekResponseSchema.parse(parsed);
+  const validated = DeepSeekResponseSchema.parse(parsed);
+
+  // Safety: remove any leftover bracket placeholders like "[Fecha actual]"
+  const stripSquareBracketPlaceholders = (s: string) =>
+    s.replace(/\[[^\]]+\]/g, "N/D").replace(/\s{2,}/g, " ").trim();
+
+  return {
+    spanish_legal_text: stripSquareBracketPlaceholders(validated.spanish_legal_text),
+    native_user_translation: stripSquareBracketPlaceholders(
+      validated.native_user_translation,
+    ),
+  };
 }
 
