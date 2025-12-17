@@ -21,6 +21,12 @@ import {
   defaultReturn14Form,
   type Return14Form,
 } from "./usecases/return14";
+import {
+  RepairDemandFormSection,
+  buildRepairDemandFacts,
+  defaultRepairDemandForm,
+  type RepairDemandForm,
+} from "./usecases/repairDemand";
 
 type Props = {
   locale: AppLocale;
@@ -37,6 +43,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
     defaultDepositReturnForm,
   );
   const [return14Form, setReturn14Form] = useState<Return14Form>(defaultReturn14Form);
+  const [repairForm, setRepairForm] = useState<RepairDemandForm>(defaultRepairDemandForm);
   const [isLoading, setIsLoading] = useState(false);
   const [orderId, setOrderId] = useState<string | null>(null);
   const [isPaid, setIsPaid] = useState(false);
@@ -50,8 +57,9 @@ export default function GeneratorClient({ locale, category, company }: Props) {
     if (category === "cancel") return buildCancelTelcoFacts(cancelForm, company);
     if (category === "fianza") return buildDepositReturnFacts(depositForm);
     if (category === "devolucion") return buildReturn14Facts(return14Form);
+    if (category === "reparacion") return buildRepairDemandFacts(repairForm);
     return facts;
-  }, [category, cancelForm, company, depositForm, facts, return14Form]);
+  }, [category, cancelForm, company, depositForm, facts, return14Form, repairForm]);
 
   const canGenerate = useMemo(() => builtFacts.trim().length >= 10, [builtFacts]);
 
@@ -120,6 +128,20 @@ export default function GeneratorClient({ locale, category, company }: Props) {
           }));
         } else if (category === "devolucion") {
           setReturn14Form((prev) => ({ ...prev, extra_details: String(snap.facts ?? "") }));
+        } else if (category === "reparacion" && snap.form) {
+          const f = snap.form as Partial<RepairDemandForm>;
+          setRepairForm((prev) => ({
+            ...prev,
+            ...Object.fromEntries(
+              Object.entries(f).map(([k, v]) => [k, String(v ?? "")]),
+            ),
+            urgency:
+              f.urgency === "low" || f.urgency === "normal" || f.urgency === "high"
+                ? f.urgency
+                : "",
+          }));
+        } else if (category === "reparacion") {
+          setRepairForm((prev) => ({ ...prev, extra_details: String(snap.facts ?? "") }));
         }
         setEs(String(snap.spanish_legal_text ?? ""));
         setNative(String(snap.native_user_translation ?? ""));
@@ -166,6 +188,14 @@ export default function GeneratorClient({ locale, category, company }: Props) {
                   form: return14Form,
                   facts: builtFacts,
                 }
+              : category === "reparacion"
+                ? {
+                    locale,
+                    category,
+                    company,
+                    form: repairForm,
+                    facts: builtFacts,
+                  }
           : { locale, category, company, facts };
 
       setDebugLastRequest(payload);
@@ -239,6 +269,12 @@ export default function GeneratorClient({ locale, category, company }: Props) {
           <Return14FormSection
             form={return14Form}
             setForm={(u) => setReturn14Form(u)}
+            builtFacts={builtFacts}
+          />
+        ) : category === "reparacion" ? (
+          <RepairDemandFormSection
+            form={repairForm}
+            setForm={(u) => setRepairForm(u)}
             builtFacts={builtFacts}
           />
         ) : (

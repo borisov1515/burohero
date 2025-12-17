@@ -40,6 +40,12 @@ export default async function LocaleHome({
           >
             Example generator: devolucion / merchant (return within 14 days)
           </Link>
+          <Link
+            className="underline underline-offset-4"
+            href={`/${locale}/reparacion/landlord`}
+          >
+            Example generator: reparacion / landlord (repair demand)
+          </Link>
         </div>
       </section>
     </main>

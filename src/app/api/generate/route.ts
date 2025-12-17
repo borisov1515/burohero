@@ -123,6 +123,20 @@ const Return14FormSchema = z.object({
   extra_details: z.preprocess(emptyToUndefined, z.string().optional()),
 });
 
+const RepairDemandFormSchema = z.object({
+  tenant_full_name: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  tenant_id: z.preprocess(emptyToUndefined, z.string().min(3).optional()),
+  tenant_address: z.preprocess(emptyToUndefined, z.string().min(5).optional()),
+  landlord_full_name: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  landlord_address: z.preprocess(emptyToUndefined, z.string().min(5).optional()),
+  property_address: z.preprocess(emptyToUndefined, z.string().min(5).optional()),
+  issue_description: z.preprocess(emptyToUndefined, z.string().min(5).optional()),
+  issue_first_notice_date: z.preprocess(emptyToUndefined, z.string().min(4).optional()),
+  urgency: z.preprocess(emptyToUndefined, z.string().optional()),
+  desired_outcome: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  extra_details: z.preprocess(emptyToUndefined, z.string().optional()),
+});
+
 function buildCancelTelcoFacts(input: {
   locale: string;
   company: string;
@@ -222,6 +236,28 @@ function buildReturn14Facts(input: {
   return lines.join("\n");
 }
 
+function buildRepairDemandFacts(input: {
+  locale: string;
+  company: string;
+  form: z.infer<typeof RepairDemandFormSchema>;
+}) {
+  const f = input.form;
+  const lines: string[] = [];
+  lines.push("Use case: housing repair demand (requerimiento de reparación).");
+  if (f.tenant_full_name) lines.push(`Tenant full name: ${f.tenant_full_name}`);
+  if (f.tenant_id) lines.push(`Tenant ID (DNI/NIE/Passport): ${f.tenant_id}`);
+  if (f.tenant_address) lines.push(`Tenant address: ${f.tenant_address}`);
+  if (f.landlord_full_name) lines.push(`Landlord full name: ${f.landlord_full_name}`);
+  if (f.landlord_address) lines.push(`Landlord address: ${f.landlord_address}`);
+  if (f.property_address) lines.push(`Rented property address: ${f.property_address}`);
+  if (f.issue_description) lines.push(`Issue description: ${f.issue_description}`);
+  if (f.issue_first_notice_date) lines.push(`Issue first reported on: ${f.issue_first_notice_date}`);
+  if (f.urgency) lines.push(`Urgency: ${f.urgency}`);
+  if (f.desired_outcome) lines.push(`Desired outcome: ${f.desired_outcome}`);
+  if (f.extra_details) lines.push(`Additional details: ${f.extra_details}`);
+  return lines.join("\n");
+}
+
 const GenerateRequestSchema = z.object({
   locale: z.string().min(2),
   category: z.string().min(1),
@@ -273,6 +309,19 @@ export async function POST(req: Request) {
       }
       parsedForm = parsed.data;
       facts = buildReturn14Facts({
+        locale: input.locale,
+        company: input.company,
+        form: parsed.data,
+      });
+    }
+
+    if (input.category === "reparacion" && input.form) {
+      const parsed = RepairDemandFormSchema.safeParse(input.form);
+      if (!parsed.success) {
+        throw new Error(JSON.stringify(parsed.error.issues, null, 2));
+      }
+      parsedForm = parsed.data;
+      facts = buildRepairDemandFacts({
         locale: input.locale,
         company: input.company,
         form: parsed.data,
