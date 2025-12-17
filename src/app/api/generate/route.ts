@@ -250,6 +250,25 @@ const InsuranceCancelFormSchema = z.object({
   extra_details: z.preprocess(emptyToUndefined, z.string().optional()),
 });
 
+const ClaimDeniedFormSchema = z.object({
+  policyholder_full_name: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  policyholder_id: z.preprocess(emptyToUndefined, z.string().min(3).optional()),
+  policyholder_address: z.preprocess(emptyToUndefined, z.string().min(5).optional()),
+  insurer_name: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  policy_number: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  claim_number: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  incident_date: z.preprocess(emptyToUndefined, z.string().min(4).optional()),
+  incident_description: z.preprocess(emptyToUndefined, z.string().min(5).optional()),
+  claimed_amount_eur: z.preprocess(emptyToUndefined, z.string().min(1).optional()),
+  denial_date: z.preprocess(emptyToUndefined, z.string().min(4).optional()),
+  denial_reason: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  contacted_before: z.preprocess(emptyToUndefined, z.string().optional()),
+  contacted_details: z.preprocess(emptyToUndefined, z.string().optional()),
+  desired_outcome: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  iban: z.preprocess(emptyToUndefined, z.string().optional()),
+  extra_details: z.preprocess(emptyToUndefined, z.string().optional()),
+});
+
 function buildCancelTelcoFacts(input: {
   locale: string;
   company: string;
@@ -538,6 +557,34 @@ function buildInsuranceCancelFacts(input: {
   return lines.join("\n");
 }
 
+function buildClaimDeniedFacts(input: {
+  locale: string;
+  company: string;
+  form: z.infer<typeof ClaimDeniedFormSchema>;
+}) {
+  const f = input.form;
+  const lines: string[] = [];
+  lines.push(`Use case: insurance claim denied / refusal to pay (${input.company}).`);
+  if (f.policyholder_full_name) lines.push(`Policyholder full name: ${f.policyholder_full_name}`);
+  if (f.policyholder_id) lines.push(`Policyholder ID (DNI/NIE/Passport): ${f.policyholder_id}`);
+  if (f.policyholder_address) lines.push(`Policyholder address: ${f.policyholder_address}`);
+  if (f.insurer_name) lines.push(`Insurer name: ${f.insurer_name}`);
+  if (f.policy_number) lines.push(`Policy number: ${f.policy_number}`);
+  if (f.claim_number) lines.push(`Claim number: ${f.claim_number}`);
+  if (f.incident_date) lines.push(`Incident date: ${f.incident_date}`);
+  if (f.incident_description) lines.push(`Incident description: ${f.incident_description}`);
+  if (f.claimed_amount_eur) lines.push(`Claimed amount (EUR): ${f.claimed_amount_eur}`);
+  if (f.denial_date) lines.push(`Denial date: ${f.denial_date}`);
+  if (f.denial_reason) lines.push(`Denial reason (as stated): ${f.denial_reason}`);
+  if (f.contacted_before === "yes") lines.push("Contacted insurer before: yes");
+  if (f.contacted_before === "no") lines.push("Contacted insurer before: no");
+  if (f.contacted_details) lines.push(`Previous communication: ${f.contacted_details}`);
+  if (f.desired_outcome) lines.push(`Desired outcome: ${f.desired_outcome}`);
+  if (f.iban) lines.push(`IBAN for payment (optional): ${f.iban}`);
+  if (f.extra_details) lines.push(`Additional details: ${f.extra_details}`);
+  return lines.join("\n");
+}
+
 const GenerateRequestSchema = z.object({
   locale: z.string().min(2),
   category: z.string().min(1),
@@ -680,6 +727,19 @@ export async function POST(req: Request) {
       }
       parsedForm = parsed.data;
       facts = buildInsuranceCancelFacts({
+        locale: input.locale,
+        company: input.company,
+        form: parsed.data,
+      });
+    }
+
+    if (input.category === "denegacion" && input.form) {
+      const parsed = ClaimDeniedFormSchema.safeParse(input.form);
+      if (!parsed.success) {
+        throw new Error(JSON.stringify(parsed.error.issues, null, 2));
+      }
+      parsedForm = parsed.data;
+      facts = buildClaimDeniedFacts({
         locale: input.locale,
         company: input.company,
         form: parsed.data,

@@ -82,6 +82,12 @@ export default async function LocaleHome({
           >
             Example generator: seguro / mapfre (insurance cancellation)
           </Link>
+          <Link
+            className="underline underline-offset-4"
+            href={`/${locale}/denegacion/allianz`}
+          >
+            Example generator: denegacion / allianz (claim denied)
+          </Link>
         </div>
       </section>
     </main>

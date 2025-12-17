@@ -63,6 +63,12 @@ import {
   defaultInsuranceCancelForm,
   type InsuranceCancelForm,
 } from "./usecases/insuranceCancel";
+import {
+  ClaimDeniedFormSection,
+  buildClaimDeniedFacts,
+  defaultClaimDeniedForm,
+  type ClaimDeniedForm,
+} from "./usecases/claimDenied";
 
 type Props = {
   locale: AppLocale;
@@ -92,6 +98,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
   const [insuranceCancelForm, setInsuranceCancelForm] = useState<InsuranceCancelForm>(
     defaultInsuranceCancelForm,
   );
+  const [claimDeniedForm, setClaimDeniedForm] = useState<ClaimDeniedForm>(defaultClaimDeniedForm);
   const [isLoading, setIsLoading] = useState(false);
   const [orderId, setOrderId] = useState<string | null>(null);
   const [isPaid, setIsPaid] = useState(false);
@@ -112,6 +119,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
     if (category === "noentrega") return buildNonDeliveryFacts(nonDeliveryForm, company);
     if (category === "vuelo") return buildFlightDelayFacts(flightDelayForm, company);
     if (category === "seguro") return buildInsuranceCancelFacts(insuranceCancelForm, company);
+    if (category === "denegacion") return buildClaimDeniedFacts(claimDeniedForm, company);
     return facts;
   }, [
     category,
@@ -127,6 +135,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
     nonDeliveryForm,
     flightDelayForm,
     insuranceCancelForm,
+    claimDeniedForm,
   ]);
 
   const canGenerate = useMemo(() => builtFacts.trim().length >= 10, [builtFacts]);
@@ -315,6 +324,18 @@ export default function GeneratorClient({ locale, category, company }: Props) {
           }));
         } else if (category === "seguro") {
           setInsuranceCancelForm((prev) => ({ ...prev, extra_details: String(snap.facts ?? "") }));
+        } else if (category === "denegacion" && snap.form) {
+          const f = snap.form as Partial<ClaimDeniedForm>;
+          setClaimDeniedForm((prev) => ({
+            ...prev,
+            ...Object.fromEntries(
+              Object.entries(f).map(([k, v]) => [k, String(v ?? "")]),
+            ),
+            contacted_before:
+              f.contacted_before === "yes" || f.contacted_before === "no" ? f.contacted_before : "",
+          }));
+        } else if (category === "denegacion") {
+          setClaimDeniedForm((prev) => ({ ...prev, extra_details: String(snap.facts ?? "") }));
         }
         setEs(String(snap.spanish_legal_text ?? ""));
         setNative(String(snap.native_user_translation ?? ""));
@@ -417,6 +438,14 @@ export default function GeneratorClient({ locale, category, company }: Props) {
                                 form: insuranceCancelForm,
                                 facts: builtFacts,
                               }
+                            : category === "denegacion"
+                              ? {
+                                  locale,
+                                  category,
+                                  company,
+                                  form: claimDeniedForm,
+                                  facts: builtFacts,
+                                }
           : { locale, category, company, facts };
 
       setDebugLastRequest(payload);
@@ -532,6 +561,12 @@ export default function GeneratorClient({ locale, category, company }: Props) {
           <InsuranceCancelFormSection
             form={insuranceCancelForm}
             setForm={(u) => setInsuranceCancelForm(u)}
+            builtFacts={builtFacts}
+          />
+        ) : category === "denegacion" ? (
+          <ClaimDeniedFormSection
+            form={claimDeniedForm}
+            setForm={(u) => setClaimDeniedForm(u)}
             builtFacts={builtFacts}
           />
         ) : (
