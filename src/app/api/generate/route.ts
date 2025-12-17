@@ -22,7 +22,7 @@ function checkRateLimit(req: Request) {
   const list = rateLimitBucket.get(ip) ?? [];
   const recent = list.filter((t) => t >= windowStart);
   if (recent.length >= RATE_LIMIT_PER_HOUR) {
-    throw new Error("Rate limit exceeded. Please try again later.");
+    throw new Error("RATE_LIMIT_EXCEEDED");
   }
   recent.push(now);
   rateLimitBucket.set(ip, recent);
@@ -807,7 +807,7 @@ export async function POST(req: Request) {
     }
 
     if (!facts || facts.trim().length < 10) {
-      throw new Error("Facts are required");
+      throw new Error("FACTS_REQUIRED");
     }
 
     const result = await generateDualLanguageLegalText({
@@ -840,8 +840,32 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ orderId, ...result, facts });
   } catch (e) {
-    const message = e instanceof Error ? e.message : "Unknown error";
-    return NextResponse.json({ error: message }, { status: 400 });
+    if (e instanceof z.ZodError) {
+      return NextResponse.json({ errorCode: "INVALID_REQUEST" }, { status: 400 });
+    }
+
+    const message = e instanceof Error ? e.message : "";
+
+    if (message === "RATE_LIMIT_EXCEEDED") {
+      return NextResponse.json(
+        { errorCode: "RATE_LIMIT_EXCEEDED" },
+        { status: 429 },
+      );
+    }
+
+    if (message === "FACTS_REQUIRED") {
+      return NextResponse.json({ errorCode: "FACTS_REQUIRED" }, { status: 400 });
+    }
+
+    // Many form schemas throw JSON-stringified zod issues today.
+    if (message.trim().startsWith("[")) {
+      return NextResponse.json(
+        { errorCode: "FORM_VALIDATION_ERROR" },
+        { status: 400 },
+      );
+    }
+
+    return NextResponse.json({ errorCode: "UNKNOWN_ERROR" }, { status: 400 });
   }
 }
 

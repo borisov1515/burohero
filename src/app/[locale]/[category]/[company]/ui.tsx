@@ -516,7 +516,19 @@ export default function GeneratorClient({ locale, category, company }: Props) {
       });
       const json = await res.json();
       setDebugLastResponse(json);
-      if (!res.ok) throw new Error(json?.error ?? tGen("errors.generateFailed"));
+      if (!res.ok) {
+        const msg =
+          json?.errorCode === "RATE_LIMIT_EXCEEDED"
+            ? tGen("errors.rateLimitExceeded")
+            : json?.errorCode === "FORM_VALIDATION_ERROR"
+              ? tGen("errors.invalidForm")
+              : json?.errorCode === "INVALID_REQUEST"
+                ? tGen("errors.invalidRequest")
+                : json?.errorCode === "FACTS_REQUIRED"
+                  ? tGen("errors.factsRequired")
+                  : tGen("errors.generateFailed");
+        throw new Error(msg);
+      }
 
       setOrderId(json.orderId);
       setIsPaid(false);

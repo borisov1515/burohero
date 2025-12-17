@@ -54,6 +54,10 @@
     "errors": {
       "failedToLoadOrder": "No se pudo cargar el pedido",
       "generateFailed": "Falló la generación",
+      "rateLimitExceeded": "Demasiadas solicitudes. Inténtalo de nuevo más tarde.",
+      "invalidRequest": "Solicitud no válida. Recarga la página e inténtalo de nuevo.",
+      "invalidForm": "Algunos campos no son válidos. Revisa el formulario e inténtalo de nuevo.",
+      "factsRequired": "Completa el formulario antes de generar.",
       "mockPayFailed": "Falló el pago simulado",
       "mockPaymentsDisabled": "Los pagos simulados están desactivados.",
       "invalidOrderId": "orderId inválido.",

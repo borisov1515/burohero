@@ -54,6 +54,10 @@
     "errors": {
       "failedToLoadOrder": "Failed to load order",
       "generateFailed": "Generate failed",
+      "rateLimitExceeded": "Too many requests. Please try again later.",
+      "invalidRequest": "Invalid request. Please refresh and try again.",
+      "invalidForm": "Some fields are invalid. Please review the form and try again.",
+      "factsRequired": "Please fill in the form before generating.",
       "mockPayFailed": "Mock pay failed",
       "mockPaymentsDisabled": "Mock payments are disabled.",
       "invalidOrderId": "Invalid orderId.",
