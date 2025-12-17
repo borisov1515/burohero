@@ -269,6 +269,25 @@ const ClaimDeniedFormSchema = z.object({
   extra_details: z.preprocess(emptyToUndefined, z.string().optional()),
 });
 
+const FeesRefundFormSchema = z.object({
+  customer_full_name: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  customer_id: z.preprocess(emptyToUndefined, z.string().min(3).optional()),
+  customer_address: z.preprocess(emptyToUndefined, z.string().min(5).optional()),
+  bank_name: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  account_iban: z.preprocess(emptyToUndefined, z.string().optional()),
+  product_type: z.preprocess(emptyToUndefined, z.string().optional()),
+  fee_type: z.preprocess(emptyToUndefined, z.string().optional()),
+  fee_amount_eur: z.preprocess(emptyToUndefined, z.string().min(1).optional()),
+  fee_date: z.preprocess(emptyToUndefined, z.string().min(4).optional()),
+  period_details: z.preprocess(emptyToUndefined, z.string().optional()),
+  reason: z.preprocess(emptyToUndefined, z.string().optional()),
+  contacted_before: z.preprocess(emptyToUndefined, z.string().optional()),
+  contacted_details: z.preprocess(emptyToUndefined, z.string().optional()),
+  desired_outcome: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  refund_iban: z.preprocess(emptyToUndefined, z.string().optional()),
+  extra_details: z.preprocess(emptyToUndefined, z.string().optional()),
+});
+
 function buildCancelTelcoFacts(input: {
   locale: string;
   company: string;
@@ -585,6 +604,34 @@ function buildClaimDeniedFacts(input: {
   return lines.join("\n");
 }
 
+function buildFeesRefundFacts(input: {
+  locale: string;
+  company: string;
+  form: z.infer<typeof FeesRefundFormSchema>;
+}) {
+  const f = input.form;
+  const lines: string[] = [];
+  lines.push(`Use case: bank fees refund / return of commissions (${input.company}).`);
+  if (f.customer_full_name) lines.push(`Customer full name: ${f.customer_full_name}`);
+  if (f.customer_id) lines.push(`Customer ID (DNI/NIE/Passport): ${f.customer_id}`);
+  if (f.customer_address) lines.push(`Customer address: ${f.customer_address}`);
+  if (f.bank_name) lines.push(`Bank name: ${f.bank_name}`);
+  if (f.account_iban) lines.push(`Account IBAN: ${f.account_iban}`);
+  if (f.product_type) lines.push(`Product type: ${f.product_type}`);
+  if (f.fee_type) lines.push(`Fee type: ${f.fee_type}`);
+  if (f.fee_amount_eur) lines.push(`Fee amount (EUR): ${f.fee_amount_eur}`);
+  if (f.fee_date) lines.push(`Fee date: ${f.fee_date}`);
+  if (f.period_details) lines.push(`Period / details: ${f.period_details}`);
+  if (f.reason) lines.push(`Reason: ${f.reason}`);
+  if (f.contacted_before === "yes") lines.push("Contacted bank before: yes");
+  if (f.contacted_before === "no") lines.push("Contacted bank before: no");
+  if (f.contacted_details) lines.push(`Previous communication: ${f.contacted_details}`);
+  if (f.desired_outcome) lines.push(`Desired outcome: ${f.desired_outcome}`);
+  if (f.refund_iban) lines.push(`Refund IBAN: ${f.refund_iban}`);
+  if (f.extra_details) lines.push(`Additional details: ${f.extra_details}`);
+  return lines.join("\n");
+}
+
 const GenerateRequestSchema = z.object({
   locale: z.string().min(2),
   category: z.string().min(1),
@@ -740,6 +787,19 @@ export async function POST(req: Request) {
       }
       parsedForm = parsed.data;
       facts = buildClaimDeniedFacts({
+        locale: input.locale,
+        company: input.company,
+        form: parsed.data,
+      });
+    }
+
+    if (input.category === "comisiones" && input.form) {
+      const parsed = FeesRefundFormSchema.safeParse(input.form);
+      if (!parsed.success) {
+        throw new Error(JSON.stringify(parsed.error.issues, null, 2));
+      }
+      parsedForm = parsed.data;
+      facts = buildFeesRefundFacts({
         locale: input.locale,
         company: input.company,
         form: parsed.data,

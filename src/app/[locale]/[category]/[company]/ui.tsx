@@ -69,6 +69,12 @@ import {
   defaultClaimDeniedForm,
   type ClaimDeniedForm,
 } from "./usecases/claimDenied";
+import {
+  FeesRefundFormSection,
+  buildFeesRefundFacts,
+  defaultFeesRefundForm,
+  type FeesRefundForm,
+} from "./usecases/feesRefund";
 
 type Props = {
   locale: AppLocale;
@@ -99,6 +105,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
     defaultInsuranceCancelForm,
   );
   const [claimDeniedForm, setClaimDeniedForm] = useState<ClaimDeniedForm>(defaultClaimDeniedForm);
+  const [feesRefundForm, setFeesRefundForm] = useState<FeesRefundForm>(defaultFeesRefundForm);
   const [isLoading, setIsLoading] = useState(false);
   const [orderId, setOrderId] = useState<string | null>(null);
   const [isPaid, setIsPaid] = useState(false);
@@ -120,6 +127,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
     if (category === "vuelo") return buildFlightDelayFacts(flightDelayForm, company);
     if (category === "seguro") return buildInsuranceCancelFacts(insuranceCancelForm, company);
     if (category === "denegacion") return buildClaimDeniedFacts(claimDeniedForm, company);
+    if (category === "comisiones") return buildFeesRefundFacts(feesRefundForm, company);
     return facts;
   }, [
     category,
@@ -136,6 +144,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
     flightDelayForm,
     insuranceCancelForm,
     claimDeniedForm,
+    feesRefundForm,
   ]);
 
   const canGenerate = useMemo(() => builtFacts.trim().length >= 10, [builtFacts]);
@@ -336,6 +345,35 @@ export default function GeneratorClient({ locale, category, company }: Props) {
           }));
         } else if (category === "denegacion") {
           setClaimDeniedForm((prev) => ({ ...prev, extra_details: String(snap.facts ?? "") }));
+        } else if (category === "comisiones" && snap.form) {
+          const f = snap.form as Partial<FeesRefundForm>;
+          setFeesRefundForm((prev) => ({
+            ...prev,
+            ...Object.fromEntries(
+              Object.entries(f).map(([k, v]) => [k, String(v ?? "")]),
+            ),
+            contacted_before:
+              f.contacted_before === "yes" || f.contacted_before === "no" ? f.contacted_before : "",
+            product_type:
+              f.product_type === "account" ||
+              f.product_type === "card" ||
+              f.product_type === "mortgage" ||
+              f.product_type === "loan" ||
+              f.product_type === "other"
+                ? f.product_type
+                : "",
+            fee_type:
+              f.fee_type === "maintenance" ||
+              f.fee_type === "card" ||
+              f.fee_type === "overdraft" ||
+              f.fee_type === "transfer" ||
+              f.fee_type === "opening" ||
+              f.fee_type === "other"
+                ? f.fee_type
+                : "",
+          }));
+        } else if (category === "comisiones") {
+          setFeesRefundForm((prev) => ({ ...prev, extra_details: String(snap.facts ?? "") }));
         }
         setEs(String(snap.spanish_legal_text ?? ""));
         setNative(String(snap.native_user_translation ?? ""));
@@ -446,6 +484,14 @@ export default function GeneratorClient({ locale, category, company }: Props) {
                                   form: claimDeniedForm,
                                   facts: builtFacts,
                                 }
+                              : category === "comisiones"
+                                ? {
+                                    locale,
+                                    category,
+                                    company,
+                                    form: feesRefundForm,
+                                    facts: builtFacts,
+                                  }
           : { locale, category, company, facts };
 
       setDebugLastRequest(payload);
@@ -567,6 +613,12 @@ export default function GeneratorClient({ locale, category, company }: Props) {
           <ClaimDeniedFormSection
             form={claimDeniedForm}
             setForm={(u) => setClaimDeniedForm(u)}
+            builtFacts={builtFacts}
+          />
+        ) : category === "comisiones" ? (
+          <FeesRefundFormSection
+            form={feesRefundForm}
+            setForm={(u) => setFeesRefundForm(u)}
             builtFacts={builtFacts}
           />
         ) : (

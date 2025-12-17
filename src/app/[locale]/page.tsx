@@ -88,6 +88,12 @@ export default async function LocaleHome({
           >
             Example generator: denegacion / allianz (claim denied)
           </Link>
+          <Link
+            className="underline underline-offset-4"
+            href={`/${locale}/comisiones/bbva`}
+          >
+            Example generator: comisiones / bbva (fees refund)
+          </Link>
         </div>
       </section>
     </main>
