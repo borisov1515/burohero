@@ -37,13 +37,25 @@
       "spanishDoc": "Documento legal en español (borroso hasta pagar)",
       "translation": "Traducción (siempre visible)"
     },
+    "fallbackFacts": {
+      "label": "Tus hechos (en tu idioma)",
+      "placeholder": "Describe la situación: fechas, importes, datos del contrato, qué quieres reclamar…"
+    },
     "states": {
       "previewDoc": "Genera para ver la vista previa…",
       "previewTranslation": "Genera para ver la traducción…"
     },
     "debug": {
       "factsSent": "Debug: hechos enviados a la IA",
-      "lastApi": "Debug: última request/response del API"
+      "lastApi": "Debug: última request/response del API",
+      "request": "Solicitud",
+      "response": "Respuesta"
+    },
+    "errors": {
+      "failedToLoadOrder": "No se pudo cargar el pedido",
+      "generateFailed": "Falló la generación",
+      "mockPayFailed": "Falló el pago simulado",
+      "unknown": "Error desconocido"
     }
   },
   "checkout": {
@@ -53,6 +65,8 @@
     "spanishDocTitle": "Documento legal en español",
     "translationTitle": "Traducción",
     "lockedNotPaid": "Bloqueado (no pagado).",
+    "pdfTitleSpanish": "Documento Legal (ES)",
+    "pdfTitleTranslation": "Traducción de cortesía",
     "downloadSpanish": "Descargar PDF en español",
     "downloadTranslation": "Descargar PDF de traducción",
     "spanishPdfLocked": "El PDF en español está bloqueado hasta pagar.",
@@ -67,6 +81,9 @@
     "common": {
       "yes": "Sí",
       "no": "No",
+      "labels": {
+        "cif": "CIF:"
+      },
       "placeholders": {
         "fullName": "Nombre completo",
         "id": "DNI/NIE/Pasaporte",

@@ -119,7 +119,7 @@ export default function CheckoutDownloads({
           onClick={() =>
             downloadPdf({
               filename: `Legal_${orderId}.pdf`,
-              title: "Documento Legal (ES)",
+              title: t("pdfTitleSpanish"),
               body: spanishText || "",
               preferNoto: false,
             })
@@ -134,7 +134,7 @@ export default function CheckoutDownloads({
           onClick={() =>
             downloadPdf({
               filename: `Translation_${orderId}.pdf`,
-              title: "Courtesy Translation",
+              title: t("pdfTitleTranslation"),
               body: translationText || "",
               preferNoto: true,
             })

@@ -167,7 +167,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
           `/api/orders/get?orderId=${encodeURIComponent(id)}`,
         );
         const json = await res.json();
-        if (!res.ok) throw new Error(json?.error ?? "Failed to load order");
+        if (!res.ok) throw new Error(json?.error ?? tGen("errors.failedToLoadOrder"));
 
         const snap = (json.content_snapshot ?? {}) as any;
         if (cancelled) return;
@@ -383,7 +383,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
         setNative(String(snap.native_user_translation ?? ""));
       } catch (e) {
         if (!cancelled) {
-          setError(e instanceof Error ? e.message : "Unknown error");
+          setError(e instanceof Error ? e.message : tGen("errors.unknown"));
         }
       } finally {
         if (!cancelled) setIsLoading(false);
@@ -508,14 +508,14 @@ export default function GeneratorClient({ locale, category, company }: Props) {
       });
       const json = await res.json();
       setDebugLastResponse(json);
-      if (!res.ok) throw new Error(json?.error ?? "Generate failed");
+      if (!res.ok) throw new Error(json?.error ?? tGen("errors.generateFailed"));
 
       setOrderId(json.orderId);
       setIsPaid(false);
       setEs(json.spanish_legal_text);
       setNative(json.native_user_translation);
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Unknown error");
+      setError(e instanceof Error ? e.message : tGen("errors.unknown"));
     } finally {
       setIsLoading(false);
     }
@@ -532,11 +532,11 @@ export default function GeneratorClient({ locale, category, company }: Props) {
         body: JSON.stringify({ orderId }),
       });
       const json = await res.json();
-      if (!res.ok) throw new Error(json?.error ?? "Mock pay failed");
+      if (!res.ok) throw new Error(json?.error ?? tGen("errors.mockPayFailed"));
       setIsPaid(true);
       router.push(`/${locale}/checkout/result?orderId=${encodeURIComponent(orderId)}`);
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Unknown error");
+      setError(e instanceof Error ? e.message : tGen("errors.unknown"));
     } finally {
       setIsLoading(false);
     }
@@ -627,12 +627,12 @@ export default function GeneratorClient({ locale, category, company }: Props) {
           />
         ) : (
           <>
-            <label className="text-sm font-medium">Your facts (in your language)</label>
+            <label className="text-sm font-medium">{tGen("fallbackFacts.label")}</label>
             <textarea
               className="mt-2 h-40 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
               value={facts}
               onChange={(e) => setFacts(e.target.value)}
-              placeholder="Describe the situation: dates, amounts, contract details, what you want to demand…"
+              placeholder={tGen("fallbackFacts.placeholder")}
             />
           </>
         )}
@@ -673,7 +673,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
           <div className="mt-3 grid gap-3">
             <div>
               <div className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
-                Request
+                {tGen("debug.request")}
               </div>
               <pre className="mt-1 whitespace-pre-wrap rounded-lg bg-zinc-50 p-3 text-xs text-zinc-800 dark:bg-black dark:text-zinc-200">
                 {debugLastRequest ? JSON.stringify(debugLastRequest, null, 2) : "—"}
@@ -681,7 +681,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
             </div>
             <div>
               <div className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
-                Response
+                {tGen("debug.response")}
               </div>
               <pre className="mt-1 whitespace-pre-wrap rounded-lg bg-zinc-50 p-3 text-xs text-zinc-800 dark:bg-black dark:text-zinc-200">
                 {debugLastResponse ? JSON.stringify(debugLastResponse, null, 2) : "—"}

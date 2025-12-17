@@ -37,13 +37,25 @@
       "spanishDoc": "Spanish legal document (blurred until paid)",
       "translation": "Translation (always visible)"
     },
+    "fallbackFacts": {
+      "label": "Your facts (in your language)",
+      "placeholder": "Describe the situation: dates, amounts, contract details, what you want to demand…"
+    },
     "states": {
       "previewDoc": "Generate to see preview…",
       "previewTranslation": "Generate to see translation…"
     },
     "debug": {
       "factsSent": "Debug: facts sent to AI",
-      "lastApi": "Debug: last API request/response"
+      "lastApi": "Debug: last API request/response",
+      "request": "Request",
+      "response": "Response"
+    },
+    "errors": {
+      "failedToLoadOrder": "Failed to load order",
+      "generateFailed": "Generate failed",
+      "mockPayFailed": "Mock pay failed",
+      "unknown": "Unknown error"
     }
   },
   "checkout": {
@@ -53,6 +65,8 @@
     "spanishDocTitle": "Spanish legal document",
     "translationTitle": "Translation",
     "lockedNotPaid": "Locked (not paid).",
+    "pdfTitleSpanish": "Documento Legal (ES)",
+    "pdfTitleTranslation": "Courtesy translation",
     "downloadSpanish": "Download Spanish PDF",
     "downloadTranslation": "Download Translation PDF",
     "spanishPdfLocked": "Spanish PDF is locked until paid.",
@@ -67,6 +81,9 @@
     "common": {
       "yes": "Yes",
       "no": "No",
+      "labels": {
+        "cif": "CIF:"
+      },
       "placeholders": {
         "fullName": "Full name",
         "id": "DNI/NIE/Passport",

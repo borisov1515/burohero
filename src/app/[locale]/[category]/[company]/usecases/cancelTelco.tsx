@@ -88,7 +88,9 @@ export function CancelTelcoFormSection({
           <div className="mt-2 grid gap-1 text-zinc-700 dark:text-zinc-300">
             <div>{recipient.name}</div>
             <div>
-              <span className="text-zinc-500 dark:text-zinc-400">CIF:</span>{" "}
+              <span className="text-zinc-500 dark:text-zinc-400">
+                {tForms("common.labels.cif")}
+              </span>{" "}
               <span className="font-mono">{recipient.cif}</span>
             </div>
             <div>{recipient.address}</div>
