@@ -64,6 +64,12 @@ export default async function LocaleHome({
           >
             Example generator: garantia / zara (3-year warranty)
           </Link>
+          <Link
+            className="underline underline-offset-4"
+            href={`/${locale}/noentrega/amazon`}
+          >
+            Example generator: noentrega / amazon (undelivered goods)
+          </Link>
         </div>
       </section>
     </main>

@@ -45,6 +45,12 @@ import {
   defaultWarranty3yForm,
   type Warranty3yForm,
 } from "./usecases/warranty3y";
+import {
+  NonDeliveryFormSection,
+  buildNonDeliveryFacts,
+  defaultNonDeliveryForm,
+  type NonDeliveryForm,
+} from "./usecases/nonDelivery";
 
 type Props = {
   locale: AppLocale;
@@ -69,6 +75,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
     defaultBillComplaintForm,
   );
   const [warranty3yForm, setWarranty3yForm] = useState<Warranty3yForm>(defaultWarranty3yForm);
+  const [nonDeliveryForm, setNonDeliveryForm] = useState<NonDeliveryForm>(defaultNonDeliveryForm);
   const [isLoading, setIsLoading] = useState(false);
   const [orderId, setOrderId] = useState<string | null>(null);
   const [isPaid, setIsPaid] = useState(false);
@@ -86,6 +93,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
     if (category === "rescision") return buildLeaseTerminationFacts(leaseTerminationForm);
     if (category === "factura") return buildBillComplaintFacts(billComplaintForm, company);
     if (category === "garantia") return buildWarranty3yFacts(warranty3yForm, company);
+    if (category === "noentrega") return buildNonDeliveryFacts(nonDeliveryForm, company);
     return facts;
   }, [
     category,
@@ -98,6 +106,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
     leaseTerminationForm,
     billComplaintForm,
     warranty3yForm,
+    nonDeliveryForm,
   ]);
 
   const canGenerate = useMemo(() => builtFacts.trim().length >= 10, [builtFacts]);
@@ -236,6 +245,32 @@ export default function GeneratorClient({ locale, category, company }: Props) {
           }));
         } else if (category === "garantia") {
           setWarranty3yForm((prev) => ({ ...prev, extra_details: String(snap.facts ?? "") }));
+        } else if (category === "noentrega" && snap.form) {
+          const f = snap.form as Partial<NonDeliveryForm>;
+          setNonDeliveryForm((prev) => ({
+            ...prev,
+            ...Object.fromEntries(
+              Object.entries(f).map(([k, v]) => [k, String(v ?? "")]),
+            ),
+            contacted_seller_before:
+              f.contacted_seller_before === "yes" || f.contacted_seller_before === "no"
+                ? f.contacted_seller_before
+                : "",
+            delivery_status:
+              f.delivery_status === "not_delivered" ||
+              f.delivery_status === "lost" ||
+              f.delivery_status === "delivered_but_not_received"
+                ? f.delivery_status
+                : "",
+            desired_outcome:
+              f.desired_outcome === "deliver" ||
+              f.desired_outcome === "refund" ||
+              f.desired_outcome === "replacement"
+                ? f.desired_outcome
+                : "",
+          }));
+        } else if (category === "noentrega") {
+          setNonDeliveryForm((prev) => ({ ...prev, extra_details: String(snap.facts ?? "") }));
         }
         setEs(String(snap.spanish_legal_text ?? ""));
         setNative(String(snap.native_user_translation ?? ""));
@@ -314,6 +349,14 @@ export default function GeneratorClient({ locale, category, company }: Props) {
                           form: warranty3yForm,
                           facts: builtFacts,
                         }
+                      : category === "noentrega"
+                        ? {
+                            locale,
+                            category,
+                            company,
+                            form: nonDeliveryForm,
+                            facts: builtFacts,
+                          }
           : { locale, category, company, facts };
 
       setDebugLastRequest(payload);
@@ -411,6 +454,12 @@ export default function GeneratorClient({ locale, category, company }: Props) {
           <Warranty3yFormSection
             form={warranty3yForm}
             setForm={(u) => setWarranty3yForm(u)}
+            builtFacts={builtFacts}
+          />
+        ) : category === "noentrega" ? (
+          <NonDeliveryFormSection
+            form={nonDeliveryForm}
+            setForm={(u) => setNonDeliveryForm(u)}
             builtFacts={builtFacts}
           />
         ) : (

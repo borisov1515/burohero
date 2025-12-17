@@ -191,6 +191,26 @@ const Warranty3yFormSchema = z.object({
   extra_details: z.preprocess(emptyToUndefined, z.string().optional()),
 });
 
+const NonDeliveryFormSchema = z.object({
+  buyer_full_name: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  buyer_id: z.preprocess(emptyToUndefined, z.string().min(3).optional()),
+  buyer_address: z.preprocess(emptyToUndefined, z.string().min(5).optional()),
+  seller_name: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  order_number: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  product_description: z.preprocess(emptyToUndefined, z.string().min(3).optional()),
+  purchase_date: z.preprocess(emptyToUndefined, z.string().min(4).optional()),
+  promised_delivery_date: z.preprocess(emptyToUndefined, z.string().min(4).optional()),
+  tracking_number: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  carrier_name: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  delivery_status: z.preprocess(emptyToUndefined, z.string().optional()),
+  contacted_seller_before: z.preprocess(emptyToUndefined, z.string().optional()),
+  contacted_details: z.preprocess(emptyToUndefined, z.string().optional()),
+  paid_amount_eur: z.preprocess(emptyToUndefined, z.string().min(1).optional()),
+  payment_method: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  desired_outcome: z.preprocess(emptyToUndefined, z.string().optional()),
+  extra_details: z.preprocess(emptyToUndefined, z.string().optional()),
+});
+
 function buildCancelTelcoFacts(input: {
   locale: string;
   company: string;
@@ -394,6 +414,35 @@ function buildWarranty3yFacts(input: {
   return lines.join("\n");
 }
 
+function buildNonDeliveryFacts(input: {
+  locale: string;
+  company: string;
+  form: z.infer<typeof NonDeliveryFormSchema>;
+}) {
+  const f = input.form;
+  const lines: string[] = [];
+  lines.push(`Use case: undelivered goods / non-delivery complaint (${input.company}).`);
+  if (f.buyer_full_name) lines.push(`Buyer full name: ${f.buyer_full_name}`);
+  if (f.buyer_id) lines.push(`Buyer ID (DNI/NIE/Passport): ${f.buyer_id}`);
+  if (f.buyer_address) lines.push(`Buyer address: ${f.buyer_address}`);
+  if (f.seller_name) lines.push(`Seller/merchant name: ${f.seller_name}`);
+  if (f.order_number) lines.push(`Order number: ${f.order_number}`);
+  if (f.product_description) lines.push(`Product: ${f.product_description}`);
+  if (f.purchase_date) lines.push(`Purchase date: ${f.purchase_date}`);
+  if (f.promised_delivery_date) lines.push(`Promised delivery date: ${f.promised_delivery_date}`);
+  if (f.tracking_number) lines.push(`Tracking number: ${f.tracking_number}`);
+  if (f.carrier_name) lines.push(`Carrier: ${f.carrier_name}`);
+  if (f.delivery_status) lines.push(`Delivery status: ${f.delivery_status}`);
+  if (f.contacted_seller_before === "yes") lines.push("Contacted seller before: yes");
+  if (f.contacted_seller_before === "no") lines.push("Contacted seller before: no");
+  if (f.contacted_details) lines.push(`Previous communication: ${f.contacted_details}`);
+  if (f.paid_amount_eur) lines.push(`Paid amount (EUR): ${f.paid_amount_eur}`);
+  if (f.payment_method) lines.push(`Payment method: ${f.payment_method}`);
+  if (f.desired_outcome) lines.push(`Desired outcome: ${f.desired_outcome}`);
+  if (f.extra_details) lines.push(`Additional details: ${f.extra_details}`);
+  return lines.join("\n");
+}
+
 const GenerateRequestSchema = z.object({
   locale: z.string().min(2),
   category: z.string().min(1),
@@ -497,6 +546,19 @@ export async function POST(req: Request) {
       }
       parsedForm = parsed.data;
       facts = buildWarranty3yFacts({
+        locale: input.locale,
+        company: input.company,
+        form: parsed.data,
+      });
+    }
+
+    if (input.category === "noentrega" && input.form) {
+      const parsed = NonDeliveryFormSchema.safeParse(input.form);
+      if (!parsed.success) {
+        throw new Error(JSON.stringify(parsed.error.issues, null, 2));
+      }
+      parsedForm = parsed.data;
+      facts = buildNonDeliveryFacts({
         locale: input.locale,
         company: input.company,
         form: parsed.data,
