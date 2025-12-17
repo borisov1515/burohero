@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { generateDualLanguageLegalText } from "@/lib/deepseek";
+import { getCompanyBySlug } from "@/lib/companies";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 
 const emptyToUndefined = (v: unknown) =>
@@ -54,8 +55,14 @@ function buildCancelTelcoFacts(input: {
   form: z.infer<typeof CancelTelcoFormSchema>;
 }) {
   const f = input.form;
+  const recipient = getCompanyBySlug(input.company);
   const lines: string[] = [];
   lines.push(`Use case: cancel telecom contract (${input.company}).`);
+  if (recipient) {
+    lines.push(`Recipient (company): ${recipient.name}`);
+    lines.push(`Recipient CIF: ${recipient.cif}`);
+    lines.push(`Recipient address: ${recipient.address}`);
+  }
   if (f.applicant_full_name) lines.push(`Applicant full name: ${f.applicant_full_name}`);
   if (f.applicant_id) lines.push(`Applicant ID (DNI/NIE/Passport): ${f.applicant_id}`);
   if (f.applicant_address) lines.push(`Applicant address: ${f.applicant_address}`);
@@ -116,6 +123,7 @@ export async function POST(req: Request) {
         locale: input.locale,
         category: input.category,
         company: input.company,
+        recipient: getCompanyBySlug(input.company),
         facts,
         form: input.form ?? null,
         ...result,

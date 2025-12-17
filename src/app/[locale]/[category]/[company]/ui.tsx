@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import type { AppLocale } from "@/i18n/routing";
+import { getCompanyBySlug, type Company } from "@/lib/companies";
 
 type CancelTelcoForm = {
   applicant_full_name: string;
@@ -20,8 +21,14 @@ type CancelTelcoForm = {
 };
 
 function buildCancelTelcoFacts(form: CancelTelcoForm, company: string) {
+  const recipient = getCompanyBySlug(company);
   const lines: string[] = [];
   lines.push(`Use case: cancel telecom contract (${company}).`);
+  if (recipient) {
+    lines.push(`Recipient (company): ${recipient.name}`);
+    lines.push(`Recipient CIF: ${recipient.cif}`);
+    lines.push(`Recipient address: ${recipient.address}`);
+  }
   if (form.applicant_full_name) lines.push(`Applicant full name: ${form.applicant_full_name}`);
   if (form.applicant_id) lines.push(`Applicant ID (DNI/NIE/Passport): ${form.applicant_id}`);
   if (form.applicant_address) lines.push(`Applicant address: ${form.applicant_address}`);
@@ -47,6 +54,7 @@ type Props = {
 export default function GeneratorClient({ locale, category, company }: Props) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const recipient: Company | null = useMemo(() => getCompanyBySlug(company), [company]);
   const [facts, setFacts] = useState("");
   const [cancelForm, setCancelForm] = useState<CancelTelcoForm>({
     applicant_full_name: "",
@@ -203,6 +211,24 @@ export default function GeneratorClient({ locale, category, company }: Props) {
       <section className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
         {category === "cancel" ? (
           <div className="grid gap-4">
+            <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-sm dark:border-zinc-800 dark:bg-black">
+              <div className="font-medium">Recipient</div>
+              {recipient ? (
+                <div className="mt-2 grid gap-1 text-zinc-700 dark:text-zinc-300">
+                  <div>{recipient.name}</div>
+                  <div>
+                    <span className="text-zinc-500 dark:text-zinc-400">CIF:</span>{" "}
+                    <span className="font-mono">{recipient.cif}</span>
+                  </div>
+                  <div>{recipient.address}</div>
+                </div>
+              ) : (
+                <div className="mt-2 text-zinc-600 dark:text-zinc-400">
+                  Unknown company slug: <span className="font-mono">{company}</span>
+                </div>
+              )}
+            </div>
+
             <div>
               <div className="text-sm font-medium">Applicant</div>
               <div className="mt-2 grid gap-3 sm:grid-cols-2">
