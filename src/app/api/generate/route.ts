@@ -3,22 +3,34 @@ import { z } from "zod";
 import { generateDualLanguageLegalText } from "@/lib/deepseek";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 
+const emptyToUndefined = (v: unknown) =>
+  typeof v === "string" && v.trim() === "" ? undefined : v;
+
+const yesNoToBoolean = (v: unknown) => {
+  if (v === true || v === false) return v;
+  if (typeof v !== "string") return undefined;
+  const s = v.trim().toLowerCase();
+  if (s === "yes") return true;
+  if (s === "no") return false;
+  return undefined;
+};
+
 const CancelTelcoFormSchema = z.object({
-  applicant_full_name: z.string().min(2).optional(),
-  applicant_id: z.string().min(3).optional(),
-  applicant_address: z.string().min(5).optional(),
+  applicant_full_name: z.preprocess(emptyToUndefined, z.string().min(2)).optional(),
+  applicant_id: z.preprocess(emptyToUndefined, z.string().min(3)).optional(),
+  applicant_address: z.preprocess(emptyToUndefined, z.string().min(5)).optional(),
 
-  contract_number: z.string().min(2).optional(),
-  cancellation_request_date: z.string().min(4).optional(), // free-form / date string
-  cancellation_request_method: z.string().min(2).optional(),
+  contract_number: z.preprocess(emptyToUndefined, z.string().min(2)).optional(),
+  cancellation_request_date: z.preprocess(emptyToUndefined, z.string().min(4)).optional(), // free-form / date string
+  cancellation_request_method: z.preprocess(emptyToUndefined, z.string().min(2)).optional(),
 
-  charge_after_cancellation: z.boolean().optional(),
-  charged_amount_eur: z.string().min(1).optional(),
-  charged_date: z.string().min(4).optional(),
-  payment_method: z.string().min(2).optional(),
+  charge_after_cancellation: z.preprocess(yesNoToBoolean, z.boolean()).optional(),
+  charged_amount_eur: z.preprocess(emptyToUndefined, z.string().min(1)).optional(),
+  charged_date: z.preprocess(emptyToUndefined, z.string().min(4)).optional(),
+  payment_method: z.preprocess(emptyToUndefined, z.string().min(2)).optional(),
 
-  desired_outcome: z.string().min(2).optional(),
-  extra_details: z.string().min(0).optional(),
+  desired_outcome: z.preprocess(emptyToUndefined, z.string().min(2)).optional(),
+  extra_details: z.preprocess(emptyToUndefined, z.string()).optional(),
 });
 
 function buildCancelTelcoFacts(input: {
