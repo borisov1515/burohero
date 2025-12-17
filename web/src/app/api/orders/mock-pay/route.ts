@@ -1,0 +1,35 @@
+import { NextResponse } from "next/server";
+import { z } from "zod";
+import { createSupabaseAdminClient } from "@/lib/supabase/admin";
+
+const BodySchema = z.object({
+  orderId: z.string().uuid(),
+});
+
+export async function POST(req: Request) {
+  try {
+    if (process.env.NEXT_PUBLIC_ENABLE_TEST_PAYMENTS !== "true") {
+      return NextResponse.json(
+        { error: "Mock payments disabled" },
+        { status: 403 },
+      );
+    }
+
+    const body = await req.json();
+    const { orderId } = BodySchema.parse(body);
+
+    const supabase = createSupabaseAdminClient();
+    const { error } = await supabase
+      .from("orders")
+      .update({ status: "paid" })
+      .eq("id", orderId);
+
+    if (error) throw new Error(error.message);
+
+    return NextResponse.json({ success: true });
+  } catch (e) {
+    const message = e instanceof Error ? e.message : "Unknown error";
+    return NextResponse.json({ error: message }, { status: 400 });
+  }
+}
+
