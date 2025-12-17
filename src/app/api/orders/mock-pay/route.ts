@@ -19,14 +19,19 @@ export async function POST(req: Request) {
     const { orderId } = BodySchema.parse(body);
 
     const supabase = createSupabaseAdminClient();
-    const { error } = await supabase
+    const { data, error } = await supabase
       .from("orders")
-      .update({ status: "paid" })
-      .eq("id", orderId);
+      .update({ status: "paid" }, { count: "exact" })
+      .eq("id", orderId)
+      .select("id,status");
 
     if (error) throw new Error(error.message);
 
-    return NextResponse.json({ success: true });
+    if (!data || data.length === 0) {
+      return NextResponse.json({ error: "Order not found" }, { status: 404 });
+    }
+
+    return NextResponse.json({ success: true, orderId, status: data[0].status });
   } catch (e) {
     const message = e instanceof Error ? e.message : "Unknown error";
     return NextResponse.json({ error: message }, { status: 400 });
