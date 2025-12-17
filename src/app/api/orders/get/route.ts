@@ -23,7 +23,10 @@ export async function GET(req: Request) {
 
     if (error) throw new Error(error.message);
     if (!data) {
-      return NextResponse.json({ error: "Order not found" }, { status: 404 });
+      return NextResponse.json(
+        { errorCode: "ORDER_NOT_FOUND" },
+        { status: 404 },
+      );
     }
 
     return NextResponse.json({
@@ -33,8 +36,10 @@ export async function GET(req: Request) {
       created_at: data.created_at,
     });
   } catch (e) {
-    const message = e instanceof Error ? e.message : "Unknown error";
-    return NextResponse.json({ error: message }, { status: 400 });
+    if (e instanceof z.ZodError) {
+      return NextResponse.json({ errorCode: "INVALID_ORDER_ID" }, { status: 400 });
+    }
+    return NextResponse.json({ errorCode: "UNKNOWN_ERROR" }, { status: 400 });
   }
 }
 

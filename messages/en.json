@@ -55,6 +55,9 @@
       "failedToLoadOrder": "Failed to load order",
       "generateFailed": "Generate failed",
       "mockPayFailed": "Mock pay failed",
+      "mockPaymentsDisabled": "Mock payments are disabled.",
+      "invalidOrderId": "Invalid orderId.",
+      "orderNotFound": "Order not found.",
       "unknown": "Unknown error"
     }
   },

@@ -55,6 +55,9 @@
       "failedToLoadOrder": "No se pudo cargar el pedido",
       "generateFailed": "Falló la generación",
       "mockPayFailed": "Falló el pago simulado",
+      "mockPaymentsDisabled": "Los pagos simulados están desactivados.",
+      "invalidOrderId": "orderId inválido.",
+      "orderNotFound": "Pedido no encontrado.",
       "unknown": "Error desconocido"
     }
   },

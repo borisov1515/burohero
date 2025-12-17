@@ -167,7 +167,15 @@ export default function GeneratorClient({ locale, category, company }: Props) {
           `/api/orders/get?orderId=${encodeURIComponent(id)}`,
         );
         const json = await res.json();
-        if (!res.ok) throw new Error(json?.error ?? tGen("errors.failedToLoadOrder"));
+        if (!res.ok) {
+          const msg =
+            json?.errorCode === "INVALID_ORDER_ID"
+              ? tGen("errors.invalidOrderId")
+              : json?.errorCode === "ORDER_NOT_FOUND"
+                ? tGen("errors.orderNotFound")
+                : tGen("errors.failedToLoadOrder");
+          throw new Error(msg);
+        }
 
         const snap = (json.content_snapshot ?? {}) as any;
         if (cancelled) return;
@@ -532,7 +540,17 @@ export default function GeneratorClient({ locale, category, company }: Props) {
         body: JSON.stringify({ orderId }),
       });
       const json = await res.json();
-      if (!res.ok) throw new Error(json?.error ?? tGen("errors.mockPayFailed"));
+      if (!res.ok) {
+        const msg =
+          json?.errorCode === "MOCK_PAYMENTS_DISABLED"
+            ? tGen("errors.mockPaymentsDisabled")
+            : json?.errorCode === "INVALID_ORDER_ID"
+              ? tGen("errors.invalidOrderId")
+              : json?.errorCode === "ORDER_NOT_FOUND"
+                ? tGen("errors.orderNotFound")
+                : tGen("errors.mockPayFailed");
+        throw new Error(msg);
+      }
       setIsPaid(true);
       router.push(`/${locale}/checkout/result?orderId=${encodeURIComponent(orderId)}`);
     } catch (e) {

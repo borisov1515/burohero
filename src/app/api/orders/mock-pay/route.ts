@@ -10,7 +10,7 @@ export async function POST(req: Request) {
   try {
     if (process.env.NEXT_PUBLIC_ENABLE_TEST_PAYMENTS !== "true") {
       return NextResponse.json(
-        { error: "Mock payments disabled" },
+        { errorCode: "MOCK_PAYMENTS_DISABLED" },
         { status: 403 },
       );
     }
@@ -28,13 +28,18 @@ export async function POST(req: Request) {
     if (error) throw new Error(error.message);
 
     if (!data || data.length === 0) {
-      return NextResponse.json({ error: "Order not found" }, { status: 404 });
+      return NextResponse.json(
+        { errorCode: "ORDER_NOT_FOUND" },
+        { status: 404 },
+      );
     }
 
     return NextResponse.json({ success: true, orderId, status: data[0].status });
   } catch (e) {
-    const message = e instanceof Error ? e.message : "Unknown error";
-    return NextResponse.json({ error: message }, { status: 400 });
+    if (e instanceof z.ZodError) {
+      return NextResponse.json({ errorCode: "INVALID_ORDER_ID" }, { status: 400 });
+    }
+    return NextResponse.json({ errorCode: "UNKNOWN_ERROR" }, { status: 400 });
   }
 }
 
