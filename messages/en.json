@@ -6,6 +6,62 @@
       "document": "Document",
       "translation": "Translation"
     }
+  },
+  "home": {
+    "tagline": "Generate Spanish legal claims with a parallel translation.",
+    "linksTitle": "MVP links",
+    "links": {
+      "cancelVodafone": "Example generator: cancel / vodafone",
+      "depositReturn": "Example generator: fianza / landlord (deposit return)",
+      "return14": "Example generator: devolucion / merchant (return within 14 days)",
+      "repair": "Example generator: reparacion / landlord (repair demand)",
+      "leaseTermination": "Example generator: rescicion / landlord (lease termination)",
+      "billComplaint": "Example generator: factura / endesa (bill complaint)",
+      "warranty": "Example generator: garantia / zara (3-year warranty)",
+      "nonDelivery": "Example generator: noentrega / amazon (undelivered goods)",
+      "flightDelay": "Example generator: vuelo / ryanair (flight delay)",
+      "insuranceCancel": "Example generator: seguro / mapfre (insurance cancellation)",
+      "claimDenied": "Example generator: denegacion / allianz (claim denied)",
+      "feesRefund": "Example generator: comisiones / bbva (fees refund)"
+    }
+  },
+  "generator": {
+    "title": "Document generator",
+    "actions": {
+      "generate": "Generate",
+      "working": "Working…",
+      "unlockMockPay": "Unlock document (mock pay)"
+    },
+    "labels": {
+      "order": "Order",
+      "spanishDoc": "Spanish legal document (blurred until paid)",
+      "translation": "Translation (always visible)"
+    },
+    "states": {
+      "previewDoc": "Generate to see preview…",
+      "previewTranslation": "Generate to see translation…"
+    },
+    "debug": {
+      "factsSent": "Debug: facts sent to AI",
+      "lastApi": "Debug: last API request/response"
+    }
+  },
+  "checkout": {
+    "title": "Checkout result",
+    "downloadsTitle": "Downloads",
+    "orderLabel": "Order",
+    "spanishDocTitle": "Spanish legal document",
+    "translationTitle": "Translation",
+    "lockedNotPaid": "Locked (not paid).",
+    "downloadSpanish": "Download Spanish PDF",
+    "downloadTranslation": "Download Translation PDF",
+    "spanishPdfLocked": "Spanish PDF is locked until paid.",
+    "missingOrderId": "Missing orderId.",
+    "orderNotFound": "Order not found.",
+    "backHome": "Back home",
+    "backToGenerator": "Back to generator",
+    "fontHint": "For Cyrillic/UA/RO/PL characters in PDF, add /public/fonts/NotoSans-Regular.ttf",
+    "fontLoad": "Font load"
   }
 }
 

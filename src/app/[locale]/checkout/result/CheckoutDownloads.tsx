@@ -1,7 +1,8 @@
 "use client";
 
 import { jsPDF } from "jspdf";
-import { useMemo, useState } from "react";
+import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 type Props = {
   orderId: string;
@@ -70,11 +71,9 @@ export default function CheckoutDownloads({
   translationText,
 }: Props) {
   const [isWorking, setIsWorking] = useState(false);
+  const t = useTranslations("checkout");
 
-  const missingFontHint = useMemo(() => {
-    if (notoFontLoaded) return null;
-    return "For Cyrillic/UA/RO/PL characters in PDF, add /public/fonts/NotoSans-Regular.ttf";
-  }, []);
+  const missingFontHint = notoFontLoaded ? null : t("fontHint");
 
   async function downloadPdf(opts: {
     filename: string;
@@ -108,9 +107,9 @@ export default function CheckoutDownloads({
 
   return (
     <section className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
-      <h2 className="text-lg font-medium">Downloads</h2>
+      <h2 className="text-lg font-medium">{t("downloadsTitle")}</h2>
       <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
-        Order <span className="font-mono">{orderId}</span>
+        {t("orderLabel")} <span className="font-mono">{orderId}</span>
       </p>
 
       <div className="mt-4 flex flex-col gap-3 sm:flex-row">
@@ -126,7 +125,7 @@ export default function CheckoutDownloads({
             })
           }
         >
-          Download Spanish PDF
+          {t("downloadSpanish")}
         </button>
 
         <button
@@ -141,13 +140,13 @@ export default function CheckoutDownloads({
             })
           }
         >
-          Download Translation PDF
+          {t("downloadTranslation")}
         </button>
       </div>
 
       {!isPaid ? (
         <div className="mt-3 text-xs text-zinc-500 dark:text-zinc-400">
-          Spanish PDF is locked until paid.
+          {t("spanishPdfLocked")}
         </div>
       ) : null}
 
@@ -159,7 +158,7 @@ export default function CheckoutDownloads({
 
       {notoFontLoadError ? (
         <div className="mt-3 text-xs text-zinc-500 dark:text-zinc-400">
-          Font load: {notoFontLoadError}
+          {t("fontLoad")}: {notoFontLoadError}
         </div>
       ) : null}
     </section>

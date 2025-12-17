@@ -1,5 +1,7 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+
 export type ClaimDeniedForm = {
   policyholder_full_name: string;
   policyholder_id: string;
@@ -70,6 +72,8 @@ export function ClaimDeniedFormSection({
   setForm: (updater: (prev: ClaimDeniedForm) => ClaimDeniedForm) => void;
   builtFacts: string;
 }) {
+  const tGen = useTranslations("generator");
+
   return (
     <div className="grid gap-4">
       <div className="text-sm font-medium">Policyholder</div>
@@ -186,7 +190,7 @@ export function ClaimDeniedFormSection({
 
       <details className="rounded-xl border border-zinc-200 p-4 text-sm dark:border-zinc-800">
         <summary className="cursor-pointer select-none font-medium">
-          Debug: facts sent to AI
+          {tGen("debug.factsSent")}
         </summary>
         <pre className="mt-3 whitespace-pre-wrap text-xs text-zinc-600 dark:text-zinc-400">
           {builtFacts}

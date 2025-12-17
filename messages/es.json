@@ -6,6 +6,62 @@
       "document": "Documento",
       "translation": "Traducción"
     }
+  },
+  "home": {
+    "tagline": "Genera reclamaciones legales en español con traducción paralela.",
+    "linksTitle": "Enlaces MVP",
+    "links": {
+      "cancelVodafone": "Ejemplo: cancelación / vodafone",
+      "depositReturn": "Ejemplo: fianza / landlord (devolución de fianza)",
+      "return14": "Ejemplo: devolución / merchant (desistimiento 14 días)",
+      "repair": "Ejemplo: reparación / landlord (requerimiento de reparación)",
+      "leaseTermination": "Ejemplo: rescisión / landlord (finalizar contrato de alquiler)",
+      "billComplaint": "Ejemplo: factura / endesa (reclamación de factura)",
+      "warranty": "Ejemplo: garantía / zara (garantía 3 años)",
+      "nonDelivery": "Ejemplo: no entrega / amazon (producto no entregado)",
+      "flightDelay": "Ejemplo: vuelo / ryanair (retraso de vuelo)",
+      "insuranceCancel": "Ejemplo: seguro / mapfre (cancelación de seguro)",
+      "claimDenied": "Ejemplo: denegación / allianz (rechazo de siniestro)",
+      "feesRefund": "Ejemplo: comisiones / bbva (devolución de comisiones)"
+    }
+  },
+  "generator": {
+    "title": "Generador de documentos",
+    "actions": {
+      "generate": "Generar",
+      "working": "Procesando…",
+      "unlockMockPay": "Desbloquear documento (pago simulado)"
+    },
+    "labels": {
+      "order": "Pedido",
+      "spanishDoc": "Documento legal en español (borroso hasta pagar)",
+      "translation": "Traducción (siempre visible)"
+    },
+    "states": {
+      "previewDoc": "Genera para ver la vista previa…",
+      "previewTranslation": "Genera para ver la traducción…"
+    },
+    "debug": {
+      "factsSent": "Debug: hechos enviados a la IA",
+      "lastApi": "Debug: última request/response del API"
+    }
+  },
+  "checkout": {
+    "title": "Resultado del pago",
+    "downloadsTitle": "Descargas",
+    "orderLabel": "Pedido",
+    "spanishDocTitle": "Documento legal en español",
+    "translationTitle": "Traducción",
+    "lockedNotPaid": "Bloqueado (no pagado).",
+    "downloadSpanish": "Descargar PDF en español",
+    "downloadTranslation": "Descargar PDF de traducción",
+    "spanishPdfLocked": "El PDF en español está bloqueado hasta pagar.",
+    "missingOrderId": "Falta orderId.",
+    "orderNotFound": "Pedido no encontrado.",
+    "backHome": "Volver al inicio",
+    "backToGenerator": "Volver al generador",
+    "fontHint": "Para caracteres cirílicos/UA/RO/PL en PDF, añade /public/fonts/NotoSans-Regular.ttf",
+    "fontLoad": "Carga de fuente"
   }
 }
 

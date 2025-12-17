@@ -1,5 +1,7 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+
 export type FlightDelayForm = {
   passenger_full_name: string;
   passenger_id: string;
@@ -79,6 +81,8 @@ export function FlightDelayFormSection({
   setForm: (updater: (prev: FlightDelayForm) => FlightDelayForm) => void;
   builtFacts: string;
 }) {
+  const tGen = useTranslations("generator");
+
   return (
     <div className="grid gap-4">
       <div className="text-sm font-medium">Passenger</div>
@@ -219,7 +223,7 @@ export function FlightDelayFormSection({
 
       <details className="rounded-xl border border-zinc-200 p-4 text-sm dark:border-zinc-800">
         <summary className="cursor-pointer select-none font-medium">
-          Debug: facts sent to AI
+          {tGen("debug.factsSent")}
         </summary>
         <pre className="mt-3 whitespace-pre-wrap text-xs text-zinc-600 dark:text-zinc-400">
           {builtFacts}

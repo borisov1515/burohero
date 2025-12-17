@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { setRequestLocale } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import type { AppLocale } from "@/i18n/routing";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import CheckoutDownloads from "./CheckoutDownloads";
@@ -15,19 +16,20 @@ export default async function CheckoutResultPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations("checkout");
 
   const { orderId } = await searchParams;
 
   if (!orderId) {
     return (
       <main className="mx-auto w-full max-w-3xl px-6 py-16">
-        <h1 className="text-2xl font-semibold tracking-tight">Checkout result</h1>
+        <h1 className="text-2xl font-semibold tracking-tight">{t("title")}</h1>
         <p className="mt-4 text-zinc-600 dark:text-zinc-400">
-          Missing <span className="font-mono">orderId</span>.
+          {t("missingOrderId")}
         </p>
         <div className="mt-6">
           <Link className="underline underline-offset-4" href={`/${locale}`}>
-            Back home
+            {t("backHome")}
           </Link>
         </div>
       </main>
@@ -44,7 +46,7 @@ export default async function CheckoutResultPage({
   if (error) {
     return (
       <main className="mx-auto w-full max-w-3xl px-6 py-16">
-        <h1 className="text-2xl font-semibold tracking-tight">Checkout result</h1>
+        <h1 className="text-2xl font-semibold tracking-tight">{t("title")}</h1>
         <p className="mt-4 text-red-700 dark:text-red-200">{error.message}</p>
       </main>
     );
@@ -53,9 +55,9 @@ export default async function CheckoutResultPage({
   if (!data) {
     return (
       <main className="mx-auto w-full max-w-3xl px-6 py-16">
-        <h1 className="text-2xl font-semibold tracking-tight">Checkout result</h1>
+        <h1 className="text-2xl font-semibold tracking-tight">{t("title")}</h1>
         <p className="mt-4 text-zinc-600 dark:text-zinc-400">
-          Order not found.
+          {t("orderNotFound")}
         </p>
       </main>
     );
@@ -69,9 +71,9 @@ export default async function CheckoutResultPage({
   return (
     <main className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-6 py-10">
       <header className="flex flex-col gap-2">
-        <h1 className="text-2xl font-semibold tracking-tight">Checkout result</h1>
+        <h1 className="text-2xl font-semibold tracking-tight">{t("title")}</h1>
         <div className="text-sm text-zinc-500 dark:text-zinc-400">
-          Order <span className="font-mono">{data.id}</span> • status:{" "}
+          {t("orderLabel")} <span className="font-mono">{data.id}</span> • status:{" "}
           <span className="font-medium">{data.status}</span>
         </div>
       </header>
@@ -85,14 +87,14 @@ export default async function CheckoutResultPage({
 
       <section className="grid gap-4 lg:grid-cols-2">
         <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
-          <div className="mb-3 text-sm font-medium">Spanish legal document</div>
+          <div className="mb-3 text-sm font-medium">{t("spanishDocTitle")}</div>
           <div className="whitespace-pre-wrap text-sm leading-6">
-            {isPaid ? spanishText : "Locked (not paid)."}
+            {isPaid ? spanishText : t("lockedNotPaid")}
           </div>
         </div>
 
         <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
-          <div className="mb-3 text-sm font-medium">Translation</div>
+          <div className="mb-3 text-sm font-medium">{t("translationTitle")}</div>
           <div className="whitespace-pre-wrap text-sm leading-6">
             {translationText}
           </div>
@@ -101,7 +103,7 @@ export default async function CheckoutResultPage({
 
       <div className="flex items-center gap-4">
         <Link className="underline underline-offset-4" href={`/${locale}`}>
-          Back home
+          {t("backHome")}
         </Link>
         {snapshot.category && snapshot.company ? (
           <Link
@@ -110,7 +112,7 @@ export default async function CheckoutResultPage({
               data.id,
             )}`}
           >
-            Back to generator
+            {t("backToGenerator")}
           </Link>
         ) : null}
       </div>

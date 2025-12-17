@@ -87,6 +87,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const tApp = useTranslations("app");
+  const tGen = useTranslations("generator");
   const [mobileTab, setMobileTab] = useState<"document" | "translation">("translation");
   const [facts, setFacts] = useState("");
   const [cancelForm, setCancelForm] = useState<CancelTelcoForm>(defaultCancelTelcoForm);
@@ -547,7 +548,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
         <div className="text-sm text-zinc-500 dark:text-zinc-400">
           {locale} / {category} / {company}
         </div>
-        <h1 className="text-2xl font-semibold tracking-tight">Document generator</h1>
+        <h1 className="text-2xl font-semibold tracking-tight">{tGen("title")}</h1>
       </header>
 
       <section className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
@@ -641,7 +642,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
             disabled={!canGenerate || isLoading}
             onClick={onGenerate}
           >
-            {isLoading ? "Working…" : "Generate"}
+            {isLoading ? tGen("actions.working") : tGen("actions.generate")}
           </button>
 
           <button
@@ -649,12 +650,12 @@ export default function GeneratorClient({ locale, category, company }: Props) {
             disabled={!orderId || isLoading}
             onClick={onMockPay}
           >
-            Unlock document (mock pay)
+            {tGen("actions.unlockMockPay")}
           </button>
 
           {orderId ? (
             <div className="text-xs text-zinc-500 dark:text-zinc-400">
-              Order: <span className="font-mono">{orderId}</span>
+              {tGen("labels.order")}: <span className="font-mono">{orderId}</span>
             </div>
           ) : null}
         </div>
@@ -667,7 +668,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
 
         <details className="mt-4 rounded-xl border border-zinc-200 p-4 text-sm dark:border-zinc-800">
           <summary className="cursor-pointer select-none font-medium">
-            Debug: last API request/response
+            {tGen("debug.lastApi")}
           </summary>
           <div className="mt-3 grid gap-3">
             <div>
@@ -693,7 +694,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
       {/* Desktop: dual pane */}
       <section className="hidden gap-4 lg:grid lg:grid-cols-2">
         <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
-          <div className="mb-3 text-sm font-medium">Spanish legal document (blurred until paid)</div>
+          <div className="mb-3 text-sm font-medium">{tGen("labels.spanishDoc")}</div>
           <div
             className={[
               "whitespace-pre-wrap text-sm leading-6",
@@ -703,14 +704,14 @@ export default function GeneratorClient({ locale, category, company }: Props) {
               .filter(Boolean)
               .join(" ")}
           >
-            {es || "Generate to see preview…"}
+            {es || tGen("states.previewDoc")}
           </div>
         </div>
 
         <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
-          <div className="mb-3 text-sm font-medium">Translation (always visible)</div>
+          <div className="mb-3 text-sm font-medium">{tGen("labels.translation")}</div>
           <div className="whitespace-pre-wrap text-sm leading-6">
-            {native || "Generate to see translation…"}
+            {native || tGen("states.previewTranslation")}
           </div>
         </div>
       </section>
@@ -746,7 +747,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
 
         {mobileTab === "document" ? (
           <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
-            <div className="mb-3 text-sm font-medium">Spanish legal document (blurred until paid)</div>
+            <div className="mb-3 text-sm font-medium">{tGen("labels.spanishDoc")}</div>
             <div
               className={[
                 "whitespace-pre-wrap text-sm leading-6",
@@ -756,14 +757,14 @@ export default function GeneratorClient({ locale, category, company }: Props) {
                 .filter(Boolean)
                 .join(" ")}
             >
-              {es || "Generate to see preview…"}
+              {es || tGen("states.previewDoc")}
             </div>
           </div>
         ) : (
           <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
-            <div className="mb-3 text-sm font-medium">Translation (always visible)</div>
+            <div className="mb-3 text-sm font-medium">{tGen("labels.translation")}</div>
             <div className="whitespace-pre-wrap text-sm leading-6">
-              {native || "Generate to see translation…"}
+              {native || tGen("states.previewTranslation")}
             </div>
           </div>
         )}

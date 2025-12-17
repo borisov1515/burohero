@@ -2,6 +2,7 @@
 
 import { getCompanyBySlug, type Company } from "@/lib/companies";
 import { useMemo } from "react";
+import { useTranslations } from "next-intl";
 
 export type CancelTelcoForm = {
   applicant_full_name: string;
@@ -76,6 +77,7 @@ export function CancelTelcoFormSection({
   builtFacts: string;
 }) {
   const recipient: Company | null = useMemo(() => getCompanyBySlug(company), [company]);
+  const tGen = useTranslations("generator");
 
   return (
     <div className="grid gap-4">
@@ -193,7 +195,7 @@ export function CancelTelcoFormSection({
 
       <details className="rounded-xl border border-zinc-200 p-4 text-sm dark:border-zinc-800">
         <summary className="cursor-pointer select-none font-medium">
-          Debug: facts sent to AI
+          {tGen("debug.factsSent")}
         </summary>
         <pre className="mt-3 whitespace-pre-wrap text-xs text-zinc-600 dark:text-zinc-400">
           {builtFacts}
