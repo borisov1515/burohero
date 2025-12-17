@@ -98,6 +98,31 @@ const DepositReturnFormSchema = z.object({
   extra_details: z.preprocess(emptyToUndefined, z.string().optional()),
 });
 
+const Return14FormSchema = z.object({
+  buyer_full_name: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  buyer_id: z.preprocess(emptyToUndefined, z.string().min(3).optional()),
+  buyer_address: z.preprocess(emptyToUndefined, z.string().min(5).optional()),
+
+  seller_name: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  seller_address: z.preprocess(emptyToUndefined, z.string().min(5).optional()),
+
+  order_number: z.preprocess(emptyToUndefined, z.string().optional()),
+  product_description: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  purchase_date: z.preprocess(emptyToUndefined, z.string().min(4).optional()),
+  delivery_date: z.preprocess(emptyToUndefined, z.string().min(4).optional()),
+  return_request_date: z.preprocess(emptyToUndefined, z.string().min(4).optional()),
+
+  paid_amount_eur: z.preprocess(emptyToUndefined, z.string().min(1).optional()),
+  payment_method: z.preprocess(emptyToUndefined, z.string().optional()),
+  refund_iban: z.preprocess(emptyToUndefined, z.string().optional()),
+
+  contacted_support_before: z.preprocess(yesNoToBoolean, z.boolean().optional()),
+  contacted_support_details: z.preprocess(emptyToUndefined, z.string().optional()),
+
+  desired_outcome: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  extra_details: z.preprocess(emptyToUndefined, z.string().optional()),
+});
+
 function buildCancelTelcoFacts(input: {
   locale: string;
   company: string;
@@ -163,6 +188,40 @@ function buildDepositReturnFacts(input: {
   return lines.join("\n");
 }
 
+function buildReturn14Facts(input: {
+  locale: string;
+  company: string;
+  form: z.infer<typeof Return14FormSchema>;
+}) {
+  const f = input.form;
+  const lines: string[] = [];
+  lines.push("Use case: consumer purchase return within 14 days (derecho de desistimiento).");
+  if (f.buyer_full_name) lines.push(`Buyer full name: ${f.buyer_full_name}`);
+  if (f.buyer_id) lines.push(`Buyer ID (DNI/NIE/Passport): ${f.buyer_id}`);
+  if (f.buyer_address) lines.push(`Buyer address: ${f.buyer_address}`);
+
+  if (f.seller_name) lines.push(`Seller/merchant name: ${f.seller_name}`);
+  if (f.seller_address) lines.push(`Seller/merchant address: ${f.seller_address}`);
+
+  if (f.order_number) lines.push(`Order / invoice number: ${f.order_number}`);
+  if (f.product_description) lines.push(`Product: ${f.product_description}`);
+  if (f.purchase_date) lines.push(`Purchase date: ${f.purchase_date}`);
+  if (f.delivery_date) lines.push(`Delivery date: ${f.delivery_date}`);
+  if (f.return_request_date) lines.push(`Return request date: ${f.return_request_date}`);
+
+  if (f.paid_amount_eur) lines.push(`Paid amount (EUR): ${f.paid_amount_eur}`);
+  if (f.payment_method) lines.push(`Payment method: ${f.payment_method}`);
+  if (f.refund_iban) lines.push(`Refund IBAN: ${f.refund_iban}`);
+
+  if (f.contacted_support_before === true) lines.push("Contacted support before: yes");
+  if (f.contacted_support_before === false) lines.push("Contacted support before: no");
+  if (f.contacted_support_details) lines.push(`Support contact details: ${f.contacted_support_details}`);
+
+  if (f.desired_outcome) lines.push(`Desired outcome: ${f.desired_outcome}`);
+  if (f.extra_details) lines.push(`Additional details: ${f.extra_details}`);
+  return lines.join("\n");
+}
+
 const GenerateRequestSchema = z.object({
   locale: z.string().min(2),
   category: z.string().min(1),
@@ -201,6 +260,19 @@ export async function POST(req: Request) {
       }
       parsedForm = parsed.data;
       facts = buildDepositReturnFacts({
+        locale: input.locale,
+        company: input.company,
+        form: parsed.data,
+      });
+    }
+
+    if (input.category === "devolucion" && input.form) {
+      const parsed = Return14FormSchema.safeParse(input.form);
+      if (!parsed.success) {
+        throw new Error(JSON.stringify(parsed.error.issues, null, 2));
+      }
+      parsedForm = parsed.data;
+      facts = buildReturn14Facts({
         locale: input.locale,
         company: input.company,
         form: parsed.data,

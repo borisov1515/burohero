@@ -34,6 +34,12 @@ export default async function LocaleHome({
           >
             Example generator: fianza / landlord (deposit return)
           </Link>
+          <Link
+            className="underline underline-offset-4"
+            href={`/${locale}/devolucion/merchant`}
+          >
+            Example generator: devolucion / merchant (return within 14 days)
+          </Link>
         </div>
       </section>
     </main>
