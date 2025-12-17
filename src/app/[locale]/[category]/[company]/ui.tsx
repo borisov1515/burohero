@@ -85,6 +85,7 @@ type Props = {
 export default function GeneratorClient({ locale, category, company }: Props) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const [mobileTab, setMobileTab] = useState<"document" | "translation">("translation");
   const [facts, setFacts] = useState("");
   const [cancelForm, setCancelForm] = useState<CancelTelcoForm>(defaultCancelTelcoForm);
   const [depositForm, setDepositForm] = useState<DepositReturnForm>(
@@ -687,7 +688,8 @@ export default function GeneratorClient({ locale, category, company }: Props) {
         </details>
       </section>
 
-      <section className="grid gap-4 lg:grid-cols-2">
+      {/* Desktop: dual pane */}
+      <section className="hidden gap-4 lg:grid lg:grid-cols-2">
         <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
           <div className="mb-3 text-sm font-medium">Spanish legal document (blurred until paid)</div>
           <div
@@ -709,6 +711,60 @@ export default function GeneratorClient({ locale, category, company }: Props) {
             {native || "Generate to see translation…"}
           </div>
         </div>
+      </section>
+
+      {/* Mobile: tabs */}
+      <section className="grid gap-4 lg:hidden">
+        <div className="flex w-full items-center gap-2 rounded-xl border border-zinc-200 bg-white p-2 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
+          <button
+            type="button"
+            className={[
+              "flex-1 rounded-lg px-3 py-2 text-sm font-medium",
+              mobileTab === "document"
+                ? "bg-zinc-900 text-white dark:bg-zinc-50 dark:text-black"
+                : "text-zinc-700 dark:text-zinc-300",
+            ].join(" ")}
+            onClick={() => setMobileTab("document")}
+          >
+            Document
+          </button>
+          <button
+            type="button"
+            className={[
+              "flex-1 rounded-lg px-3 py-2 text-sm font-medium",
+              mobileTab === "translation"
+                ? "bg-zinc-900 text-white dark:bg-zinc-50 dark:text-black"
+                : "text-zinc-700 dark:text-zinc-300",
+            ].join(" ")}
+            onClick={() => setMobileTab("translation")}
+          >
+            Translation
+          </button>
+        </div>
+
+        {mobileTab === "document" ? (
+          <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
+            <div className="mb-3 text-sm font-medium">Spanish legal document (blurred until paid)</div>
+            <div
+              className={[
+                "whitespace-pre-wrap text-sm leading-6",
+                !es ? "opacity-60" : "",
+                !isPaid && es ? "blur-sm select-none" : "",
+              ]
+                .filter(Boolean)
+                .join(" ")}
+            >
+              {es || "Generate to see preview…"}
+            </div>
+          </div>
+        ) : (
+          <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
+            <div className="mb-3 text-sm font-medium">Translation (always visible)</div>
+            <div className="whitespace-pre-wrap text-sm leading-6">
+              {native || "Generate to see translation…"}
+            </div>
+          </div>
+        )}
       </section>
     </main>
   );
