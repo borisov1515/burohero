@@ -27,6 +27,12 @@ import {
   defaultRepairDemandForm,
   type RepairDemandForm,
 } from "./usecases/repairDemand";
+import {
+  LeaseTerminationFormSection,
+  buildLeaseTerminationFacts,
+  defaultLeaseTerminationForm,
+  type LeaseTerminationForm,
+} from "./usecases/leaseTermination";
 
 type Props = {
   locale: AppLocale;
@@ -44,6 +50,9 @@ export default function GeneratorClient({ locale, category, company }: Props) {
   );
   const [return14Form, setReturn14Form] = useState<Return14Form>(defaultReturn14Form);
   const [repairForm, setRepairForm] = useState<RepairDemandForm>(defaultRepairDemandForm);
+  const [leaseTerminationForm, setLeaseTerminationForm] = useState<LeaseTerminationForm>(
+    defaultLeaseTerminationForm,
+  );
   const [isLoading, setIsLoading] = useState(false);
   const [orderId, setOrderId] = useState<string | null>(null);
   const [isPaid, setIsPaid] = useState(false);
@@ -58,8 +67,18 @@ export default function GeneratorClient({ locale, category, company }: Props) {
     if (category === "fianza") return buildDepositReturnFacts(depositForm);
     if (category === "devolucion") return buildReturn14Facts(return14Form);
     if (category === "reparacion") return buildRepairDemandFacts(repairForm);
+    if (category === "rescision") return buildLeaseTerminationFacts(leaseTerminationForm);
     return facts;
-  }, [category, cancelForm, company, depositForm, facts, return14Form, repairForm]);
+  }, [
+    category,
+    cancelForm,
+    company,
+    depositForm,
+    facts,
+    return14Form,
+    repairForm,
+    leaseTerminationForm,
+  ]);
 
   const canGenerate = useMemo(() => builtFacts.trim().length >= 10, [builtFacts]);
 
@@ -142,6 +161,16 @@ export default function GeneratorClient({ locale, category, company }: Props) {
           }));
         } else if (category === "reparacion") {
           setRepairForm((prev) => ({ ...prev, extra_details: String(snap.facts ?? "") }));
+        } else if (category === "rescision" && snap.form) {
+          const f = snap.form as Partial<LeaseTerminationForm>;
+          setLeaseTerminationForm((prev) => ({
+            ...prev,
+            ...Object.fromEntries(
+              Object.entries(f).map(([k, v]) => [k, String(v ?? "")]),
+            ),
+          }));
+        } else if (category === "rescision") {
+          setLeaseTerminationForm((prev) => ({ ...prev, extra_details: String(snap.facts ?? "") }));
         }
         setEs(String(snap.spanish_legal_text ?? ""));
         setNative(String(snap.native_user_translation ?? ""));
@@ -196,6 +225,14 @@ export default function GeneratorClient({ locale, category, company }: Props) {
                     form: repairForm,
                     facts: builtFacts,
                   }
+                : category === "rescision"
+                  ? {
+                      locale,
+                      category,
+                      company,
+                      form: leaseTerminationForm,
+                      facts: builtFacts,
+                    }
           : { locale, category, company, facts };
 
       setDebugLastRequest(payload);
@@ -275,6 +312,12 @@ export default function GeneratorClient({ locale, category, company }: Props) {
           <RepairDemandFormSection
             form={repairForm}
             setForm={(u) => setRepairForm(u)}
+            builtFacts={builtFacts}
+          />
+        ) : category === "rescision" ? (
+          <LeaseTerminationFormSection
+            form={leaseTerminationForm}
+            setForm={(u) => setLeaseTerminationForm(u)}
             builtFacts={builtFacts}
           />
         ) : (

@@ -137,6 +137,22 @@ const RepairDemandFormSchema = z.object({
   extra_details: z.preprocess(emptyToUndefined, z.string().optional()),
 });
 
+const LeaseTerminationFormSchema = z.object({
+  tenant_full_name: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  tenant_id: z.preprocess(emptyToUndefined, z.string().min(3).optional()),
+  tenant_address: z.preprocess(emptyToUndefined, z.string().min(5).optional()),
+  landlord_full_name: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  landlord_address: z.preprocess(emptyToUndefined, z.string().min(5).optional()),
+  property_address: z.preprocess(emptyToUndefined, z.string().min(5).optional()),
+  lease_start_date: z.preprocess(emptyToUndefined, z.string().min(4).optional()),
+  planned_termination_date: z.preprocess(emptyToUndefined, z.string().min(4).optional()),
+  notice_sent_date: z.preprocess(emptyToUndefined, z.string().min(4).optional()),
+  notice_method: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  termination_reason: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  desired_outcome: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  extra_details: z.preprocess(emptyToUndefined, z.string().optional()),
+});
+
 function buildCancelTelcoFacts(input: {
   locale: string;
   company: string;
@@ -258,6 +274,30 @@ function buildRepairDemandFacts(input: {
   return lines.join("\n");
 }
 
+function buildLeaseTerminationFacts(input: {
+  locale: string;
+  company: string;
+  form: z.infer<typeof LeaseTerminationFormSchema>;
+}) {
+  const f = input.form;
+  const lines: string[] = [];
+  lines.push("Use case: housing lease termination (resolución / rescisión del contrato).");
+  if (f.tenant_full_name) lines.push(`Tenant full name: ${f.tenant_full_name}`);
+  if (f.tenant_id) lines.push(`Tenant ID (DNI/NIE/Passport): ${f.tenant_id}`);
+  if (f.tenant_address) lines.push(`Tenant address: ${f.tenant_address}`);
+  if (f.landlord_full_name) lines.push(`Landlord full name: ${f.landlord_full_name}`);
+  if (f.landlord_address) lines.push(`Landlord address: ${f.landlord_address}`);
+  if (f.property_address) lines.push(`Rented property address: ${f.property_address}`);
+  if (f.lease_start_date) lines.push(`Lease start date: ${f.lease_start_date}`);
+  if (f.planned_termination_date) lines.push(`Planned termination date: ${f.planned_termination_date}`);
+  if (f.notice_sent_date) lines.push(`Notice sent date: ${f.notice_sent_date}`);
+  if (f.notice_method) lines.push(`Notice method: ${f.notice_method}`);
+  if (f.termination_reason) lines.push(`Termination reason: ${f.termination_reason}`);
+  if (f.desired_outcome) lines.push(`Desired outcome: ${f.desired_outcome}`);
+  if (f.extra_details) lines.push(`Additional details: ${f.extra_details}`);
+  return lines.join("\n");
+}
+
 const GenerateRequestSchema = z.object({
   locale: z.string().min(2),
   category: z.string().min(1),
@@ -322,6 +362,19 @@ export async function POST(req: Request) {
       }
       parsedForm = parsed.data;
       facts = buildRepairDemandFacts({
+        locale: input.locale,
+        company: input.company,
+        form: parsed.data,
+      });
+    }
+
+    if (input.category === "rescision" && input.form) {
+      const parsed = LeaseTerminationFormSchema.safeParse(input.form);
+      if (!parsed.success) {
+        throw new Error(JSON.stringify(parsed.error.issues, null, 2));
+      }
+      parsedForm = parsed.data;
+      facts = buildLeaseTerminationFacts({
         locale: input.locale,
         company: input.company,
         form: parsed.data,
