@@ -4,6 +4,12 @@
     "name": "Vodafone España S.A.U.",
     "cif": "A80907397",
     "address": "Avenida de América 115, Madrid"
+  },
+  {
+    "slug": "endesa",
+    "name": "Endesa (N/D)",
+    "cif": "N/D",
+    "address": "N/D"
   }
 ]
 

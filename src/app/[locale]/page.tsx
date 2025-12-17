@@ -52,6 +52,12 @@ export default async function LocaleHome({
           >
             Example generator: rescicion / landlord (lease termination)
           </Link>
+          <Link
+            className="underline underline-offset-4"
+            href={`/${locale}/factura/endesa`}
+          >
+            Example generator: factura / endesa (bill complaint)
+          </Link>
         </div>
       </section>
     </main>

@@ -33,6 +33,12 @@ import {
   defaultLeaseTerminationForm,
   type LeaseTerminationForm,
 } from "./usecases/leaseTermination";
+import {
+  BillComplaintFormSection,
+  buildBillComplaintFacts,
+  defaultBillComplaintForm,
+  type BillComplaintForm,
+} from "./usecases/billComplaint";
 
 type Props = {
   locale: AppLocale;
@@ -53,6 +59,9 @@ export default function GeneratorClient({ locale, category, company }: Props) {
   const [leaseTerminationForm, setLeaseTerminationForm] = useState<LeaseTerminationForm>(
     defaultLeaseTerminationForm,
   );
+  const [billComplaintForm, setBillComplaintForm] = useState<BillComplaintForm>(
+    defaultBillComplaintForm,
+  );
   const [isLoading, setIsLoading] = useState(false);
   const [orderId, setOrderId] = useState<string | null>(null);
   const [isPaid, setIsPaid] = useState(false);
@@ -68,6 +77,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
     if (category === "devolucion") return buildReturn14Facts(return14Form);
     if (category === "reparacion") return buildRepairDemandFacts(repairForm);
     if (category === "rescision") return buildLeaseTerminationFacts(leaseTerminationForm);
+    if (category === "factura") return buildBillComplaintFacts(billComplaintForm, company);
     return facts;
   }, [
     category,
@@ -78,6 +88,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
     return14Form,
     repairForm,
     leaseTerminationForm,
+    billComplaintForm,
   ]);
 
   const canGenerate = useMemo(() => builtFacts.trim().length >= 10, [builtFacts]);
@@ -171,6 +182,30 @@ export default function GeneratorClient({ locale, category, company }: Props) {
           }));
         } else if (category === "rescision") {
           setLeaseTerminationForm((prev) => ({ ...prev, extra_details: String(snap.facts ?? "") }));
+        } else if (category === "factura" && snap.form) {
+          const f = snap.form as Partial<BillComplaintForm>;
+          setBillComplaintForm((prev) => ({
+            ...prev,
+            ...Object.fromEntries(
+              Object.entries(f).map(([k, v]) => [k, String(v ?? "")]),
+            ),
+            contacted_before:
+              f.contacted_before === "yes" || f.contacted_before === "no" ? f.contacted_before : "",
+            payment_status:
+              f.payment_status === "paid" || f.payment_status === "unpaid" || f.payment_status === "partially_paid"
+                ? f.payment_status
+                : "",
+            issue_type:
+              f.issue_type === "overcharge" ||
+              f.issue_type === "wrong_reading" ||
+              f.issue_type === "duplicate" ||
+              f.issue_type === "service_not_provided" ||
+              f.issue_type === "other"
+                ? f.issue_type
+                : "",
+          }));
+        } else if (category === "factura") {
+          setBillComplaintForm((prev) => ({ ...prev, extra_details: String(snap.facts ?? "") }));
         }
         setEs(String(snap.spanish_legal_text ?? ""));
         setNative(String(snap.native_user_translation ?? ""));
@@ -233,6 +268,14 @@ export default function GeneratorClient({ locale, category, company }: Props) {
                       form: leaseTerminationForm,
                       facts: builtFacts,
                     }
+                  : category === "factura"
+                    ? {
+                        locale,
+                        category,
+                        company,
+                        form: billComplaintForm,
+                        facts: builtFacts,
+                      }
           : { locale, category, company, facts };
 
       setDebugLastRequest(payload);
@@ -318,6 +361,12 @@ export default function GeneratorClient({ locale, category, company }: Props) {
           <LeaseTerminationFormSection
             form={leaseTerminationForm}
             setForm={(u) => setLeaseTerminationForm(u)}
+            builtFacts={builtFacts}
+          />
+        ) : category === "factura" ? (
+          <BillComplaintFormSection
+            form={billComplaintForm}
+            setForm={(u) => setBillComplaintForm(u)}
             builtFacts={builtFacts}
           />
         ) : (

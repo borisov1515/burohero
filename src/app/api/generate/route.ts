@@ -153,6 +153,25 @@ const LeaseTerminationFormSchema = z.object({
   extra_details: z.preprocess(emptyToUndefined, z.string().optional()),
 });
 
+const BillComplaintFormSchema = z.object({
+  customer_full_name: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  customer_id: z.preprocess(emptyToUndefined, z.string().min(3).optional()),
+  customer_address: z.preprocess(emptyToUndefined, z.string().min(5).optional()),
+  contract_or_account_number: z.preprocess(emptyToUndefined, z.string().min(3).optional()),
+  invoice_number: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  billing_period: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  invoice_date: z.preprocess(emptyToUndefined, z.string().min(4).optional()),
+  amount_eur: z.preprocess(emptyToUndefined, z.string().min(1).optional()),
+  issue_type: z.preprocess(emptyToUndefined, z.string().optional()),
+  issue_description: z.preprocess(emptyToUndefined, z.string().min(5).optional()),
+  contacted_before: z.preprocess(emptyToUndefined, z.string().optional()),
+  contacted_before_details: z.preprocess(emptyToUndefined, z.string().optional()),
+  payment_status: z.preprocess(emptyToUndefined, z.string().optional()),
+  desired_outcome: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  refund_iban: z.preprocess(emptyToUndefined, z.string().optional()),
+  extra_details: z.preprocess(emptyToUndefined, z.string().optional()),
+});
+
 function buildCancelTelcoFacts(input: {
   locale: string;
   company: string;
@@ -298,6 +317,36 @@ function buildLeaseTerminationFacts(input: {
   return lines.join("\n");
 }
 
+function buildBillComplaintFacts(input: {
+  locale: string;
+  company: string;
+  form: z.infer<typeof BillComplaintFormSchema>;
+}) {
+  const f = input.form;
+  const lines: string[] = [];
+  lines.push(`Use case: bill dispute / invoice complaint (${input.company}).`);
+  if (f.customer_full_name) lines.push(`Customer full name: ${f.customer_full_name}`);
+  if (f.customer_id) lines.push(`Customer ID (DNI/NIE/Passport): ${f.customer_id}`);
+  if (f.customer_address) lines.push(`Customer address: ${f.customer_address}`);
+  if (f.contract_or_account_number)
+    lines.push(`Contract/account number: ${f.contract_or_account_number}`);
+  if (f.invoice_number) lines.push(`Invoice number: ${f.invoice_number}`);
+  if (f.invoice_date) lines.push(`Invoice date: ${f.invoice_date}`);
+  if (f.billing_period) lines.push(`Billing period: ${f.billing_period}`);
+  if (f.amount_eur) lines.push(`Invoice amount (EUR): ${f.amount_eur}`);
+  if (f.payment_status) lines.push(`Payment status: ${f.payment_status}`);
+  if (f.issue_type) lines.push(`Issue type: ${f.issue_type}`);
+  if (f.issue_description) lines.push(`Issue description: ${f.issue_description}`);
+  if (f.contacted_before === "yes") lines.push("Contacted provider before: yes");
+  if (f.contacted_before === "no") lines.push("Contacted provider before: no");
+  if (f.contacted_before_details)
+    lines.push(`Previous communication: ${f.contacted_before_details}`);
+  if (f.desired_outcome) lines.push(`Desired outcome: ${f.desired_outcome}`);
+  if (f.refund_iban) lines.push(`Refund IBAN: ${f.refund_iban}`);
+  if (f.extra_details) lines.push(`Additional details: ${f.extra_details}`);
+  return lines.join("\n");
+}
+
 const GenerateRequestSchema = z.object({
   locale: z.string().min(2),
   category: z.string().min(1),
@@ -375,6 +424,19 @@ export async function POST(req: Request) {
       }
       parsedForm = parsed.data;
       facts = buildLeaseTerminationFacts({
+        locale: input.locale,
+        company: input.company,
+        form: parsed.data,
+      });
+    }
+
+    if (input.category === "factura" && input.form) {
+      const parsed = BillComplaintFormSchema.safeParse(input.form);
+      if (!parsed.success) {
+        throw new Error(JSON.stringify(parsed.error.issues, null, 2));
+      }
+      parsedForm = parsed.data;
+      facts = buildBillComplaintFacts({
         locale: input.locale,
         company: input.company,
         form: parsed.data,
