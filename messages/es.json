@@ -1,6 +1,11 @@
 {
   "app": {
-    "title": "BuroHero"
+    "title": "BuroHero",
+    "language": "Idioma",
+    "tabs": {
+      "document": "Documento",
+      "translation": "Traducción"
+    }
   }
 }
 

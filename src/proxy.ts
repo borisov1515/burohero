@@ -6,6 +6,7 @@ export const proxy = createMiddleware({
   locales,
   defaultLocale,
   localePrefix: "always",
+  localeDetection: true,
 });
 
 export const config = {

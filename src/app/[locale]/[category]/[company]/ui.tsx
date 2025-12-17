@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import type { AppLocale } from "@/i18n/routing";
 import {
   CancelTelcoFormSection,
@@ -85,6 +86,7 @@ type Props = {
 export default function GeneratorClient({ locale, category, company }: Props) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const tApp = useTranslations("app");
   const [mobileTab, setMobileTab] = useState<"document" | "translation">("translation");
   const [facts, setFacts] = useState("");
   const [cancelForm, setCancelForm] = useState<CancelTelcoForm>(defaultCancelTelcoForm);
@@ -726,7 +728,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
             ].join(" ")}
             onClick={() => setMobileTab("document")}
           >
-            Document
+            {tApp("tabs.document")}
           </button>
           <button
             type="button"
@@ -738,7 +740,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
             ].join(" ")}
             onClick={() => setMobileTab("translation")}
           >
-            Translation
+            {tApp("tabs.translation")}
           </button>
         </div>
 

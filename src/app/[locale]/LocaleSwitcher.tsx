@@ -1,6 +1,7 @@
 "use client";
 
 import { locales, type AppLocale } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 function replaceLocaleInPath(pathname: string, nextLocale: AppLocale) {
@@ -19,10 +20,11 @@ export default function LocaleSwitcher({ currentLocale }: { currentLocale: AppLo
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const t = useTranslations("app");
 
   return (
     <label className="inline-flex items-center gap-2 text-sm">
-      <span className="text-zinc-500 dark:text-zinc-400">Language</span>
+      <span className="text-zinc-500 dark:text-zinc-400">{t("language")}</span>
       <select
         className="h-9 rounded-lg border border-zinc-200 bg-white px-2 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
         value={currentLocale}
