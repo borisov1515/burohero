@@ -82,112 +82,113 @@ export function FlightDelayFormSection({
   builtFacts: string;
 }) {
   const tGen = useTranslations("generator");
+  const tForms = useTranslations("forms");
 
   return (
     <div className="grid gap-4">
-      <div className="text-sm font-medium">Passenger</div>
+      <div className="text-sm font-medium">{tForms("sections.passenger")}</div>
       <div className="grid gap-3 sm:grid-cols-2">
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.passenger_full_name}
           onChange={(e) => setForm((p) => ({ ...p, passenger_full_name: e.target.value }))}
-          placeholder="Full name"
+          placeholder={tForms("common.placeholders.fullName")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.passenger_id}
           onChange={(e) => setForm((p) => ({ ...p, passenger_id: e.target.value }))}
-          placeholder="DNI/NIE/Passport (optional)"
+          placeholder={tForms("common.placeholders.idOptional")}
         />
         <input
           className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.passenger_address}
           onChange={(e) => setForm((p) => ({ ...p, passenger_address: e.target.value }))}
-          placeholder="Address (optional)"
+          placeholder={tForms("common.placeholders.addressOptional")}
         />
       </div>
 
-      <div className="text-sm font-medium">Flight</div>
+      <div className="text-sm font-medium">{tForms("sections.flight")}</div>
       <div className="grid gap-3 sm:grid-cols-2">
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.flight_number}
           onChange={(e) => setForm((p) => ({ ...p, flight_number: e.target.value }))}
-          placeholder="Flight number (e.g., FR1234)"
+          placeholder={tForms("flightDelay.flightNumber")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.booking_reference}
           onChange={(e) => setForm((p) => ({ ...p, booking_reference: e.target.value }))}
-          placeholder="Booking reference / PNR (optional)"
+          placeholder={tForms("flightDelay.bookingReferenceOptional")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.departure_airport}
           onChange={(e) => setForm((p) => ({ ...p, departure_airport: e.target.value }))}
-          placeholder="Departure airport (e.g., MAD)"
+          placeholder={tForms("flightDelay.departureAirport")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.arrival_airport}
           onChange={(e) => setForm((p) => ({ ...p, arrival_airport: e.target.value }))}
-          placeholder="Arrival airport (e.g., BCN)"
+          placeholder={tForms("flightDelay.arrivalAirport")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.scheduled_departure}
           onChange={(e) => setForm((p) => ({ ...p, scheduled_departure: e.target.value }))}
-          placeholder="Scheduled departure (optional)"
+          placeholder={tForms("flightDelay.scheduledDepartureOptional")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.scheduled_arrival}
           onChange={(e) => setForm((p) => ({ ...p, scheduled_arrival: e.target.value }))}
-          placeholder="Scheduled arrival (optional)"
+          placeholder={tForms("flightDelay.scheduledArrivalOptional")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.actual_arrival}
           onChange={(e) => setForm((p) => ({ ...p, actual_arrival: e.target.value }))}
-          placeholder="Actual arrival (optional)"
+          placeholder={tForms("flightDelay.actualArrivalOptional")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.delay_hours}
           onChange={(e) => setForm((p) => ({ ...p, delay_hours: e.target.value }))}
-          placeholder="Delay (hours) (optional)"
+          placeholder={tForms("flightDelay.delayHoursOptional")}
         />
         <input
           className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.delay_reason}
           onChange={(e) => setForm((p) => ({ ...p, delay_reason: e.target.value }))}
-          placeholder="Delay reason (if known) (optional)"
+          placeholder={tForms("flightDelay.delayReasonOptional")}
         />
       </div>
 
-      <div className="text-sm font-medium">Expenses (optional)</div>
+      <div className="text-sm font-medium">{tForms("sections.expensesOptional")}</div>
       <div className="grid gap-3 sm:grid-cols-2">
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.expenses_eur}
           onChange={(e) => setForm((p) => ({ ...p, expenses_eur: e.target.value }))}
-          placeholder="Expenses EUR (optional)"
+          placeholder={tForms("flightDelay.expensesEurOptional")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.iban}
           onChange={(e) => setForm((p) => ({ ...p, iban: e.target.value }))}
-          placeholder="IBAN for compensation (optional)"
+          placeholder={tForms("flightDelay.ibanOptional")}
         />
         <textarea
           className="sm:col-span-2 h-24 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.expenses_description}
           onChange={(e) => setForm((p) => ({ ...p, expenses_description: e.target.value }))}
-          placeholder="Expenses description (hotel, meals, transport) (optional)"
+          placeholder={tForms("flightDelay.expensesDescriptionOptional")}
         />
       </div>
 
-      <div className="text-sm font-medium">Communication + request</div>
+      <div className="text-sm font-medium">{tForms("sections.communicationRequest")}</div>
       <div className="grid gap-3 sm:grid-cols-2">
         <select
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
@@ -196,21 +197,21 @@ export function FlightDelayFormSection({
             setForm((p) => ({ ...p, contacted_airline_before: e.target.value as any }))
           }
         >
-          <option value="">Contacted airline before?</option>
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
+          <option value="">{tForms("flightDelay.contactedAirlineBefore")}</option>
+          <option value="yes">{tForms("common.yes")}</option>
+          <option value="no">{tForms("common.no")}</option>
         </select>
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.desired_outcome}
           onChange={(e) => setForm((p) => ({ ...p, desired_outcome: e.target.value }))}
-          placeholder="Desired outcome (EU261 compensation + expenses) (optional)"
+          placeholder={tForms("flightDelay.desiredOutcomeOptional")}
         />
         <textarea
           className="sm:col-span-2 h-24 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.contacted_details}
           onChange={(e) => setForm((p) => ({ ...p, contacted_details: e.target.value }))}
-          placeholder="Previous communication details (optional)"
+          placeholder={tForms("common.placeholders.previousCommunicationOptional")}
         />
       </div>
 
@@ -218,7 +219,7 @@ export function FlightDelayFormSection({
         className="h-24 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
         value={form.extra_details}
         onChange={(e) => setForm((p) => ({ ...p, extra_details: e.target.value }))}
-        placeholder="Extra details (optional)"
+        placeholder={tForms("common.placeholders.extraDetailsOptional")}
       />
 
       <details className="rounded-xl border border-zinc-200 p-4 text-sm dark:border-zinc-800">

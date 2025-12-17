@@ -73,87 +73,88 @@ export function FeesRefundFormSection({
   builtFacts: string;
 }) {
   const tGen = useTranslations("generator");
+  const tForms = useTranslations("forms");
 
   return (
     <div className="grid gap-4">
-      <div className="text-sm font-medium">Customer</div>
+      <div className="text-sm font-medium">{tForms("sections.customer")}</div>
       <div className="grid gap-3 sm:grid-cols-2">
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.customer_full_name}
           onChange={(e) => setForm((p) => ({ ...p, customer_full_name: e.target.value }))}
-          placeholder="Full name"
+          placeholder={tForms("common.placeholders.fullName")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.customer_id}
           onChange={(e) => setForm((p) => ({ ...p, customer_id: e.target.value }))}
-          placeholder="DNI/NIE/Passport (optional)"
+          placeholder={tForms("common.placeholders.idOptional")}
         />
         <input
           className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.customer_address}
           onChange={(e) => setForm((p) => ({ ...p, customer_address: e.target.value }))}
-          placeholder="Address (optional)"
+          placeholder={tForms("common.placeholders.addressOptional")}
         />
       </div>
 
-      <div className="text-sm font-medium">Bank + fee</div>
+      <div className="text-sm font-medium">{tForms("sections.bankFee")}</div>
       <div className="grid gap-3 sm:grid-cols-2">
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.bank_name}
           onChange={(e) => setForm((p) => ({ ...p, bank_name: e.target.value }))}
-          placeholder="Bank name (optional)"
+          placeholder={tForms("feesRefund.bankNameOptional")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.account_iban}
           onChange={(e) => setForm((p) => ({ ...p, account_iban: e.target.value }))}
-          placeholder="Account IBAN (optional)"
+          placeholder={tForms("feesRefund.accountIbanOptional")}
         />
         <select
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.product_type}
           onChange={(e) => setForm((p) => ({ ...p, product_type: e.target.value as any }))}
         >
-          <option value="">Product type</option>
-          <option value="account">Account</option>
-          <option value="card">Card</option>
-          <option value="mortgage">Mortgage</option>
-          <option value="loan">Loan</option>
-          <option value="other">Other</option>
+          <option value="">{tForms("feesRefund.productType.label")}</option>
+          <option value="account">{tForms("feesRefund.productType.account")}</option>
+          <option value="card">{tForms("feesRefund.productType.card")}</option>
+          <option value="mortgage">{tForms("feesRefund.productType.mortgage")}</option>
+          <option value="loan">{tForms("feesRefund.productType.loan")}</option>
+          <option value="other">{tForms("feesRefund.productType.other")}</option>
         </select>
         <select
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.fee_type}
           onChange={(e) => setForm((p) => ({ ...p, fee_type: e.target.value as any }))}
         >
-          <option value="">Fee type</option>
-          <option value="maintenance">Maintenance</option>
-          <option value="card">Card fee</option>
-          <option value="overdraft">Overdraft</option>
-          <option value="transfer">Transfer</option>
-          <option value="opening">Opening / setup</option>
-          <option value="other">Other</option>
+          <option value="">{tForms("feesRefund.feeType.label")}</option>
+          <option value="maintenance">{tForms("feesRefund.feeType.maintenance")}</option>
+          <option value="card">{tForms("feesRefund.feeType.cardFee")}</option>
+          <option value="overdraft">{tForms("feesRefund.feeType.overdraft")}</option>
+          <option value="transfer">{tForms("feesRefund.feeType.transfer")}</option>
+          <option value="opening">{tForms("feesRefund.feeType.openingSetup")}</option>
+          <option value="other">{tForms("feesRefund.feeType.other")}</option>
         </select>
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.fee_amount_eur}
           onChange={(e) => setForm((p) => ({ ...p, fee_amount_eur: e.target.value }))}
-          placeholder="Fee amount EUR (optional)"
+          placeholder={tForms("feesRefund.feeAmountOptional")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.fee_date}
           onChange={(e) => setForm((p) => ({ ...p, fee_date: e.target.value }))}
-          placeholder="Fee date (optional)"
+          placeholder={tForms("feesRefund.feeDateOptional")}
         />
         <input
           className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.period_details}
           onChange={(e) => setForm((p) => ({ ...p, period_details: e.target.value }))}
-          placeholder="Period / invoice statement details (optional)"
+          placeholder={tForms("feesRefund.periodDetailsOptional")}
         />
       </div>
 
@@ -161,7 +162,7 @@ export function FeesRefundFormSection({
         className="h-24 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
         value={form.reason}
         onChange={(e) => setForm((p) => ({ ...p, reason: e.target.value }))}
-        placeholder="Why is this fee unfair/incorrect? (optional)"
+        placeholder={tForms("feesRefund.reasonOptional")}
       />
 
       <div className="grid gap-3 sm:grid-cols-2">
@@ -170,27 +171,27 @@ export function FeesRefundFormSection({
           value={form.contacted_before}
           onChange={(e) => setForm((p) => ({ ...p, contacted_before: e.target.value as any }))}
         >
-          <option value="">Contacted bank before?</option>
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
+          <option value="">{tForms("feesRefund.contactedBankBefore")}</option>
+          <option value="yes">{tForms("common.yes")}</option>
+          <option value="no">{tForms("common.no")}</option>
         </select>
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.refund_iban}
           onChange={(e) => setForm((p) => ({ ...p, refund_iban: e.target.value }))}
-          placeholder="Refund IBAN (optional)"
+          placeholder={tForms("common.placeholders.refundIbanOptional")}
         />
         <textarea
           className="sm:col-span-2 h-24 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.contacted_details}
           onChange={(e) => setForm((p) => ({ ...p, contacted_details: e.target.value }))}
-          placeholder="Previous communication details (optional)"
+          placeholder={tForms("common.placeholders.previousCommunicationOptional")}
         />
         <input
           className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.desired_outcome}
           onChange={(e) => setForm((p) => ({ ...p, desired_outcome: e.target.value }))}
-          placeholder="Desired outcome (refund, cancel fee, explain basis, etc.)"
+          placeholder={tForms("feesRefund.desiredOutcome")}
         />
       </div>
 
@@ -198,7 +199,7 @@ export function FeesRefundFormSection({
         className="h-24 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
         value={form.extra_details}
         onChange={(e) => setForm((p) => ({ ...p, extra_details: e.target.value }))}
-        placeholder="Extra details (optional)"
+        placeholder={tForms("common.placeholders.extraDetailsOptional")}
       />
 
       <details className="rounded-xl border border-zinc-200 p-4 text-sm dark:border-zinc-800">

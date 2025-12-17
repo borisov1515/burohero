@@ -79,96 +79,97 @@ export function Return14FormSection({
   builtFacts: string;
 }) {
   const tGen = useTranslations("generator");
+  const tForms = useTranslations("forms");
 
   return (
     <div className="grid gap-4">
-      <div className="text-sm font-medium">Buyer</div>
+      <div className="text-sm font-medium">{tForms("sections.buyer")}</div>
       <div className="grid gap-3 sm:grid-cols-2">
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.buyer_full_name}
           onChange={(e) => setForm((p) => ({ ...p, buyer_full_name: e.target.value }))}
-          placeholder="Buyer full name"
+          placeholder={tForms("return14.buyerFullName")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.buyer_id}
           onChange={(e) => setForm((p) => ({ ...p, buyer_id: e.target.value }))}
-          placeholder="Buyer DNI/NIE/Passport"
+          placeholder={tForms("return14.buyerId")}
         />
         <input
           className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.buyer_address}
           onChange={(e) => setForm((p) => ({ ...p, buyer_address: e.target.value }))}
-          placeholder="Buyer address"
+          placeholder={tForms("return14.buyerAddress")}
         />
       </div>
 
-      <div className="text-sm font-medium">Seller / merchant</div>
+      <div className="text-sm font-medium">{tForms("sections.sellerMerchant")}</div>
       <div className="grid gap-3 sm:grid-cols-2">
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.seller_name}
           onChange={(e) => setForm((p) => ({ ...p, seller_name: e.target.value }))}
-          placeholder="Seller name"
+          placeholder={tForms("return14.sellerName")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.order_number}
           onChange={(e) => setForm((p) => ({ ...p, order_number: e.target.value }))}
-          placeholder="Order / invoice number (optional)"
+          placeholder={tForms("return14.orderNumberOptional")}
         />
         <input
           className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.seller_address}
           onChange={(e) => setForm((p) => ({ ...p, seller_address: e.target.value }))}
-          placeholder="Seller address"
+          placeholder={tForms("return14.sellerAddress")}
         />
       </div>
 
-      <div className="text-sm font-medium">Purchase</div>
+      <div className="text-sm font-medium">{tForms("sections.purchase")}</div>
       <div className="grid gap-3 sm:grid-cols-2">
         <input
           className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.product_description}
           onChange={(e) => setForm((p) => ({ ...p, product_description: e.target.value }))}
-          placeholder="Product description"
+          placeholder={tForms("return14.productDescription")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.purchase_date}
           onChange={(e) => setForm((p) => ({ ...p, purchase_date: e.target.value }))}
-          placeholder="Purchase date (YYYY-MM-DD)"
+          placeholder={tForms("return14.purchaseDate")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.delivery_date}
           onChange={(e) => setForm((p) => ({ ...p, delivery_date: e.target.value }))}
-          placeholder="Delivery date (YYYY-MM-DD)"
+          placeholder={tForms("return14.deliveryDate")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.return_request_date}
           onChange={(e) => setForm((p) => ({ ...p, return_request_date: e.target.value }))}
-          placeholder="Return request date (YYYY-MM-DD)"
+          placeholder={tForms("return14.returnRequestDate")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.paid_amount_eur}
           onChange={(e) => setForm((p) => ({ ...p, paid_amount_eur: e.target.value }))}
-          placeholder="Paid amount EUR"
+          placeholder={tForms("return14.paidAmount")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.payment_method}
           onChange={(e) => setForm((p) => ({ ...p, payment_method: e.target.value }))}
-          placeholder="Payment method (card/PayPal/IBAN)"
+          placeholder={tForms("return14.paymentMethod")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.refund_iban}
           onChange={(e) => setForm((p) => ({ ...p, refund_iban: e.target.value }))}
-          placeholder="Refund IBAN (optional)"
+          placeholder={tForms("common.placeholders.refundIbanOptional")}
         />
         <select
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
@@ -177,15 +178,15 @@ export function Return14FormSection({
             setForm((p) => ({ ...p, contacted_support_before: e.target.value as any }))
           }
         >
-          <option value="">Contacted support before?</option>
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
+          <option value="">{tForms("return14.contactedSupportBefore")}</option>
+          <option value="yes">{tForms("common.yes")}</option>
+          <option value="no">{tForms("common.no")}</option>
         </select>
         <input
           className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.desired_outcome}
           onChange={(e) => setForm((p) => ({ ...p, desired_outcome: e.target.value }))}
-          placeholder="Desired outcome (refund, instructions for return, etc.)"
+          placeholder={tForms("return14.desiredOutcome")}
         />
         <textarea
           className="sm:col-span-2 h-28 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
@@ -193,7 +194,7 @@ export function Return14FormSection({
           onChange={(e) =>
             setForm((p) => ({ ...p, contacted_support_details: e.target.value }))
           }
-          placeholder="Support contact details (optional)"
+          placeholder={tForms("return14.supportContactDetailsOptional")}
         />
       </div>
 
@@ -201,7 +202,7 @@ export function Return14FormSection({
         className="h-28 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
         value={form.extra_details}
         onChange={(e) => setForm((p) => ({ ...p, extra_details: e.target.value }))}
-        placeholder="Extra details (optional)"
+        placeholder={tForms("common.placeholders.extraDetailsOptional")}
       />
 
       <details className="rounded-xl border border-zinc-200 p-4 text-sm dark:border-zinc-800">

@@ -73,74 +73,75 @@ export function ClaimDeniedFormSection({
   builtFacts: string;
 }) {
   const tGen = useTranslations("generator");
+  const tForms = useTranslations("forms");
 
   return (
     <div className="grid gap-4">
-      <div className="text-sm font-medium">Policyholder</div>
+      <div className="text-sm font-medium">{tForms("sections.policyholder")}</div>
       <div className="grid gap-3 sm:grid-cols-2">
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.policyholder_full_name}
           onChange={(e) => setForm((p) => ({ ...p, policyholder_full_name: e.target.value }))}
-          placeholder="Full name"
+          placeholder={tForms("common.placeholders.fullName")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.policyholder_id}
           onChange={(e) => setForm((p) => ({ ...p, policyholder_id: e.target.value }))}
-          placeholder="DNI/NIE/Passport (optional)"
+          placeholder={tForms("common.placeholders.idOptional")}
         />
         <input
           className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.policyholder_address}
           onChange={(e) => setForm((p) => ({ ...p, policyholder_address: e.target.value }))}
-          placeholder="Address (optional)"
+          placeholder={tForms("common.placeholders.addressOptional")}
         />
       </div>
 
-      <div className="text-sm font-medium">Policy + claim</div>
+      <div className="text-sm font-medium">{tForms("sections.policyClaim")}</div>
       <div className="grid gap-3 sm:grid-cols-2">
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.insurer_name}
           onChange={(e) => setForm((p) => ({ ...p, insurer_name: e.target.value }))}
-          placeholder="Insurer name (optional)"
+          placeholder={tForms("claimDenied.insurerNameOptional")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.policy_number}
           onChange={(e) => setForm((p) => ({ ...p, policy_number: e.target.value }))}
-          placeholder="Policy number (optional)"
+          placeholder={tForms("claimDenied.policyNumberOptional")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.claim_number}
           onChange={(e) => setForm((p) => ({ ...p, claim_number: e.target.value }))}
-          placeholder="Claim number (optional)"
+          placeholder={tForms("claimDenied.claimNumberOptional")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.claimed_amount_eur}
           onChange={(e) => setForm((p) => ({ ...p, claimed_amount_eur: e.target.value }))}
-          placeholder="Claimed amount EUR (optional)"
+          placeholder={tForms("claimDenied.claimedAmountOptional")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.incident_date}
           onChange={(e) => setForm((p) => ({ ...p, incident_date: e.target.value }))}
-          placeholder="Incident date (optional)"
+          placeholder={tForms("claimDenied.incidentDateOptional")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.denial_date}
           onChange={(e) => setForm((p) => ({ ...p, denial_date: e.target.value }))}
-          placeholder="Denial date (optional)"
+          placeholder={tForms("claimDenied.denialDateOptional")}
         />
         <input
           className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.iban}
           onChange={(e) => setForm((p) => ({ ...p, iban: e.target.value }))}
-          placeholder="IBAN for payment (optional)"
+          placeholder={tForms("claimDenied.ibanOptional")}
         />
       </div>
 
@@ -148,13 +149,13 @@ export function ClaimDeniedFormSection({
         className="h-28 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
         value={form.incident_description}
         onChange={(e) => setForm((p) => ({ ...p, incident_description: e.target.value }))}
-        placeholder="Incident description (what happened, damages, documents)…"
+        placeholder={tForms("claimDenied.incidentDescription")}
       />
       <textarea
         className="h-24 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
         value={form.denial_reason}
         onChange={(e) => setForm((p) => ({ ...p, denial_reason: e.target.value }))}
-        placeholder="Denial reason (as stated by insurer)…"
+        placeholder={tForms("claimDenied.denialReason")}
       />
 
       <div className="grid gap-3 sm:grid-cols-2">
@@ -163,21 +164,21 @@ export function ClaimDeniedFormSection({
           value={form.contacted_before}
           onChange={(e) => setForm((p) => ({ ...p, contacted_before: e.target.value as any }))}
         >
-          <option value="">Contacted insurer before?</option>
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
+          <option value="">{tForms("claimDenied.contactedInsurerBefore")}</option>
+          <option value="yes">{tForms("common.yes")}</option>
+          <option value="no">{tForms("common.no")}</option>
         </select>
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.desired_outcome}
           onChange={(e) => setForm((p) => ({ ...p, desired_outcome: e.target.value }))}
-          placeholder="Desired outcome (pay claim, reconsider, provide report, etc.)"
+          placeholder={tForms("claimDenied.desiredOutcome")}
         />
         <textarea
           className="sm:col-span-2 h-24 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.contacted_details}
           onChange={(e) => setForm((p) => ({ ...p, contacted_details: e.target.value }))}
-          placeholder="Previous communication details (optional)"
+          placeholder={tForms("common.placeholders.previousCommunicationOptional")}
         />
       </div>
 
@@ -185,7 +186,7 @@ export function ClaimDeniedFormSection({
         className="h-24 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
         value={form.extra_details}
         onChange={(e) => setForm((p) => ({ ...p, extra_details: e.target.value }))}
-        placeholder="Extra details (optional)"
+        placeholder={tForms("common.placeholders.extraDetailsOptional")}
       />
 
       <details className="rounded-xl border border-zinc-200 p-4 text-sm dark:border-zinc-800">

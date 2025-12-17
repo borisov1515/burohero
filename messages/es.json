@@ -62,6 +62,272 @@
     "backToGenerator": "Volver al generador",
     "fontHint": "Para caracteres cirílicos/UA/RO/PL en PDF, añade /public/fonts/NotoSans-Regular.ttf",
     "fontLoad": "Carga de fuente"
+  },
+  "forms": {
+    "common": {
+      "yes": "Sí",
+      "no": "No",
+      "placeholders": {
+        "fullName": "Nombre completo",
+        "id": "DNI/NIE/Pasaporte",
+        "idOptional": "DNI/NIE/Pasaporte (opcional)",
+        "address": "Dirección",
+        "addressOptional": "Dirección (opcional)",
+        "extraDetailsOptional": "Detalles adicionales (opcional)",
+        "previousCommunicationOptional": "Detalles de comunicaciones previas (opcional)",
+        "refundIbanOptional": "IBAN para reembolso (opcional)",
+        "paymentMethodOptional": "Método de pago (opcional)"
+      }
+    },
+    "sections": {
+      "recipient": "Destinatario",
+      "applicant": "Solicitante",
+      "caseDetails": "Detalles del caso",
+      "tenant": "Inquilino/a",
+      "landlord": "Arrendador/a",
+      "landlordRecipient": "Arrendador/a / destinatario",
+      "leaseDeposit": "Contrato + fianza",
+      "leaseDetails": "Detalles del contrato",
+      "buyer": "Comprador/a",
+      "sellerMerchant": "Vendedor/a / comercio",
+      "purchase": "Compra",
+      "productWarranty": "Producto + garantía",
+      "customer": "Cliente",
+      "invoice": "Factura",
+      "issue": "Incidencia",
+      "order": "Pedido",
+      "delivery": "Entrega",
+      "paymentOutcome": "Pago + resultado solicitado",
+      "passenger": "Pasajero/a",
+      "flight": "Vuelo",
+      "expensesOptional": "Gastos (opcional)",
+      "communicationRequest": "Comunicación + solicitud",
+      "policyholder": "Tomador/a",
+      "policy": "Póliza",
+      "policyClaim": "Póliza + siniestro",
+      "bankFee": "Banco + comisión"
+    },
+    "cancelTelco": {
+      "unknownCompanySlug": "Slug de empresa desconocido:",
+      "contractNumberOptional": "Número de contrato (opcional)",
+      "cancellationRequestDate": "Fecha de solicitud de baja (AAAA-MM-DD)",
+      "cancellationRequestMethod": "¿Cómo solicitaste la baja? (llamada/email/web)",
+      "chargingAfterCancellationQuestion": "¿Han seguido cobrando tras la baja?",
+      "chargedAmountOptional": "Importe cobrado EUR (opcional)",
+      "chargeDateOptional": "Fecha del cargo (opcional)",
+      "paymentMethodOptional": "Método de pago (tarjeta/IBAN) (opcional)",
+      "desiredOutcome": "¿Qué solicitas? (reembolso, confirmación, etc.)"
+    },
+    "depositReturn": {
+      "tenantFullName": "Nombre completo del inquilino/a",
+      "tenantId": "DNI/NIE/Pasaporte del inquilino/a",
+      "tenantAddress": "Dirección del inquilino/a",
+      "landlordFullName": "Nombre completo del arrendador/a",
+      "landlordIdOptional": "ID del arrendador/a (opcional)",
+      "landlordAddress": "Dirección del arrendador/a",
+      "propertyAddress": "Dirección de la vivienda alquilada",
+      "leaseStartDate": "Fecha inicio del contrato (AAAA-MM-DD)",
+      "leaseEndDate": "Fecha fin del contrato (AAAA-MM-DD)",
+      "depositAmount": "Importe de la fianza (EUR)",
+      "moveOutDate": "Fecha de salida (AAAA-MM-DD)",
+      "keysReturnedDateOptional": "Fecha de entrega de llaves (opcional)",
+      "requestedReturnBefore": "¿Has reclamado la fianza antes?",
+      "desiredOutcome": "Resultado deseado (reembolso antes de X fecha, etc.)"
+    },
+    "return14": {
+      "buyerFullName": "Nombre completo del comprador/a",
+      "buyerId": "DNI/NIE/Pasaporte del comprador/a",
+      "buyerAddress": "Dirección del comprador/a",
+      "sellerName": "Nombre del vendedor/comercio",
+      "orderNumberOptional": "Número de pedido/factura (opcional)",
+      "sellerAddress": "Dirección del vendedor",
+      "productDescription": "Descripción del producto",
+      "purchaseDate": "Fecha de compra (AAAA-MM-DD)",
+      "deliveryDate": "Fecha de entrega (AAAA-MM-DD)",
+      "returnRequestDate": "Fecha solicitud de devolución (AAAA-MM-DD)",
+      "paidAmount": "Importe pagado (EUR)",
+      "paymentMethod": "Método de pago (tarjeta/PayPal/IBAN)",
+      "contactedSupportBefore": "¿Contactaste con soporte antes?",
+      "supportContactDetailsOptional": "Detalles del contacto con soporte (opcional)",
+      "desiredOutcome": "Resultado deseado (reembolso, instrucciones de devolución, etc.)"
+    },
+    "repairDemand": {
+      "sections": {
+        "propertyIssue": "Vivienda + problema"
+      },
+      "tenantFullName": "Nombre completo del inquilino/a",
+      "tenantId": "DNI/NIE/Pasaporte del inquilino/a",
+      "tenantAddress": "Dirección del inquilino/a",
+      "landlordFullName": "Nombre completo del arrendador/a",
+      "landlordAddress": "Dirección del arrendador/a",
+      "issueFirstReportedDate": "Fecha del primer aviso (AAAA-MM-DD)",
+      "propertyAddress": "Dirección de la vivienda alquilada",
+      "issueDescription": "Describe el problema (qué está roto, desde cuándo, impacto)…",
+      "urgency": {
+        "label": "Urgencia",
+        "low": "Baja",
+        "normal": "Normal",
+        "high": "Alta"
+      },
+      "desiredOutcome": "Resultado deseado (reparación antes de X fecha, inspección, etc.)"
+    },
+    "leaseTermination": {
+      "tenantFullName": "Nombre completo del inquilino/a",
+      "tenantId": "DNI/NIE/Pasaporte del inquilino/a",
+      "tenantAddress": "Dirección del inquilino/a",
+      "landlordFullName": "Nombre completo del arrendador/a",
+      "landlordAddress": "Dirección del arrendador/a",
+      "propertyAddress": "Dirección de la vivienda alquilada",
+      "leaseStartDate": "Fecha inicio del contrato (AAAA-MM-DD)",
+      "plannedTerminationDate": "Fecha prevista de finalización (AAAA-MM-DD)",
+      "noticeSentDateOptional": "Fecha de envío del preaviso (opcional)",
+      "noticeMethodOptional": "Método de notificación (burofax/email/entrega en mano) (opcional)",
+      "terminationReasonOptional": "Motivo de finalización (opcional)",
+      "desiredOutcome": "Resultado deseado (confirmar rescisión, entrega de llaves, liquidación, etc.)"
+    },
+    "billComplaint": {
+      "contractOrAccountNumberOptional": "Nº contrato/cuenta (opcional)",
+      "invoiceNumberOptional": "Nº de factura (opcional)",
+      "invoiceDateOptional": "Fecha de factura (AAAA-MM-DD) (opcional)",
+      "billingPeriodOptional": "Periodo de facturación (p. ej., 2025-10) (opcional)",
+      "amountOptional": "Importe (EUR) (opcional)",
+      "paymentStatus": {
+        "label": "Estado de pago",
+        "paid": "Pagada",
+        "unpaid": "Impagada",
+        "partiallyPaid": "Parcialmente pagada"
+      },
+      "issueType": {
+        "label": "Tipo de incidencia",
+        "overcharge": "Cobro excesivo",
+        "wrongReading": "Lectura de contador incorrecta",
+        "duplicate": "Factura duplicada",
+        "serviceNotProvided": "Servicio no prestado",
+        "other": "Otro"
+      },
+      "contactedProviderBefore": "¿Contactaste con el proveedor antes?",
+      "issueDescription": "Describe qué está mal en la factura…",
+      "desiredOutcome": "Resultado deseado (factura corregida, reembolso, etc.)"
+    },
+    "warranty3y": {
+      "buyerFullName": "Nombre completo del comprador/a",
+      "buyerIdOptional": "DNI/NIE/Pasaporte del comprador/a (opcional)",
+      "buyerAddressOptional": "Dirección del comprador/a (opcional)",
+      "sellerNameOptional": "Nombre del vendedor (opcional)",
+      "orderOrInvoiceNumberOptional": "Número de pedido/factura (opcional)",
+      "sellerAddressOptional": "Dirección del vendedor (opcional)",
+      "productDescription": "Descripción del producto",
+      "purchaseDateOptional": "Fecha de compra (AAAA-MM-DD) (opcional)",
+      "deliveryDateOptional": "Fecha de entrega (AAAA-MM-DD) (opcional)",
+      "defectDiscoveredDateOptional": "Fecha de detección del defecto (opcional)",
+      "requestedSolution": {
+        "label": "Solución solicitada",
+        "repair": "Reparación",
+        "replacement": "Sustitución",
+        "refund": "Reembolso",
+        "priceReduction": "Reducción de precio"
+      },
+      "contactedSupportBefore": "¿Contactaste con soporte antes?",
+      "defectDescription": "Describe el defecto / falta de conformidad…",
+      "supportContactDetailsOptional": "Detalles del contacto con soporte (opcional)",
+      "desiredOutcome": "Resultado deseado (reparación en X días, sustitución, reembolso, etc.)"
+    },
+    "nonDelivery": {
+      "sections": {
+        "order": "Pedido"
+      },
+      "buyerFullName": "Nombre completo del comprador/a",
+      "buyerIdOptional": "DNI/NIE/Pasaporte del comprador/a (opcional)",
+      "buyerAddressOptional": "Dirección del comprador/a (opcional)",
+      "sellerNameOptional": "Nombre del vendedor (opcional)",
+      "orderNumberOptional": "Número de pedido (opcional)",
+      "productDescription": "Descripción del producto",
+      "purchaseDateOptional": "Fecha de compra (opcional)",
+      "promisedDeliveryDateOptional": "Fecha de entrega prometida (opcional)",
+      "trackingNumberOptional": "Número de seguimiento (opcional)",
+      "carrierNameOptional": "Transportista (opcional)",
+      "deliveryStatus": {
+        "label": "Estado de entrega",
+        "notDelivered": "No entregado",
+        "lost": "Perdido",
+        "deliveredButNotReceived": "Marcado como entregado pero no recibido"
+      },
+      "contactedSellerBefore": "¿Contactaste con el vendedor antes?",
+      "paidAmountOptional": "Importe pagado (EUR) (opcional)",
+      "desiredOutcome": {
+        "label": "Resultado deseado",
+        "deliver": "Entrega del producto",
+        "replacement": "Reposición",
+        "refund": "Reembolso"
+      }
+    },
+    "flightDelay": {
+      "flightNumber": "Número de vuelo (p. ej., FR1234)",
+      "bookingReferenceOptional": "Referencia de reserva / PNR (opcional)",
+      "departureAirport": "Aeropuerto de salida (p. ej., MAD)",
+      "arrivalAirport": "Aeropuerto de llegada (p. ej., BCN)",
+      "scheduledDepartureOptional": "Salida programada (opcional)",
+      "scheduledArrivalOptional": "Llegada programada (opcional)",
+      "actualArrivalOptional": "Llegada real (opcional)",
+      "delayHoursOptional": "Retraso (horas) (opcional)",
+      "delayReasonOptional": "Motivo del retraso (si se conoce) (opcional)",
+      "expensesEurOptional": "Gastos (EUR) (opcional)",
+      "ibanOptional": "IBAN para la compensación (opcional)",
+      "expensesDescriptionOptional": "Descripción de gastos (hotel, comidas, transporte) (opcional)",
+      "contactedAirlineBefore": "¿Contactaste con la aerolínea antes?",
+      "desiredOutcomeOptional": "Resultado deseado (compensación EU261 + gastos) (opcional)"
+    },
+    "insuranceCancel": {
+      "insurerNameOptional": "Aseguradora (opcional)",
+      "policyNumberOptional": "Número de póliza (opcional)",
+      "insuranceTypeOptional": "Tipo de seguro (coche/hogar/salud/etc.) (opcional)",
+      "renewalDateOptional": "Fecha de renovación (opcional)",
+      "cancellationRequestDateOptional": "Fecha de solicitud de cancelación (opcional)",
+      "cancellationMethodOptional": "Método de cancelación (email/burofax/teléfono) (opcional)",
+      "ibanOptional": "IBAN para reembolsos (opcional)",
+      "desiredOutcome": "Resultado deseado (confirmar cancelación, evitar renovaciones, reembolso, etc.)",
+      "reasonOptional": "Motivo (opcional)"
+    },
+    "claimDenied": {
+      "insurerNameOptional": "Aseguradora (opcional)",
+      "policyNumberOptional": "Número de póliza (opcional)",
+      "claimNumberOptional": "Número de siniestro (opcional)",
+      "claimedAmountOptional": "Importe reclamado (EUR) (opcional)",
+      "incidentDateOptional": "Fecha del siniestro (opcional)",
+      "denialDateOptional": "Fecha de denegación (opcional)",
+      "ibanOptional": "IBAN para el pago (opcional)",
+      "incidentDescription": "Descripción del siniestro (qué ocurrió, daños, documentos)…",
+      "denialReason": "Motivo de denegación (según la aseguradora)…",
+      "contactedInsurerBefore": "¿Contactaste con la aseguradora antes?",
+      "desiredOutcome": "Resultado deseado (pago, revisión, informe, etc.)"
+    },
+    "feesRefund": {
+      "bankNameOptional": "Banco (opcional)",
+      "accountIbanOptional": "IBAN de la cuenta (opcional)",
+      "productType": {
+        "label": "Tipo de producto",
+        "account": "Cuenta",
+        "card": "Tarjeta",
+        "mortgage": "Hipoteca",
+        "loan": "Préstamo",
+        "other": "Otro"
+      },
+      "feeType": {
+        "label": "Tipo de comisión",
+        "maintenance": "Mantenimiento",
+        "cardFee": "Comisión de tarjeta",
+        "overdraft": "Descubierto",
+        "transfer": "Transferencia",
+        "openingSetup": "Apertura/alta",
+        "other": "Otro"
+      },
+      "feeAmountOptional": "Importe de la comisión (EUR) (opcional)",
+      "feeDateOptional": "Fecha de la comisión (opcional)",
+      "periodDetailsOptional": "Periodo / detalles del extracto (opcional)",
+      "reasonOptional": "¿Por qué esta comisión es injusta/incorrecta? (opcional)",
+      "contactedBankBefore": "¿Contactaste con el banco antes?",
+      "desiredOutcome": "Resultado deseado (reembolso, anular comisión, explicar base, etc.)"
+    }
   }
 }
 

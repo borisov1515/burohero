@@ -73,116 +73,117 @@ export function Warranty3yFormSection({
   builtFacts: string;
 }) {
   const tGen = useTranslations("generator");
+  const tForms = useTranslations("forms");
 
   return (
     <div className="grid gap-4">
-      <div className="text-sm font-medium">Buyer</div>
+      <div className="text-sm font-medium">{tForms("sections.buyer")}</div>
       <div className="grid gap-3 sm:grid-cols-2">
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.buyer_full_name}
           onChange={(e) => setForm((p) => ({ ...p, buyer_full_name: e.target.value }))}
-          placeholder="Buyer full name"
+          placeholder={tForms("warranty3y.buyerFullName")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.buyer_id}
           onChange={(e) => setForm((p) => ({ ...p, buyer_id: e.target.value }))}
-          placeholder="Buyer DNI/NIE/Passport (optional)"
+          placeholder={tForms("warranty3y.buyerIdOptional")}
         />
         <input
           className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.buyer_address}
           onChange={(e) => setForm((p) => ({ ...p, buyer_address: e.target.value }))}
-          placeholder="Buyer address (optional)"
+          placeholder={tForms("warranty3y.buyerAddressOptional")}
         />
       </div>
 
-      <div className="text-sm font-medium">Seller / merchant</div>
+      <div className="text-sm font-medium">{tForms("sections.sellerMerchant")}</div>
       <div className="grid gap-3 sm:grid-cols-2">
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.seller_name}
           onChange={(e) => setForm((p) => ({ ...p, seller_name: e.target.value }))}
-          placeholder="Seller name (optional)"
+          placeholder={tForms("warranty3y.sellerNameOptional")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.order_or_invoice_number}
           onChange={(e) => setForm((p) => ({ ...p, order_or_invoice_number: e.target.value }))}
-          placeholder="Order / invoice number (optional)"
+          placeholder={tForms("warranty3y.orderOrInvoiceNumberOptional")}
         />
         <input
           className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.seller_address}
           onChange={(e) => setForm((p) => ({ ...p, seller_address: e.target.value }))}
-          placeholder="Seller address (optional)"
+          placeholder={tForms("warranty3y.sellerAddressOptional")}
         />
       </div>
 
-      <div className="text-sm font-medium">Product + warranty</div>
+      <div className="text-sm font-medium">{tForms("sections.productWarranty")}</div>
       <div className="grid gap-3 sm:grid-cols-2">
         <input
           className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.product_description}
           onChange={(e) => setForm((p) => ({ ...p, product_description: e.target.value }))}
-          placeholder="Product description"
+          placeholder={tForms("warranty3y.productDescription")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.purchase_date}
           onChange={(e) => setForm((p) => ({ ...p, purchase_date: e.target.value }))}
-          placeholder="Purchase date (YYYY-MM-DD) (optional)"
+          placeholder={tForms("warranty3y.purchaseDateOptional")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.delivery_date}
           onChange={(e) => setForm((p) => ({ ...p, delivery_date: e.target.value }))}
-          placeholder="Delivery date (YYYY-MM-DD) (optional)"
+          placeholder={tForms("warranty3y.deliveryDateOptional")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.defect_discovered_date}
           onChange={(e) => setForm((p) => ({ ...p, defect_discovered_date: e.target.value }))}
-          placeholder="Defect discovered date (optional)"
+          placeholder={tForms("warranty3y.defectDiscoveredDateOptional")}
         />
         <select
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.requested_solution}
           onChange={(e) => setForm((p) => ({ ...p, requested_solution: e.target.value as any }))}
         >
-          <option value="">Requested solution</option>
-          <option value="repair">Repair</option>
-          <option value="replacement">Replacement</option>
-          <option value="refund">Refund</option>
-          <option value="price_reduction">Price reduction</option>
+          <option value="">{tForms("warranty3y.requestedSolution.label")}</option>
+          <option value="repair">{tForms("warranty3y.requestedSolution.repair")}</option>
+          <option value="replacement">{tForms("warranty3y.requestedSolution.replacement")}</option>
+          <option value="refund">{tForms("warranty3y.requestedSolution.refund")}</option>
+          <option value="price_reduction">{tForms("warranty3y.requestedSolution.priceReduction")}</option>
         </select>
         <select
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.contacted_support_before}
           onChange={(e) => setForm((p) => ({ ...p, contacted_support_before: e.target.value as any }))}
         >
-          <option value="">Contacted support before?</option>
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
+          <option value="">{tForms("warranty3y.contactedSupportBefore")}</option>
+          <option value="yes">{tForms("common.yes")}</option>
+          <option value="no">{tForms("common.no")}</option>
         </select>
         <textarea
           className="sm:col-span-2 h-28 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.defect_description}
           onChange={(e) => setForm((p) => ({ ...p, defect_description: e.target.value }))}
-          placeholder="Describe the defect / lack of conformity…"
+          placeholder={tForms("warranty3y.defectDescription")}
         />
         <textarea
           className="sm:col-span-2 h-24 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.contacted_support_details}
           onChange={(e) => setForm((p) => ({ ...p, contacted_support_details: e.target.value }))}
-          placeholder="Support contact details (optional)"
+          placeholder={tForms("warranty3y.supportContactDetailsOptional")}
         />
         <input
           className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.desired_outcome}
           onChange={(e) => setForm((p) => ({ ...p, desired_outcome: e.target.value }))}
-          placeholder="Desired outcome (repair within X days, replacement, refund, etc.)"
+          placeholder={tForms("warranty3y.desiredOutcome")}
         />
       </div>
 
@@ -190,7 +191,7 @@ export function Warranty3yFormSection({
         className="h-24 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
         value={form.extra_details}
         onChange={(e) => setForm((p) => ({ ...p, extra_details: e.target.value }))}
-        placeholder="Extra details (optional)"
+        placeholder={tForms("common.placeholders.extraDetailsOptional")}
       />
 
       <details className="rounded-xl border border-zinc-200 p-4 text-sm dark:border-zinc-800">

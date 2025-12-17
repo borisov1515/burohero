@@ -78,11 +78,12 @@ export function CancelTelcoFormSection({
 }) {
   const recipient: Company | null = useMemo(() => getCompanyBySlug(company), [company]);
   const tGen = useTranslations("generator");
+  const tForms = useTranslations("forms");
 
   return (
     <div className="grid gap-4">
       <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-sm dark:border-zinc-800 dark:bg-black">
-        <div className="font-medium">Recipient</div>
+        <div className="font-medium">{tForms("sections.recipient")}</div>
         {recipient ? (
           <div className="mt-2 grid gap-1 text-zinc-700 dark:text-zinc-300">
             <div>{recipient.name}</div>
@@ -94,43 +95,44 @@ export function CancelTelcoFormSection({
           </div>
         ) : (
           <div className="mt-2 text-zinc-600 dark:text-zinc-400">
-            Unknown company slug: <span className="font-mono">{company}</span>
+            {tForms("cancelTelco.unknownCompanySlug")}{" "}
+            <span className="font-mono">{company}</span>
           </div>
         )}
       </div>
 
       <div>
-        <div className="text-sm font-medium">Applicant</div>
+        <div className="text-sm font-medium">{tForms("sections.applicant")}</div>
         <div className="mt-2 grid gap-3 sm:grid-cols-2">
           <input
             className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
             value={form.applicant_full_name}
             onChange={(e) => setForm((p) => ({ ...p, applicant_full_name: e.target.value }))}
-            placeholder="Full name"
+            placeholder={tForms("common.placeholders.fullName")}
           />
           <input
             className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
             value={form.applicant_id}
             onChange={(e) => setForm((p) => ({ ...p, applicant_id: e.target.value }))}
-            placeholder="DNI/NIE/Passport"
+            placeholder={tForms("common.placeholders.id")}
           />
           <input
             className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
             value={form.applicant_address}
             onChange={(e) => setForm((p) => ({ ...p, applicant_address: e.target.value }))}
-            placeholder="Address"
+            placeholder={tForms("common.placeholders.address")}
           />
         </div>
       </div>
 
       <div>
-        <div className="text-sm font-medium">Case details</div>
+        <div className="text-sm font-medium">{tForms("sections.caseDetails")}</div>
         <div className="mt-2 grid gap-3 sm:grid-cols-2">
           <input
             className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
             value={form.contract_number}
             onChange={(e) => setForm((p) => ({ ...p, contract_number: e.target.value }))}
-            placeholder="Contract number (optional)"
+            placeholder={tForms("cancelTelco.contractNumberOptional")}
           />
           <input
             className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
@@ -138,7 +140,7 @@ export function CancelTelcoFormSection({
             onChange={(e) =>
               setForm((p) => ({ ...p, cancellation_request_date: e.target.value }))
             }
-            placeholder="Cancellation request date (YYYY-MM-DD)"
+            placeholder={tForms("cancelTelco.cancellationRequestDate")}
           />
           <input
             className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
@@ -146,7 +148,7 @@ export function CancelTelcoFormSection({
             onChange={(e) =>
               setForm((p) => ({ ...p, cancellation_request_method: e.target.value }))
             }
-            placeholder="How did you request cancellation? (call/email/web)"
+            placeholder={tForms("cancelTelco.cancellationRequestMethod")}
           />
           <select
             className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
@@ -155,33 +157,33 @@ export function CancelTelcoFormSection({
               setForm((p) => ({ ...p, charge_after_cancellation: e.target.value as any }))
             }
           >
-            <option value="">Charging after cancellation?</option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
+            <option value="">{tForms("cancelTelco.chargingAfterCancellationQuestion")}</option>
+            <option value="yes">{tForms("common.yes")}</option>
+            <option value="no">{tForms("common.no")}</option>
           </select>
           <input
             className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
             value={form.charged_amount_eur}
             onChange={(e) => setForm((p) => ({ ...p, charged_amount_eur: e.target.value }))}
-            placeholder="Charged amount EUR (optional)"
+            placeholder={tForms("cancelTelco.chargedAmountOptional")}
           />
           <input
             className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
             value={form.charged_date}
             onChange={(e) => setForm((p) => ({ ...p, charged_date: e.target.value }))}
-            placeholder="Charge date (optional)"
+            placeholder={tForms("cancelTelco.chargeDateOptional")}
           />
           <input
             className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
             value={form.payment_method}
             onChange={(e) => setForm((p) => ({ ...p, payment_method: e.target.value }))}
-            placeholder="Payment method (card/IBAN) (optional)"
+            placeholder={tForms("cancelTelco.paymentMethodOptional")}
           />
           <input
             className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
             value={form.desired_outcome}
             onChange={(e) => setForm((p) => ({ ...p, desired_outcome: e.target.value }))}
-            placeholder="What do you want? (refund, confirmation, etc.)"
+            placeholder={tForms("cancelTelco.desiredOutcome")}
           />
         </div>
 
@@ -189,7 +191,7 @@ export function CancelTelcoFormSection({
           className="mt-3 h-28 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.extra_details}
           onChange={(e) => setForm((p) => ({ ...p, extra_details: e.target.value }))}
-          placeholder="Extra details (optional)"
+          placeholder={tForms("common.placeholders.extraDetailsOptional")}
         />
       </div>
 

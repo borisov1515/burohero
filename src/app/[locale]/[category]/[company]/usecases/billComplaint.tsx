@@ -75,32 +75,33 @@ export function BillComplaintFormSection({
   builtFacts: string;
 }) {
   const tGen = useTranslations("generator");
+  const tForms = useTranslations("forms");
 
   return (
     <div className="grid gap-4">
-      <div className="text-sm font-medium">Customer</div>
+      <div className="text-sm font-medium">{tForms("sections.customer")}</div>
       <div className="grid gap-3 sm:grid-cols-2">
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.customer_full_name}
           onChange={(e) => setForm((p) => ({ ...p, customer_full_name: e.target.value }))}
-          placeholder="Full name"
+          placeholder={tForms("common.placeholders.fullName")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.customer_id}
           onChange={(e) => setForm((p) => ({ ...p, customer_id: e.target.value }))}
-          placeholder="DNI/NIE/Passport (optional)"
+          placeholder={tForms("common.placeholders.idOptional")}
         />
         <input
           className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.customer_address}
           onChange={(e) => setForm((p) => ({ ...p, customer_address: e.target.value }))}
-          placeholder="Address (optional)"
+          placeholder={tForms("common.placeholders.addressOptional")}
         />
       </div>
 
-      <div className="text-sm font-medium">Invoice</div>
+      <div className="text-sm font-medium">{tForms("sections.invoice")}</div>
       <div className="grid gap-3 sm:grid-cols-2">
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
@@ -108,90 +109,90 @@ export function BillComplaintFormSection({
           onChange={(e) =>
             setForm((p) => ({ ...p, contract_or_account_number: e.target.value }))
           }
-          placeholder="Contract/account number (optional)"
+          placeholder={tForms("billComplaint.contractOrAccountNumberOptional")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.invoice_number}
           onChange={(e) => setForm((p) => ({ ...p, invoice_number: e.target.value }))}
-          placeholder="Invoice number (optional)"
+          placeholder={tForms("billComplaint.invoiceNumberOptional")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.invoice_date}
           onChange={(e) => setForm((p) => ({ ...p, invoice_date: e.target.value }))}
-          placeholder="Invoice date (YYYY-MM-DD) (optional)"
+          placeholder={tForms("billComplaint.invoiceDateOptional")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.billing_period}
           onChange={(e) => setForm((p) => ({ ...p, billing_period: e.target.value }))}
-          placeholder="Billing period (e.g., 2025-10) (optional)"
+          placeholder={tForms("billComplaint.billingPeriodOptional")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.amount_eur}
           onChange={(e) => setForm((p) => ({ ...p, amount_eur: e.target.value }))}
-          placeholder="Amount EUR (optional)"
+          placeholder={tForms("billComplaint.amountOptional")}
         />
         <select
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.payment_status}
           onChange={(e) => setForm((p) => ({ ...p, payment_status: e.target.value as any }))}
         >
-          <option value="">Payment status</option>
-          <option value="paid">Paid</option>
-          <option value="unpaid">Unpaid</option>
-          <option value="partially_paid">Partially paid</option>
+          <option value="">{tForms("billComplaint.paymentStatus.label")}</option>
+          <option value="paid">{tForms("billComplaint.paymentStatus.paid")}</option>
+          <option value="unpaid">{tForms("billComplaint.paymentStatus.unpaid")}</option>
+          <option value="partially_paid">{tForms("billComplaint.paymentStatus.partiallyPaid")}</option>
         </select>
       </div>
 
-      <div className="text-sm font-medium">Issue</div>
+      <div className="text-sm font-medium">{tForms("sections.issue")}</div>
       <div className="grid gap-3 sm:grid-cols-2">
         <select
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.issue_type}
           onChange={(e) => setForm((p) => ({ ...p, issue_type: e.target.value as any }))}
         >
-          <option value="">Issue type</option>
-          <option value="overcharge">Overcharge</option>
-          <option value="wrong_reading">Wrong meter reading</option>
-          <option value="duplicate">Duplicate invoice</option>
-          <option value="service_not_provided">Service not provided</option>
-          <option value="other">Other</option>
+          <option value="">{tForms("billComplaint.issueType.label")}</option>
+          <option value="overcharge">{tForms("billComplaint.issueType.overcharge")}</option>
+          <option value="wrong_reading">{tForms("billComplaint.issueType.wrongReading")}</option>
+          <option value="duplicate">{tForms("billComplaint.issueType.duplicate")}</option>
+          <option value="service_not_provided">{tForms("billComplaint.issueType.serviceNotProvided")}</option>
+          <option value="other">{tForms("billComplaint.issueType.other")}</option>
         </select>
         <select
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.contacted_before}
           onChange={(e) => setForm((p) => ({ ...p, contacted_before: e.target.value as any }))}
         >
-          <option value="">Contacted provider before?</option>
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
+          <option value="">{tForms("billComplaint.contactedProviderBefore")}</option>
+          <option value="yes">{tForms("common.yes")}</option>
+          <option value="no">{tForms("common.no")}</option>
         </select>
         <textarea
           className="sm:col-span-2 h-28 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.issue_description}
           onChange={(e) => setForm((p) => ({ ...p, issue_description: e.target.value }))}
-          placeholder="Describe what's wrong with the invoice…"
+          placeholder={tForms("billComplaint.issueDescription")}
         />
         <textarea
           className="sm:col-span-2 h-24 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.contacted_before_details}
           onChange={(e) => setForm((p) => ({ ...p, contacted_before_details: e.target.value }))}
-          placeholder="Previous communication details (optional)"
+          placeholder={tForms("common.placeholders.previousCommunicationOptional")}
         />
         <input
           className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.desired_outcome}
           onChange={(e) => setForm((p) => ({ ...p, desired_outcome: e.target.value }))}
-          placeholder="Desired outcome (corrected invoice, refund, etc.)"
+          placeholder={tForms("billComplaint.desiredOutcome")}
         />
         <input
           className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.refund_iban}
           onChange={(e) => setForm((p) => ({ ...p, refund_iban: e.target.value }))}
-          placeholder="Refund IBAN (optional)"
+          placeholder={tForms("common.placeholders.refundIbanOptional")}
         />
       </div>
 
@@ -199,7 +200,7 @@ export function BillComplaintFormSection({
         className="h-24 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
         value={form.extra_details}
         onChange={(e) => setForm((p) => ({ ...p, extra_details: e.target.value }))}
-        placeholder="Extra details (optional)"
+        placeholder={tForms("common.placeholders.extraDetailsOptional")}
       />
 
       <details className="rounded-xl border border-zinc-200 p-4 text-sm dark:border-zinc-800">

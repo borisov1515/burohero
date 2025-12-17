@@ -62,5 +62,271 @@
     "backToGenerator": "Back to generator",
     "fontHint": "For Cyrillic/UA/RO/PL characters in PDF, add /public/fonts/NotoSans-Regular.ttf",
     "fontLoad": "Font load"
+  },
+  "forms": {
+    "common": {
+      "yes": "Yes",
+      "no": "No",
+      "placeholders": {
+        "fullName": "Full name",
+        "id": "DNI/NIE/Passport",
+        "idOptional": "DNI/NIE/Passport (optional)",
+        "address": "Address",
+        "addressOptional": "Address (optional)",
+        "extraDetailsOptional": "Extra details (optional)",
+        "previousCommunicationOptional": "Previous communication details (optional)",
+        "refundIbanOptional": "Refund IBAN (optional)",
+        "paymentMethodOptional": "Payment method (optional)"
+      }
+    },
+    "sections": {
+      "recipient": "Recipient",
+      "applicant": "Applicant",
+      "caseDetails": "Case details",
+      "tenant": "Tenant",
+      "landlord": "Landlord",
+      "landlordRecipient": "Landlord / recipient",
+      "leaseDeposit": "Lease + deposit",
+      "leaseDetails": "Lease details",
+      "buyer": "Buyer",
+      "sellerMerchant": "Seller / merchant",
+      "purchase": "Purchase",
+      "productWarranty": "Product + warranty",
+      "customer": "Customer",
+      "invoice": "Invoice",
+      "issue": "Issue",
+      "order": "Order",
+      "delivery": "Delivery",
+      "paymentOutcome": "Payment + requested outcome",
+      "passenger": "Passenger",
+      "flight": "Flight",
+      "expensesOptional": "Expenses (optional)",
+      "communicationRequest": "Communication + request",
+      "policyholder": "Policyholder",
+      "policy": "Policy",
+      "policyClaim": "Policy + claim",
+      "bankFee": "Bank + fee"
+    },
+    "cancelTelco": {
+      "unknownCompanySlug": "Unknown company slug:",
+      "contractNumberOptional": "Contract number (optional)",
+      "cancellationRequestDate": "Cancellation request date (YYYY-MM-DD)",
+      "cancellationRequestMethod": "How did you request cancellation? (call/email/web)",
+      "chargingAfterCancellationQuestion": "Charging after cancellation?",
+      "chargedAmountOptional": "Charged amount EUR (optional)",
+      "chargeDateOptional": "Charge date (optional)",
+      "paymentMethodOptional": "Payment method (card/IBAN) (optional)",
+      "desiredOutcome": "What do you want? (refund, confirmation, etc.)"
+    },
+    "depositReturn": {
+      "tenantFullName": "Tenant full name",
+      "tenantId": "Tenant DNI/NIE/Passport",
+      "tenantAddress": "Tenant address",
+      "landlordFullName": "Landlord full name",
+      "landlordIdOptional": "Landlord ID (optional)",
+      "landlordAddress": "Landlord address",
+      "propertyAddress": "Rented property address",
+      "leaseStartDate": "Lease start date (YYYY-MM-DD)",
+      "leaseEndDate": "Lease end date (YYYY-MM-DD)",
+      "depositAmount": "Deposit amount EUR",
+      "moveOutDate": "Move-out date (YYYY-MM-DD)",
+      "keysReturnedDateOptional": "Keys returned date (optional)",
+      "requestedReturnBefore": "Requested return before?",
+      "desiredOutcome": "Desired outcome (refund by date, etc.)"
+    },
+    "return14": {
+      "buyerFullName": "Buyer full name",
+      "buyerId": "Buyer DNI/NIE/Passport",
+      "buyerAddress": "Buyer address",
+      "sellerName": "Seller name",
+      "orderNumberOptional": "Order / invoice number (optional)",
+      "sellerAddress": "Seller address",
+      "productDescription": "Product description",
+      "purchaseDate": "Purchase date (YYYY-MM-DD)",
+      "deliveryDate": "Delivery date (YYYY-MM-DD)",
+      "returnRequestDate": "Return request date (YYYY-MM-DD)",
+      "paidAmount": "Paid amount EUR",
+      "paymentMethod": "Payment method (card/PayPal/IBAN)",
+      "contactedSupportBefore": "Contacted support before?",
+      "supportContactDetailsOptional": "Support contact details (optional)",
+      "desiredOutcome": "Desired outcome (refund, instructions for return, etc.)"
+    },
+    "repairDemand": {
+      "sections": {
+        "propertyIssue": "Property + issue"
+      },
+      "tenantFullName": "Tenant full name",
+      "tenantId": "Tenant DNI/NIE/Passport",
+      "tenantAddress": "Tenant address",
+      "landlordFullName": "Landlord full name",
+      "landlordAddress": "Landlord address",
+      "issueFirstReportedDate": "Issue first reported date (YYYY-MM-DD)",
+      "propertyAddress": "Rented property address",
+      "issueDescription": "Describe the issue (what is broken, since when, impact)…",
+      "urgency": {
+        "label": "Urgency",
+        "low": "Low",
+        "normal": "Normal",
+        "high": "High"
+      },
+      "desiredOutcome": "Desired outcome (repair by date, inspection, etc.)"
+    },
+    "leaseTermination": {
+      "tenantFullName": "Tenant full name",
+      "tenantId": "Tenant DNI/NIE/Passport",
+      "tenantAddress": "Tenant address",
+      "landlordFullName": "Landlord full name",
+      "landlordAddress": "Landlord address",
+      "propertyAddress": "Rented property address",
+      "leaseStartDate": "Lease start date (YYYY-MM-DD)",
+      "plannedTerminationDate": "Planned termination date (YYYY-MM-DD)",
+      "noticeSentDateOptional": "Notice sent date (optional)",
+      "noticeMethodOptional": "Notice method (burofax/email/hand delivery) (optional)",
+      "terminationReasonOptional": "Reason for termination (optional)",
+      "desiredOutcome": "Desired outcome (confirm termination, key handover, settlement, etc.)"
+    },
+    "billComplaint": {
+      "contractOrAccountNumberOptional": "Contract/account number (optional)",
+      "invoiceNumberOptional": "Invoice number (optional)",
+      "invoiceDateOptional": "Invoice date (YYYY-MM-DD) (optional)",
+      "billingPeriodOptional": "Billing period (e.g., 2025-10) (optional)",
+      "amountOptional": "Amount EUR (optional)",
+      "paymentStatus": {
+        "label": "Payment status",
+        "paid": "Paid",
+        "unpaid": "Unpaid",
+        "partiallyPaid": "Partially paid"
+      },
+      "issueType": {
+        "label": "Issue type",
+        "overcharge": "Overcharge",
+        "wrongReading": "Wrong meter reading",
+        "duplicate": "Duplicate invoice",
+        "serviceNotProvided": "Service not provided",
+        "other": "Other"
+      },
+      "contactedProviderBefore": "Contacted provider before?",
+      "issueDescription": "Describe what's wrong with the invoice…",
+      "desiredOutcome": "Desired outcome (corrected invoice, refund, etc.)"
+    },
+    "warranty3y": {
+      "buyerFullName": "Buyer full name",
+      "buyerIdOptional": "Buyer DNI/NIE/Passport (optional)",
+      "buyerAddressOptional": "Buyer address (optional)",
+      "sellerNameOptional": "Seller name (optional)",
+      "orderOrInvoiceNumberOptional": "Order / invoice number (optional)",
+      "sellerAddressOptional": "Seller address (optional)",
+      "productDescription": "Product description",
+      "purchaseDateOptional": "Purchase date (YYYY-MM-DD) (optional)",
+      "deliveryDateOptional": "Delivery date (YYYY-MM-DD) (optional)",
+      "defectDiscoveredDateOptional": "Defect discovered date (optional)",
+      "requestedSolution": {
+        "label": "Requested solution",
+        "repair": "Repair",
+        "replacement": "Replacement",
+        "refund": "Refund",
+        "priceReduction": "Price reduction"
+      },
+      "contactedSupportBefore": "Contacted support before?",
+      "defectDescription": "Describe the defect / lack of conformity…",
+      "supportContactDetailsOptional": "Support contact details (optional)",
+      "desiredOutcome": "Desired outcome (repair within X days, replacement, refund, etc.)"
+    },
+    "nonDelivery": {
+      "sections": {
+        "order": "Order"
+      },
+      "buyerFullName": "Buyer full name",
+      "buyerIdOptional": "Buyer DNI/NIE/Passport (optional)",
+      "buyerAddressOptional": "Buyer address (optional)",
+      "sellerNameOptional": "Seller name (optional)",
+      "orderNumberOptional": "Order number (optional)",
+      "productDescription": "Product description",
+      "purchaseDateOptional": "Purchase date (optional)",
+      "promisedDeliveryDateOptional": "Promised delivery date (optional)",
+      "trackingNumberOptional": "Tracking number (optional)",
+      "carrierNameOptional": "Carrier name (optional)",
+      "deliveryStatus": {
+        "label": "Delivery status",
+        "notDelivered": "Not delivered",
+        "lost": "Lost",
+        "deliveredButNotReceived": "Marked delivered but not received"
+      },
+      "contactedSellerBefore": "Contacted seller before?",
+      "paidAmountOptional": "Paid amount EUR (optional)",
+      "desiredOutcome": {
+        "label": "Desired outcome",
+        "deliver": "Deliver the goods",
+        "replacement": "Replacement",
+        "refund": "Refund"
+      }
+    },
+    "flightDelay": {
+      "flightNumber": "Flight number (e.g., FR1234)",
+      "bookingReferenceOptional": "Booking reference / PNR (optional)",
+      "departureAirport": "Departure airport (e.g., MAD)",
+      "arrivalAirport": "Arrival airport (e.g., BCN)",
+      "scheduledDepartureOptional": "Scheduled departure (optional)",
+      "scheduledArrivalOptional": "Scheduled arrival (optional)",
+      "actualArrivalOptional": "Actual arrival (optional)",
+      "delayHoursOptional": "Delay (hours) (optional)",
+      "delayReasonOptional": "Delay reason (if known) (optional)",
+      "expensesEurOptional": "Expenses EUR (optional)",
+      "ibanOptional": "IBAN for compensation (optional)",
+      "expensesDescriptionOptional": "Expenses description (hotel, meals, transport) (optional)",
+      "contactedAirlineBefore": "Contacted airline before?",
+      "desiredOutcomeOptional": "Desired outcome (EU261 compensation + expenses) (optional)"
+    },
+    "insuranceCancel": {
+      "insurerNameOptional": "Insurer name (optional)",
+      "policyNumberOptional": "Policy number (optional)",
+      "insuranceTypeOptional": "Insurance type (car/home/health/etc.) (optional)",
+      "renewalDateOptional": "Renewal date (optional)",
+      "cancellationRequestDateOptional": "Cancellation request date (optional)",
+      "cancellationMethodOptional": "Cancellation method (email/burofax/phone) (optional)",
+      "ibanOptional": "IBAN for refunds (optional)",
+      "desiredOutcome": "Desired outcome (confirm cancellation, stop renewals, refund, etc.)",
+      "reasonOptional": "Reason (optional)"
+    },
+    "claimDenied": {
+      "insurerNameOptional": "Insurer name (optional)",
+      "policyNumberOptional": "Policy number (optional)",
+      "claimNumberOptional": "Claim number (optional)",
+      "claimedAmountOptional": "Claimed amount EUR (optional)",
+      "incidentDateOptional": "Incident date (optional)",
+      "denialDateOptional": "Denial date (optional)",
+      "ibanOptional": "IBAN for payment (optional)",
+      "incidentDescription": "Incident description (what happened, damages, documents)…",
+      "denialReason": "Denial reason (as stated by insurer)…",
+      "contactedInsurerBefore": "Contacted insurer before?",
+      "desiredOutcome": "Desired outcome (pay claim, reconsider, provide report, etc.)"
+    },
+    "feesRefund": {
+      "bankNameOptional": "Bank name (optional)",
+      "accountIbanOptional": "Account IBAN (optional)",
+      "productType": {
+        "label": "Product type",
+        "account": "Account",
+        "card": "Card",
+        "mortgage": "Mortgage",
+        "loan": "Loan",
+        "other": "Other"
+      },
+      "feeType": {
+        "label": "Fee type",
+        "maintenance": "Maintenance",
+        "cardFee": "Card fee",
+        "overdraft": "Overdraft",
+        "transfer": "Transfer",
+        "openingSetup": "Opening / setup",
+        "other": "Other"
+      },
+      "feeAmountOptional": "Fee amount EUR (optional)",
+      "feeDateOptional": "Fee date (optional)",
+      "periodDetailsOptional": "Period / invoice statement details (optional)",
+      "reasonOptional": "Why is this fee unfair/incorrect? (optional)",
+      "contactedBankBefore": "Contacted bank before?",
+      "desiredOutcome": "Desired outcome (refund, cancel fee, explain basis, etc.)"
+    }
   }
 }

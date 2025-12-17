@@ -76,111 +76,112 @@ export function DepositReturnFormSection({
   builtFacts: string;
 }) {
   const tGen = useTranslations("generator");
+  const tForms = useTranslations("forms");
 
   return (
     <div className="grid gap-4">
-      <div className="text-sm font-medium">Tenant</div>
+      <div className="text-sm font-medium">{tForms("sections.tenant")}</div>
       <div className="grid gap-3 sm:grid-cols-2">
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.tenant_full_name}
           onChange={(e) => setForm((p) => ({ ...p, tenant_full_name: e.target.value }))}
-          placeholder="Tenant full name"
+          placeholder={tForms("depositReturn.tenantFullName")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.tenant_id}
           onChange={(e) => setForm((p) => ({ ...p, tenant_id: e.target.value }))}
-          placeholder="Tenant DNI/NIE/Passport"
+          placeholder={tForms("depositReturn.tenantId")}
         />
         <input
           className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.tenant_address}
           onChange={(e) => setForm((p) => ({ ...p, tenant_address: e.target.value }))}
-          placeholder="Tenant address"
+          placeholder={tForms("depositReturn.tenantAddress")}
         />
       </div>
 
-      <div className="text-sm font-medium">Landlord / recipient</div>
+      <div className="text-sm font-medium">{tForms("sections.landlordRecipient")}</div>
       <div className="grid gap-3 sm:grid-cols-2">
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.landlord_full_name}
           onChange={(e) => setForm((p) => ({ ...p, landlord_full_name: e.target.value }))}
-          placeholder="Landlord full name"
+          placeholder={tForms("depositReturn.landlordFullName")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.landlord_id}
           onChange={(e) => setForm((p) => ({ ...p, landlord_id: e.target.value }))}
-          placeholder="Landlord ID (optional)"
+          placeholder={tForms("depositReturn.landlordIdOptional")}
         />
         <input
           className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.landlord_address}
           onChange={(e) => setForm((p) => ({ ...p, landlord_address: e.target.value }))}
-          placeholder="Landlord address"
+          placeholder={tForms("depositReturn.landlordAddress")}
         />
       </div>
 
-      <div className="text-sm font-medium">Lease + deposit</div>
+      <div className="text-sm font-medium">{tForms("sections.leaseDeposit")}</div>
       <div className="grid gap-3 sm:grid-cols-2">
         <input
           className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.property_address}
           onChange={(e) => setForm((p) => ({ ...p, property_address: e.target.value }))}
-          placeholder="Rented property address"
+          placeholder={tForms("depositReturn.propertyAddress")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.lease_start_date}
           onChange={(e) => setForm((p) => ({ ...p, lease_start_date: e.target.value }))}
-          placeholder="Lease start date (YYYY-MM-DD)"
+          placeholder={tForms("depositReturn.leaseStartDate")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.lease_end_date}
           onChange={(e) => setForm((p) => ({ ...p, lease_end_date: e.target.value }))}
-          placeholder="Lease end date (YYYY-MM-DD)"
+          placeholder={tForms("depositReturn.leaseEndDate")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.deposit_amount_eur}
           onChange={(e) => setForm((p) => ({ ...p, deposit_amount_eur: e.target.value }))}
-          placeholder="Deposit amount EUR"
+          placeholder={tForms("depositReturn.depositAmount")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.move_out_date}
           onChange={(e) => setForm((p) => ({ ...p, move_out_date: e.target.value }))}
-          placeholder="Move-out date (YYYY-MM-DD)"
+          placeholder={tForms("depositReturn.moveOutDate")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.keys_returned_date}
           onChange={(e) => setForm((p) => ({ ...p, keys_returned_date: e.target.value }))}
-          placeholder="Keys returned date (optional)"
+          placeholder={tForms("depositReturn.keysReturnedDateOptional")}
         />
         <select
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.requested_before}
           onChange={(e) => setForm((p) => ({ ...p, requested_before: e.target.value as any }))}
         >
-          <option value="">Requested return before?</option>
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
+          <option value="">{tForms("depositReturn.requestedReturnBefore")}</option>
+          <option value="yes">{tForms("common.yes")}</option>
+          <option value="no">{tForms("common.no")}</option>
         </select>
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.refund_iban}
           onChange={(e) => setForm((p) => ({ ...p, refund_iban: e.target.value }))}
-          placeholder="Refund IBAN (optional)"
+          placeholder={tForms("common.placeholders.refundIbanOptional")}
         />
         <input
           className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.desired_outcome}
           onChange={(e) => setForm((p) => ({ ...p, desired_outcome: e.target.value }))}
-          placeholder="Desired outcome (refund by date, etc.)"
+          placeholder={tForms("depositReturn.desiredOutcome")}
         />
       </div>
 
@@ -188,7 +189,7 @@ export function DepositReturnFormSection({
         className="h-28 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
         value={form.extra_details}
         onChange={(e) => setForm((p) => ({ ...p, extra_details: e.target.value }))}
-        placeholder="Extra details (optional)"
+        placeholder={tForms("common.placeholders.extraDetailsOptional")}
       />
 
       <details className="rounded-xl border border-zinc-200 p-4 text-sm dark:border-zinc-800">

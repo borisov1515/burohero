@@ -63,90 +63,91 @@ export function LeaseTerminationFormSection({
   builtFacts: string;
 }) {
   const tGen = useTranslations("generator");
+  const tForms = useTranslations("forms");
 
   return (
     <div className="grid gap-4">
-      <div className="text-sm font-medium">Tenant</div>
+      <div className="text-sm font-medium">{tForms("sections.tenant")}</div>
       <div className="grid gap-3 sm:grid-cols-2">
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.tenant_full_name}
           onChange={(e) => setForm((p) => ({ ...p, tenant_full_name: e.target.value }))}
-          placeholder="Tenant full name"
+          placeholder={tForms("leaseTermination.tenantFullName")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.tenant_id}
           onChange={(e) => setForm((p) => ({ ...p, tenant_id: e.target.value }))}
-          placeholder="Tenant DNI/NIE/Passport"
+          placeholder={tForms("leaseTermination.tenantId")}
         />
         <input
           className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.tenant_address}
           onChange={(e) => setForm((p) => ({ ...p, tenant_address: e.target.value }))}
-          placeholder="Tenant address"
+          placeholder={tForms("leaseTermination.tenantAddress")}
         />
       </div>
 
-      <div className="text-sm font-medium">Landlord</div>
+      <div className="text-sm font-medium">{tForms("sections.landlord")}</div>
       <div className="grid gap-3 sm:grid-cols-2">
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.landlord_full_name}
           onChange={(e) => setForm((p) => ({ ...p, landlord_full_name: e.target.value }))}
-          placeholder="Landlord full name"
+          placeholder={tForms("leaseTermination.landlordFullName")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.landlord_address}
           onChange={(e) => setForm((p) => ({ ...p, landlord_address: e.target.value }))}
-          placeholder="Landlord address"
+          placeholder={tForms("leaseTermination.landlordAddress")}
         />
       </div>
 
-      <div className="text-sm font-medium">Lease details</div>
+      <div className="text-sm font-medium">{tForms("sections.leaseDetails")}</div>
       <div className="grid gap-3 sm:grid-cols-2">
         <input
           className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.property_address}
           onChange={(e) => setForm((p) => ({ ...p, property_address: e.target.value }))}
-          placeholder="Rented property address"
+          placeholder={tForms("leaseTermination.propertyAddress")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.lease_start_date}
           onChange={(e) => setForm((p) => ({ ...p, lease_start_date: e.target.value }))}
-          placeholder="Lease start date (YYYY-MM-DD)"
+          placeholder={tForms("leaseTermination.leaseStartDate")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.planned_termination_date}
           onChange={(e) => setForm((p) => ({ ...p, planned_termination_date: e.target.value }))}
-          placeholder="Planned termination date (YYYY-MM-DD)"
+          placeholder={tForms("leaseTermination.plannedTerminationDate")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.notice_sent_date}
           onChange={(e) => setForm((p) => ({ ...p, notice_sent_date: e.target.value }))}
-          placeholder="Notice sent date (optional)"
+          placeholder={tForms("leaseTermination.noticeSentDateOptional")}
         />
         <input
           className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.notice_method}
           onChange={(e) => setForm((p) => ({ ...p, notice_method: e.target.value }))}
-          placeholder="Notice method (burofax/email/hand delivery) (optional)"
+          placeholder={tForms("leaseTermination.noticeMethodOptional")}
         />
         <textarea
           className="sm:col-span-2 h-24 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.termination_reason}
           onChange={(e) => setForm((p) => ({ ...p, termination_reason: e.target.value }))}
-          placeholder="Reason for termination (optional)"
+          placeholder={tForms("leaseTermination.terminationReasonOptional")}
         />
         <input
           className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
           value={form.desired_outcome}
           onChange={(e) => setForm((p) => ({ ...p, desired_outcome: e.target.value }))}
-          placeholder="Desired outcome (confirm termination, key handover, settlement, etc.)"
+          placeholder={tForms("leaseTermination.desiredOutcome")}
         />
       </div>
 
@@ -154,7 +155,7 @@ export function LeaseTerminationFormSection({
         className="h-24 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
         value={form.extra_details}
         onChange={(e) => setForm((p) => ({ ...p, extra_details: e.target.value }))}
-        placeholder="Extra details (optional)"
+        placeholder={tForms("common.placeholders.extraDetailsOptional")}
       />
 
       <details className="rounded-xl border border-zinc-200 p-4 text-sm dark:border-zinc-800">
