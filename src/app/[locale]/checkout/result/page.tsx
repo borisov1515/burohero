@@ -20,12 +20,32 @@ export default async function CheckoutResultPage({
 
   const { orderId } = await searchParams;
 
+  const isUuid =
+    typeof orderId === "string" &&
+    /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(orderId);
+
   if (!orderId) {
     return (
       <main className="mx-auto w-full max-w-3xl px-6 py-16">
         <h1 className="text-2xl font-semibold tracking-tight">{t("title")}</h1>
         <p className="mt-4 text-zinc-600 dark:text-zinc-400">
           {t("missingOrderId")}
+        </p>
+        <div className="mt-6">
+          <Link className="underline underline-offset-4" href={`/${locale}`}>
+            {t("backHome")}
+          </Link>
+        </div>
+      </main>
+    );
+  }
+
+  if (!isUuid) {
+    return (
+      <main className="mx-auto w-full max-w-3xl px-6 py-16">
+        <h1 className="text-2xl font-semibold tracking-tight">{t("title")}</h1>
+        <p className="mt-4 text-zinc-600 dark:text-zinc-400">
+          {t("invalidOrderId")}
         </p>
         <div className="mt-6">
           <Link className="underline underline-offset-4" href={`/${locale}`}>
@@ -47,7 +67,9 @@ export default async function CheckoutResultPage({
     return (
       <main className="mx-auto w-full max-w-3xl px-6 py-16">
         <h1 className="text-2xl font-semibold tracking-tight">{t("title")}</h1>
-        <p className="mt-4 text-red-700 dark:text-red-200">{error.message}</p>
+        <p className="mt-4 text-zinc-600 dark:text-zinc-400">
+          {t("orderNotFound")}
+        </p>
       </main>
     );
   }
@@ -73,7 +95,8 @@ export default async function CheckoutResultPage({
       <header className="flex flex-col gap-2">
         <h1 className="text-2xl font-semibold tracking-tight">{t("title")}</h1>
         <div className="text-sm text-zinc-500 dark:text-zinc-400">
-          {t("orderLabel")} <span className="font-mono">{data.id}</span> • status:{" "}
+          {t("orderLabel")} <span className="font-mono">{data.id}</span> •{" "}
+          {t("statusLabel")}:{" "}
           <span className="font-medium">{data.status}</span>
         </div>
       </header>
