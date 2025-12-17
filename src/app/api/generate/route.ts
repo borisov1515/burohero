@@ -3,11 +3,55 @@ import { z } from "zod";
 import { generateDualLanguageLegalText } from "@/lib/deepseek";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 
+const CancelTelcoFormSchema = z.object({
+  applicant_full_name: z.string().min(2).optional(),
+  applicant_id: z.string().min(3).optional(),
+  applicant_address: z.string().min(5).optional(),
+
+  contract_number: z.string().min(2).optional(),
+  cancellation_request_date: z.string().min(4).optional(), // free-form / date string
+  cancellation_request_method: z.string().min(2).optional(),
+
+  charge_after_cancellation: z.boolean().optional(),
+  charged_amount_eur: z.string().min(1).optional(),
+  charged_date: z.string().min(4).optional(),
+  payment_method: z.string().min(2).optional(),
+
+  desired_outcome: z.string().min(2).optional(),
+  extra_details: z.string().min(0).optional(),
+});
+
+function buildCancelTelcoFacts(input: {
+  locale: string;
+  company: string;
+  form: z.infer<typeof CancelTelcoFormSchema>;
+}) {
+  const f = input.form;
+  const lines: string[] = [];
+  lines.push(`Use case: cancel telecom contract (${input.company}).`);
+  if (f.applicant_full_name) lines.push(`Applicant full name: ${f.applicant_full_name}`);
+  if (f.applicant_id) lines.push(`Applicant ID (DNI/NIE/Passport): ${f.applicant_id}`);
+  if (f.applicant_address) lines.push(`Applicant address: ${f.applicant_address}`);
+  if (f.contract_number) lines.push(`Contract number: ${f.contract_number}`);
+  if (f.cancellation_request_date) lines.push(`Cancellation requested on: ${f.cancellation_request_date}`);
+  if (f.cancellation_request_method) lines.push(`Cancellation request method: ${f.cancellation_request_method}`);
+  if (f.charge_after_cancellation === true) lines.push(`Provider continued charging after cancellation: yes`);
+  if (f.charge_after_cancellation === false) lines.push(`Provider continued charging after cancellation: no`);
+  if (f.charged_amount_eur) lines.push(`Charged amount (EUR): ${f.charged_amount_eur}`);
+  if (f.charged_date) lines.push(`Charge date: ${f.charged_date}`);
+  if (f.payment_method) lines.push(`Payment method: ${f.payment_method}`);
+  if (f.desired_outcome) lines.push(`Desired outcome: ${f.desired_outcome}`);
+  if (f.extra_details) lines.push(`Additional details: ${f.extra_details}`);
+  return lines.join("\n");
+}
+
 const GenerateRequestSchema = z.object({
   locale: z.string().min(2),
   category: z.string().min(1),
   company: z.string().min(1),
-  facts: z.string().min(10),
+  // Back-compat: allow raw facts, or structured form (recommended for cancel/*)
+  facts: z.string().min(10).optional(),
+  form: CancelTelcoFormSchema.optional(),
 });
 
 export async function POST(req: Request) {
@@ -15,9 +59,22 @@ export async function POST(req: Request) {
     const body = await req.json();
     const input = GenerateRequestSchema.parse(body);
 
+    const facts =
+      input.category === "cancel" && input.form
+        ? buildCancelTelcoFacts({
+            locale: input.locale,
+            company: input.company,
+            form: input.form,
+          })
+        : input.facts;
+
+    if (!facts || facts.trim().length < 10) {
+      throw new Error("Facts are required");
+    }
+
     const result = await generateDualLanguageLegalText({
       userLanguage: input.locale,
-      facts: input.facts,
+      facts,
       useCaseHint: `${input.category}/${input.company}`,
     });
 
@@ -32,7 +89,8 @@ export async function POST(req: Request) {
         locale: input.locale,
         category: input.category,
         company: input.company,
-        facts: input.facts,
+        facts,
+        form: input.form ?? null,
         ...result,
       },
     });
@@ -41,7 +99,7 @@ export async function POST(req: Request) {
       throw new Error(`Supabase insert error: ${error.message}`);
     }
 
-    return NextResponse.json({ orderId, ...result });
+    return NextResponse.json({ orderId, ...result, facts });
   } catch (e) {
     const message = e instanceof Error ? e.message : "Unknown error";
     return NextResponse.json({ error: message }, { status: 400 });
