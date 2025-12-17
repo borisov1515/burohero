@@ -73,6 +73,31 @@ const CancelTelcoFormSchema = z.object({
   extra_details: z.preprocess(emptyToUndefined, z.string().optional()),
 });
 
+const DepositReturnFormSchema = z.object({
+  tenant_full_name: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  tenant_id: z.preprocess(emptyToUndefined, z.string().min(3).optional()),
+  tenant_address: z.preprocess(emptyToUndefined, z.string().min(5).optional()),
+
+  landlord_full_name: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  landlord_id: z.preprocess(emptyToUndefined, z.string().min(3).optional()),
+  landlord_address: z.preprocess(emptyToUndefined, z.string().min(5).optional()),
+
+  property_address: z.preprocess(emptyToUndefined, z.string().min(5).optional()),
+  lease_start_date: z.preprocess(emptyToUndefined, z.string().min(4).optional()),
+  lease_end_date: z.preprocess(emptyToUndefined, z.string().min(4).optional()),
+
+  deposit_amount_eur: z.preprocess(emptyToUndefined, z.string().min(1).optional()),
+  move_out_date: z.preprocess(emptyToUndefined, z.string().min(4).optional()),
+  keys_returned_date: z.preprocess(emptyToUndefined, z.string().min(4).optional()),
+
+  requested_before: z.preprocess(yesNoToBoolean, z.boolean().optional()),
+  requested_before_details: z.preprocess(emptyToUndefined, z.string().optional()),
+
+  refund_iban: z.preprocess(emptyToUndefined, z.string().optional()),
+  desired_outcome: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  extra_details: z.preprocess(emptyToUndefined, z.string().optional()),
+});
+
 function buildCancelTelcoFacts(input: {
   locale: string;
   company: string;
@@ -103,13 +128,48 @@ function buildCancelTelcoFacts(input: {
   return lines.join("\n");
 }
 
+function buildDepositReturnFacts(input: {
+  locale: string;
+  company: string;
+  form: z.infer<typeof DepositReturnFormSchema>;
+}) {
+  const f = input.form;
+  const lines: string[] = [];
+  lines.push("Use case: housing deposit return (fianza).");
+  if (f.tenant_full_name) lines.push(`Tenant full name: ${f.tenant_full_name}`);
+  if (f.tenant_id) lines.push(`Tenant ID (DNI/NIE/Passport): ${f.tenant_id}`);
+  if (f.tenant_address) lines.push(`Tenant address: ${f.tenant_address}`);
+
+  if (f.landlord_full_name) lines.push(`Landlord full name: ${f.landlord_full_name}`);
+  if (f.landlord_id) lines.push(`Landlord ID: ${f.landlord_id}`);
+  if (f.landlord_address) lines.push(`Landlord address: ${f.landlord_address}`);
+
+  if (f.property_address) lines.push(`Rented property address: ${f.property_address}`);
+  if (f.lease_start_date) lines.push(`Lease start date: ${f.lease_start_date}`);
+  if (f.lease_end_date) lines.push(`Lease end date: ${f.lease_end_date}`);
+
+  if (f.deposit_amount_eur) lines.push(`Deposit amount (EUR): ${f.deposit_amount_eur}`);
+  if (f.move_out_date) lines.push(`Move-out date: ${f.move_out_date}`);
+  if (f.keys_returned_date) lines.push(`Keys returned date: ${f.keys_returned_date}`);
+
+  if (f.requested_before === true) lines.push("Deposit return already requested before: yes");
+  if (f.requested_before === false) lines.push("Deposit return already requested before: no");
+  if (f.requested_before_details) lines.push(`Previous requests: ${f.requested_before_details}`);
+
+  if (f.refund_iban) lines.push(`Refund IBAN: ${f.refund_iban}`);
+  if (f.desired_outcome) lines.push(`Desired outcome: ${f.desired_outcome}`);
+  if (f.extra_details) lines.push(`Additional details: ${f.extra_details}`);
+
+  return lines.join("\n");
+}
+
 const GenerateRequestSchema = z.object({
   locale: z.string().min(2),
   category: z.string().min(1),
   company: z.string().min(1),
   // Back-compat: allow raw facts, or structured form (recommended for cancel/*)
   facts: z.string().min(10).optional(),
-  form: CancelTelcoFormSchema.optional(),
+  form: z.unknown().optional(),
 });
 
 export async function POST(req: Request) {
@@ -118,14 +178,34 @@ export async function POST(req: Request) {
     const body = await req.json();
     const input = GenerateRequestSchema.parse(body);
 
-    const facts =
-      input.category === "cancel" && input.form
-        ? buildCancelTelcoFacts({
-            locale: input.locale,
-            company: input.company,
-            form: input.form,
-          })
-        : input.facts;
+    let parsedForm: unknown = null;
+    let facts: string | undefined = input.facts;
+
+    if (input.category === "cancel" && input.form) {
+      const parsed = CancelTelcoFormSchema.safeParse(input.form);
+      if (!parsed.success) {
+        throw new Error(JSON.stringify(parsed.error.issues, null, 2));
+      }
+      parsedForm = parsed.data;
+      facts = buildCancelTelcoFacts({
+        locale: input.locale,
+        company: input.company,
+        form: parsed.data,
+      });
+    }
+
+    if (input.category === "fianza" && input.form) {
+      const parsed = DepositReturnFormSchema.safeParse(input.form);
+      if (!parsed.success) {
+        throw new Error(JSON.stringify(parsed.error.issues, null, 2));
+      }
+      parsedForm = parsed.data;
+      facts = buildDepositReturnFacts({
+        locale: input.locale,
+        company: input.company,
+        form: parsed.data,
+      });
+    }
 
     if (!facts || facts.trim().length < 10) {
       throw new Error("Facts are required");
@@ -150,7 +230,7 @@ export async function POST(req: Request) {
         company: input.company,
         recipient: getCompanyBySlug(input.company),
         facts,
-        form: input.form ?? null,
+        form: parsedForm,
         ...result,
       },
     });
