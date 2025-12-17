@@ -211,6 +211,28 @@ const NonDeliveryFormSchema = z.object({
   extra_details: z.preprocess(emptyToUndefined, z.string().optional()),
 });
 
+const FlightDelayFormSchema = z.object({
+  passenger_full_name: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  passenger_id: z.preprocess(emptyToUndefined, z.string().min(3).optional()),
+  passenger_address: z.preprocess(emptyToUndefined, z.string().min(5).optional()),
+  booking_reference: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  flight_number: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  departure_airport: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  arrival_airport: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  scheduled_departure: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  scheduled_arrival: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  actual_arrival: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  delay_hours: z.preprocess(emptyToUndefined, z.string().min(1).optional()),
+  delay_reason: z.preprocess(emptyToUndefined, z.string().optional()),
+  expenses_eur: z.preprocess(emptyToUndefined, z.string().min(1).optional()),
+  expenses_description: z.preprocess(emptyToUndefined, z.string().optional()),
+  contacted_airline_before: z.preprocess(emptyToUndefined, z.string().optional()),
+  contacted_details: z.preprocess(emptyToUndefined, z.string().optional()),
+  desired_outcome: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  iban: z.preprocess(emptyToUndefined, z.string().optional()),
+  extra_details: z.preprocess(emptyToUndefined, z.string().optional()),
+});
+
 function buildCancelTelcoFacts(input: {
   locale: string;
   company: string;
@@ -443,6 +465,37 @@ function buildNonDeliveryFacts(input: {
   return lines.join("\n");
 }
 
+function buildFlightDelayFacts(input: {
+  locale: string;
+  company: string;
+  form: z.infer<typeof FlightDelayFormSchema>;
+}) {
+  const f = input.form;
+  const lines: string[] = [];
+  lines.push(`Use case: flight delay compensation claim (EU261/2004) (${input.company}).`);
+  if (f.passenger_full_name) lines.push(`Passenger full name: ${f.passenger_full_name}`);
+  if (f.passenger_id) lines.push(`Passenger ID (DNI/NIE/Passport): ${f.passenger_id}`);
+  if (f.passenger_address) lines.push(`Passenger address: ${f.passenger_address}`);
+  if (f.booking_reference) lines.push(`Booking reference (PNR): ${f.booking_reference}`);
+  if (f.flight_number) lines.push(`Flight number: ${f.flight_number}`);
+  if (f.departure_airport) lines.push(`Departure airport: ${f.departure_airport}`);
+  if (f.arrival_airport) lines.push(`Arrival airport: ${f.arrival_airport}`);
+  if (f.scheduled_departure) lines.push(`Scheduled departure: ${f.scheduled_departure}`);
+  if (f.scheduled_arrival) lines.push(`Scheduled arrival: ${f.scheduled_arrival}`);
+  if (f.actual_arrival) lines.push(`Actual arrival: ${f.actual_arrival}`);
+  if (f.delay_hours) lines.push(`Delay duration (hours): ${f.delay_hours}`);
+  if (f.delay_reason) lines.push(`Delay reason (if known): ${f.delay_reason}`);
+  if (f.expenses_eur) lines.push(`Expenses amount (EUR): ${f.expenses_eur}`);
+  if (f.expenses_description) lines.push(`Expenses description: ${f.expenses_description}`);
+  if (f.contacted_airline_before === "yes") lines.push("Contacted airline before: yes");
+  if (f.contacted_airline_before === "no") lines.push("Contacted airline before: no");
+  if (f.contacted_details) lines.push(`Previous communication: ${f.contacted_details}`);
+  if (f.desired_outcome) lines.push(`Desired outcome: ${f.desired_outcome}`);
+  if (f.iban) lines.push(`IBAN for payment: ${f.iban}`);
+  if (f.extra_details) lines.push(`Additional details: ${f.extra_details}`);
+  return lines.join("\n");
+}
+
 const GenerateRequestSchema = z.object({
   locale: z.string().min(2),
   category: z.string().min(1),
@@ -559,6 +612,19 @@ export async function POST(req: Request) {
       }
       parsedForm = parsed.data;
       facts = buildNonDeliveryFacts({
+        locale: input.locale,
+        company: input.company,
+        form: parsed.data,
+      });
+    }
+
+    if (input.category === "vuelo" && input.form) {
+      const parsed = FlightDelayFormSchema.safeParse(input.form);
+      if (!parsed.success) {
+        throw new Error(JSON.stringify(parsed.error.issues, null, 2));
+      }
+      parsedForm = parsed.data;
+      facts = buildFlightDelayFacts({
         locale: input.locale,
         company: input.company,
         form: parsed.data,

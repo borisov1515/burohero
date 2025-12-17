@@ -70,6 +70,12 @@ export default async function LocaleHome({
           >
             Example generator: noentrega / amazon (undelivered goods)
           </Link>
+          <Link
+            className="underline underline-offset-4"
+            href={`/${locale}/vuelo/ryanair`}
+          >
+            Example generator: vuelo / ryanair (flight delay)
+          </Link>
         </div>
       </section>
     </main>

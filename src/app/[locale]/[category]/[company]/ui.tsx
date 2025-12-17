@@ -51,6 +51,12 @@ import {
   defaultNonDeliveryForm,
   type NonDeliveryForm,
 } from "./usecases/nonDelivery";
+import {
+  FlightDelayFormSection,
+  buildFlightDelayFacts,
+  defaultFlightDelayForm,
+  type FlightDelayForm,
+} from "./usecases/flightDelay";
 
 type Props = {
   locale: AppLocale;
@@ -76,6 +82,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
   );
   const [warranty3yForm, setWarranty3yForm] = useState<Warranty3yForm>(defaultWarranty3yForm);
   const [nonDeliveryForm, setNonDeliveryForm] = useState<NonDeliveryForm>(defaultNonDeliveryForm);
+  const [flightDelayForm, setFlightDelayForm] = useState<FlightDelayForm>(defaultFlightDelayForm);
   const [isLoading, setIsLoading] = useState(false);
   const [orderId, setOrderId] = useState<string | null>(null);
   const [isPaid, setIsPaid] = useState(false);
@@ -94,6 +101,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
     if (category === "factura") return buildBillComplaintFacts(billComplaintForm, company);
     if (category === "garantia") return buildWarranty3yFacts(warranty3yForm, company);
     if (category === "noentrega") return buildNonDeliveryFacts(nonDeliveryForm, company);
+    if (category === "vuelo") return buildFlightDelayFacts(flightDelayForm, company);
     return facts;
   }, [
     category,
@@ -107,6 +115,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
     billComplaintForm,
     warranty3yForm,
     nonDeliveryForm,
+    flightDelayForm,
   ]);
 
   const canGenerate = useMemo(() => builtFacts.trim().length >= 10, [builtFacts]);
@@ -271,6 +280,20 @@ export default function GeneratorClient({ locale, category, company }: Props) {
           }));
         } else if (category === "noentrega") {
           setNonDeliveryForm((prev) => ({ ...prev, extra_details: String(snap.facts ?? "") }));
+        } else if (category === "vuelo" && snap.form) {
+          const f = snap.form as Partial<FlightDelayForm>;
+          setFlightDelayForm((prev) => ({
+            ...prev,
+            ...Object.fromEntries(
+              Object.entries(f).map(([k, v]) => [k, String(v ?? "")]),
+            ),
+            contacted_airline_before:
+              f.contacted_airline_before === "yes" || f.contacted_airline_before === "no"
+                ? f.contacted_airline_before
+                : "",
+          }));
+        } else if (category === "vuelo") {
+          setFlightDelayForm((prev) => ({ ...prev, extra_details: String(snap.facts ?? "") }));
         }
         setEs(String(snap.spanish_legal_text ?? ""));
         setNative(String(snap.native_user_translation ?? ""));
@@ -357,6 +380,14 @@ export default function GeneratorClient({ locale, category, company }: Props) {
                             form: nonDeliveryForm,
                             facts: builtFacts,
                           }
+                        : category === "vuelo"
+                          ? {
+                              locale,
+                              category,
+                              company,
+                              form: flightDelayForm,
+                              facts: builtFacts,
+                            }
           : { locale, category, company, facts };
 
       setDebugLastRequest(payload);
@@ -460,6 +491,12 @@ export default function GeneratorClient({ locale, category, company }: Props) {
           <NonDeliveryFormSection
             form={nonDeliveryForm}
             setForm={(u) => setNonDeliveryForm(u)}
+            builtFacts={builtFacts}
+          />
+        ) : category === "vuelo" ? (
+          <FlightDelayFormSection
+            form={flightDelayForm}
+            setForm={(u) => setFlightDelayForm(u)}
             builtFacts={builtFacts}
           />
         ) : (
