@@ -68,6 +68,8 @@ export default function GeneratorClient({ locale, category, company }: Props) {
   const [es, setEs] = useState("");
   const [native, setNative] = useState("");
   const [error, setError] = useState<string | null>(null);
+  const [debugLastRequest, setDebugLastRequest] = useState<any>(null);
+  const [debugLastResponse, setDebugLastResponse] = useState<any>(null);
 
   const builtFacts = useMemo(() => {
     if (category === "cancel") return buildCancelTelcoFacts(cancelForm, company);
@@ -134,22 +136,27 @@ export default function GeneratorClient({ locale, category, company }: Props) {
     setError(null);
     setIsLoading(true);
     try {
+      const payload =
+        category === "cancel"
+          ? {
+              locale,
+              category,
+              company,
+              form: cancelForm,
+              facts: builtFacts,
+            }
+          : { locale, category, company, facts };
+
+      setDebugLastRequest(payload);
+      setDebugLastResponse(null);
+
       const res = await fetch("/api/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(
-          category === "cancel"
-            ? {
-                locale,
-                category,
-                company,
-                form: cancelForm,
-                facts: builtFacts,
-              }
-            : { locale, category, company, facts },
-        ),
+        body: JSON.stringify(payload),
       });
       const json = await res.json();
+      setDebugLastResponse(json);
       if (!res.ok) throw new Error(json?.error ?? "Generate failed");
 
       setOrderId(json.orderId);
@@ -366,6 +373,30 @@ export default function GeneratorClient({ locale, category, company }: Props) {
             {error}
           </div>
         ) : null}
+
+        <details className="mt-4 rounded-xl border border-zinc-200 p-4 text-sm dark:border-zinc-800">
+          <summary className="cursor-pointer select-none font-medium">
+            Debug: last API request/response
+          </summary>
+          <div className="mt-3 grid gap-3">
+            <div>
+              <div className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
+                Request
+              </div>
+              <pre className="mt-1 whitespace-pre-wrap rounded-lg bg-zinc-50 p-3 text-xs text-zinc-800 dark:bg-black dark:text-zinc-200">
+                {debugLastRequest ? JSON.stringify(debugLastRequest, null, 2) : "—"}
+              </pre>
+            </div>
+            <div>
+              <div className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
+                Response
+              </div>
+              <pre className="mt-1 whitespace-pre-wrap rounded-lg bg-zinc-50 p-3 text-xs text-zinc-800 dark:bg-black dark:text-zinc-200">
+                {debugLastResponse ? JSON.stringify(debugLastResponse, null, 2) : "—"}
+              </pre>
+            </div>
+          </div>
+        </details>
       </section>
 
       <section className="grid gap-4 lg:grid-cols-2">
