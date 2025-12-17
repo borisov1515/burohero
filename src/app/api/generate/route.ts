@@ -4,6 +4,30 @@ import { generateDualLanguageLegalText } from "@/lib/deepseek";
 import { getCompanyBySlug } from "@/lib/companies";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 
+const RATE_LIMIT_PER_HOUR = Number(process.env.RATE_LIMIT_PER_HOUR ?? "5");
+const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
+const rateLimitBucket: Map<string, number[]> = new Map();
+
+function getClientIp(req: Request) {
+  const forwardedFor = req.headers.get("x-forwarded-for");
+  if (forwardedFor) return forwardedFor.split(",")[0]?.trim() || "unknown";
+  return req.headers.get("x-real-ip") ?? "unknown";
+}
+
+function checkRateLimit(req: Request) {
+  if (!Number.isFinite(RATE_LIMIT_PER_HOUR) || RATE_LIMIT_PER_HOUR <= 0) return;
+  const ip = getClientIp(req);
+  const now = Date.now();
+  const windowStart = now - RATE_LIMIT_WINDOW_MS;
+  const list = rateLimitBucket.get(ip) ?? [];
+  const recent = list.filter((t) => t >= windowStart);
+  if (recent.length >= RATE_LIMIT_PER_HOUR) {
+    throw new Error("Rate limit exceeded. Please try again later.");
+  }
+  recent.push(now);
+  rateLimitBucket.set(ip, recent);
+}
+
 const emptyToUndefined = (v: unknown) =>
   typeof v === "string" && v.trim() === "" ? undefined : v;
 
@@ -90,6 +114,7 @@ const GenerateRequestSchema = z.object({
 
 export async function POST(req: Request) {
   try {
+    checkRateLimit(req);
     const body = await req.json();
     const input = GenerateRequestSchema.parse(body);
 
