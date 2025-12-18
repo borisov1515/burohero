@@ -22,7 +22,12 @@
       "flightDelay": "Example generator: vuelo / ryanair (flight delay)",
       "insuranceCancel": "Example generator: seguro / mapfre (insurance cancellation)",
       "claimDenied": "Example generator: denegacion / allianz (claim denied)",
-      "feesRefund": "Example generator: comisiones / bbva (fees refund)"
+      "feesRefund": "Example generator: comisiones / bbva (fees refund)",
+      "trafficFineAppeal": "Example generator: trafico / multa (appeal traffic fine)",
+      "carSaleNotification": "Example generator: trafico / venta (car sale notification)",
+      "unpaidWages": "Example generator: trabajo / salarios (unpaid wages)",
+      "voluntaryResignation": "Example generator: trabajo / baja (voluntary resignation)",
+      "vacationRequest": "Example generator: trabajo / vacaciones (vacation request)"
     }
   },
   "generator": {
@@ -358,7 +363,65 @@
       "reasonOptional": "Why is this fee unfair/incorrect? (optional)",
       "contactedBankBefore": "Contacted bank before?",
       "desiredOutcome": "Desired outcome (refund, cancel fee, explain basis, etc.)"
+    },
+    "trafficFine": {
+      "recipientLine": "DGT / Local Police (traffic authority)",
+      "fineReference": "Nº de Expediente (reference number) (e.g., 280012345678)",
+      "fineDate": "Date of notification (YYYY-MM-DD)",
+      "fineAmount": "Fine amount EUR",
+      "appealReasonQuestion": "Reason for appeal",
+      "appealReasonOptions": {
+        "no_notification": "I never received the notification",
+        "not_driver": "I was not driving (identify driver)",
+        "no_evidence": "Requesting photo / radar certificate",
+        "incorrect_data": "License plate / data error"
+      },
+      "additionalDetailsOptional": "Additional details (optional) — explain exactly what happened…"
+    },
+    "carSale": {
+      "recipientLine": "DGT (Dirección General de Tráfico)",
+      "sections": {
+        "seller": "Seller (you)"
+      },
+      "plateNumber": "License plate (matrícula) (e.g., 1234 BBB)",
+      "saleDate": "Date of sale (contract date) (YYYY-MM-DD)",
+      "buyerName": "Buyer’s full name",
+      "buyerId": "Buyer DNI/NIE/CIF"
+    },
+    "work": {
+      "sections": {
+        "employee": "Employee",
+        "employer": "Employer"
+      }
+    },
+    "unpaidWages": {
+      "employerName": "Employer / company name",
+      "monthsOwed": "Months/periods owed (e.g., Nómina Enero 2025, Finiquito…) ",
+      "totalAmount": "Total amount owed EUR",
+      "contractTypeQuestion": "Contract type",
+      "contractTypeOptions": {
+        "indefinido": "Permanent (indefinido)",
+        "temporal": "Temporary",
+        "sin_contrato": "Working without contract (illegal)"
+      }
+    },
+    "voluntaryResignation": {
+      "employerName": "Employer / company name",
+      "lastDay": "Last working day (effective date) (YYYY-MM-DD)",
+      "noticeGivenQuestion": "Notice period provided",
+      "noticeGivenOptions": {
+        "15_days": "15 days (standard)",
+        "per_contract": "According to contract",
+        "immediate": "Immediate (no notice)"
+      },
+      "requestSettlementQuestion": "Request finiquito (settlement) payment immediately?"
+    },
+    "vacationRequest": {
+      "employerName": "Employer / company name",
+      "startDate": "Vacation start date (YYYY-MM-DD)",
+      "endDate": "Vacation end date (YYYY-MM-DD)",
+      "totalDays": "Total working days requested",
+      "comments": "Comments (e.g., As agreed verbally with manager…) "
     }
   }
 }
-

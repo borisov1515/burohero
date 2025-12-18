@@ -22,7 +22,12 @@
       "flightDelay": "Приклад генератора: vuelo / ryanair (затримка рейсу)",
       "insuranceCancel": "Приклад генератора: seguro / mapfre (скасування страховки)",
       "claimDenied": "Приклад генератора: denegacion / allianz (відмова у виплаті)",
-      "feesRefund": "Приклад генератора: comisiones / bbva (повернення комісій)"
+      "feesRefund": "Приклад генератора: comisiones / bbva (повернення комісій)",
+      "trafficFineAppeal": "Приклад генератора: trafico / multa (оскарження штрафу)",
+      "carSaleNotification": "Приклад генератора: trafico / venta (повідомлення про продаж авто)",
+      "unpaidWages": "Приклад генератора: trabajo / salarios (невиплачена зарплата)",
+      "voluntaryResignation": "Приклад генератора: trabajo / baja (звільнення за власним бажанням)",
+      "vacationRequest": "Приклад генератора: trabajo / vacaciones (заява на відпустку)"
     }
   },
   "generator": {
@@ -358,6 +363,65 @@
       "reasonOptional": "Чому ця комісія несправедлива/помилкова? (необов’язково)",
       "contactedBankBefore": "Зверталися до банку раніше?",
       "desiredOutcome": "Бажаний результат (повернення, скасування, пояснення тощо)"
+    },
+    "trafficFine": {
+      "recipientLine": "DGT / Місцева поліція (орган дорожнього руху)",
+      "fineReference": "№ справи/експед’єнте (напр., 280012345678)",
+      "fineDate": "Дата повідомлення (РРРР-MM-ДД)",
+      "fineAmount": "Сума штрафу (EUR)",
+      "appealReasonQuestion": "Підстава для оскарження",
+      "appealReasonOptions": {
+        "no_notification": "Я не отримував(ла) повідомлення",
+        "not_driver": "Я не був(ла) водієм (вказати водія)",
+        "no_evidence": "Вимога фото / сертифіката радара",
+        "incorrect_data": "Помилка в номері/даних"
+      },
+      "additionalDetailsOptional": "Додаткові деталі (необов’язково) — опишіть, що сталося…"
+    },
+    "carSale": {
+      "recipientLine": "DGT (Dirección General de Tráfico)",
+      "sections": {
+        "seller": "Продавець (ви)"
+      },
+      "plateNumber": "Номерний знак (matrícula) (напр., 1234 BBB)",
+      "saleDate": "Дата продажу (дата договору) (РРРР-MM-ДД)",
+      "buyerName": "ПІБ покупця",
+      "buyerId": "DNI/NIE/CIF покупця"
+    },
+    "work": {
+      "sections": {
+        "employee": "Працівник",
+        "employer": "Роботодавець"
+      }
+    },
+    "unpaidWages": {
+      "employerName": "Назва роботодавця/компанії",
+      "monthsOwed": "Місяці/періоди заборгованості (напр., Nómina Enero 2025, Finiquito…) ",
+      "totalAmount": "Загальна сума боргу (EUR)",
+      "contractTypeQuestion": "Тип договору",
+      "contractTypeOptions": {
+        "indefinido": "Безстроковий (indefinido)",
+        "temporal": "Строковий",
+        "sin_contrato": "Робота без договору (незаконно)"
+      }
+    },
+    "voluntaryResignation": {
+      "employerName": "Назва роботодавця/компанії",
+      "lastDay": "Останній робочий день (дата набуття чинності) (РРРР-MM-ДД)",
+      "noticeGivenQuestion": "Наданий строк попередження",
+      "noticeGivenOptions": {
+        "15_days": "15 днів (стандарт)",
+        "per_contract": "Згідно з договором",
+        "immediate": "Негайно (без попередження)"
+      },
+      "requestSettlementQuestion": "Вимагати виплату finiquito одразу?"
+    },
+    "vacationRequest": {
+      "employerName": "Назва роботодавця/компанії",
+      "startDate": "Початок відпустки (РРРР-MM-ДД)",
+      "endDate": "Кінець відпустки (РРРР-MM-ДД)",
+      "totalDays": "Загальна кількість робочих днів",
+      "comments": "Коментарі (напр., як домовлено усно з керівником…) "
     }
   }
 }

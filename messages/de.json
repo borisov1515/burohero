@@ -22,7 +22,12 @@
       "flightDelay": "Beispiel-Generator: vuelo / ryanair (Flugverspätung)",
       "insuranceCancel": "Beispiel-Generator: seguro / mapfre (Versicherung kündigen)",
       "claimDenied": "Beispiel-Generator: denegacion / allianz (Leistung abgelehnt)",
-      "feesRefund": "Beispiel-Generator: comisiones / bbva (Gebührenrückerstattung)"
+      "feesRefund": "Beispiel-Generator: comisiones / bbva (Gebührenrückerstattung)",
+      "trafficFineAppeal": "Beispiel-Generator: trafico / multa (Bußgeld anfechten)",
+      "carSaleNotification": "Beispiel-Generator: trafico / venta (Verkaufsanzeige Auto)",
+      "unpaidWages": "Beispiel-Generator: trabajo / salarios (ausstehender Lohn)",
+      "voluntaryResignation": "Beispiel-Generator: trabajo / baja (Eigenkündigung)",
+      "vacationRequest": "Beispiel-Generator: trabajo / vacaciones (Urlaubsantrag)"
     }
   },
   "generator": {
@@ -358,6 +363,65 @@
       "reasonOptional": "Warum ist diese Gebühr unfair/falsch? (optional)",
       "contactedBankBefore": "Bank zuvor kontaktiert?",
       "desiredOutcome": "Gewünschtes Ergebnis (Rückerstattung, Gebühr streichen, Grundlage erklären usw.)"
+    },
+    "trafficFine": {
+      "recipientLine": "DGT / örtliche Polizei (Verkehrsbehörde)",
+      "fineReference": "Aktenzeichen / Expediente-Nr. (z. B. 280012345678)",
+      "fineDate": "Datum der Zustellung (JJJJ-MM-TT)",
+      "fineAmount": "Bußgeldbetrag (EUR)",
+      "appealReasonQuestion": "Widerspruchsgrund",
+      "appealReasonOptions": {
+        "no_notification": "Ich habe keine Benachrichtigung erhalten",
+        "not_driver": "Ich bin nicht gefahren (Fahrer benennen)",
+        "no_evidence": "Foto / Radar-Zertifikat anfordern",
+        "incorrect_data": "Kennzeichen-/Datenfehler"
+      },
+      "additionalDetailsOptional": "Weitere Details (optional) — bitte genau schildern…"
+    },
+    "carSale": {
+      "recipientLine": "DGT (Dirección General de Tráfico)",
+      "sections": {
+        "seller": "Verkäufer/in (Sie)"
+      },
+      "plateNumber": "Kennzeichen (matrícula) (z. B. 1234 BBB)",
+      "saleDate": "Verkaufsdatum (Vertragsdatum) (JJJJ-MM-TT)",
+      "buyerName": "Name des Käufers/der Käuferin",
+      "buyerId": "DNI/NIE/CIF des Käufers/der Käuferin"
+    },
+    "work": {
+      "sections": {
+        "employee": "Arbeitnehmer/in",
+        "employer": "Arbeitgeber"
+      }
+    },
+    "unpaidWages": {
+      "employerName": "Name des Arbeitgebers/der Firma",
+      "monthsOwed": "Offene Monate/Zeiträume (z. B. Nómina Enero 2025, Finiquito…) ",
+      "totalAmount": "Gesamtbetrag offen (EUR)",
+      "contractTypeQuestion": "Vertragsart",
+      "contractTypeOptions": {
+        "indefinido": "Unbefristet (indefinido)",
+        "temporal": "Befristet",
+        "sin_contrato": "Arbeit ohne Vertrag (illegal)"
+      }
+    },
+    "voluntaryResignation": {
+      "employerName": "Name des Arbeitgebers/der Firma",
+      "lastDay": "Letzter Arbeitstag (Wirksamkeitsdatum) (JJJJ-MM-TT)",
+      "noticeGivenQuestion": "Kündigungsfrist eingehalten",
+      "noticeGivenOptions": {
+        "15_days": "15 Tage (Standard)",
+        "per_contract": "Gemäß Vertrag",
+        "immediate": "Sofort (ohne Frist)"
+      },
+      "requestSettlementQuestion": "Finiquito (Abrechnung) sofort anfordern?"
+    },
+    "vacationRequest": {
+      "employerName": "Name des Arbeitgebers/der Firma",
+      "startDate": "Urlaubsbeginn (JJJJ-MM-TT)",
+      "endDate": "Urlaubsende (JJJJ-MM-TT)",
+      "totalDays": "Anzahl Arbeitstage",
+      "comments": "Kommentare (z. B. mündlich mit Vorgesetzten vereinbart…) "
     }
   }
 }

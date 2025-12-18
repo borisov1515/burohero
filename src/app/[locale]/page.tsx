@@ -96,6 +96,36 @@ export default async function LocaleHome({
           >
             {tHome("links.feesRefund")}
           </Link>
+          <Link
+            className="underline underline-offset-4"
+            href={`/${locale}/trafico/multa`}
+          >
+            {tHome("links.trafficFineAppeal")}
+          </Link>
+          <Link
+            className="underline underline-offset-4"
+            href={`/${locale}/trafico/venta`}
+          >
+            {tHome("links.carSaleNotification")}
+          </Link>
+          <Link
+            className="underline underline-offset-4"
+            href={`/${locale}/trabajo/salarios`}
+          >
+            {tHome("links.unpaidWages")}
+          </Link>
+          <Link
+            className="underline underline-offset-4"
+            href={`/${locale}/trabajo/baja`}
+          >
+            {tHome("links.voluntaryResignation")}
+          </Link>
+          <Link
+            className="underline underline-offset-4"
+            href={`/${locale}/trabajo/vacaciones`}
+          >
+            {tHome("links.vacationRequest")}
+          </Link>
         </div>
       </section>
     </main>

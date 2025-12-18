@@ -22,7 +22,12 @@
       "flightDelay": "Generator exemplu: vuelo / ryanair (întârziere zbor)",
       "insuranceCancel": "Generator exemplu: seguro / mapfre (reziliere asigurare)",
       "claimDenied": "Generator exemplu: denegacion / allianz (cerere respinsă)",
-      "feesRefund": "Generator exemplu: comisiones / bbva (rambursare comisioane)"
+      "feesRefund": "Generator exemplu: comisiones / bbva (rambursare comisioane)",
+      "trafficFineAppeal": "Generator exemplu: trafico / multa (contestare amendă)",
+      "carSaleNotification": "Generator exemplu: trafico / venta (notificare vânzare auto)",
+      "unpaidWages": "Generator exemplu: trabajo / salarios (salarii neplătite)",
+      "voluntaryResignation": "Generator exemplu: trabajo / baja (demisie)",
+      "vacationRequest": "Generator exemplu: trabajo / vacaciones (cerere concediu)"
     }
   },
   "generator": {
@@ -358,6 +363,65 @@
       "reasonOptional": "De ce este comisionul incorect/nedrept? (opțional)",
       "contactedBankBefore": "Ai contactat banca înainte?",
       "desiredOutcome": "Rezultat dorit (rambursare, anulare comision, explicație etc.)"
+    },
+    "trafficFine": {
+      "recipientLine": "DGT / Poliția locală (autoritatea rutieră)",
+      "fineReference": "Nr. dosar / expediente (ex. 280012345678)",
+      "fineDate": "Data notificării (AAAA-LL-ZZ)",
+      "fineAmount": "Suma amenzii (EUR)",
+      "appealReasonQuestion": "Motivul contestației",
+      "appealReasonOptions": {
+        "no_notification": "Nu am primit notificarea",
+        "not_driver": "Nu conduceam eu (identifică șoferul)",
+        "no_evidence": "Solicitare foto / certificat radar",
+        "incorrect_data": "Eroare număr/dată"
+      },
+      "additionalDetailsOptional": "Detalii suplimentare (opțional) — descrie exact…"
+    },
+    "carSale": {
+      "recipientLine": "DGT (Dirección General de Tráfico)",
+      "sections": {
+        "seller": "Vânzător (tu)"
+      },
+      "plateNumber": "Număr de înmatriculare (matrícula) (ex. 1234 BBB)",
+      "saleDate": "Data vânzării (data contractului) (AAAA-LL-ZZ)",
+      "buyerName": "Numele complet al cumpărătorului",
+      "buyerId": "DNI/NIE/CIF al cumpărătorului"
+    },
+    "work": {
+      "sections": {
+        "employee": "Angajat",
+        "employer": "Angajator"
+      }
+    },
+    "unpaidWages": {
+      "employerName": "Numele angajatorului / companiei",
+      "monthsOwed": "Luni/perioade restante (ex. Nómina Enero 2025, Finiquito…) ",
+      "totalAmount": "Suma totală restantă (EUR)",
+      "contractTypeQuestion": "Tip contract",
+      "contractTypeOptions": {
+        "indefinido": "Nedeterminat (indefinido)",
+        "temporal": "Temporar",
+        "sin_contrato": "Muncă fără contract (ilegal)"
+      }
+    },
+    "voluntaryResignation": {
+      "employerName": "Numele angajatorului / companiei",
+      "lastDay": "Ultima zi de lucru (data efectivă) (AAAA-LL-ZZ)",
+      "noticeGivenQuestion": "Preaviz acordat",
+      "noticeGivenOptions": {
+        "15_days": "15 zile (standard)",
+        "per_contract": "Conform contractului",
+        "immediate": "Imediat (fără preaviz)"
+      },
+      "requestSettlementQuestion": "Să solicitați finiquito (lichidare) imediat?"
+    },
+    "vacationRequest": {
+      "employerName": "Numele angajatorului / companiei",
+      "startDate": "Data începerii concediului (AAAA-LL-ZZ)",
+      "endDate": "Data încheierii concediului (AAAA-LL-ZZ)",
+      "totalDays": "Număr total de zile lucrătoare",
+      "comments": "Comentarii (ex. convenit verbal cu managerul…) "
     }
   }
 }

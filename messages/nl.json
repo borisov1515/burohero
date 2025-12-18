@@ -22,7 +22,12 @@
       "flightDelay": "Voorbeeldgenerator: vuelo / ryanair (vluchtvertraging)",
       "insuranceCancel": "Voorbeeldgenerator: seguro / mapfre (verzekering opzeggen)",
       "claimDenied": "Voorbeeldgenerator: denegacion / allianz (claim afgewezen)",
-      "feesRefund": "Voorbeeldgenerator: comisiones / bbva (kosten terugvragen)"
+      "feesRefund": "Voorbeeldgenerator: comisiones / bbva (kosten terugvragen)",
+      "trafficFineAppeal": "Voorbeeldgenerator: trafico / multa (boete aanvechten)",
+      "carSaleNotification": "Voorbeeldgenerator: trafico / venta (verkoopmelding auto)",
+      "unpaidWages": "Voorbeeldgenerator: trabajo / salarios (achterstallig loon)",
+      "voluntaryResignation": "Voorbeeldgenerator: trabajo / baja (ontslag nemen)",
+      "vacationRequest": "Voorbeeldgenerator: trabajo / vacaciones (vakantieaanvraag)"
     }
   },
   "generator": {
@@ -358,6 +363,65 @@
       "reasonOptional": "Waarom zijn deze kosten onterecht? (optioneel)",
       "contactedBankBefore": "Bank eerder gecontacteerd?",
       "desiredOutcome": "Gewenst resultaat (terugbetaling, kosten schrappen, uitleg, enz.)"
+    },
+    "trafficFine": {
+      "recipientLine": "DGT / Lokale politie (verkeersautoriteit)",
+      "fineReference": "Dossiernummer / expediente (bijv. 280012345678)",
+      "fineDate": "Datum van kennisgeving (JJJJ-MM-DD)",
+      "fineAmount": "Boetebedrag (EUR)",
+      "appealReasonQuestion": "Reden van bezwaar",
+      "appealReasonOptions": {
+        "no_notification": "Ik heb geen kennisgeving ontvangen",
+        "not_driver": "Ik reed niet (bestuurder identificeren)",
+        "no_evidence": "Foto / radarcertificaat opvragen",
+        "incorrect_data": "Kenteken-/gegevensfout"
+      },
+      "additionalDetailsOptional": "Extra details (optioneel) — beschrijf precies…"
+    },
+    "carSale": {
+      "recipientLine": "DGT (Dirección General de Tráfico)",
+      "sections": {
+        "seller": "Verkoper (jij)"
+      },
+      "plateNumber": "Kenteken (matrícula) (bijv. 1234 BBB)",
+      "saleDate": "Verkoopdatum (contractdatum) (JJJJ-MM-DD)",
+      "buyerName": "Volledige naam koper",
+      "buyerId": "DNI/NIE/CIF koper"
+    },
+    "work": {
+      "sections": {
+        "employee": "Werknemer",
+        "employer": "Werkgever"
+      }
+    },
+    "unpaidWages": {
+      "employerName": "Naam werkgever / bedrijf",
+      "monthsOwed": "Openstaande maanden/perioden (bijv. Nómina Enero 2025, Finiquito…) ",
+      "totalAmount": "Totaal verschuldigd bedrag (EUR)",
+      "contractTypeQuestion": "Contracttype",
+      "contractTypeOptions": {
+        "indefinido": "Vast (indefinido)",
+        "temporal": "Tijdelijk",
+        "sin_contrato": "Werken zonder contract (illegaal)"
+      }
+    },
+    "voluntaryResignation": {
+      "employerName": "Naam werkgever / bedrijf",
+      "lastDay": "Laatste werkdag (ingangsdatum) (JJJJ-MM-DD)",
+      "noticeGivenQuestion": "Opzegtermijn gegeven",
+      "noticeGivenOptions": {
+        "15_days": "15 dagen (standaard)",
+        "per_contract": "Volgens contract",
+        "immediate": "Direct (geen opzegtermijn)"
+      },
+      "requestSettlementQuestion": "Finiquito (eindafrekening) meteen vragen?"
+    },
+    "vacationRequest": {
+      "employerName": "Naam werkgever / bedrijf",
+      "startDate": "Startdatum vakantie (JJJJ-MM-DD)",
+      "endDate": "Einddatum vakantie (JJJJ-MM-DD)",
+      "totalDays": "Aantal werkbare dagen",
+      "comments": "Opmerkingen (bijv. mondeling afgesproken met manager…) "
     }
   }
 }

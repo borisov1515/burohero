@@ -22,7 +22,12 @@
       "flightDelay": "Przykładowy generator: vuelo / ryanair (opóźnienie lotu)",
       "insuranceCancel": "Przykładowy generator: seguro / mapfre (wypowiedzenie ubezpieczenia)",
       "claimDenied": "Przykładowy generator: denegacion / allianz (odmowa wypłaty)",
-      "feesRefund": "Przykładowy generator: comisiones / bbva (zwrot opłat)"
+      "feesRefund": "Przykładowy generator: comisiones / bbva (zwrot opłat)",
+      "trafficFineAppeal": "Przykładowy generator: trafico / multa (odwołanie od mandatu)",
+      "carSaleNotification": "Przykładowy generator: trafico / venta (zgłoszenie sprzedaży auta)",
+      "unpaidWages": "Przykładowy generator: trabajo / salarios (niewypłacone wynagrodzenie)",
+      "voluntaryResignation": "Przykładowy generator: trabajo / baja (wypowiedzenie)",
+      "vacationRequest": "Przykładowy generator: trabajo / vacaciones (wniosek urlopowy)"
     }
   },
   "generator": {
@@ -358,6 +363,65 @@
       "reasonOptional": "Dlaczego ta opłata jest niesprawiedliwa/błędna? (opcjonalnie)",
       "contactedBankBefore": "Czy kontaktowałeś się z bankiem?",
       "desiredOutcome": "Oczekiwany rezultat (zwrot, anulowanie opłaty, wyjaśnienie itd.)"
+    },
+    "trafficFine": {
+      "recipientLine": "DGT / Policja lokalna (organ ruchu drogowego)",
+      "fineReference": "Nr sprawy / expediente (np. 280012345678)",
+      "fineDate": "Data doręczenia (RRRR-MM-DD)",
+      "fineAmount": "Kwota mandatu (EUR)",
+      "appealReasonQuestion": "Powód odwołania",
+      "appealReasonOptions": {
+        "no_notification": "Nie otrzymałem(am) zawiadomienia",
+        "not_driver": "Nie prowadziłem(am) (wskazać kierowcę)",
+        "no_evidence": "Żądanie zdjęcia / certyfikatu radaru",
+        "incorrect_data": "Błąd tablicy/danych"
+      },
+      "additionalDetailsOptional": "Dodatkowe szczegóły (opcjonalnie) — opisz dokładnie…"
+    },
+    "carSale": {
+      "recipientLine": "DGT (Dirección General de Tráfico)",
+      "sections": {
+        "seller": "Sprzedający (ty)"
+      },
+      "plateNumber": "Numer rejestracyjny (matrícula) (np. 1234 BBB)",
+      "saleDate": "Data sprzedaży (data umowy) (RRRR-MM-DD)",
+      "buyerName": "Imię i nazwisko kupującego",
+      "buyerId": "DNI/NIE/CIF kupującego"
+    },
+    "work": {
+      "sections": {
+        "employee": "Pracownik",
+        "employer": "Pracodawca"
+      }
+    },
+    "unpaidWages": {
+      "employerName": "Nazwa pracodawcy / firmy",
+      "monthsOwed": "Miesiące/okresy zaległości (np. Nómina Enero 2025, Finiquito…) ",
+      "totalAmount": "Łączna kwota zaległości (EUR)",
+      "contractTypeQuestion": "Rodzaj umowy",
+      "contractTypeOptions": {
+        "indefinido": "Stała (indefinido)",
+        "temporal": "Tymczasowa",
+        "sin_contrato": "Praca bez umowy (nielegalnie)"
+      }
+    },
+    "voluntaryResignation": {
+      "employerName": "Nazwa pracodawcy / firmy",
+      "lastDay": "Ostatni dzień pracy (data obowiązywania) (RRRR-MM-DD)",
+      "noticeGivenQuestion": "Okres wypowiedzenia",
+      "noticeGivenOptions": {
+        "15_days": "15 dni (standard)",
+        "per_contract": "Zgodnie z umową",
+        "immediate": "Natychmiast (bez wypowiedzenia)"
+      },
+      "requestSettlementQuestion": "Poprosić o finiquito (rozliczenie) od razu?"
+    },
+    "vacationRequest": {
+      "employerName": "Nazwa pracodawcy / firmy",
+      "startDate": "Początek urlopu (RRRR-MM-DD)",
+      "endDate": "Koniec urlopu (RRRR-MM-DD)",
+      "totalDays": "Liczba dni roboczych",
+      "comments": "Komentarze (np. ustalone ustnie z przełożonym…) "
     }
   }
 }

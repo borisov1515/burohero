@@ -22,7 +22,12 @@
       "flightDelay": "Générateur exemple : vuelo / ryanair (retard de vol)",
       "insuranceCancel": "Générateur exemple : seguro / mapfre (résiliation d’assurance)",
       "claimDenied": "Générateur exemple : denegacion / allianz (sinistre refusé)",
-      "feesRefund": "Générateur exemple : comisiones / bbva (remboursement de frais)"
+      "feesRefund": "Générateur exemple : comisiones / bbva (remboursement de frais)",
+      "trafficFineAppeal": "Générateur exemple : trafico / multa (contester une amende)",
+      "carSaleNotification": "Générateur exemple : trafico / venta (notification de vente)",
+      "unpaidWages": "Générateur exemple : trabajo / salarios (salaires impayés)",
+      "voluntaryResignation": "Générateur exemple : trabajo / baja (démission)",
+      "vacationRequest": "Générateur exemple : trabajo / vacaciones (demande de congés)"
     }
   },
   "generator": {
@@ -358,6 +363,65 @@
       "reasonOptional": "Pourquoi ces frais sont‑ils injustes/incorrects ? (optionnel)",
       "contactedBankBefore": "Banque contactée auparavant ?",
       "desiredOutcome": "Résultat souhaité (remboursement, annulation, explication, etc.)"
+    },
+    "trafficFine": {
+      "recipientLine": "DGT / Police locale (autorité routière)",
+      "fineReference": "N° de dossier / expediente (ex. 280012345678)",
+      "fineDate": "Date de notification (AAAA-MM-JJ)",
+      "fineAmount": "Montant de l’amende (EUR)",
+      "appealReasonQuestion": "Motif de recours",
+      "appealReasonOptions": {
+        "no_notification": "Je n’ai jamais reçu la notification",
+        "not_driver": "Je ne conduisais pas (identifier le conducteur)",
+        "no_evidence": "Demander la photo / certificat radar",
+        "incorrect_data": "Erreur de plaque/données"
+      },
+      "additionalDetailsOptional": "Détails supplémentaires (optionnel) — décrivez précisément…"
+    },
+    "carSale": {
+      "recipientLine": "DGT (Dirección General de Tráfico)",
+      "sections": {
+        "seller": "Vendeur (vous)"
+      },
+      "plateNumber": "Plaque d’immatriculation (matrícula) (ex. 1234 BBB)",
+      "saleDate": "Date de vente (date du contrat) (AAAA-MM-JJ)",
+      "buyerName": "Nom complet de l’acheteur",
+      "buyerId": "DNI/NIE/CIF de l’acheteur"
+    },
+    "work": {
+      "sections": {
+        "employee": "Salarié",
+        "employer": "Employeur"
+      }
+    },
+    "unpaidWages": {
+      "employerName": "Nom de l’employeur / société",
+      "monthsOwed": "Mois/périodes dus (ex. Nómina Enero 2025, Finiquito…) ",
+      "totalAmount": "Montant total dû (EUR)",
+      "contractTypeQuestion": "Type de contrat",
+      "contractTypeOptions": {
+        "indefinido": "CDI (indefinido)",
+        "temporal": "CDD",
+        "sin_contrato": "Travail sans contrat (illégal)"
+      }
+    },
+    "voluntaryResignation": {
+      "employerName": "Nom de l’employeur / société",
+      "lastDay": "Dernier jour de travail (date d’effet) (AAAA-MM-JJ)",
+      "noticeGivenQuestion": "Préavis donné",
+      "noticeGivenOptions": {
+        "15_days": "15 jours (standard)",
+        "per_contract": "Selon le contrat",
+        "immediate": "Immédiat (sans préavis)"
+      },
+      "requestSettlementQuestion": "Demander le finiquito (solde) immédiatement ?"
+    },
+    "vacationRequest": {
+      "employerName": "Nom de l’employeur / société",
+      "startDate": "Début des congés (AAAA-MM-JJ)",
+      "endDate": "Fin des congés (AAAA-MM-JJ)",
+      "totalDays": "Nombre de jours ouvrés demandés",
+      "comments": "Commentaires (ex. convenu verbalement avec le manager…) "
     }
   }
 }

@@ -288,6 +288,78 @@ const FeesRefundFormSchema = z.object({
   extra_details: z.preprocess(emptyToUndefined, z.string().optional()),
 });
 
+const TrafficFineAppealFormSchema = z.object({
+  applicant_full_name: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  applicant_id: z.preprocess(emptyToUndefined, z.string().min(3).optional()),
+  applicant_address: z.preprocess(emptyToUndefined, z.string().min(5).optional()),
+
+  fine_reference: z.preprocess(emptyToUndefined, z.string().min(3).optional()),
+  fine_date: z.preprocess(emptyToUndefined, z.string().min(4).optional()),
+  fine_amount_eur: z.preprocess(emptyToUndefined, z.string().min(1).optional()),
+  appeal_reason: z.preprocess(
+    emptyToUndefined,
+    z
+      .enum(["no_notification", "not_driver", "no_evidence", "incorrect_data"])
+      .optional(),
+  ),
+  additional_details: z.preprocess(emptyToUndefined, z.string().optional()),
+});
+
+const CarSaleNotificationFormSchema = z.object({
+  seller_full_name: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  seller_id: z.preprocess(emptyToUndefined, z.string().min(3).optional()),
+  seller_address: z.preprocess(emptyToUndefined, z.string().min(5).optional()),
+
+  plate_number: z.preprocess(emptyToUndefined, z.string().min(4).optional()),
+  buyer_name: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  buyer_id: z.preprocess(emptyToUndefined, z.string().min(3).optional()),
+  sale_date: z.preprocess(emptyToUndefined, z.string().min(4).optional()),
+  additional_details: z.preprocess(emptyToUndefined, z.string().optional()),
+});
+
+const UnpaidWagesFormSchema = z.object({
+  employee_full_name: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  employee_id: z.preprocess(emptyToUndefined, z.string().min(3).optional()),
+  employee_address: z.preprocess(emptyToUndefined, z.string().min(5).optional()),
+
+  employer_name: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  months_owed: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  total_amount_eur: z.preprocess(emptyToUndefined, z.string().min(1).optional()),
+  contract_type: z.preprocess(
+    emptyToUndefined,
+    z.enum(["indefinido", "temporal", "sin_contrato"]).optional(),
+  ),
+  additional_details: z.preprocess(emptyToUndefined, z.string().optional()),
+});
+
+const VoluntaryResignationFormSchema = z.object({
+  employee_full_name: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  employee_id: z.preprocess(emptyToUndefined, z.string().min(3).optional()),
+  employee_address: z.preprocess(emptyToUndefined, z.string().min(5).optional()),
+
+  employer_name: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  last_day: z.preprocess(emptyToUndefined, z.string().min(4).optional()),
+  notice_given: z.preprocess(
+    emptyToUndefined,
+    z.enum(["15_days", "per_contract", "immediate"]).optional(),
+  ),
+  request_settlement: z.preprocess(yesNoToBoolean, z.boolean().optional()),
+  additional_details: z.preprocess(emptyToUndefined, z.string().optional()),
+});
+
+const VacationRequestFormSchema = z.object({
+  employee_full_name: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  employee_id: z.preprocess(emptyToUndefined, z.string().min(3).optional()),
+  employee_address: z.preprocess(emptyToUndefined, z.string().min(5).optional()),
+
+  employer_name: z.preprocess(emptyToUndefined, z.string().min(2).optional()),
+  start_date: z.preprocess(emptyToUndefined, z.string().min(4).optional()),
+  end_date: z.preprocess(emptyToUndefined, z.string().min(4).optional()),
+  total_days: z.preprocess(emptyToUndefined, z.string().min(1).optional()),
+  comments: z.preprocess(emptyToUndefined, z.string().optional()),
+  additional_details: z.preprocess(emptyToUndefined, z.string().optional()),
+});
+
 function buildCancelTelcoFacts(input: {
   locale: string;
   company: string;
@@ -632,6 +704,161 @@ function buildFeesRefundFacts(input: {
   return lines.join("\n");
 }
 
+function buildTrafficFineAppealFacts(input: {
+  locale: string;
+  company: string;
+  form: z.infer<typeof TrafficFineAppealFormSchema>;
+}) {
+  const f = input.form;
+  const lines: string[] = [];
+  lines.push("Use case: appeal a traffic fine (administrative appeal).");
+  lines.push("Authority: DGT or Local Police (as applicable).");
+  if (f.applicant_full_name) lines.push(`Applicant full name: ${f.applicant_full_name}`);
+  if (f.applicant_id) lines.push(`Applicant ID (DNI/NIE/Passport): ${f.applicant_id}`);
+  if (f.applicant_address) lines.push(`Applicant address: ${f.applicant_address}`);
+  if (f.fine_reference) lines.push(`Fine reference / expediente number: ${f.fine_reference}`);
+  if (f.fine_date) lines.push(`Notification date: ${f.fine_date}`);
+  if (f.fine_amount_eur) lines.push(`Fine amount (EUR): ${f.fine_amount_eur}`);
+  if (f.appeal_reason) lines.push(`Appeal reason: ${f.appeal_reason}`);
+  if (f.additional_details) lines.push(`Additional details: ${f.additional_details}`);
+  lines.push("");
+  lines.push("Drafting instructions (legal context):");
+  lines.push("Context: Administrative appeal against a traffic fine (Recurso de Alzada / Reposición).");
+  lines.push("Tone: Formal administrative appeal.");
+  lines.push("Legal strategy: cite 'Presunción de Inocencia' (Art. 24 Constitución Española).");
+  if (f.appeal_reason === "no_evidence") {
+    lines.push(
+      "Specific: explicitly demand the 'Certificado de Verificación' of the Radar/Cinemometer and the original photo.",
+    );
+  }
+  if (f.appeal_reason === "no_notification") {
+    lines.push(
+      "Specific: cite defect in notification procedure (Art. 40 Ley 39/2015) and request proof of notification attempts.",
+    );
+  }
+  if (f.appeal_reason === "not_driver") {
+    lines.push(
+      "Specific: state that the applicant was not driving and request instructions to identify the actual driver; include driver identification if provided in details.",
+    );
+  }
+  if (f.appeal_reason === "incorrect_data") {
+    lines.push("Specific: highlight any license plate / personal data errors and request annulment.");
+  }
+  return lines.join("\n");
+}
+
+function buildCarSaleNotificationFacts(input: {
+  locale: string;
+  company: string;
+  form: z.infer<typeof CarSaleNotificationFormSchema>;
+}) {
+  const f = input.form;
+  const lines: string[] = [];
+  lines.push("Use case: notify DGT about vehicle sale (notificación de venta).");
+  lines.push("Recipient: DGT (Dirección General de Tráfico).");
+  if (f.seller_full_name) lines.push(`Seller full name: ${f.seller_full_name}`);
+  if (f.seller_id) lines.push(`Seller ID (DNI/NIE/Passport): ${f.seller_id}`);
+  if (f.seller_address) lines.push(`Seller address: ${f.seller_address}`);
+  if (f.plate_number) lines.push(`Vehicle license plate (matrícula): ${f.plate_number}`);
+  if (f.buyer_name) lines.push(`Buyer full name: ${f.buyer_name}`);
+  if (f.buyer_id) lines.push(`Buyer DNI/NIE/CIF: ${f.buyer_id}`);
+  if (f.sale_date) lines.push(`Date of sale / contract date: ${f.sale_date}`);
+  if (f.additional_details) lines.push(`Additional details: ${f.additional_details}`);
+  lines.push("");
+  lines.push("Drafting instructions (legal context):");
+  lines.push("Context: communication to DGT (Tráfico) regarding vehicle transfer.");
+  lines.push("Legal basis: Art. 32 Reglamento General de Vehículos.");
+  lines.push(
+    "Goal: officially communicate that the vehicle is no longer in the user's possession to limit tax/civil liability (IVTM/fines) from the sale date.",
+  );
+  return lines.join("\n");
+}
+
+function buildUnpaidWagesFacts(input: {
+  locale: string;
+  company: string;
+  form: z.infer<typeof UnpaidWagesFormSchema>;
+}) {
+  const f = input.form;
+  const lines: string[] = [];
+  lines.push("Use case: unpaid wages / salary arrears (reclamación de cantidad).");
+  if (f.employee_full_name) lines.push(`Employee full name: ${f.employee_full_name}`);
+  if (f.employee_id) lines.push(`Employee ID (DNI/NIE/Passport): ${f.employee_id}`);
+  if (f.employee_address) lines.push(`Employee address: ${f.employee_address}`);
+  if (f.employer_name) lines.push(`Employer / company name: ${f.employer_name}`);
+  if (f.months_owed) lines.push(`Months/periods owed: ${f.months_owed}`);
+  if (f.total_amount_eur) lines.push(`Total amount owed (EUR): ${f.total_amount_eur}`);
+  if (f.contract_type) lines.push(`Contract type: ${f.contract_type}`);
+  if (f.additional_details) lines.push(`Additional details: ${f.additional_details}`);
+  lines.push("");
+  lines.push("Drafting instructions (legal context):");
+  lines.push(
+    "Context: formal labor claim (Reclamación de Cantidad) prior to judicial process and before SMAC conciliation.",
+  );
+  lines.push("Legal basis: Art. 29 Estatuto de los Trabajadores (timely payment of wages).");
+  lines.push("Critical: explicitly demand the 10% annual interest for delay (interés por mora) according to Art. 29.3 ET.");
+  lines.push("Tone: very firm. Mention intention to file a 'Papeleta de Conciliación' at SMAC if not paid within 5 days.");
+  return lines.join("\n");
+}
+
+function buildVoluntaryResignationFacts(input: {
+  locale: string;
+  company: string;
+  form: z.infer<typeof VoluntaryResignationFormSchema>;
+}) {
+  const f = input.form;
+  const lines: string[] = [];
+  lines.push("Use case: voluntary resignation letter (carta de dimisión).");
+  if (f.employee_full_name) lines.push(`Employee full name: ${f.employee_full_name}`);
+  if (f.employee_id) lines.push(`Employee ID (DNI/NIE/Passport): ${f.employee_id}`);
+  if (f.employee_address) lines.push(`Employee address: ${f.employee_address}`);
+  if (f.employer_name) lines.push(`Employer / company name: ${f.employer_name}`);
+  if (f.last_day) lines.push(`Last working day (effective date): ${f.last_day}`);
+  if (f.notice_given) lines.push(`Notice period provided: ${f.notice_given}`);
+  if (f.request_settlement === true) lines.push("Request finiquito immediately: yes");
+  if (f.request_settlement === false) lines.push("Request finiquito immediately: no");
+  if (f.additional_details) lines.push(`Additional details: ${f.additional_details}`);
+  lines.push("");
+  lines.push("Drafting instructions (legal context):");
+  lines.push("Context: letter of voluntary resignation (Carta de Dimisión).");
+  lines.push("Legal basis: Art. 49.1.d Estatuto de los Trabajadores.");
+  lines.push(
+    "Specific: explicitly request the preparation of the 'Finiquito' (final settlement) and 'Certificado de Empresa' for the last day.",
+  );
+  if (f.notice_given === "immediate") {
+    lines.push(
+      "Specific: phrase immediate resignation carefully and acknowledge potential deduction for missing notice days (if applicable).",
+    );
+  }
+  return lines.join("\n");
+}
+
+function buildVacationRequestFacts(input: {
+  locale: string;
+  company: string;
+  form: z.infer<typeof VacationRequestFormSchema>;
+}) {
+  const f = input.form;
+  const lines: string[] = [];
+  lines.push("Use case: formal vacation request (solicitud de vacaciones).");
+  if (f.employee_full_name) lines.push(`Employee full name: ${f.employee_full_name}`);
+  if (f.employee_id) lines.push(`Employee ID (DNI/NIE/Passport): ${f.employee_id}`);
+  if (f.employee_address) lines.push(`Employee address: ${f.employee_address}`);
+  if (f.employer_name) lines.push(`Employer / company name: ${f.employer_name}`);
+  if (f.start_date) lines.push(`Vacation start date: ${f.start_date}`);
+  if (f.end_date) lines.push(`Vacation end date: ${f.end_date}`);
+  if (f.total_days) lines.push(`Total working days requested: ${f.total_days}`);
+  if (f.comments) lines.push(`Comments: ${f.comments}`);
+  if (f.additional_details) lines.push(`Additional details: ${f.additional_details}`);
+  lines.push("");
+  lines.push("Drafting instructions (legal context):");
+  lines.push("Context: formal request for annual leave.");
+  lines.push("Legal basis: Art. 38 Estatuto de los Trabajadores.");
+  lines.push("Goal: create a paper trail. Request a stamped copy or written confirmation to avoid 'abandonment of post' accusations.");
+  lines.push("Mention that dates are requested with sufficient notice (usually at least 2 months prior when possible).");
+  return lines.join("\n");
+}
+
 const GenerateRequestSchema = z.object({
   locale: z.string().min(2),
   category: z.string().min(1),
@@ -800,6 +1027,71 @@ export async function POST(req: Request) {
       }
       parsedForm = parsed.data;
       facts = buildFeesRefundFacts({
+        locale: input.locale,
+        company: input.company,
+        form: parsed.data,
+      });
+    }
+
+    if (input.category === "trafico" && input.company === "multa" && input.form) {
+      const parsed = TrafficFineAppealFormSchema.safeParse(input.form);
+      if (!parsed.success) {
+        throw new Error(JSON.stringify(parsed.error.issues, null, 2));
+      }
+      parsedForm = parsed.data;
+      facts = buildTrafficFineAppealFacts({
+        locale: input.locale,
+        company: input.company,
+        form: parsed.data,
+      });
+    }
+
+    if (input.category === "trafico" && input.company === "venta" && input.form) {
+      const parsed = CarSaleNotificationFormSchema.safeParse(input.form);
+      if (!parsed.success) {
+        throw new Error(JSON.stringify(parsed.error.issues, null, 2));
+      }
+      parsedForm = parsed.data;
+      facts = buildCarSaleNotificationFacts({
+        locale: input.locale,
+        company: input.company,
+        form: parsed.data,
+      });
+    }
+
+    if (input.category === "trabajo" && input.company === "salarios" && input.form) {
+      const parsed = UnpaidWagesFormSchema.safeParse(input.form);
+      if (!parsed.success) {
+        throw new Error(JSON.stringify(parsed.error.issues, null, 2));
+      }
+      parsedForm = parsed.data;
+      facts = buildUnpaidWagesFacts({
+        locale: input.locale,
+        company: input.company,
+        form: parsed.data,
+      });
+    }
+
+    if (input.category === "trabajo" && input.company === "baja" && input.form) {
+      const parsed = VoluntaryResignationFormSchema.safeParse(input.form);
+      if (!parsed.success) {
+        throw new Error(JSON.stringify(parsed.error.issues, null, 2));
+      }
+      parsedForm = parsed.data;
+      facts = buildVoluntaryResignationFacts({
+        locale: input.locale,
+        company: input.company,
+        form: parsed.data,
+      });
+    }
+
+    if (input.category === "trabajo" && input.company === "vacaciones" && input.form) {
+      const parsed = VacationRequestFormSchema.safeParse(input.form);
+      if (!parsed.success) {
+        throw new Error(JSON.stringify(parsed.error.issues, null, 2));
+      }
+      parsedForm = parsed.data;
+      facts = buildVacationRequestFacts({
         locale: input.locale,
         company: input.company,
         form: parsed.data,

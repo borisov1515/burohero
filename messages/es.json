@@ -22,7 +22,12 @@
       "flightDelay": "Ejemplo: vuelo / ryanair (retraso de vuelo)",
       "insuranceCancel": "Ejemplo: seguro / mapfre (cancelación de seguro)",
       "claimDenied": "Ejemplo: denegación / allianz (rechazo de siniestro)",
-      "feesRefund": "Ejemplo: comisiones / bbva (devolución de comisiones)"
+      "feesRefund": "Ejemplo: comisiones / bbva (devolución de comisiones)",
+      "trafficFineAppeal": "Generador ejemplo: trafico / multa (recurrir multa)",
+      "carSaleNotification": "Generador ejemplo: trafico / venta (notificación de venta)",
+      "unpaidWages": "Generador ejemplo: trabajo / salarios (reclamación de cantidad)",
+      "voluntaryResignation": "Generador ejemplo: trabajo / baja (baja voluntaria)",
+      "vacationRequest": "Generador ejemplo: trabajo / vacaciones (solicitud de vacaciones)"
     }
   },
   "generator": {
@@ -358,7 +363,65 @@
       "reasonOptional": "¿Por qué esta comisión es injusta/incorrecta? (opcional)",
       "contactedBankBefore": "¿Contactaste con el banco antes?",
       "desiredOutcome": "Resultado deseado (reembolso, anular comisión, explicar base, etc.)"
+    },
+    "trafficFine": {
+      "recipientLine": "DGT / Policía Local (autoridad de tráfico)",
+      "fineReference": "Nº de expediente (p. ej., 280012345678)",
+      "fineDate": "Fecha de notificación (AAAA-MM-DD)",
+      "fineAmount": "Importe de la multa (EUR)",
+      "appealReasonQuestion": "Motivo del recurso",
+      "appealReasonOptions": {
+        "no_notification": "No recibí la notificación",
+        "not_driver": "No conducía yo (identificar conductor)",
+        "no_evidence": "Solicitar foto / certificado de radar",
+        "incorrect_data": "Error de matrícula/datos"
+      },
+      "additionalDetailsOptional": "Detalles adicionales (opcional) — explica exactamente lo ocurrido…"
+    },
+    "carSale": {
+      "recipientLine": "DGT (Dirección General de Tráfico)",
+      "sections": {
+        "seller": "Vendedor (tú)"
+      },
+      "plateNumber": "Matrícula (p. ej., 1234 BBB)",
+      "saleDate": "Fecha de venta (fecha del contrato) (AAAA-MM-DD)",
+      "buyerName": "Nombre completo del comprador",
+      "buyerId": "DNI/NIE/CIF del comprador"
+    },
+    "work": {
+      "sections": {
+        "employee": "Trabajador/a",
+        "employer": "Empresa"
+      }
+    },
+    "unpaidWages": {
+      "employerName": "Nombre de la empresa",
+      "monthsOwed": "Meses/periodos adeudados (p. ej., Nómina Enero 2025, Finiquito…)",
+      "totalAmount": "Importe total adeudado (EUR)",
+      "contractTypeQuestion": "Tipo de contrato",
+      "contractTypeOptions": {
+        "indefinido": "Indefinido",
+        "temporal": "Temporal",
+        "sin_contrato": "Trabajo sin contrato (ilegal)"
+      }
+    },
+    "voluntaryResignation": {
+      "employerName": "Nombre de la empresa",
+      "lastDay": "Último día de trabajo (fecha de efecto) (AAAA-MM-DD)",
+      "noticeGivenQuestion": "Preaviso dado",
+      "noticeGivenOptions": {
+        "15_days": "15 días (estándar)",
+        "per_contract": "Según contrato",
+        "immediate": "Inmediata (sin preaviso)"
+      },
+      "requestSettlementQuestion": "¿Solicitar el finiquito inmediatamente?"
+    },
+    "vacationRequest": {
+      "employerName": "Nombre de la empresa",
+      "startDate": "Fecha inicio de vacaciones (AAAA-MM-DD)",
+      "endDate": "Fecha fin de vacaciones (AAAA-MM-DD)",
+      "totalDays": "Total de días laborables solicitados",
+      "comments": "Comentarios (p. ej., acordado verbalmente con el responsable…) "
     }
   }
 }
-

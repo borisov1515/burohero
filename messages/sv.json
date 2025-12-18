@@ -22,7 +22,12 @@
       "flightDelay": "Exempelgenerator: vuelo / ryanair (flygförsening)",
       "insuranceCancel": "Exempelgenerator: seguro / mapfre (säkringsuppsägning)",
       "claimDenied": "Exempelgenerator: denegacion / allianz (avslagen skadereglering)",
-      "feesRefund": "Exempelgenerator: comisiones / bbva (återbetalning av avgifter)"
+      "feesRefund": "Exempelgenerator: comisiones / bbva (återbetalning av avgifter)",
+      "trafficFineAppeal": "Exempelgenerator: trafico / multa (överklaga böter)",
+      "carSaleNotification": "Exempelgenerator: trafico / venta (anmäl bilförsäljning)",
+      "unpaidWages": "Exempelgenerator: trabajo / salarios (obetald lön)",
+      "voluntaryResignation": "Exempelgenerator: trabajo / baja (egen uppsägning)",
+      "vacationRequest": "Exempelgenerator: trabajo / vacaciones (semesteransökan)"
     }
   },
   "generator": {
@@ -358,6 +363,65 @@
       "reasonOptional": "Varför är denna avgift orättvis/fel? (valfritt)",
       "contactedBankBefore": "Kontaktat banken tidigare?",
       "desiredOutcome": "Önskat resultat (återbetalning, ta bort avgift, förklaring, etc.)"
+    },
+    "trafficFine": {
+      "recipientLine": "DGT / lokal polis (trafikmyndighet)",
+      "fineReference": "Ärendenummer / expediente (t.ex. 280012345678)",
+      "fineDate": "Datum för delgivning (ÅÅÅÅ-MM-DD)",
+      "fineAmount": "Bötesbelopp (EUR)",
+      "appealReasonQuestion": "Skäl för överklagande",
+      "appealReasonOptions": {
+        "no_notification": "Jag fick aldrig någon delgivning",
+        "not_driver": "Jag körde inte (identifiera föraren)",
+        "no_evidence": "Begär foto / radarintyg",
+        "incorrect_data": "Fel på registreringsnummer/data"
+      },
+      "additionalDetailsOptional": "Ytterligare detaljer (valfritt) — beskriv exakt…"
+    },
+    "carSale": {
+      "recipientLine": "DGT (Dirección General de Tráfico)",
+      "sections": {
+        "seller": "Säljare (du)"
+      },
+      "plateNumber": "Registreringsnummer (matrícula) (t.ex. 1234 BBB)",
+      "saleDate": "Försäljningsdatum (avtalsdatum) (ÅÅÅÅ-MM-DD)",
+      "buyerName": "Köparens fullständiga namn",
+      "buyerId": "Köparens DNI/NIE/CIF"
+    },
+    "work": {
+      "sections": {
+        "employee": "Arbetstagare",
+        "employer": "Arbetsgivare"
+      }
+    },
+    "unpaidWages": {
+      "employerName": "Arbetsgivarens/företagets namn",
+      "monthsOwed": "Obetalda månader/perioder (t.ex. Nómina Enero 2025, Finiquito…) ",
+      "totalAmount": "Totalt belopp (EUR)",
+      "contractTypeQuestion": "Anställningsform",
+      "contractTypeOptions": {
+        "indefinido": "Tillsvidare (indefinido)",
+        "temporal": "Tidsbegränsad",
+        "sin_contrato": "Arbete utan kontrakt (olagligt)"
+      }
+    },
+    "voluntaryResignation": {
+      "employerName": "Arbetsgivarens/företagets namn",
+      "lastDay": "Sista arbetsdag (ikraftdatum) (ÅÅÅÅ-MM-DD)",
+      "noticeGivenQuestion": "Uppsägningstid",
+      "noticeGivenOptions": {
+        "15_days": "15 dagar (standard)",
+        "per_contract": "Enligt avtal",
+        "immediate": "Omedelbart (utan varsel)"
+      },
+      "requestSettlementQuestion": "Begära finiquito (slutreglering) direkt?"
+    },
+    "vacationRequest": {
+      "employerName": "Arbetsgivarens/företagets namn",
+      "startDate": "Semesterns startdatum (ÅÅÅÅ-MM-DD)",
+      "endDate": "Semesterns slutdatum (ÅÅÅÅ-MM-DD)",
+      "totalDays": "Antal arbetsdagar",
+      "comments": "Kommentarer (t.ex. muntligt överenskommet med chefen…) "
     }
   }
 }
