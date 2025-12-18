@@ -86,19 +86,19 @@ export function Return14FormSection({
       <div className="text-sm font-medium">{tForms("sections.buyer")}</div>
       <div className="grid gap-3 sm:grid-cols-2">
         <input
-          className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.buyer_full_name}
           onChange={(e) => setForm((p) => ({ ...p, buyer_full_name: e.target.value }))}
           placeholder={tForms("return14.buyerFullName")}
         />
         <input
-          className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.buyer_id}
           onChange={(e) => setForm((p) => ({ ...p, buyer_id: e.target.value }))}
           placeholder={tForms("return14.buyerId")}
         />
         <input
-          className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="sm:col-span-2 h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.buyer_address}
           onChange={(e) => setForm((p) => ({ ...p, buyer_address: e.target.value }))}
           placeholder={tForms("return14.buyerAddress")}
@@ -108,19 +108,19 @@ export function Return14FormSection({
       <div className="text-sm font-medium">{tForms("sections.sellerMerchant")}</div>
       <div className="grid gap-3 sm:grid-cols-2">
         <input
-          className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.seller_name}
           onChange={(e) => setForm((p) => ({ ...p, seller_name: e.target.value }))}
           placeholder={tForms("return14.sellerName")}
         />
         <input
-          className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.order_number}
           onChange={(e) => setForm((p) => ({ ...p, order_number: e.target.value }))}
           placeholder={tForms("return14.orderNumberOptional")}
         />
         <input
-          className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="sm:col-span-2 h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.seller_address}
           onChange={(e) => setForm((p) => ({ ...p, seller_address: e.target.value }))}
           placeholder={tForms("return14.sellerAddress")}
@@ -130,49 +130,49 @@ export function Return14FormSection({
       <div className="text-sm font-medium">{tForms("sections.purchase")}</div>
       <div className="grid gap-3 sm:grid-cols-2">
         <input
-          className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="sm:col-span-2 h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.product_description}
           onChange={(e) => setForm((p) => ({ ...p, product_description: e.target.value }))}
           placeholder={tForms("return14.productDescription")}
         />
         <input
-          className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.purchase_date}
           onChange={(e) => setForm((p) => ({ ...p, purchase_date: e.target.value }))}
           placeholder={tForms("return14.purchaseDate")}
         />
         <input
-          className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.delivery_date}
           onChange={(e) => setForm((p) => ({ ...p, delivery_date: e.target.value }))}
           placeholder={tForms("return14.deliveryDate")}
         />
         <input
-          className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.return_request_date}
           onChange={(e) => setForm((p) => ({ ...p, return_request_date: e.target.value }))}
           placeholder={tForms("return14.returnRequestDate")}
         />
         <input
-          className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.paid_amount_eur}
           onChange={(e) => setForm((p) => ({ ...p, paid_amount_eur: e.target.value }))}
           placeholder={tForms("return14.paidAmount")}
         />
         <input
-          className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.payment_method}
           onChange={(e) => setForm((p) => ({ ...p, payment_method: e.target.value }))}
           placeholder={tForms("return14.paymentMethod")}
         />
         <input
-          className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.refund_iban}
           onChange={(e) => setForm((p) => ({ ...p, refund_iban: e.target.value }))}
           placeholder={tForms("common.placeholders.refundIbanOptional")}
         />
         <select
-          className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.contacted_support_before}
           onChange={(e) =>
             setForm((p) => ({ ...p, contacted_support_before: e.target.value as any }))
@@ -183,13 +183,13 @@ export function Return14FormSection({
           <option value="no">{tForms("common.no")}</option>
         </select>
         <input
-          className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="sm:col-span-2 h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.desired_outcome}
           onChange={(e) => setForm((p) => ({ ...p, desired_outcome: e.target.value }))}
           placeholder={tForms("return14.desiredOutcome")}
         />
         <textarea
-          className="sm:col-span-2 h-28 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="sm:col-span-2 h-28 w-full resize-y rounded-xl border border-[#DCE6FF] bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.contacted_support_details}
           onChange={(e) =>
             setForm((p) => ({ ...p, contacted_support_details: e.target.value }))
@@ -199,17 +199,17 @@ export function Return14FormSection({
       </div>
 
       <textarea
-        className="h-28 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+        className="h-28 w-full resize-y rounded-xl border border-[#DCE6FF] bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
         value={form.extra_details}
         onChange={(e) => setForm((p) => ({ ...p, extra_details: e.target.value }))}
         placeholder={tForms("common.placeholders.extraDetailsOptional")}
       />
 
-      <details className="rounded-xl border border-zinc-200 p-4 text-sm dark:border-zinc-800">
+      <details className="rounded-xl border border-[#DCE6FF] p-4 text-sm">
         <summary className="cursor-pointer select-none font-medium">
           {tGen("debug.factsSent")}
         </summary>
-        <pre className="mt-3 whitespace-pre-wrap text-xs text-zinc-600 dark:text-zinc-400">
+        <pre className="mt-3 whitespace-pre-wrap text-xs text-[#475569]">
           {builtFacts}
         </pre>
       </details>

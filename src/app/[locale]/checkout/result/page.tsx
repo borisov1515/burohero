@@ -28,7 +28,7 @@ export default async function CheckoutResultPage({
     return (
       <main className="mx-auto w-full max-w-3xl px-6 py-16">
         <h1 className="text-2xl font-semibold tracking-tight">{t("title")}</h1>
-        <p className="mt-4 text-zinc-600 dark:text-zinc-400">
+        <p className="mt-4 text-[#475569]">
           {t("missingOrderId")}
         </p>
         <div className="mt-6">
@@ -44,7 +44,7 @@ export default async function CheckoutResultPage({
     return (
       <main className="mx-auto w-full max-w-3xl px-6 py-16">
         <h1 className="text-2xl font-semibold tracking-tight">{t("title")}</h1>
-        <p className="mt-4 text-zinc-600 dark:text-zinc-400">
+        <p className="mt-4 text-[#475569]">
           {t("invalidOrderId")}
         </p>
         <div className="mt-6">
@@ -67,7 +67,7 @@ export default async function CheckoutResultPage({
     return (
       <main className="mx-auto w-full max-w-3xl px-6 py-16">
         <h1 className="text-2xl font-semibold tracking-tight">{t("title")}</h1>
-        <p className="mt-4 text-zinc-600 dark:text-zinc-400">
+        <p className="mt-4 text-[#475569]">
           {t("orderNotFound")}
         </p>
       </main>
@@ -78,7 +78,7 @@ export default async function CheckoutResultPage({
     return (
       <main className="mx-auto w-full max-w-3xl px-6 py-16">
         <h1 className="text-2xl font-semibold tracking-tight">{t("title")}</h1>
-        <p className="mt-4 text-zinc-600 dark:text-zinc-400">
+        <p className="mt-4 text-[#475569]">
           {t("orderNotFound")}
         </p>
       </main>
@@ -102,7 +102,7 @@ export default async function CheckoutResultPage({
     <main className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-6 py-10">
       <header className="flex flex-col gap-2">
         <h1 className="text-2xl font-semibold tracking-tight">{t("title")}</h1>
-        <div className="text-sm text-zinc-500 dark:text-zinc-400">
+        <div className="text-sm text-[#64748B]">
           {t("orderLabel")} <span className="font-mono">{data.id}</span> •{" "}
           {t("statusLabel")}:{" "}
           <span className="font-medium">{statusLabel}</span>
@@ -117,14 +117,14 @@ export default async function CheckoutResultPage({
       />
 
       <section className="grid gap-4 lg:grid-cols-2">
-        <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
+        <div className="rounded-2xl border border-[#DCE6FF] bg-white p-6 shadow-sm">
           <div className="mb-3 text-sm font-medium">{t("spanishDocTitle")}</div>
           <div className="whitespace-pre-wrap text-sm leading-6">
             {isPaid ? spanishText : t("lockedNotPaid")}
           </div>
         </div>
 
-        <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
+        <div className="rounded-2xl border border-[#DCE6FF] bg-white p-6 shadow-sm">
           <div className="mb-3 text-sm font-medium">{t("translationTitle")}</div>
           <div className="whitespace-pre-wrap text-sm leading-6">
             {translationText}

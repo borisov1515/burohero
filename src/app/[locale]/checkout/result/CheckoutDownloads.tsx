@@ -106,15 +106,15 @@ export default function CheckoutDownloads({
   }
 
   return (
-    <section className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
+    <section className="rounded-2xl border border-[#DCE6FF] bg-white p-6 shadow-sm">
       <h2 className="text-lg font-medium">{t("downloadsTitle")}</h2>
-      <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+      <p className="mt-1 text-sm text-[#475569]">
         {t("orderLabel")} <span className="font-mono">{orderId}</span>
       </p>
 
       <div className="mt-4 flex flex-col gap-3 sm:flex-row">
         <button
-          className="inline-flex h-11 items-center justify-center rounded-xl bg-zinc-900 px-5 text-sm font-medium text-white disabled:opacity-50 dark:bg-zinc-50 dark:text-black"
+          className="inline-flex h-11 items-center justify-center rounded-xl bg-[#1E40AF] px-5 text-sm font-medium text-white hover:bg-[#1E3A8A] disabled:opacity-50"
           disabled={!isPaid || isWorking}
           onClick={() =>
             downloadPdf({
@@ -129,7 +129,7 @@ export default function CheckoutDownloads({
         </button>
 
         <button
-          className="inline-flex h-11 items-center justify-center rounded-xl border border-zinc-200 px-5 text-sm font-medium disabled:opacity-50 dark:border-zinc-800"
+          className="inline-flex h-11 items-center justify-center rounded-xl border border-[#DCE6FF] px-5 text-sm font-medium disabled:opacity-50"
           disabled={!translationText || isWorking}
           onClick={() =>
             downloadPdf({
@@ -145,19 +145,19 @@ export default function CheckoutDownloads({
       </div>
 
       {!isPaid ? (
-        <div className="mt-3 text-xs text-zinc-500 dark:text-zinc-400">
+        <div className="mt-3 text-xs text-[#64748B]">
           {t("spanishPdfLocked")}
         </div>
       ) : null}
 
       {missingFontHint ? (
-        <div className="mt-3 text-xs text-zinc-500 dark:text-zinc-400">
+        <div className="mt-3 text-xs text-[#64748B]">
           {missingFontHint}
         </div>
       ) : null}
 
       {notoFontLoadError ? (
-        <div className="mt-3 text-xs text-zinc-500 dark:text-zinc-400">
+        <div className="mt-3 text-xs text-[#64748B]">
           {t("fontLoad")}: {notoFontLoadError}
         </div>
       ) : null}

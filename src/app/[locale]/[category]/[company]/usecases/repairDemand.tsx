@@ -64,19 +64,19 @@ export function RepairDemandFormSection({
       <div className="text-sm font-medium">{tForms("sections.tenant")}</div>
       <div className="grid gap-3 sm:grid-cols-2">
         <input
-          className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.tenant_full_name}
           onChange={(e) => setForm((p) => ({ ...p, tenant_full_name: e.target.value }))}
           placeholder={tForms("repairDemand.tenantFullName")}
         />
         <input
-          className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.tenant_id}
           onChange={(e) => setForm((p) => ({ ...p, tenant_id: e.target.value }))}
           placeholder={tForms("repairDemand.tenantId")}
         />
         <input
-          className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="sm:col-span-2 h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.tenant_address}
           onChange={(e) => setForm((p) => ({ ...p, tenant_address: e.target.value }))}
           placeholder={tForms("repairDemand.tenantAddress")}
@@ -86,19 +86,19 @@ export function RepairDemandFormSection({
       <div className="text-sm font-medium">{tForms("sections.landlord")}</div>
       <div className="grid gap-3 sm:grid-cols-2">
         <input
-          className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.landlord_full_name}
           onChange={(e) => setForm((p) => ({ ...p, landlord_full_name: e.target.value }))}
           placeholder={tForms("repairDemand.landlordFullName")}
         />
         <input
-          className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.issue_first_notice_date}
           onChange={(e) => setForm((p) => ({ ...p, issue_first_notice_date: e.target.value }))}
           placeholder={tForms("repairDemand.issueFirstReportedDate")}
         />
         <input
-          className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="sm:col-span-2 h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.landlord_address}
           onChange={(e) => setForm((p) => ({ ...p, landlord_address: e.target.value }))}
           placeholder={tForms("repairDemand.landlordAddress")}
@@ -108,19 +108,19 @@ export function RepairDemandFormSection({
       <div className="text-sm font-medium">{tForms("repairDemand.sections.propertyIssue")}</div>
       <div className="grid gap-3">
         <input
-          className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.property_address}
           onChange={(e) => setForm((p) => ({ ...p, property_address: e.target.value }))}
           placeholder={tForms("repairDemand.propertyAddress")}
         />
         <textarea
-          className="h-28 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="h-28 w-full resize-y rounded-xl border border-[#DCE6FF] bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.issue_description}
           onChange={(e) => setForm((p) => ({ ...p, issue_description: e.target.value }))}
           placeholder={tForms("repairDemand.issueDescription")}
         />
         <select
-          className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.urgency}
           onChange={(e) => setForm((p) => ({ ...p, urgency: e.target.value as any }))}
         >
@@ -130,24 +130,24 @@ export function RepairDemandFormSection({
           <option value="high">{tForms("repairDemand.urgency.high")}</option>
         </select>
         <input
-          className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.desired_outcome}
           onChange={(e) => setForm((p) => ({ ...p, desired_outcome: e.target.value }))}
           placeholder={tForms("repairDemand.desiredOutcome")}
         />
         <textarea
-          className="h-24 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="h-24 w-full resize-y rounded-xl border border-[#DCE6FF] bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.extra_details}
           onChange={(e) => setForm((p) => ({ ...p, extra_details: e.target.value }))}
           placeholder={tForms("common.placeholders.extraDetailsOptional")}
         />
       </div>
 
-      <details className="rounded-xl border border-zinc-200 p-4 text-sm dark:border-zinc-800">
+      <details className="rounded-xl border border-[#DCE6FF] p-4 text-sm">
         <summary className="cursor-pointer select-none font-medium">
           {tGen("debug.factsSent")}
         </summary>
-        <pre className="mt-3 whitespace-pre-wrap text-xs text-zinc-600 dark:text-zinc-400">
+        <pre className="mt-3 whitespace-pre-wrap text-xs text-[#475569]">
           {builtFacts}
         </pre>
       </details>

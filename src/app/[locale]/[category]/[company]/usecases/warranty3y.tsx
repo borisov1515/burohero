@@ -80,19 +80,19 @@ export function Warranty3yFormSection({
       <div className="text-sm font-medium">{tForms("sections.buyer")}</div>
       <div className="grid gap-3 sm:grid-cols-2">
         <input
-          className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.buyer_full_name}
           onChange={(e) => setForm((p) => ({ ...p, buyer_full_name: e.target.value }))}
           placeholder={tForms("warranty3y.buyerFullName")}
         />
         <input
-          className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.buyer_id}
           onChange={(e) => setForm((p) => ({ ...p, buyer_id: e.target.value }))}
           placeholder={tForms("warranty3y.buyerIdOptional")}
         />
         <input
-          className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="sm:col-span-2 h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.buyer_address}
           onChange={(e) => setForm((p) => ({ ...p, buyer_address: e.target.value }))}
           placeholder={tForms("warranty3y.buyerAddressOptional")}
@@ -102,19 +102,19 @@ export function Warranty3yFormSection({
       <div className="text-sm font-medium">{tForms("sections.sellerMerchant")}</div>
       <div className="grid gap-3 sm:grid-cols-2">
         <input
-          className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.seller_name}
           onChange={(e) => setForm((p) => ({ ...p, seller_name: e.target.value }))}
           placeholder={tForms("warranty3y.sellerNameOptional")}
         />
         <input
-          className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.order_or_invoice_number}
           onChange={(e) => setForm((p) => ({ ...p, order_or_invoice_number: e.target.value }))}
           placeholder={tForms("warranty3y.orderOrInvoiceNumberOptional")}
         />
         <input
-          className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="sm:col-span-2 h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.seller_address}
           onChange={(e) => setForm((p) => ({ ...p, seller_address: e.target.value }))}
           placeholder={tForms("warranty3y.sellerAddressOptional")}
@@ -124,31 +124,31 @@ export function Warranty3yFormSection({
       <div className="text-sm font-medium">{tForms("sections.productWarranty")}</div>
       <div className="grid gap-3 sm:grid-cols-2">
         <input
-          className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="sm:col-span-2 h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.product_description}
           onChange={(e) => setForm((p) => ({ ...p, product_description: e.target.value }))}
           placeholder={tForms("warranty3y.productDescription")}
         />
         <input
-          className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.purchase_date}
           onChange={(e) => setForm((p) => ({ ...p, purchase_date: e.target.value }))}
           placeholder={tForms("warranty3y.purchaseDateOptional")}
         />
         <input
-          className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.delivery_date}
           onChange={(e) => setForm((p) => ({ ...p, delivery_date: e.target.value }))}
           placeholder={tForms("warranty3y.deliveryDateOptional")}
         />
         <input
-          className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.defect_discovered_date}
           onChange={(e) => setForm((p) => ({ ...p, defect_discovered_date: e.target.value }))}
           placeholder={tForms("warranty3y.defectDiscoveredDateOptional")}
         />
         <select
-          className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.requested_solution}
           onChange={(e) => setForm((p) => ({ ...p, requested_solution: e.target.value as any }))}
         >
@@ -159,7 +159,7 @@ export function Warranty3yFormSection({
           <option value="price_reduction">{tForms("warranty3y.requestedSolution.priceReduction")}</option>
         </select>
         <select
-          className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.contacted_support_before}
           onChange={(e) => setForm((p) => ({ ...p, contacted_support_before: e.target.value as any }))}
         >
@@ -168,19 +168,19 @@ export function Warranty3yFormSection({
           <option value="no">{tForms("common.no")}</option>
         </select>
         <textarea
-          className="sm:col-span-2 h-28 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="sm:col-span-2 h-28 w-full resize-y rounded-xl border border-[#DCE6FF] bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.defect_description}
           onChange={(e) => setForm((p) => ({ ...p, defect_description: e.target.value }))}
           placeholder={tForms("warranty3y.defectDescription")}
         />
         <textarea
-          className="sm:col-span-2 h-24 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="sm:col-span-2 h-24 w-full resize-y rounded-xl border border-[#DCE6FF] bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.contacted_support_details}
           onChange={(e) => setForm((p) => ({ ...p, contacted_support_details: e.target.value }))}
           placeholder={tForms("warranty3y.supportContactDetailsOptional")}
         />
         <input
-          className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="sm:col-span-2 h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.desired_outcome}
           onChange={(e) => setForm((p) => ({ ...p, desired_outcome: e.target.value }))}
           placeholder={tForms("warranty3y.desiredOutcome")}
@@ -188,17 +188,17 @@ export function Warranty3yFormSection({
       </div>
 
       <textarea
-        className="h-24 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+        className="h-24 w-full resize-y rounded-xl border border-[#DCE6FF] bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
         value={form.extra_details}
         onChange={(e) => setForm((p) => ({ ...p, extra_details: e.target.value }))}
         placeholder={tForms("common.placeholders.extraDetailsOptional")}
       />
 
-      <details className="rounded-xl border border-zinc-200 p-4 text-sm dark:border-zinc-800">
+      <details className="rounded-xl border border-[#DCE6FF] p-4 text-sm">
         <summary className="cursor-pointer select-none font-medium">
           {tGen("debug.factsSent")}
         </summary>
-        <pre className="mt-3 whitespace-pre-wrap text-xs text-zinc-600 dark:text-zinc-400">
+        <pre className="mt-3 whitespace-pre-wrap text-xs text-[#475569]">
           {builtFacts}
         </pre>
       </details>

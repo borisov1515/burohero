@@ -728,13 +728,13 @@ export default function GeneratorClient({ locale, category, company }: Props) {
   return (
     <main className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-6 py-10">
       <header className="flex flex-col gap-2">
-        <div className="text-sm text-zinc-500 dark:text-zinc-400">
+        <div className="text-sm text-[#64748B]">
           {locale} / {category} / {company}
         </div>
         <h1 className="text-2xl font-semibold tracking-tight">{tGen("title")}</h1>
       </header>
 
-      <section className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
+      <section className="rounded-2xl border border-[#DCE6FF] bg-white p-6 shadow-sm">
         {category === "cancel" ? (
           <CancelTelcoFormSection
             company={company}
@@ -842,7 +842,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
           <>
             <label className="text-sm font-medium">{tGen("fallbackFacts.label")}</label>
             <textarea
-              className="mt-2 h-40 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+              className="mt-2 h-40 w-full resize-y rounded-xl border border-[#DCE6FF] bg-white p-3 text-sm outline-none placeholder:text-[#94A3B8] focus:ring-2 focus:ring-[#1D4ED8]/15"
               value={facts}
               onChange={(e) => setFacts(e.target.value)}
               placeholder={tGen("fallbackFacts.placeholder")}
@@ -851,7 +851,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
         )}
         <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
           <button
-            className="inline-flex h-11 items-center justify-center rounded-xl bg-zinc-900 px-5 text-sm font-medium text-white disabled:opacity-50 dark:bg-zinc-50 dark:text-black"
+            className="inline-flex h-11 items-center justify-center rounded-xl bg-[#1E40AF] px-5 text-sm font-medium text-white hover:bg-[#1E3A8A] disabled:opacity-50"
             disabled={!canGenerate || isLoading}
             onClick={onGenerate}
           >
@@ -859,7 +859,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
           </button>
 
           <button
-            className="inline-flex h-11 items-center justify-center rounded-xl border border-zinc-200 px-5 text-sm font-medium disabled:opacity-50 dark:border-zinc-800"
+            className="inline-flex h-11 items-center justify-center rounded-xl border border-[#DCE6FF] bg-white px-5 text-sm font-medium text-[#0F172A] hover:border-[#BFD2FF] disabled:opacity-50"
             disabled={!orderId || isLoading}
             onClick={onMockPay}
           >
@@ -867,36 +867,36 @@ export default function GeneratorClient({ locale, category, company }: Props) {
           </button>
 
           {orderId ? (
-            <div className="text-xs text-zinc-500 dark:text-zinc-400">
+            <div className="text-xs text-[#64748B]">
               {tGen("labels.order")}: <span className="font-mono">{orderId}</span>
             </div>
           ) : null}
         </div>
 
         {error ? (
-          <div className="mt-4 rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-700 dark:border-red-900/40 dark:bg-red-950/40 dark:text-red-200">
+          <div className="mt-4 rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-700">
             {error}
           </div>
         ) : null}
 
-        <details className="mt-4 rounded-xl border border-zinc-200 p-4 text-sm dark:border-zinc-800">
+        <details className="mt-4 rounded-xl border border-[#DCE6FF] p-4 text-sm">
           <summary className="cursor-pointer select-none font-medium">
             {tGen("debug.lastApi")}
           </summary>
           <div className="mt-3 grid gap-3">
             <div>
-              <div className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
+              <div className="text-xs font-medium text-[#64748B]">
                 {tGen("debug.request")}
               </div>
-              <pre className="mt-1 whitespace-pre-wrap rounded-lg bg-zinc-50 p-3 text-xs text-zinc-800 dark:bg-black dark:text-zinc-200">
+              <pre className="mt-1 whitespace-pre-wrap rounded-lg bg-[#F5F8FF] p-3 text-xs text-[#0F172A]">
                 {debugLastRequest ? JSON.stringify(debugLastRequest, null, 2) : "—"}
               </pre>
             </div>
             <div>
-              <div className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
+              <div className="text-xs font-medium text-[#64748B]">
                 {tGen("debug.response")}
               </div>
-              <pre className="mt-1 whitespace-pre-wrap rounded-lg bg-zinc-50 p-3 text-xs text-zinc-800 dark:bg-black dark:text-zinc-200">
+              <pre className="mt-1 whitespace-pre-wrap rounded-lg bg-[#F5F8FF] p-3 text-xs text-[#0F172A]">
                 {debugLastResponse ? JSON.stringify(debugLastResponse, null, 2) : "—"}
               </pre>
             </div>
@@ -906,7 +906,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
 
       {/* Desktop: dual pane */}
       <section className="hidden gap-4 lg:grid lg:grid-cols-2">
-        <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
+        <div className="rounded-2xl border border-[#DCE6FF] bg-white p-6 shadow-sm">
           <div className="mb-3 text-sm font-medium">{tGen("labels.spanishDoc")}</div>
           <div
             className={[
@@ -921,7 +921,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
           </div>
         </div>
 
-        <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
+        <div className="rounded-2xl border border-[#DCE6FF] bg-white p-6 shadow-sm">
           <div className="mb-3 text-sm font-medium">{tGen("labels.translation")}</div>
           <div className="whitespace-pre-wrap text-sm leading-6">
             {native || tGen("states.previewTranslation")}
@@ -931,14 +931,14 @@ export default function GeneratorClient({ locale, category, company }: Props) {
 
       {/* Mobile: tabs */}
       <section className="grid gap-4 lg:hidden">
-        <div className="flex w-full items-center gap-2 rounded-xl border border-zinc-200 bg-white p-2 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
+        <div className="flex w-full items-center gap-2 rounded-xl border border-[#DCE6FF] bg-white p-2 shadow-sm">
           <button
             type="button"
             className={[
               "flex-1 rounded-lg px-3 py-2 text-sm font-medium",
               mobileTab === "document"
-                ? "bg-zinc-900 text-white dark:bg-zinc-50 dark:text-black"
-                : "text-zinc-700 dark:text-zinc-300",
+                ? "bg-[#1E40AF] text-white"
+                : "text-[#475569]",
             ].join(" ")}
             onClick={() => setMobileTab("document")}
           >
@@ -949,8 +949,8 @@ export default function GeneratorClient({ locale, category, company }: Props) {
             className={[
               "flex-1 rounded-lg px-3 py-2 text-sm font-medium",
               mobileTab === "translation"
-                ? "bg-zinc-900 text-white dark:bg-zinc-50 dark:text-black"
-                : "text-zinc-700 dark:text-zinc-300",
+                ? "bg-[#1E40AF] text-white"
+                : "text-[#475569]",
             ].join(" ")}
             onClick={() => setMobileTab("translation")}
           >
@@ -959,7 +959,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
         </div>
 
         {mobileTab === "document" ? (
-          <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
+          <div className="rounded-2xl border border-[#DCE6FF] bg-white p-6 shadow-sm">
             <div className="mb-3 text-sm font-medium">{tGen("labels.spanishDoc")}</div>
             <div
               className={[
@@ -974,7 +974,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
             </div>
           </div>
         ) : (
-          <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
+          <div className="rounded-2xl border border-[#DCE6FF] bg-white p-6 shadow-sm">
             <div className="mb-3 text-sm font-medium">{tGen("labels.translation")}</div>
             <div className="whitespace-pre-wrap text-sm leading-6">
               {native || tGen("states.previewTranslation")}

@@ -65,9 +65,9 @@ export function CarSaleNotificationFormSection({
 
   return (
     <div className="grid gap-4">
-      <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-sm dark:border-zinc-800 dark:bg-black">
+      <div className="rounded-xl border border-[#DCE6FF] bg-[#F5F8FF] p-4 text-sm">
         <div className="font-medium">{tForms("sections.recipient")}</div>
-        <div className="mt-2 text-zinc-700 dark:text-zinc-300">
+        <div className="mt-2 text-[#475569]">
           {tForms("carSale.recipientLine")}
         </div>
       </div>
@@ -76,19 +76,19 @@ export function CarSaleNotificationFormSection({
         <div className="text-sm font-medium">{tForms("carSale.sections.seller")}</div>
         <div className="mt-2 grid gap-3 sm:grid-cols-2">
           <input
-            className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+            className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
             value={form.seller_full_name}
             onChange={(e) => setForm((p) => ({ ...p, seller_full_name: e.target.value }))}
             placeholder={tForms("common.placeholders.fullName")}
           />
           <input
-            className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+            className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
             value={form.seller_id}
             onChange={(e) => setForm((p) => ({ ...p, seller_id: e.target.value }))}
             placeholder={tForms("common.placeholders.id")}
           />
           <input
-            className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+            className="sm:col-span-2 h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
             value={form.seller_address}
             onChange={(e) => setForm((p) => ({ ...p, seller_address: e.target.value }))}
             placeholder={tForms("common.placeholders.address")}
@@ -100,25 +100,25 @@ export function CarSaleNotificationFormSection({
         <div className="text-sm font-medium">{tForms("sections.caseDetails")}</div>
         <div className="mt-2 grid gap-3 sm:grid-cols-2">
           <input
-            className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+            className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
             value={form.plate_number}
             onChange={(e) => setForm((p) => ({ ...p, plate_number: e.target.value }))}
             placeholder={tForms("carSale.plateNumber")}
           />
           <input
-            className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+            className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
             value={form.sale_date}
             onChange={(e) => setForm((p) => ({ ...p, sale_date: e.target.value }))}
             placeholder={tForms("carSale.saleDate")}
           />
           <input
-            className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+            className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
             value={form.buyer_name}
             onChange={(e) => setForm((p) => ({ ...p, buyer_name: e.target.value }))}
             placeholder={tForms("carSale.buyerName")}
           />
           <input
-            className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+            className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
             value={form.buyer_id}
             onChange={(e) => setForm((p) => ({ ...p, buyer_id: e.target.value }))}
             placeholder={tForms("carSale.buyerId")}
@@ -126,18 +126,18 @@ export function CarSaleNotificationFormSection({
         </div>
 
         <textarea
-          className="mt-3 h-24 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="mt-3 h-24 w-full resize-y rounded-xl border border-[#DCE6FF] bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.additional_details}
           onChange={(e) => setForm((p) => ({ ...p, additional_details: e.target.value }))}
           placeholder={tForms("common.placeholders.extraDetailsOptional")}
         />
       </div>
 
-      <details className="rounded-xl border border-zinc-200 p-4 text-sm dark:border-zinc-800">
+      <details className="rounded-xl border border-[#DCE6FF] p-4 text-sm">
         <summary className="cursor-pointer select-none font-medium">
           {tGen("debug.factsSent")}
         </summary>
-        <pre className="mt-3 whitespace-pre-wrap text-xs text-zinc-600 dark:text-zinc-400">
+        <pre className="mt-3 whitespace-pre-wrap text-xs text-[#475569]">
           {builtFacts}
         </pre>
       </details>

@@ -74,19 +74,19 @@ export function VacationRequestFormSection({
         <div className="text-sm font-medium">{tForms("work.sections.employee")}</div>
         <div className="mt-2 grid gap-3 sm:grid-cols-2">
           <input
-            className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+            className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
             value={form.employee_full_name}
             onChange={(e) => setForm((p) => ({ ...p, employee_full_name: e.target.value }))}
             placeholder={tForms("common.placeholders.fullName")}
           />
           <input
-            className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+            className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
             value={form.employee_id}
             onChange={(e) => setForm((p) => ({ ...p, employee_id: e.target.value }))}
             placeholder={tForms("common.placeholders.id")}
           />
           <input
-            className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+            className="sm:col-span-2 h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
             value={form.employee_address}
             onChange={(e) => setForm((p) => ({ ...p, employee_address: e.target.value }))}
             placeholder={tForms("common.placeholders.address")}
@@ -98,25 +98,25 @@ export function VacationRequestFormSection({
         <div className="text-sm font-medium">{tForms("work.sections.employer")}</div>
         <div className="mt-2 grid gap-3 sm:grid-cols-2">
           <input
-            className="sm:col-span-2 h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+            className="sm:col-span-2 h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
             value={form.employer_name}
             onChange={(e) => setForm((p) => ({ ...p, employer_name: e.target.value }))}
             placeholder={tForms("vacationRequest.employerName")}
           />
           <input
-            className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+            className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
             value={form.start_date}
             onChange={(e) => setForm((p) => ({ ...p, start_date: e.target.value }))}
             placeholder={tForms("vacationRequest.startDate")}
           />
           <input
-            className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+            className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
             value={form.end_date}
             onChange={(e) => setForm((p) => ({ ...p, end_date: e.target.value }))}
             placeholder={tForms("vacationRequest.endDate")}
           />
           <input
-            className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+            className="h-11 w-full rounded-xl border border-[#DCE6FF] bg-white px-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
             value={form.total_days}
             onChange={(e) => setForm((p) => ({ ...p, total_days: e.target.value }))}
             placeholder={tForms("vacationRequest.totalDays")}
@@ -124,24 +124,24 @@ export function VacationRequestFormSection({
         </div>
 
         <textarea
-          className="mt-3 h-24 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="mt-3 h-24 w-full resize-y rounded-xl border border-[#DCE6FF] bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.comments}
           onChange={(e) => setForm((p) => ({ ...p, comments: e.target.value }))}
           placeholder={tForms("vacationRequest.comments")}
         />
         <textarea
-          className="mt-3 h-24 w-full resize-y rounded-xl border border-zinc-200 bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+          className="mt-3 h-24 w-full resize-y rounded-xl border border-[#DCE6FF] bg-white p-3 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
           value={form.additional_details}
           onChange={(e) => setForm((p) => ({ ...p, additional_details: e.target.value }))}
           placeholder={tForms("common.placeholders.extraDetailsOptional")}
         />
       </div>
 
-      <details className="rounded-xl border border-zinc-200 p-4 text-sm dark:border-zinc-800">
+      <details className="rounded-xl border border-[#DCE6FF] p-4 text-sm">
         <summary className="cursor-pointer select-none font-medium">
           {tGen("debug.factsSent")}
         </summary>
-        <pre className="mt-3 whitespace-pre-wrap text-xs text-zinc-600 dark:text-zinc-400">
+        <pre className="mt-3 whitespace-pre-wrap text-xs text-[#475569]">
           {builtFacts}
         </pre>
       </details>
