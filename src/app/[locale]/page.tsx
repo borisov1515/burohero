@@ -56,7 +56,7 @@ export default async function LocaleHome({
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
               <Link
                 href={`/${locale}/${categories[0]?.items?.[0]?.slug ?? "cancel/vodafone"}`}
-                className="inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-[#1D4ED8] px-5 text-sm font-medium text-white hover:bg-[#1E40AF]"
+                className="inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-[#1E40AF] px-5 text-sm font-medium text-white hover:bg-[#1E3A8A]"
               >
                 {tHome("hero.ctaPrimary")}
                 <ArrowRight className="h-4 w-4" />

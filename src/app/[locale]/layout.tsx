@@ -26,8 +26,8 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider messages={messages}>
-      <div className="min-h-screen bg-zinc-50 text-zinc-900 dark:bg-black dark:text-zinc-50">
-        <header className="sticky top-0 z-10 border-b border-zinc-200 bg-zinc-50/80 backdrop-blur dark:border-zinc-800 dark:bg-black/60">
+      <div className="min-h-screen bg-white text-[#0F172A]">
+        <header className="sticky top-0 z-10 border-b border-[#DCE6FF] bg-white/80 backdrop-blur">
           <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-6 py-3">
             <div className="text-sm font-semibold tracking-tight">BuroHero</div>
             <LocaleSwitcher currentLocale={safeLocale} />

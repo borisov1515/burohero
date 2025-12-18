@@ -24,9 +24,9 @@ export default function LocaleSwitcher({ currentLocale }: { currentLocale: AppLo
 
   return (
     <label className="inline-flex items-center gap-2 text-sm">
-      <span className="text-zinc-500 dark:text-zinc-400">{t("language")}</span>
+      <span className="text-[#475569]">{t("language")}</span>
       <select
-        className="h-9 rounded-lg border border-zinc-200 bg-white px-2 text-sm outline-none focus:ring-2 focus:ring-zinc-900/10 dark:border-zinc-800 dark:bg-black dark:focus:ring-zinc-50/10"
+        className="h-9 rounded-lg border border-[#DCE6FF] bg-white px-2 text-sm outline-none focus:ring-2 focus:ring-[#1D4ED8]/15"
         value={currentLocale}
         onChange={(e) => {
           const nextLocale = e.target.value as AppLocale;
