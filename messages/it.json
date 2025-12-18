@@ -185,6 +185,48 @@
       "invalidOrderId": "orderId non valido.",
       "orderNotFound": "Ordine non trovato.",
       "unknown": "Errore sconosciuto"
+    },
+    "hints": {
+      "spanishDoc": "Questo è il documento ufficiale da inviare.",
+      "translation": "Questo è solo per tua comprensione."
+    },
+    "requirements": {
+      "title": "Cosa ti serve:",
+      "housing": [
+        "Dettagli del contratto d'affitto",
+        "Indirizzo del proprietario",
+        "Date (Inizio/Fine/Uscita)"
+      ],
+      "services": [
+        "Numero cliente o contratto",
+        "Ultima bolletta",
+        "Indirizzo del fornitore"
+      ],
+      "shopping": [
+        "Conferma ordine o fattura",
+        "Data di acquisto",
+        "Dettagli del venditore"
+      ],
+      "travel": [
+        "Numero del volo",
+        "Riferimento prenotazione",
+        "Date del viaggio"
+      ],
+      "insurance": [
+        "Numero polizza",
+        "Nome assicuratore",
+        "Dettagli sinistro"
+      ],
+      "traffic": [
+        "Notifica multa",
+        "Targa del veicolo",
+        "Patente di guida"
+      ],
+      "work": [
+        "Contratto di lavoro",
+        "Dettagli azienda",
+        "Buste paga"
+      ]
     }
   },
   "checkout": {

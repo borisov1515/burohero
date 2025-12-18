@@ -185,6 +185,48 @@
       "invalidOrderId": "Invalid orderId.",
       "orderNotFound": "Order not found.",
       "unknown": "Unknown error"
+    },
+    "hints": {
+      "spanishDoc": "This is the official legal document to send.",
+      "translation": "This is for your understanding only."
+    },
+    "requirements": {
+      "title": "What you need:",
+      "housing": [
+        "Rental contract details",
+        "Landlord's address",
+        "Dates (Start/End/Move-out)"
+      ],
+      "services": [
+        "Customer or Contract number",
+        "Last bill or invoice",
+        "Provider's address"
+      ],
+      "shopping": [
+        "Order confirmation or Invoice",
+        "Purchase date",
+        "Seller's details"
+      ],
+      "travel": [
+        "Flight number",
+        "Booking reference",
+        "Travel dates"
+      ],
+      "insurance": [
+        "Policy number",
+        "Insurer's name",
+        "Claim details (if any)"
+      ],
+      "traffic": [
+        "Fine notification (for appeals)",
+        "Vehicle license plate",
+        "Driver's license"
+      ],
+      "work": [
+        "Employment contract",
+        "Company details",
+        "Payroll/Payslip information"
+      ]
     }
   },
   "checkout": {

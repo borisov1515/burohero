@@ -185,6 +185,48 @@
       "invalidOrderId": "orderId invalid.",
       "orderNotFound": "Comanda nu a fost găsită.",
       "unknown": "Eroare necunoscută"
+    },
+    "hints": {
+      "spanishDoc": "Acesta este documentul oficial de trimis.",
+      "translation": "Acesta este doar pentru informarea dvs."
+    },
+    "requirements": {
+      "title": "De ce aveți nevoie:",
+      "housing": [
+        "Detalii contract închiriere",
+        "Adresa proprietarului",
+        "Date (Început/Sfârșit/Mutare)"
+      ],
+      "services": [
+        "Număr client sau contract",
+        "Ultima factură",
+        "Adresa furnizorului"
+      ],
+      "shopping": [
+        "Confirmare comandă sau factură",
+        "Data achiziției",
+        "Detalii vânzător"
+      ],
+      "travel": [
+        "Număr zbor",
+        "Referință rezervare",
+        "Date călătorie"
+      ],
+      "insurance": [
+        "Număr poliță",
+        "Nume asigurător",
+        "Detalii daună"
+      ],
+      "traffic": [
+        "Notificare amendă",
+        "Număr de înmatriculare",
+        "Permis de conducere"
+      ],
+      "work": [
+        "Contract de muncă",
+        "Detalii companie",
+        "Fluturași de salariu"
+      ]
     }
   },
   "checkout": {

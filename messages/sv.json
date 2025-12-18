@@ -185,6 +185,48 @@
       "invalidOrderId": "Ogiltig orderId.",
       "orderNotFound": "Ordern hittades inte.",
       "unknown": "Okänt fel"
+    },
+    "hints": {
+      "spanishDoc": "Detta är det officiella dokumentet att skicka.",
+      "translation": "Detta är endast för din förståelse."
+    },
+    "requirements": {
+      "title": "Vad du behöver:",
+      "housing": [
+        "Hyreskontrakt",
+        "Hyresvärdens adress",
+        "Datum (Start/Slut/Flytt)"
+      ],
+      "services": [
+        "Kund- eller kontraktsnummer",
+        "Senaste fakturan",
+        "Leverantörens adress"
+      ],
+      "shopping": [
+        "Orderbekräftelse eller faktura",
+        "Köpdatum",
+        "Säljarens uppgifter"
+      ],
+      "travel": [
+        "Flygnummer",
+        "Bokningsreferens",
+        "Resedatum"
+      ],
+      "insurance": [
+        "Försäkringsnummer",
+        "Försäkringsbolagets namn",
+        "Skadeuppgifter"
+      ],
+      "traffic": [
+        "Bötesavi",
+        "Registreringsnummer",
+        "Körkort"
+      ],
+      "work": [
+        "Anställningsavtal",
+        "Företagsuppgifter",
+        "Lönespecifikationer"
+      ]
     }
   },
   "checkout": {

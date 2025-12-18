@@ -113,11 +113,46 @@ type Props = {
   company: string;
 };
 
+const useCaseConfig: Record<string, { cardKey: string; reqKey: string }> = {
+  cancel: { cardKey: "cancel_contract", reqKey: "services" },
+  fianza: { cardKey: "deposit_return", reqKey: "housing" },
+  devolucion: { cardKey: "return_14_days", reqKey: "shopping" },
+  reparacion: { cardKey: "request_repairs", reqKey: "housing" },
+  rescicion: { cardKey: "terminate_lease", reqKey: "housing" },
+  factura: { cardKey: "dispute_bill", reqKey: "services" },
+  garantia: { cardKey: "warranty_3_years", reqKey: "shopping" },
+  noentrega: { cardKey: "non_delivery", reqKey: "shopping" },
+  vuelo: { cardKey: "flight_delay", reqKey: "travel" },
+  seguro: { cardKey: "cancel_insurance", reqKey: "insurance" },
+  denegacion: { cardKey: "claim_denied", reqKey: "insurance" },
+  comisiones: { cardKey: "bank_fees_refund", reqKey: "services" },
+  trafico_multa: { cardKey: "traffic_fine_appeal", reqKey: "traffic" },
+  trafico_venta: { cardKey: "car_sale_notification", reqKey: "traffic" },
+  trabajo_salarios: { cardKey: "unpaid_wages", reqKey: "work" },
+  trabajo_baja: { cardKey: "voluntary_resignation", reqKey: "work" },
+  trabajo_vacaciones: { cardKey: "vacation_request", reqKey: "work" },
+};
+
+function RequirementsList({ items }: { items: string[] }) {
+  if (!items?.length) return null;
+  return (
+    <ul className="mt-3 grid gap-2 text-sm text-[#475569]">
+      {items.map((it, idx) => (
+        <li key={`${idx}-${it}`} className="flex items-start gap-2">
+          <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[#1E40AF]" />
+          <span>{it}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export default function GeneratorClient({ locale, category, company }: Props) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const tApp = useTranslations("app");
   const tGen = useTranslations("generator");
+  const tHome = useTranslations("home");
   const [mobileTab, setMobileTab] = useState<"document" | "translation">("translation");
   const [facts, setFacts] = useState("");
   const [cancelForm, setCancelForm] = useState<CancelTelcoForm>(defaultCancelTelcoForm);
@@ -209,6 +244,17 @@ export default function GeneratorClient({ locale, category, company }: Props) {
   ]);
 
   const canGenerate = useMemo(() => builtFacts.trim().length >= 10, [builtFacts]);
+
+  const configKey =
+    category === "trafico" || category === "trabajo" ? `${category}_${company}` : category;
+  const config = useCaseConfig[configKey];
+  const useCaseTitle = config ? tHome(`cards.${config.cardKey}.title`) : tGen("title");
+  const useCaseDesc = config ? tHome(`cards.${config.cardKey}.desc`) : "";
+  const reqItems = (() => {
+    if (!config) return [] as string[];
+    const raw = tGen.raw(`requirements.${config.reqKey}`);
+    return Array.isArray(raw) ? (raw as string[]) : [];
+  })();
 
   useEffect(() => {
     const id = searchParams.get("orderId");
@@ -731,10 +777,20 @@ export default function GeneratorClient({ locale, category, company }: Props) {
         <div className="text-sm text-[#64748B]">
           {locale} / {category} / {company}
         </div>
-        <h1 className="text-2xl font-semibold tracking-tight">{tGen("title")}</h1>
+        <h1 className="text-2xl font-semibold tracking-tight">{useCaseTitle}</h1>
+        {useCaseDesc ? <p className="text-sm text-[#475569]">{useCaseDesc}</p> : null}
       </header>
 
       <section className="rounded-2xl border border-[#DCE6FF] bg-white p-6 shadow-sm">
+        {reqItems.length ? (
+          <div className="mb-6 rounded-2xl border border-[#DCE6FF] bg-[#F5F8FF] p-5">
+            <div className="text-sm font-semibold text-[#0F172A]">
+              {tGen("requirements.title")}
+            </div>
+            <RequirementsList items={reqItems} />
+          </div>
+        ) : null}
+
         {category === "cancel" ? (
           <CancelTelcoFormSection
             company={company}
@@ -908,6 +964,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
       <section className="hidden gap-4 lg:grid lg:grid-cols-2">
         <div className="rounded-2xl border border-[#DCE6FF] bg-white p-6 shadow-sm">
           <div className="mb-3 text-sm font-medium">{tGen("labels.spanishDoc")}</div>
+          <div className="-mt-2 mb-3 text-xs text-[#64748B]">{tGen("hints.spanishDoc")}</div>
           <div
             className={[
               "whitespace-pre-wrap text-sm leading-6",
@@ -923,6 +980,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
 
         <div className="rounded-2xl border border-[#DCE6FF] bg-white p-6 shadow-sm">
           <div className="mb-3 text-sm font-medium">{tGen("labels.translation")}</div>
+          <div className="-mt-2 mb-3 text-xs text-[#64748B]">{tGen("hints.translation")}</div>
           <div className="whitespace-pre-wrap text-sm leading-6">
             {native || tGen("states.previewTranslation")}
           </div>
@@ -961,6 +1019,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
         {mobileTab === "document" ? (
           <div className="rounded-2xl border border-[#DCE6FF] bg-white p-6 shadow-sm">
             <div className="mb-3 text-sm font-medium">{tGen("labels.spanishDoc")}</div>
+            <div className="-mt-2 mb-3 text-xs text-[#64748B]">{tGen("hints.spanishDoc")}</div>
             <div
               className={[
                 "whitespace-pre-wrap text-sm leading-6",
@@ -976,6 +1035,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
         ) : (
           <div className="rounded-2xl border border-[#DCE6FF] bg-white p-6 shadow-sm">
             <div className="mb-3 text-sm font-medium">{tGen("labels.translation")}</div>
+            <div className="-mt-2 mb-3 text-xs text-[#64748B]">{tGen("hints.translation")}</div>
             <div className="whitespace-pre-wrap text-sm leading-6">
               {native || tGen("states.previewTranslation")}
             </div>

@@ -185,6 +185,48 @@
       "invalidOrderId": "Ungültige orderId.",
       "orderNotFound": "Bestellung nicht gefunden.",
       "unknown": "Unbekannter Fehler"
+    },
+    "hints": {
+      "spanishDoc": "Dies ist das offizielle Dokument zum Versenden.",
+      "translation": "Dies dient nur zu Ihrem Verständnis."
+    },
+    "requirements": {
+      "title": "Was Sie brauchen:",
+      "housing": [
+        "Mietvertragsdetails",
+        "Adresse des Vermieters",
+        "Daten (Beginn/Ende/Auszug)"
+      ],
+      "services": [
+        "Kunden- oder Vertragsnummer",
+        "Letzte Rechnung",
+        "Adresse des Anbieters"
+      ],
+      "shopping": [
+        "Bestellbestätigung oder Rechnung",
+        "Kaufdatum",
+        "Verkäuferdaten"
+      ],
+      "travel": [
+        "Flugnummer",
+        "Buchungsnummer",
+        "Reisedaten"
+      ],
+      "insurance": [
+        "Versicherungsnummer",
+        "Name des Versicherers",
+        "Schadensdetails (falls vorhanden)"
+      ],
+      "traffic": [
+        "Bußgeldbescheid (für Einsprüche)",
+        "Kfz-Kennzeichen",
+        "Führerschein"
+      ],
+      "work": [
+        "Arbeitsvertrag",
+        "Firmendaten",
+        "Gehaltsabrechnungen"
+      ]
     }
   },
   "checkout": {

@@ -185,6 +185,48 @@
       "invalidOrderId": "orderId invalide.",
       "orderNotFound": "Commande introuvable.",
       "unknown": "Erreur inconnue"
+    },
+    "hints": {
+      "spanishDoc": "Ceci est le document officiel à envoyer.",
+      "translation": "Ceci est pour votre compréhension uniquement."
+    },
+    "requirements": {
+      "title": "Ce dont vous avez besoin :",
+      "housing": [
+        "Détails du bail",
+        "Adresse du propriétaire",
+        "Dates (Début/Fin/Départ)"
+      ],
+      "services": [
+        "Numéro de client ou de contrat",
+        "Dernière facture",
+        "Adresse du fournisseur"
+      ],
+      "shopping": [
+        "Confirmation de commande ou facture",
+        "Date d'achat",
+        "Détails du vendeur"
+      ],
+      "travel": [
+        "Numéro de vol",
+        "Référence de réservation",
+        "Dates de voyage"
+      ],
+      "insurance": [
+        "Numéro de police",
+        "Nom de l'assureur",
+        "Détails du sinistre"
+      ],
+      "traffic": [
+        "Avis de contravention",
+        "Plaque d'immatriculation",
+        "Permis de conduire"
+      ],
+      "work": [
+        "Contrat de travail",
+        "Détails de l'entreprise",
+        "Fiches de paie"
+      ]
     }
   },
   "checkout": {

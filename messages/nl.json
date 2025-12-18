@@ -185,6 +185,48 @@
       "invalidOrderId": "Ongeldige orderId.",
       "orderNotFound": "Bestelling niet gevonden.",
       "unknown": "Onbekende fout"
+    },
+    "hints": {
+      "spanishDoc": "Dit is het officiële document om te versturen.",
+      "translation": "Dit is alleen voor uw begrip."
+    },
+    "requirements": {
+      "title": "Wat u nodig heeft:",
+      "housing": [
+        "Huurcontract details",
+        "Adres verhuurder",
+        "Data (Start/Einde/Verhuizing)"
+      ],
+      "services": [
+        "Klant- of contractnummer",
+        "Laatste rekening",
+        "Adres aanbieder"
+      ],
+      "shopping": [
+        "Bestelbevestiging of factuur",
+        "Aankoopdatum",
+        "Gegevens verkoper"
+      ],
+      "travel": [
+        "Vluchtnummer",
+        "Boekingsreferentie",
+        "Reisdata"
+      ],
+      "insurance": [
+        "Polisnummer",
+        "Naam verzekeraar",
+        "Schadedetails"
+      ],
+      "traffic": [
+        "Boetebeschikking",
+        "Kentekenplaat",
+        "Rijbewijs"
+      ],
+      "work": [
+        "Arbeidsovereenkomst",
+        "Bedrijfsgegevens",
+        "Loonstroken"
+      ]
     }
   },
   "checkout": {
