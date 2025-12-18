@@ -141,10 +141,10 @@
       "terms": "Regulamin"
     },
     "legal": {
-      "privacyTitle": "Polityka prywatności",
-      "privacyBody": "Placeholder MVP. Dodaj tutaj treść polityki prywatności.",
+      "privacyTitle": "Polityka Prywatności",
+      "privacyBody": "Ostatnia aktualizacja: Grudzień 2025\n\n1. Wstęp\nBuroHero szanuje Twoją prywatność. Wyjaśniamy tutaj, jak przetwarzamy Twoje dane.\n\n2. Zbieranie Danych\nZbieramy: odpowiedzi z formularzy, adres e-mail i dane płatności.\n\n3. Wykorzystanie Danych\nUżywamy danych, aby:\n- Wygenerować dokumenty.\n- Wysłać pliki PDF mailem.\n\n4. Udostępnianie Danych\nNie sprzedajemy danych. Udostępniamy je tylko niezbędnym dostawcom usług (np. płatności).\n\n5. Twoje Prawa\nZgodnie z RODO masz prawo do dostępu, poprawiania i usuwania danych. Kontakt: support@burohero.com.",
       "termsTitle": "Regulamin",
-      "termsBody": "Placeholder MVP. Dodaj tutaj treść regulaminu."
+      "termsBody": "Ostatnia aktualizacja: Grudzień 2025\n\n1. Opis Usługi\nBuroHero to dostawca technologii, nie kancelaria prawna.\n\n2. Brak Porady Prawnej\nDokumenty mają charakter informacyjny i nie stanowią porady prawnej.\n\n3. Odpowiedzialność\nOdpowiadasz za poprawność wprowadzonych danych.\n\n4. Zwroty\nZwroty tylko w przypadku błędu technicznego.\n\n5. Własność Intelektualna\nWszelkie prawa zastrzeżone dla BuroHero."
     }
   },
   "generator": {

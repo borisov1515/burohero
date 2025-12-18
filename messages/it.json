@@ -141,10 +141,10 @@
       "terms": "Termini di servizio"
     },
     "legal": {
-      "privacyTitle": "Privacy",
-      "privacyBody": "Segnaposto MVP. Inserisci qui la tua informativa privacy.",
-      "termsTitle": "Termini di servizio",
-      "termsBody": "Segnaposto MVP. Inserisci qui i tuoi termini di servizio."
+      "privacyTitle": "Informativa sulla Privacy",
+      "privacyBody": "Ultimo aggiornamento: Dicembre 2025\n\n1. Introduzione\nBuroHero rispetta la tua privacy. Questa informativa spiega come gestiamo i tuoi dati.\n\n2. Raccolta Dati\nRaccogliamo: risposte ai moduli, indirizzo email e dettagli di pagamento.\n\n3. Uso dei Dati\nUsiamo i dati per:\n- Generare i documenti richiesti.\n- Inviarti i PDF via email.\n\n4. Condivisione Dati\nNon vendiamo i tuoi dati. Li condividiamo solo con fornitori necessari (es. pagamenti).\n\n5. I Tuoi Diritti\nSecondo il GDPR, hai diritto di accesso, rettifica e cancellazione. Contatto: support@burohero.com.",
+      "termsTitle": "Termini di Servizio",
+      "termsBody": "Ultimo aggiornamento: Dicembre 2025\n\n1. Descrizione del Servizio\nBuroHero è un fornitore di tecnologia, non uno studio legale.\n\n2. Nessuna Consulenza Legale\nI documenti sono a scopo informativo e non costituiscono consulenza legale.\n\n3. Responsabilità\nSei responsabile della correttezza dei dati inseriti.\n\n4. Rimborsi\nRimborsi solo in caso di guasto tecnico.\n\n5. Proprietà Intellettuale\nBuroHero detiene i diritti sul software e sui contenuti."
     }
   },
   "generator": {

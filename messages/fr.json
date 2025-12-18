@@ -141,10 +141,10 @@
       "terms": "Conditions d’utilisation"
     },
     "legal": {
-      "privacyTitle": "Politique de confidentialité",
-      "privacyBody": "Espace réservé MVP. Ajoutez ici votre politique de confidentialité.",
-      "termsTitle": "Conditions d’utilisation",
-      "termsBody": "Espace réservé MVP. Ajoutez ici vos conditions d’utilisation."
+      "privacyTitle": "Politique de Confidentialité",
+      "privacyBody": "Mise à jour : Décembre 2025\n\n1. Introduction\nBuroHero respecte votre vie privée. Cette politique explique comment nous traitons vos données.\n\n2. Collecte de Données\nNous collectons : vos réponses aux formulaires, votre adresse e-mail et vos informations de paiement.\n\n3. Utilisation des Données\nNous utilisons vos données pour :\n- Générer les documents demandés.\n- Vous envoyer les PDF par e-mail.\n\n4. Partage des Données\nNous ne vendons pas vos données. Nous les partageons uniquement avec les prestataires nécessaires (paiement, e-mail).\n\n5. Vos Droits\nSelon le RGPD, vous avez un droit d'accès, de rectification et de suppression. Contact : support@burohero.com.",
+      "termsTitle": "Conditions d'Utilisation",
+      "termsBody": "Mise à jour : Décembre 2025\n\n1. Description du Service\nBuroHero est un fournisseur de technologie, pas un cabinet d'avocats.\n\n2. Pas de Conseil Juridique\nLes documents sont à titre informatif et ne remplacent pas un avocat.\n\n3. Responsabilité\nVous êtes responsable de l'exactitude des informations saisies.\n\n4. Remboursements\nRemboursement uniquement en cas d'erreur technique.\n\n5. Propriété Intellectuelle\nBuroHero détient les droits sur le logiciel et le contenu."
     }
   },
   "generator": {

@@ -141,10 +141,10 @@
       "terms": "Términos del servicio"
     },
     "legal": {
-      "privacyTitle": "Política de privacidad",
-      "privacyBody": "Marcador de posición para MVP. Añade aquí tu texto de privacidad.",
-      "termsTitle": "Términos del servicio",
-      "termsBody": "Marcador de posición para MVP. Añade aquí tus términos del servicio."
+      "privacyTitle": "Política de Privacidad",
+      "privacyBody": "Última actualización: Diciembre 2025\n\n1. Introducción\nBuroHero ('nosotros') respeta su privacidad. Esta política explica cómo manejamos sus datos cuando utiliza nuestro servicio de generación de documentos.\n\n2. Recopilación de Datos\nRecopilamos la información que usted proporciona directamente: respuestas del formulario (para la generación del documento), dirección de correo electrónico (para la entrega) y detalles de pago (procesados de forma segura por nuestro proveedor).\n\n3. Uso de los Datos\nUtilizamos sus datos únicamente para:\n- Generar los documentos legales que solicita.\n- Enviarle los archivos PDF por correo electrónico.\n- Mejorar la funcionalidad de nuestro servicio.\n\n4. Compartir Datos\nNo vendemos sus datos personales. Compartimos datos solo con proveedores de servicios necesarios (por ejemplo, procesadores de pagos, servicios de entrega de correo) que están obligados a la confidencialidad.\n\n5. Sus Derechos\nBajo el RGPD, tiene derecho a acceder, corregir o eliminar sus datos personales. Contáctenos en support@burohero.com para solicitudes.",
+      "termsTitle": "Términos de Servicio",
+      "termsBody": "Última actualización: Diciembre 2025\n\n1. Descripción del Servicio\nBuroHero proporciona una herramienta automatizada para generar documentos legales simplificados y traducciones. Somos un proveedor de tecnología, no un bufete de abogados.\n\n2. No es Asesoramiento Legal\nLos documentos y traducciones generados son solo para fines informativos. No constituyen asesoramiento legal ni garantizan ningún resultado específico en procedimientos legales. Consulte a un abogado calificado para asuntos legales.\n\n3. Responsabilidad del Usuario\nUsted es responsable de la precisión de la información que ingresa. BuroHero no se hace responsable de errores resultantes de entradas incorrectas del usuario o del uso de documentos generados.\n\n4. Reembolsos\nLos reembolsos se proporcionan solo en casos de falla técnica donde el documento no pudo ser generado o descargado. Contacte a soporte para asistencia.\n\n5. Propiedad Intelectual\nEl contenido y software de BuroHero son propiedad nuestra. Se le otorga una licencia limitada para usar los documentos generados para uso personal."
     }
   },
   "generator": {

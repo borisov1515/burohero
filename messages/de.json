@@ -141,10 +141,10 @@
       "terms": "Nutzungsbedingungen"
     },
     "legal": {
-      "privacyTitle": "Datenschutz",
-      "privacyBody": "MVP-Platzhalter. Fügen Sie hier Ihre Datenschutzerklärung ein.",
+      "privacyTitle": "Datenschutzerklärung",
+      "privacyBody": "Letzte Aktualisierung: Dezember 2025\n\n1. Einführung\nBuroHero ('wir') respektiert Ihre Privatsphäre. Diese Richtlinie erklärt, wie wir Ihre Daten behandeln.\n\n2. Datenerfassung\nWir erfassen Informationen, die Sie bereitstellen: Formularantworten, E-Mail-Adresse und Zahlungsdaten.\n\n3. Datennutzung\nWir verwenden Ihre Daten nur, um:\n- Die angeforderten Dokumente zu erstellen.\n- Ihnen die PDFs per E-Mail zu senden.\n\n4. Datenweitergabe\nWir verkaufen Ihre Daten nicht. Wir teilen sie nur mit notwendigen Dienstleistern (z. B. Zahlungsabwicklern).\n\n5. Ihre Rechte\nGemäß DSGVO haben Sie das Recht auf Auskunft, Berichtigung oder Löschung Ihrer Daten. Kontakt: support@burohero.com.",
       "termsTitle": "Nutzungsbedingungen",
-      "termsBody": "MVP-Platzhalter. Fügen Sie hier Ihre Nutzungsbedingungen ein."
+      "termsBody": "Letzte Aktualisierung: Dezember 2025\n\n1. Servicebeschreibung\nBuroHero ist ein Technologiedienstleister, keine Anwaltskanzlei.\n\n2. Keine Rechtsberatung\nDie generierten Dokumente dienen nur zu Informationszwecken. Sie stellen keine Rechtsberatung dar.\n\n3. Nutzerverantwortung\nSie sind für die Richtigkeit Ihrer Eingaben verantwortlich.\n\n4. Rückerstattungen\nRückerstattungen gibt es nur bei technischen Fehlern.\n\n5. Geistiges Eigentum\nDas Eigentum an Software und Inhalten liegt bei uns."
     }
   },
   "generator": {

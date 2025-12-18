@@ -14,7 +14,7 @@ export default async function TermsPage({
   return (
     <main className="mx-auto w-full max-w-3xl px-6 py-16 text-[#0F172A]">
       <h1 className="text-2xl font-semibold tracking-tight">{tHome("legal.termsTitle")}</h1>
-      <p className="mt-4 text-sm leading-7 text-[#475569]">
+      <p className="mt-4 text-sm leading-7 text-[#475569] whitespace-pre-line">
         {tHome("legal.termsBody")}
       </p>
     </main>

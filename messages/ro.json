@@ -141,10 +141,10 @@
       "terms": "Termeni și condiții"
     },
     "legal": {
-      "privacyTitle": "Politica de confidențialitate",
-      "privacyBody": "Placeholder MVP. Adaugă aici politica ta de confidențialitate.",
-      "termsTitle": "Termeni și condiții",
-      "termsBody": "Placeholder MVP. Adaugă aici termenii și condițiile."
+      "privacyTitle": "Politica de Confidențialitate",
+      "privacyBody": "Ultima actualizare: Decembrie 2025\n\n1. Introducere\nBuroHero vă respectă confidențialitatea. Această politică explică modul în care gestionăm datele dvs.\n\n2. Colectarea Datelor\nColectăm: răspunsurile din formulare, adresa de e-mail și detaliile de plată.\n\n3. Utilizarea Datelor\nFolosim datele pentru:\n- A genera documentele solicitate.\n- A trimite PDF-urile prin e-mail.\n\n4. Partajarea Datelor\nNu vindem datele dvs. Le partajăm doar cu furnizorii necesari (ex. procesatori de plăți).\n\n5. Drepturile Dvs.\nConform GDPR, aveți dreptul de acces, rectificare și ștergere. Contact: support@burohero.com.",
+      "termsTitle": "Termeni și Condiții",
+      "termsBody": "Ultima actualizare: Decembrie 2025\n\n1. Descrierea Serviciului\nBuroHero este un furnizor de tehnologie, nu o firmă de avocatură.\n\n2. Nu este Consultanță Juridică\nDocumentele sunt informative și nu constituie consultanță juridică.\n\n3. Responsabilitate\nSunteți responsabil pentru corectitudinea datelor introduse.\n\n4. Rambursări\nRambursări doar în caz de eroare tehnică.\n\n5. Proprietate Intelectuală\nToate drepturile rezervate BuroHero."
     }
   },
   "generator": {

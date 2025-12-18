@@ -142,9 +142,9 @@
     },
     "legal": {
       "privacyTitle": "Privacy Policy",
-      "privacyBody": "This is an MVP placeholder. Add your Privacy Policy text here.",
+      "privacyBody": "Last Updated: December 2025\n\n1. Introduction\nBuroHero ('we', 'us') respects your privacy. This policy explains how we handle your data when you use our document generation service.\n\n2. Data Collection\nWe collect information you provide directly: form answers (for document generation), email address (for delivery), and payment details (processed securely by our payment provider).\n\n3. Use of Data\nWe use your data solely to:\n- Generate the legal documents you request.\n- Send you the PDF files via email.\n- Improve our service functionality.\n\n4. Data Sharing\nWe do not sell your personal data. We share data only with necessary service providers (e.g., payment processors, email delivery services) who are bound by confidentiality.\n\n5. Your Rights\nUnder GDPR, you have the right to access, correct, or delete your personal data. Contact us at support@burohero.com for requests.",
       "termsTitle": "Terms of Service",
-      "termsBody": "This is an MVP placeholder. Add your Terms of Service text here."
+      "termsBody": "Last Updated: December 2025\n\n1. Service Description\nBuroHero provides an automated tool for generating simplified legal documents and translations. We are a technology provider, not a law firm.\n\n2. No Legal Advice\nThe documents and translations generated are for informational purposes only. They do not constitute legal advice or guarantee any specific outcome in legal proceedings. Consult a qualified attorney for legal matters.\n\n3. User Responsibility\nYou are responsible for the accuracy of the information you enter. BuroHero is not liable for errors resulting from incorrect user input or the use of generated documents.\n\n4. Refunds\nRefunds are provided only in cases of technical failure where the document could not be generated or downloaded. Contact support for assistance.\n\n5. Intellectual Property\nThe content and software of BuroHero are owned by us. You are granted a limited license to use the generated documents for personal use."
     }
   },
   "generator": {
