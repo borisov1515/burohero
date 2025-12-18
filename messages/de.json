@@ -70,6 +70,11 @@
     "downloadsTitle": "Downloads",
     "orderLabel": "Order",
     "statusLabel": "Status",
+    "statusValues": {
+      "pending": "Pending",
+      "paid": "Paid",
+      "failed": "Failed"
+    },
     "spanishDocTitle": "Spanish legal document",
     "translationTitle": "Translation",
     "lockedNotPaid": "Locked (not paid).",

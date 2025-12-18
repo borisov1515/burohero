@@ -46,8 +46,8 @@
       "previewTranslation": "Genera para ver la traducción…"
     },
     "debug": {
-      "factsSent": "Debug: hechos enviados a la IA",
-      "lastApi": "Debug: última request/response del API",
+      "factsSent": "Depuración: hechos enviados a la IA",
+      "lastApi": "Depuración: última request/response del API",
       "request": "Solicitud",
       "response": "Respuesta"
     },
@@ -70,6 +70,11 @@
     "downloadsTitle": "Descargas",
     "orderLabel": "Pedido",
     "statusLabel": "Estado",
+    "statusValues": {
+      "pending": "Pendiente",
+      "paid": "Pagado",
+      "failed": "Fallido"
+    },
     "spanishDocTitle": "Documento legal en español",
     "translationTitle": "Traducción",
     "lockedNotPaid": "Bloqueado (no pagado).",

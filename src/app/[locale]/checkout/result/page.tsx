@@ -86,6 +86,14 @@ export default async function CheckoutResultPage({
   }
 
   const isPaid = data.status === "paid";
+  const statusLabel =
+    data.status === "paid"
+      ? t("statusValues.paid")
+      : data.status === "pending"
+        ? t("statusValues.pending")
+        : data.status === "failed"
+          ? t("statusValues.failed")
+          : data.status;
   const snapshot = (data.content_snapshot ?? {}) as any;
   const spanishText = String(snapshot.spanish_legal_text ?? "");
   const translationText = String(snapshot.native_user_translation ?? "");
@@ -97,7 +105,7 @@ export default async function CheckoutResultPage({
         <div className="text-sm text-zinc-500 dark:text-zinc-400">
           {t("orderLabel")} <span className="font-mono">{data.id}</span> •{" "}
           {t("statusLabel")}:{" "}
-          <span className="font-medium">{data.status}</span>
+          <span className="font-medium">{statusLabel}</span>
         </div>
       </header>
 
