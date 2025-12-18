@@ -28,6 +28,123 @@
       "unpaidWages": "Przykładowy generator: trabajo / salarios (niewypłacone wynagrodzenie)",
       "voluntaryResignation": "Przykładowy generator: trabajo / baja (wypowiedzenie)",
       "vacationRequest": "Przykładowy generator: trabajo / vacaciones (wniosek urlopowy)"
+    },
+    "hero": {
+      "badge": "Hiszpańska biurokracja w Twoim języku",
+      "title": "Hiszpańska biurokracja — załatwiona po {language}.",
+      "subtitle": "Generuj formalne pisma i roszczenia (Burofax) w kilka minut. Tłumaczymy Twój problem na hiszpański język prawny.",
+      "ctaPrimary": "Zacznij",
+      "ctaSecondary": "Zobacz katalog",
+      "mockTitle": "Widok podwójny",
+      "mockSubtitle": "Hiszpański + tłumaczenie",
+      "mockLeftTitle": "Hiszpański dokument prawny",
+      "mockRightTitle": "Tłumaczenie ({language})"
+    },
+    "steps": {
+      "title": "Jak to działa",
+      "subtitle": "Trzy proste kroki od problemu do gotowego dokumentu.",
+      "step1Label": "Krok 1",
+      "step1Title": "Wybierz temat",
+      "step1Desc": "Wybierz kategorię i przypadek z katalogu.",
+      "step2Label": "Krok 2",
+      "step2Title": "Wypełnij formularz po {language}",
+      "step2Desc": "Odpowiedz na kilka pytań w swoim języku. Bez prawniczego hiszpańskiego.",
+      "step3Label": "Krok 3",
+      "step3Title": "Pobierz hiszpański PDF + tłumaczenie",
+      "step3Desc": "Otrzymasz oficjalny tekst po hiszpańsku i równoległe tłumaczenie."
+    },
+    "catalog": {
+      "title": "Katalog",
+      "subtitle": "Wybierz sytuację pasującą do Twojej sprawy."
+    },
+    "categories": {
+      "housing": "Mieszkanie & najem",
+      "services": "Usługi & media",
+      "shopping": "Prawa konsumenta",
+      "travel": "Podróże & ubezpieczenia",
+      "traffic": "Ruch drogowy & pojazdy",
+      "work": "Praca & zatrudnienie"
+    },
+    "cards": {
+      "deposit_return": {
+        "title": "Zwrot kaucji",
+        "desc": "Odzyskaj kaucję najmu (fianza)."
+      },
+      "request_repairs": {
+        "title": "Żądanie napraw",
+        "desc": "Zażądaj napraw od wynajmującego."
+      },
+      "terminate_lease": {
+        "title": "Zakończenie najmu",
+        "desc": "Zakończ umowę najmu poprawnie i na piśmie."
+      },
+      "cancel_contract": {
+        "title": "Wypowiedzenie umowy",
+        "desc": "Internet, siłownia, alarm, telekom i inne."
+      },
+      "dispute_bill": {
+        "title": "Reklamacja faktury",
+        "desc": "Reklamacja rachunku za usługi/media."
+      },
+      "bank_fees_refund": {
+        "title": "Zwrot opłat bankowych",
+        "desc": "Odzyskaj nieuczciwe opłaty i prowizje."
+      },
+      "return_14_days": {
+        "title": "Zwrot (14 dni)",
+        "desc": "Skorzystaj z prawa odstąpienia przy zakupach online."
+      },
+      "warranty_3_years": {
+        "title": "Gwarancja (3 lata)",
+        "desc": "Naprawa/wymiana/zwrot za wadliwy towar."
+      },
+      "non_delivery": {
+        "title": "Brak dostawy",
+        "desc": "Oznaczone jako doręczone, ale nieodebrane / zagubione."
+      },
+      "flight_delay": {
+        "title": "Opóźnienie lotu",
+        "desc": "Odszkodowanie EU261 i wydatki."
+      },
+      "cancel_insurance": {
+        "title": "Wypowiedzenie ubezpieczenia",
+        "desc": "Zatrzymaj odnowienia i poproś o potwierdzenie/zwrot."
+      },
+      "claim_denied": {
+        "title": "Odmowa wypłaty",
+        "desc": "Zakwestionuj odmowę ubezpieczyciela."
+      },
+      "traffic_fine_appeal": {
+        "title": "Odwołanie od mandatu",
+        "desc": "Odwołanie od kar DGT/policji (doręczenie/dowody)."
+      },
+      "car_sale_notification": {
+        "title": "Zgłoszenie sprzedaży auta",
+        "desc": "Zgłoś sprzedaż do DGT, by ograniczyć odpowiedzialność."
+      },
+      "unpaid_wages": {
+        "title": "Niewypłacone wynagrodzenie",
+        "desc": "Dochodź zaległej pensji przed SMAC."
+      },
+      "voluntary_resignation": {
+        "title": "Wypowiedzenie",
+        "desc": "Rozwiąż umowę poprawnie i poproś o finiquito/certyfikat."
+      },
+      "vacation_request": {
+        "title": "Wniosek urlopowy",
+        "desc": "Wnioskuj o urlop na piśmie, aby mieć dowód."
+      }
+    },
+    "footer": {
+      "disclaimer": "Zastrzeżenie: BuroHero to dostawca technologii, nie kancelaria. Dokumenty są generowane automatycznie i mogą wymagać weryfikacji.",
+      "privacy": "Polityka prywatności",
+      "terms": "Regulamin"
+    },
+    "legal": {
+      "privacyTitle": "Polityka prywatności",
+      "privacyBody": "Placeholder MVP. Dodaj tutaj treść polityki prywatności.",
+      "termsTitle": "Regulamin",
+      "termsBody": "Placeholder MVP. Dodaj tutaj treść regulaminu."
     }
   },
   "generator": {

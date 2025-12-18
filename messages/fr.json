@@ -28,6 +28,123 @@
       "unpaidWages": "Générateur exemple : trabajo / salarios (salaires impayés)",
       "voluntaryResignation": "Générateur exemple : trabajo / baja (démission)",
       "vacationRequest": "Générateur exemple : trabajo / vacaciones (demande de congés)"
+    },
+    "hero": {
+      "badge": "La bureaucratie espagnole dans votre langue",
+      "title": "Bureaucratie espagnole, gérée en {language}.",
+      "subtitle": "Générez des réclamations et courriers formels (Burofax) en quelques minutes. Nous traduisons votre situation en langage juridique espagnol.",
+      "ctaPrimary": "Commencer",
+      "ctaSecondary": "Voir le catalogue",
+      "mockTitle": "Vue double",
+      "mockSubtitle": "Espagnol + traduction",
+      "mockLeftTitle": "Document juridique espagnol",
+      "mockRightTitle": "Traduction ({language})"
+    },
+    "steps": {
+      "title": "Comment ça marche",
+      "subtitle": "Trois étapes simples, du problème au document prêt à envoyer.",
+      "step1Label": "Étape 1",
+      "step1Title": "Choisissez votre sujet",
+      "step1Desc": "Sélectionnez la catégorie et le cas d’usage dans le catalogue.",
+      "step2Label": "Étape 2",
+      "step2Title": "Remplissez le formulaire en {language}",
+      "step2Desc": "Répondez à quelques questions dans votre langue. Pas besoin d’espagnol juridique.",
+      "step3Label": "Étape 3",
+      "step3Title": "Téléchargez le PDF espagnol + la traduction",
+      "step3Desc": "Obtenez le texte officiel en espagnol et une traduction parallèle pour vos dossiers."
+    },
+    "catalog": {
+      "title": "Catalogue",
+      "subtitle": "Choisissez la situation qui correspond à votre cas."
+    },
+    "categories": {
+      "housing": "Logement & location",
+      "services": "Services & factures",
+      "shopping": "Droits du consommateur",
+      "travel": "Voyage & assurance",
+      "traffic": "Circulation & véhicules",
+      "work": "Travail & emploi"
+    },
+    "cards": {
+      "deposit_return": {
+        "title": "Restitution de caution",
+        "desc": "Récupérer la caution de location (fianza)."
+      },
+      "request_repairs": {
+        "title": "Demande de réparations",
+        "desc": "Exiger des réparations au bailleur."
+      },
+      "terminate_lease": {
+        "title": "Résiliation du bail",
+        "desc": "Mettre fin au contrat de location par écrit."
+      },
+      "cancel_contract": {
+        "title": "Résilier un contrat",
+        "desc": "Internet, salle de sport, alarme, télécom, etc."
+      },
+      "dispute_bill": {
+        "title": "Contester une facture",
+        "desc": "Réclamation de facture (électricité/eau/services)."
+      },
+      "bank_fees_refund": {
+        "title": "Remboursement de frais bancaires",
+        "desc": "Réclamer des frais/commissions abusifs."
+      },
+      "return_14_days": {
+        "title": "Retour (14 jours)",
+        "desc": "Exercer le droit de rétractation pour achats en ligne."
+      },
+      "warranty_3_years": {
+        "title": "Garantie (3 ans)",
+        "desc": "Réparation/remplacement/remboursement pour produit défectueux."
+      },
+      "non_delivery": {
+        "title": "Non-livraison",
+        "desc": "Marqué livré mais non reçu / perdu."
+      },
+      "flight_delay": {
+        "title": "Retard de vol",
+        "desc": "Indemnisation EU261 et frais."
+      },
+      "cancel_insurance": {
+        "title": "Résilier une assurance",
+        "desc": "Stopper le renouvellement et demander confirmation/remboursement."
+      },
+      "claim_denied": {
+        "title": "Sinistre refusé",
+        "desc": "Contester le refus de paiement de l’assureur."
+      },
+      "traffic_fine_appeal": {
+        "title": "Contester une amende",
+        "desc": "Recours DGT/police locale (notification/preuves)."
+      },
+      "car_sale_notification": {
+        "title": "Notification de vente (voiture)",
+        "desc": "Notifier la vente au DGT pour limiter la responsabilité."
+      },
+      "unpaid_wages": {
+        "title": "Salaires impayés",
+        "desc": "Réclamer des arriérés avant conciliation SMAC."
+      },
+      "voluntary_resignation": {
+        "title": "Démission",
+        "desc": "Démissionner correctement et demander finiquito/certificat."
+      },
+      "vacation_request": {
+        "title": "Demande de congés",
+        "desc": "Demander des congés par écrit pour preuve."
+      }
+    },
+    "footer": {
+      "disclaimer": "Avertissement : BuroHero est un fournisseur technologique, pas un cabinet d’avocats. Les documents sont générés automatiquement et peuvent nécessiter une relecture.",
+      "privacy": "Politique de confidentialité",
+      "terms": "Conditions d’utilisation"
+    },
+    "legal": {
+      "privacyTitle": "Politique de confidentialité",
+      "privacyBody": "Espace réservé MVP. Ajoutez ici votre politique de confidentialité.",
+      "termsTitle": "Conditions d’utilisation",
+      "termsBody": "Espace réservé MVP. Ajoutez ici vos conditions d’utilisation."
     }
   },
   "generator": {

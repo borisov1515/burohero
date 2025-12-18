@@ -28,6 +28,123 @@
       "unpaidWages": "Beispiel-Generator: trabajo / salarios (ausstehender Lohn)",
       "voluntaryResignation": "Beispiel-Generator: trabajo / baja (Eigenkündigung)",
       "vacationRequest": "Beispiel-Generator: trabajo / vacaciones (Urlaubsantrag)"
+    },
+    "hero": {
+      "badge": "Spanische Bürokratie in Ihrer Sprache",
+      "title": "Spanische Bürokratie – erledigt auf {language}.",
+      "subtitle": "Erstellen Sie formelle rechtliche Schreiben und Ansprüche (Burofax) in Minuten. Wir übersetzen Ihr Anliegen in spanische Rechtssprache.",
+      "ctaPrimary": "Jetzt starten",
+      "ctaSecondary": "Katalog ansehen",
+      "mockTitle": "Dual-Ansicht",
+      "mockSubtitle": "Spanisch + Übersetzung",
+      "mockLeftTitle": "Spanisches Rechtsschreiben",
+      "mockRightTitle": "Übersetzung ({language})"
+    },
+    "steps": {
+      "title": "So funktioniert’s",
+      "subtitle": "Drei einfache Schritte vom Problem zum versandfertigen Dokument.",
+      "step1Label": "Schritt 1",
+      "step1Title": "Problem auswählen",
+      "step1Desc": "Wählen Sie Kategorie und passenden Anwendungsfall im Katalog.",
+      "step2Label": "Schritt 2",
+      "step2Title": "Formular in {language} ausfüllen",
+      "step2Desc": "Beantworten Sie ein paar Fragen in Ihrer Sprache. Kein juristisches Spanisch nötig.",
+      "step3Label": "Schritt 3",
+      "step3Title": "Spanisches PDF + Übersetzung herunterladen",
+      "step3Desc": "Sie erhalten den offiziellen spanischen Text plus Parallelübersetzung für Ihre Unterlagen."
+    },
+    "catalog": {
+      "title": "Katalog",
+      "subtitle": "Wählen Sie die Situation, die zu Ihrem Fall passt."
+    },
+    "categories": {
+      "housing": "Wohnen & Miete",
+      "services": "Services & Versorger",
+      "shopping": "Verbraucherrechte",
+      "travel": "Reise & Versicherung",
+      "traffic": "Verkehr & Fahrzeuge",
+      "work": "Arbeit & Beschäftigung"
+    },
+    "cards": {
+      "deposit_return": {
+        "title": "Kaution zurückfordern",
+        "desc": "Mietkaution (fianza) zurückverlangen."
+      },
+      "request_repairs": {
+        "title": "Reparaturen verlangen",
+        "desc": "Reparaturen beim Vermieter einfordern."
+      },
+      "terminate_lease": {
+        "title": "Mietvertrag beenden",
+        "desc": "Mietvertrag korrekt und schriftlich beenden."
+      },
+      "cancel_contract": {
+        "title": "Vertrag kündigen",
+        "desc": "Internet, Fitnessstudio, Alarmanlage, Telekom & mehr."
+      },
+      "dispute_bill": {
+        "title": "Rechnung beanstanden",
+        "desc": "Beschwerde zu Strom/Wasser/Versorger-Rechnungen."
+      },
+      "bank_fees_refund": {
+        "title": "Bankgebühren zurückfordern",
+        "desc": "Unfaire Gebühren und Provisionen zurückfordern."
+      },
+      "return_14_days": {
+        "title": "Produkt zurückgeben (14 Tage)",
+        "desc": "Widerrufsrecht bei Onlinekauf ausüben."
+      },
+      "warranty_3_years": {
+        "title": "Gewährleistung (3 Jahre)",
+        "desc": "Reparatur/Ersatz/Erstattung bei Mängeln."
+      },
+      "non_delivery": {
+        "title": "Nichtlieferung",
+        "desc": "Als geliefert markiert, aber nicht erhalten / verloren."
+      },
+      "flight_delay": {
+        "title": "Flugverspätung",
+        "desc": "EU261-Entschädigung und Auslagen geltend machen."
+      },
+      "cancel_insurance": {
+        "title": "Versicherung kündigen",
+        "desc": "Verlängerungen stoppen und Bestätigung/Rückerstattung verlangen."
+      },
+      "claim_denied": {
+        "title": "Leistung abgelehnt",
+        "desc": "Ablehnung der Versicherung anfechten."
+      },
+      "traffic_fine_appeal": {
+        "title": "Bußgeld anfechten",
+        "desc": "DGT/kommunale Bußgelder anfechten (Zustellung/Beweise)."
+      },
+      "car_sale_notification": {
+        "title": "Verkaufsanzeige (Auto)",
+        "desc": "DGT über Fahrzeugverkauf informieren, Haftung begrenzen."
+      },
+      "unpaid_wages": {
+        "title": "Ausstehender Lohn",
+        "desc": "Lohnrückstände vor SMAC geltend machen."
+      },
+      "voluntary_resignation": {
+        "title": "Eigenkündigung",
+        "desc": "Korrekt kündigen und Finiquito/Zertifikat anfordern."
+      },
+      "vacation_request": {
+        "title": "Urlaubsantrag",
+        "desc": "Urlaub schriftlich beantragen und Nachweis schaffen."
+      }
+    },
+    "footer": {
+      "disclaimer": "Hinweis: BuroHero ist ein Technologieanbieter und keine Kanzlei. Dokumente werden automatisch erstellt und sollten für Ihren konkreten Fall geprüft werden.",
+      "privacy": "Datenschutz",
+      "terms": "Nutzungsbedingungen"
+    },
+    "legal": {
+      "privacyTitle": "Datenschutz",
+      "privacyBody": "MVP-Platzhalter. Fügen Sie hier Ihre Datenschutzerklärung ein.",
+      "termsTitle": "Nutzungsbedingungen",
+      "termsBody": "MVP-Platzhalter. Fügen Sie hier Ihre Nutzungsbedingungen ein."
     }
   },
   "generator": {

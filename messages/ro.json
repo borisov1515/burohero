@@ -28,6 +28,123 @@
       "unpaidWages": "Generator exemplu: trabajo / salarios (salarii neplătite)",
       "voluntaryResignation": "Generator exemplu: trabajo / baja (demisie)",
       "vacationRequest": "Generator exemplu: trabajo / vacaciones (cerere concediu)"
+    },
+    "hero": {
+      "badge": "Birocrația spaniolă în limba ta",
+      "title": "Birocrația spaniolă, rezolvată în {language}.",
+      "subtitle": "Generează cereri și scrisori formale (Burofax) în câteva minute. Îți traducem problema în termeni juridici spanioli.",
+      "ctaPrimary": "Începe",
+      "ctaSecondary": "Vezi catalogul",
+      "mockTitle": "Vizualizare dublă",
+      "mockSubtitle": "Spaniolă + traducere",
+      "mockLeftTitle": "Document legal în spaniolă",
+      "mockRightTitle": "Traducere ({language})"
+    },
+    "steps": {
+      "title": "Cum funcționează",
+      "subtitle": "Trei pași simpli de la problemă la document.",
+      "step1Label": "Pasul 1",
+      "step1Title": "Alege subiectul",
+      "step1Desc": "Alege categoria și cazul din catalog.",
+      "step2Label": "Pasul 2",
+      "step2Title": "Completează formularul în {language}",
+      "step2Desc": "Răspunde în limba ta. Nu ai nevoie de spaniolă juridică.",
+      "step3Label": "Pasul 3",
+      "step3Title": "Descarcă PDF în spaniolă + traducere",
+      "step3Desc": "Primești textul oficial în spaniolă și traducerea paralelă."
+    },
+    "catalog": {
+      "title": "Catalog",
+      "subtitle": "Alege situația care se potrivește cazului tău."
+    },
+    "categories": {
+      "housing": "Locuință & chirie",
+      "services": "Servicii & utilități",
+      "shopping": "Drepturile consumatorului",
+      "travel": "Călătorii & asigurări",
+      "traffic": "Trafic & vehicule",
+      "work": "Muncă & angajare"
+    },
+    "cards": {
+      "deposit_return": {
+        "title": "Returnare garanție",
+        "desc": "Recuperează garanția de chirie (fianza)."
+      },
+      "request_repairs": {
+        "title": "Cerere de reparații",
+        "desc": "Solicită reparații proprietarului."
+      },
+      "terminate_lease": {
+        "title": "Reziliere chirie",
+        "desc": "Încheie contractul corect și în scris."
+      },
+      "cancel_contract": {
+        "title": "Reziliere contract",
+        "desc": "Internet, sală, alarmă, telecom etc."
+      },
+      "dispute_bill": {
+        "title": "Reclamație factură",
+        "desc": "Reclamație pentru facturi de utilități/servicii."
+      },
+      "bank_fees_refund": {
+        "title": "Rambursare comisioane bancare",
+        "desc": "Recuperează comisioane și taxe nejustificate."
+      },
+      "return_14_days": {
+        "title": "Retur (14 zile)",
+        "desc": "Drept de retragere pentru achiziții online."
+      },
+      "warranty_3_years": {
+        "title": "Garanție (3 ani)",
+        "desc": "Reparație/înlocuire/rambursare pentru defecte."
+      },
+      "non_delivery": {
+        "title": "Ne-livrare",
+        "desc": "Marcat livrat, dar neprimite / pierdut."
+      },
+      "flight_delay": {
+        "title": "Întârziere zbor",
+        "desc": "Compensație EU261 și cheltuieli."
+      },
+      "cancel_insurance": {
+        "title": "Reziliere asigurare",
+        "desc": "Oprește reînnoirile și cere confirmare/rambursare."
+      },
+      "claim_denied": {
+        "title": "Cerere respinsă",
+        "desc": "Contestă refuzul de plată al asigurătorului."
+      },
+      "traffic_fine_appeal": {
+        "title": "Contestare amendă",
+        "desc": "Contestă amenzi DGT/poliție (notificare/dovezi)."
+      },
+      "car_sale_notification": {
+        "title": "Notificare vânzare auto",
+        "desc": "Notifică vânzarea la DGT pentru a limita răspunderea."
+      },
+      "unpaid_wages": {
+        "title": "Salarii neplătite",
+        "desc": "Reclamă restanțe înainte de SMAC."
+      },
+      "voluntary_resignation": {
+        "title": "Demisie",
+        "desc": "Demisionează corect și cere finiquito/certificat."
+      },
+      "vacation_request": {
+        "title": "Cerere concediu",
+        "desc": "Solicită concediul în scris pentru dovadă."
+      }
+    },
+    "footer": {
+      "disclaimer": "Avertisment: BuroHero este un furnizor tehnologic, nu un cabinet de avocatură. Documentele sunt generate automat și pot necesita verificare.",
+      "privacy": "Politica de confidențialitate",
+      "terms": "Termeni și condiții"
+    },
+    "legal": {
+      "privacyTitle": "Politica de confidențialitate",
+      "privacyBody": "Placeholder MVP. Adaugă aici politica ta de confidențialitate.",
+      "termsTitle": "Termeni și condiții",
+      "termsBody": "Placeholder MVP. Adaugă aici termenii și condițiile."
     }
   },
   "generator": {

@@ -28,6 +28,123 @@
       "unpaidWages": "Generador ejemplo: trabajo / salarios (reclamación de cantidad)",
       "voluntaryResignation": "Generador ejemplo: trabajo / baja (baja voluntaria)",
       "vacationRequest": "Generador ejemplo: trabajo / vacaciones (solicitud de vacaciones)"
+    },
+    "hero": {
+      "badge": "Burocracia española en tu idioma",
+      "title": "Burocracia española, resuelta en {language}.",
+      "subtitle": "Genera reclamaciones y cartas formales (Burofax) en minutos. Traducimos tu problema a lenguaje legal español.",
+      "ctaPrimary": "Empezar",
+      "ctaSecondary": "Ver catálogo",
+      "mockTitle": "Vista dual",
+      "mockSubtitle": "Español + traducción",
+      "mockLeftTitle": "Documento legal en español",
+      "mockRightTitle": "Traducción ({language})"
+    },
+    "steps": {
+      "title": "Cómo funciona",
+      "subtitle": "Tres pasos sencillos desde el problema hasta el documento listo para enviar.",
+      "step1Label": "Paso 1",
+      "step1Title": "Elige tu problema",
+      "step1Desc": "Selecciona la categoría y el caso de uso más cercano en el catálogo.",
+      "step2Label": "Paso 2",
+      "step2Title": "Rellena el formulario en {language}",
+      "step2Desc": "Responde unas preguntas en tu idioma. Sin español jurídico.",
+      "step3Label": "Paso 3",
+      "step3Title": "Descarga PDF en español + traducción",
+      "step3Desc": "Obtén el texto oficial en español y una traducción paralela para tu archivo."
+    },
+    "catalog": {
+      "title": "Catálogo",
+      "subtitle": "Elige la situación que encaja con tu caso."
+    },
+    "categories": {
+      "housing": "Vivienda y alquiler",
+      "services": "Servicios y suministros",
+      "shopping": "Derechos del consumidor",
+      "travel": "Viajes y seguros",
+      "traffic": "Tráfico y vehículos",
+      "work": "Trabajo y empleo"
+    },
+    "cards": {
+      "deposit_return": {
+        "title": "Devolución de fianza",
+        "desc": "Recupera tu fianza de alquiler."
+      },
+      "request_repairs": {
+        "title": "Solicitud de reparación",
+        "desc": "Exige reparaciones al propietario."
+      },
+      "terminate_lease": {
+        "title": "Finalizar contrato de alquiler",
+        "desc": "Rescinde el contrato correctamente y por escrito."
+      },
+      "cancel_contract": {
+        "title": "Cancelar contrato",
+        "desc": "Internet, gimnasio, alarmas, telecom y más."
+      },
+      "dispute_bill": {
+        "title": "Reclamar factura",
+        "desc": "Reclamación de factura de suministros (luz/agua/etc.)."
+      },
+      "bank_fees_refund": {
+        "title": "Devolución de comisiones",
+        "desc": "Reclama comisiones y gastos bancarios indebidos."
+      },
+      "return_14_days": {
+        "title": "Devolución (14 días)",
+        "desc": "Ejercicio del derecho de desistimiento en compras online."
+      },
+      "warranty_3_years": {
+        "title": "Garantía (3 años)",
+        "desc": "Reparación / sustitución / reembolso por producto defectuoso."
+      },
+      "non_delivery": {
+        "title": "Producto no entregado",
+        "desc": "Marcado como entregado pero no recibido o perdido."
+      },
+      "flight_delay": {
+        "title": "Retraso de vuelo",
+        "desc": "Compensación EU261 y gastos."
+      },
+      "cancel_insurance": {
+        "title": "Cancelar seguro",
+        "desc": "Detén renovaciones y solicita confirmación/reembolso."
+      },
+      "claim_denied": {
+        "title": "Siniestro rechazado",
+        "desc": "Impugna la negativa de la aseguradora a pagar."
+      },
+      "traffic_fine_appeal": {
+        "title": "Recurso de multa",
+        "desc": "Recurre multas DGT/Policía (notificación/pruebas)."
+      },
+      "car_sale_notification": {
+        "title": "Notificación de venta",
+        "desc": "Notifica a la DGT la venta del vehículo para limitar responsabilidad."
+      },
+      "unpaid_wages": {
+        "title": "Reclamación de cantidad",
+        "desc": "Reclama salarios adeudados antes de SMAC."
+      },
+      "voluntary_resignation": {
+        "title": "Baja voluntaria",
+        "desc": "Dimite correctamente y solicita finiquito/certificado."
+      },
+      "vacation_request": {
+        "title": "Solicitud de vacaciones",
+        "desc": "Pide vacaciones por escrito para dejar constancia."
+      }
+    },
+    "footer": {
+      "disclaimer": "Aviso: BuroHero es un proveedor tecnológico, no un despacho de abogados. Los documentos se generan automáticamente y pueden requerir revisión para tu caso concreto.",
+      "privacy": "Política de privacidad",
+      "terms": "Términos del servicio"
+    },
+    "legal": {
+      "privacyTitle": "Política de privacidad",
+      "privacyBody": "Marcador de posición para MVP. Añade aquí tu texto de privacidad.",
+      "termsTitle": "Términos del servicio",
+      "termsBody": "Marcador de posición para MVP. Añade aquí tus términos del servicio."
     }
   },
   "generator": {

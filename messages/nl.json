@@ -28,6 +28,123 @@
       "unpaidWages": "Voorbeeldgenerator: trabajo / salarios (achterstallig loon)",
       "voluntaryResignation": "Voorbeeldgenerator: trabajo / baja (ontslag nemen)",
       "vacationRequest": "Voorbeeldgenerator: trabajo / vacaciones (vakantieaanvraag)"
+    },
+    "hero": {
+      "badge": "Spaanse bureaucratie in jouw taal",
+      "title": "Spaanse bureaucratie, geregeld in {language}.",
+      "subtitle": "Genereer formele juridische brieven en claims (Burofax) in minuten. Wij vertalen jouw situatie naar Spaanse juridische termen.",
+      "ctaPrimary": "Start",
+      "ctaSecondary": "Bekijk catalogus",
+      "mockTitle": "Dubbele weergave",
+      "mockSubtitle": "Spaans + vertaling",
+      "mockLeftTitle": "Spaans juridisch document",
+      "mockRightTitle": "Vertaling ({language})"
+    },
+    "steps": {
+      "title": "Hoe het werkt",
+      "subtitle": "Drie eenvoudige stappen van probleem naar document.",
+      "step1Label": "Stap 1",
+      "step1Title": "Kies je probleem",
+      "step1Desc": "Kies categorie en use-case uit de catalogus.",
+      "step2Label": "Stap 2",
+      "step2Title": "Vul het formulier in het {language} in",
+      "step2Desc": "Beantwoord enkele vragen in jouw taal. Geen juridisch Spaans nodig.",
+      "step3Label": "Stap 3",
+      "step3Title": "Download Spaans PDF + vertaling",
+      "step3Desc": "Officiële Spaanse tekst plus parallelle vertaling voor jouw administratie."
+    },
+    "catalog": {
+      "title": "Catalogus",
+      "subtitle": "Kies de situatie die bij jouw case past."
+    },
+    "categories": {
+      "housing": "Wonen & huur",
+      "services": "Diensten & nutsbedrijven",
+      "shopping": "Consumentenrechten",
+      "travel": "Reizen & verzekering",
+      "traffic": "Verkeer & voertuigen",
+      "work": "Werk & dienstverband"
+    },
+    "cards": {
+      "deposit_return": {
+        "title": "Borg terugvragen",
+        "desc": "Huurwaarborg (fianza) terugvorderen."
+      },
+      "request_repairs": {
+        "title": "Reparaties eisen",
+        "desc": "Reparaties bij de verhuurder eisen."
+      },
+      "terminate_lease": {
+        "title": "Huurcontract beëindigen",
+        "desc": "Huurcontract correct en schriftelijk beëindigen."
+      },
+      "cancel_contract": {
+        "title": "Contract opzeggen",
+        "desc": "Internet, sportschool, alarm, telecom en meer."
+      },
+      "dispute_bill": {
+        "title": "Factuur betwisten",
+        "desc": "Klacht over een nuts-/servicefactuur."
+      },
+      "bank_fees_refund": {
+        "title": "Bankkosten terugvragen",
+        "desc": "Onterechte kosten en commissies terugvorderen."
+      },
+      "return_14_days": {
+        "title": "Retour (14 dagen)",
+        "desc": "Herroepingsrecht bij online aankopen."
+      },
+      "warranty_3_years": {
+        "title": "Garantie (3 jaar)",
+        "desc": "Reparatie/vervanging/terugbetaling bij gebreken."
+      },
+      "non_delivery": {
+        "title": "Niet geleverd",
+        "desc": "Als geleverd gemarkeerd maar niet ontvangen / kwijt."
+      },
+      "flight_delay": {
+        "title": "Vluchtvertraging",
+        "desc": "EU261-compensatie en kosten claimen."
+      },
+      "cancel_insurance": {
+        "title": "Verzekering opzeggen",
+        "desc": "Stop verlengingen en vraag bevestiging/terugbetaling."
+      },
+      "claim_denied": {
+        "title": "Claim afgewezen",
+        "desc": "Bezwaren tegen weigering van uitbetaling."
+      },
+      "traffic_fine_appeal": {
+        "title": "Boete aanvechten",
+        "desc": "Bezwaar tegen DGT/lokale boetes (kennisgeving/bewijs)."
+      },
+      "car_sale_notification": {
+        "title": "Melding autoverkoop",
+        "desc": "Meld verkoop bij DGT om aansprakelijkheid te beperken."
+      },
+      "unpaid_wages": {
+        "title": "Achterstallig loon",
+        "desc": "Loonachterstand claimen vóór SMAC."
+      },
+      "voluntary_resignation": {
+        "title": "Ontslag nemen",
+        "desc": "Correct ontslag en finiquito/certificaat aanvragen."
+      },
+      "vacation_request": {
+        "title": "Vakantieaanvraag",
+        "desc": "Vakantiedata schriftelijk aanvragen als bewijs."
+      }
+    },
+    "footer": {
+      "disclaimer": "Disclaimer: BuroHero is een technologieprovider, geen advocatenkantoor. Documenten worden automatisch gegenereerd en kunnen controle vereisen.",
+      "privacy": "Privacybeleid",
+      "terms": "Servicevoorwaarden"
+    },
+    "legal": {
+      "privacyTitle": "Privacybeleid",
+      "privacyBody": "MVP-placeholder. Voeg hier je privacybeleid toe.",
+      "termsTitle": "Servicevoorwaarden",
+      "termsBody": "MVP-placeholder. Voeg hier je voorwaarden toe."
     }
   },
   "generator": {

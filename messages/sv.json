@@ -28,6 +28,123 @@
       "unpaidWages": "Exempelgenerator: trabajo / salarios (obetald lön)",
       "voluntaryResignation": "Exempelgenerator: trabajo / baja (egen uppsägning)",
       "vacationRequest": "Exempelgenerator: trabajo / vacaciones (semesteransökan)"
+    },
+    "hero": {
+      "badge": "Spansk byråkrati på ditt språk",
+      "title": "Spansk byråkrati – hanterad på {language}.",
+      "subtitle": "Skapa formella juridiska krav och brev (Burofax) på några minuter. Vi översätter ditt ärende till spanska juridiska termer.",
+      "ctaPrimary": "Börja",
+      "ctaSecondary": "Se katalogen",
+      "mockTitle": "Dubbel vy",
+      "mockSubtitle": "Spanska + översättning",
+      "mockLeftTitle": "Spanskt juridiskt dokument",
+      "mockRightTitle": "Översättning ({language})"
+    },
+    "steps": {
+      "title": "Så fungerar det",
+      "subtitle": "Tre enkla steg från problem till dokument.",
+      "step1Label": "Steg 1",
+      "step1Title": "Välj ditt ärende",
+      "step1Desc": "Välj kategori och use case i katalogen.",
+      "step2Label": "Steg 2",
+      "step2Title": "Fyll i formuläret på {language}",
+      "step2Desc": "Svara på några frågor på ditt språk. Ingen juridisk spanska behövs.",
+      "step3Label": "Steg 3",
+      "step3Title": "Ladda ner spansk PDF + översättning",
+      "step3Desc": "Få officiell spansk text och parallell översättning för dina underlag."
+    },
+    "catalog": {
+      "title": "Katalog",
+      "subtitle": "Välj situationen som matchar ditt fall."
+    },
+    "categories": {
+      "housing": "Boende & hyra",
+      "services": "Tjänster & abonnemang",
+      "shopping": "Konsumenträtt",
+      "travel": "Resor & försäkring",
+      "traffic": "Trafik & fordon",
+      "work": "Arbete & anställning"
+    },
+    "cards": {
+      "deposit_return": {
+        "title": "Återbetalning av deposition",
+        "desc": "Kräv tillbaka hyresdeposition (fianza)."
+      },
+      "request_repairs": {
+        "title": "Begär reparationer",
+        "desc": "Kräv reparationer från hyresvärden."
+      },
+      "terminate_lease": {
+        "title": "Säg upp hyresavtal",
+        "desc": "Avsluta hyresavtalet korrekt och skriftligt."
+      },
+      "cancel_contract": {
+        "title": "Säg upp avtal",
+        "desc": "Internet, gym, larm, telekom m.m."
+      },
+      "dispute_bill": {
+        "title": "Bestrid faktura",
+        "desc": "Klagomål på el/vatten/andra fakturor."
+      },
+      "bank_fees_refund": {
+        "title": "Återkräv bankavgifter",
+        "desc": "Kräv tillbaka oskäliga avgifter och provisioner."
+      },
+      "return_14_days": {
+        "title": "Retur (14 dagar)",
+        "desc": "Utnyttja ångerrätt vid onlineköp."
+      },
+      "warranty_3_years": {
+        "title": "Garanti (3 år)",
+        "desc": "Reparation/byte/återbetalning vid fel."
+      },
+      "non_delivery": {
+        "title": "Ej levererat",
+        "desc": "Markerat som levererat men ej mottaget / förlorat."
+      },
+      "flight_delay": {
+        "title": "Flygförsening",
+        "desc": "EU261-ersättning och utlägg."
+      },
+      "cancel_insurance": {
+        "title": "Säg upp försäkring",
+        "desc": "Stoppa förnyelser och begär bekräftelse/återbetalning."
+      },
+      "claim_denied": {
+        "title": "Avslag på skadeärende",
+        "desc": "Bestrid försäkringsbolagets avslag."
+      },
+      "traffic_fine_appeal": {
+        "title": "Överklaga böter",
+        "desc": "Överklaga DGT/lokala böter (delgivning/bevis)."
+      },
+      "car_sale_notification": {
+        "title": "Anmäl bilförsäljning",
+        "desc": "Meddela DGT om försäljning för att begränsa ansvar."
+      },
+      "unpaid_wages": {
+        "title": "Obetald lön",
+        "desc": "Kräv löneskuld före SMAC."
+      },
+      "voluntary_resignation": {
+        "title": "Egen uppsägning",
+        "desc": "Säg upp dig korrekt och begär finiquito/certifikat."
+      },
+      "vacation_request": {
+        "title": "Semesteransökan",
+        "desc": "Begär semesterdatum skriftligt som bevis."
+      }
+    },
+    "footer": {
+      "disclaimer": "Ansvarsfriskrivning: BuroHero är en teknikleverantör, inte en advokatbyrå. Dokumenten genereras automatiskt och kan behöva granskas.",
+      "privacy": "Integritetspolicy",
+      "terms": "Användarvillkor"
+    },
+    "legal": {
+      "privacyTitle": "Integritetspolicy",
+      "privacyBody": "MVP-platshållare. Lägg till din integritetspolicy här.",
+      "termsTitle": "Användarvillkor",
+      "termsBody": "MVP-platshållare. Lägg till dina villkor här."
     }
   },
   "generator": {

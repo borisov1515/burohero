@@ -28,6 +28,123 @@
       "unpaidWages": "Example generator: trabajo / salarios (unpaid wages)",
       "voluntaryResignation": "Example generator: trabajo / baja (voluntary resignation)",
       "vacationRequest": "Example generator: trabajo / vacaciones (vacation request)"
+    },
+    "hero": {
+      "badge": "Spanish Bureaucracy in your language",
+      "title": "Spanish Bureaucracy, handled in {language}.",
+      "subtitle": "Generate formal legal claims and letters (Burofax) in minutes. We translate your problem into Spanish legal terms.",
+      "ctaPrimary": "Start now",
+      "ctaSecondary": "Browse catalog",
+      "mockTitle": "Dual view",
+      "mockSubtitle": "Spanish + translation",
+      "mockLeftTitle": "Spanish legal document",
+      "mockRightTitle": "Translation ({language})"
+    },
+    "steps": {
+      "title": "How it works",
+      "subtitle": "Three simple steps from problem to ready-to-send document.",
+      "step1Label": "Step 1",
+      "step1Title": "Choose your problem",
+      "step1Desc": "Pick the closest category and use case from the catalog.",
+      "step2Label": "Step 2",
+      "step2Title": "Fill the form in {language}",
+      "step2Desc": "Answer a few questions in your language. No legal Spanish needed.",
+      "step3Label": "Step 3",
+      "step3Title": "Download Spanish PDF + translation",
+      "step3Desc": "Get an official Spanish text plus a parallel translation for your records."
+    },
+    "catalog": {
+      "title": "Catalog",
+      "subtitle": "Choose the situation that matches your case."
+    },
+    "categories": {
+      "housing": "Housing & Rent",
+      "services": "Services & Utilities",
+      "shopping": "Consumer Rights",
+      "travel": "Travel & Insurance",
+      "traffic": "Traffic & Vehicles",
+      "work": "Work & Employment"
+    },
+    "cards": {
+      "deposit_return": {
+        "title": "Deposit return",
+        "desc": "Recover your rental deposit (fianza)."
+      },
+      "request_repairs": {
+        "title": "Request repairs",
+        "desc": "Demand property repairs from the landlord."
+      },
+      "terminate_lease": {
+        "title": "Terminate lease",
+        "desc": "End the rental contract correctly and in writing."
+      },
+      "cancel_contract": {
+        "title": "Cancel contract",
+        "desc": "Internet, gym, alarm systems, telecom, and more."
+      },
+      "dispute_bill": {
+        "title": "Dispute a bill",
+        "desc": "Electricity/water/utility invoice complaint."
+      },
+      "bank_fees_refund": {
+        "title": "Bank fees refund",
+        "desc": "Claim unfair commissions and fees back."
+      },
+      "return_14_days": {
+        "title": "Return product (14 days)",
+        "desc": "Exercise withdrawal right for online purchases."
+      },
+      "warranty_3_years": {
+        "title": "Warranty claim (3 years)",
+        "desc": "Repair / replacement / refund for faulty goods."
+      },
+      "non_delivery": {
+        "title": "Non-delivery",
+        "desc": "Goods marked delivered but not received or lost."
+      },
+      "flight_delay": {
+        "title": "Flight delay",
+        "desc": "EU261 compensation and expenses claim."
+      },
+      "cancel_insurance": {
+        "title": "Cancel insurance",
+        "desc": "Stop renewals and request confirmation/refund."
+      },
+      "claim_denied": {
+        "title": "Claim denied",
+        "desc": "Challenge insurer refusal to pay a claim."
+      },
+      "traffic_fine_appeal": {
+        "title": "Traffic fine appeal",
+        "desc": "Appeal DGT or local fines (notification/evidence issues)."
+      },
+      "car_sale_notification": {
+        "title": "Car sale notification",
+        "desc": "Notify DGT about a vehicle sale to limit liability."
+      },
+      "unpaid_wages": {
+        "title": "Unpaid wages",
+        "desc": "Claim salary arrears before SMAC conciliation."
+      },
+      "voluntary_resignation": {
+        "title": "Voluntary resignation",
+        "desc": "Resign properly and request finiquito/certificado."
+      },
+      "vacation_request": {
+        "title": "Vacation request",
+        "desc": "Request vacation dates in writing to create proof."
+      }
+    },
+    "footer": {
+      "disclaimer": "Disclaimer: BuroHero is a technology provider, not a law firm. Documents are generated automatically and may require review for your specific situation.",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    },
+    "legal": {
+      "privacyTitle": "Privacy Policy",
+      "privacyBody": "This is an MVP placeholder. Add your Privacy Policy text here.",
+      "termsTitle": "Terms of Service",
+      "termsBody": "This is an MVP placeholder. Add your Terms of Service text here."
     }
   },
   "generator": {

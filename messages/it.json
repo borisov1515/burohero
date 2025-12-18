@@ -28,6 +28,123 @@
       "unpaidWages": "Generatore di esempio: trabajo / salarios (stipendi non pagati)",
       "voluntaryResignation": "Generatore di esempio: trabajo / baja (dimissioni)",
       "vacationRequest": "Generatore di esempio: trabajo / vacaciones (richiesta ferie)"
+    },
+    "hero": {
+      "badge": "Burocrazia spagnola nella tua lingua",
+      "title": "Burocrazia spagnola, gestita in {language}.",
+      "subtitle": "Genera reclami e lettere formali (Burofax) in pochi minuti. Traduciamo il tuo problema in linguaggio legale spagnolo.",
+      "ctaPrimary": "Inizia",
+      "ctaSecondary": "Sfoglia il catalogo",
+      "mockTitle": "Vista doppia",
+      "mockSubtitle": "Spagnolo + traduzione",
+      "mockLeftTitle": "Documento legale in spagnolo",
+      "mockRightTitle": "Traduzione ({language})"
+    },
+    "steps": {
+      "title": "Come funziona",
+      "subtitle": "Tre passaggi semplici dal problema al documento pronto da inviare.",
+      "step1Label": "Step 1",
+      "step1Title": "Scegli il problema",
+      "step1Desc": "Seleziona categoria e caso d’uso dal catalogo.",
+      "step2Label": "Step 2",
+      "step2Title": "Compila il modulo in {language}",
+      "step2Desc": "Rispondi in lingua. Niente spagnolo giuridico.",
+      "step3Label": "Step 3",
+      "step3Title": "Scarica PDF in spagnolo + traduzione",
+      "step3Desc": "Testo ufficiale in spagnolo e traduzione parallela per i tuoi archivi."
+    },
+    "catalog": {
+      "title": "Catalogo",
+      "subtitle": "Scegli la situazione che corrisponde al tuo caso."
+    },
+    "categories": {
+      "housing": "Casa & affitto",
+      "services": "Servizi & utenze",
+      "shopping": "Diritti del consumatore",
+      "travel": "Viaggi & assicurazioni",
+      "traffic": "Traffico & veicoli",
+      "work": "Lavoro & impiego"
+    },
+    "cards": {
+      "deposit_return": {
+        "title": "Restituzione cauzione",
+        "desc": "Recupera la cauzione di affitto (fianza)."
+      },
+      "request_repairs": {
+        "title": "Richiesta riparazioni",
+        "desc": "Chiedi riparazioni al proprietario."
+      },
+      "terminate_lease": {
+        "title": "Risoluzione contratto affitto",
+        "desc": "Termina il contratto correttamente e per iscritto."
+      },
+      "cancel_contract": {
+        "title": "Disdetta contratto",
+        "desc": "Internet, palestra, allarme, telecom e altro."
+      },
+      "dispute_bill": {
+        "title": "Contestazione fattura",
+        "desc": "Reclamo bollette (luce/acqua/utenze)."
+      },
+      "bank_fees_refund": {
+        "title": "Rimborso commissioni bancarie",
+        "desc": "Richiedi il rimborso di commissioni e spese ingiuste."
+      },
+      "return_14_days": {
+        "title": "Reso (14 giorni)",
+        "desc": "Esercita il diritto di recesso per acquisti online."
+      },
+      "warranty_3_years": {
+        "title": "Garanzia (3 anni)",
+        "desc": "Riparazione/sostituzione/rimborso per difetti."
+      },
+      "non_delivery": {
+        "title": "Mancata consegna",
+        "desc": "Segnato consegnato ma non ricevuto / perso."
+      },
+      "flight_delay": {
+        "title": "Ritardo volo",
+        "desc": "Compensazione EU261 e spese."
+      },
+      "cancel_insurance": {
+        "title": "Disdetta assicurazione",
+        "desc": "Blocca i rinnovi e chiedi conferma/rimborso."
+      },
+      "claim_denied": {
+        "title": "Sinistro respinto",
+        "desc": "Contesta il rifiuto di pagamento dell’assicuratore."
+      },
+      "traffic_fine_appeal": {
+        "title": "Ricorso multa",
+        "desc": "Ricorso DGT/polizia (notifica/prove)."
+      },
+      "car_sale_notification": {
+        "title": "Notifica vendita auto",
+        "desc": "Notifica la vendita al DGT per limitare responsabilità."
+      },
+      "unpaid_wages": {
+        "title": "Stipendi non pagati",
+        "desc": "Richiedi arretrati prima di SMAC."
+      },
+      "voluntary_resignation": {
+        "title": "Dimissioni",
+        "desc": "Dimettiti correttamente e richiedi finiquito/certificato."
+      },
+      "vacation_request": {
+        "title": "Richiesta ferie",
+        "desc": "Chiedi le ferie per iscritto come prova."
+      }
+    },
+    "footer": {
+      "disclaimer": "Avviso: BuroHero è un fornitore tecnologico, non uno studio legale. I documenti sono generati automaticamente e potrebbero richiedere revisione.",
+      "privacy": "Privacy",
+      "terms": "Termini di servizio"
+    },
+    "legal": {
+      "privacyTitle": "Privacy",
+      "privacyBody": "Segnaposto MVP. Inserisci qui la tua informativa privacy.",
+      "termsTitle": "Termini di servizio",
+      "termsBody": "Segnaposto MVP. Inserisci qui i tuoi termini di servizio."
     }
   },
   "generator": {
