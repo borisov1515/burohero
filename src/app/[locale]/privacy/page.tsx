@@ -12,9 +12,9 @@ export default async function PrivacyPage({
   const tHome = await getTranslations("home");
 
   return (
-    <main className="mx-auto w-full max-w-3xl px-6 py-16">
+    <main className="mx-auto w-full max-w-3xl px-6 py-16 text-[#0F172A]">
       <h1 className="text-2xl font-semibold tracking-tight">{tHome("legal.privacyTitle")}</h1>
-      <p className="mt-4 text-sm leading-7 text-zinc-700 dark:text-zinc-300">
+      <p className="mt-4 text-sm leading-7 text-[#475569]">
         {tHome("legal.privacyBody")}
       </p>
     </main>
