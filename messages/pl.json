@@ -582,5 +582,16 @@
       "totalDays": "Liczba dni roboczych",
       "comments": "Komentarze (np. ustalone ustnie z przełożonym…) "
     }
+  },
+  "pseo": {
+    "meta": {
+      "titleSuffix": "Wzór ({year})",
+      "titleTemplate": "{useCase} {entity} w Hiszpanii: {titleSuffix}",
+      "descriptionTemplate": "{useCaseDesc}Wygeneruj oficjalny hiszpański dokument prawny i tłumaczenie dla {useCase} ({entity})."
+    },
+    "directory": {
+      "title": "Katalog dokumentów prawnych",
+      "intro": "Przeglądaj strony według tematu i podmiotu. Każda strona prowadzi do dopasowanego generatora."
+    }
   }
 }

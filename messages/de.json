@@ -582,5 +582,16 @@
       "totalDays": "Anzahl Arbeitstage",
       "comments": "Kommentare (z. B. mündlich mit Vorgesetzten vereinbart…) "
     }
+  },
+  "pseo": {
+    "meta": {
+      "titleSuffix": "Vorlage ({year})",
+      "titleTemplate": "{useCase} {entity} in Spanien: {titleSuffix}",
+      "descriptionTemplate": "{useCaseDesc}Erstellen Sie ein offizielles spanisches Rechtsschreiben und eine Übersetzung für {useCase} ({entity})."
+    },
+    "directory": {
+      "title": "Verzeichnis rechtlicher Dokumente",
+      "intro": "Durchsuchen Sie programmatische Seiten nach Thema und Entität. Jede Seite verlinkt zu einem passenden Generator."
+    }
   }
 }

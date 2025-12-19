@@ -582,5 +582,16 @@
       "totalDays": "Nombre de jours ouvrés demandés",
       "comments": "Commentaires (ex. convenu verbalement avec le manager…) "
     }
+  },
+  "pseo": {
+    "meta": {
+      "titleSuffix": "Modèle ({year})",
+      "titleTemplate": "{useCase} {entity} en Espagne : {titleSuffix}",
+      "descriptionTemplate": "{useCaseDesc}Générez un document juridique officiel en espagnol et sa traduction pour {useCase} ({entity})."
+    },
+    "directory": {
+      "title": "Annuaire des documents juridiques",
+      "intro": "Parcourez les pages par thème et entité. Chaque page renvoie vers un générateur adapté."
+    }
   }
 }

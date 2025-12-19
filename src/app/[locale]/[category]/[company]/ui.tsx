@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import type { AppLocale } from "@/i18n/routing";
+import { parsePseoCompany } from "@/lib/pseoSlug";
 import {
   CancelTelcoFormSection,
   buildCancelTelcoFacts,
@@ -197,6 +198,11 @@ export default function GeneratorClient({ locale, category, company }: Props) {
   const [debugLastRequest, setDebugLastRequest] = useState<any>(null);
   const [debugLastResponse, setDebugLastResponse] = useState<any>(null);
 
+  const parsedCompany = useMemo(
+    () => parsePseoCompany({ category, company }),
+    [category, company],
+  );
+
   const builtFacts = useMemo(() => {
     if (category === "cancel") return buildCancelTelcoFacts(cancelForm, company);
     if (category === "fianza") return buildDepositReturnFacts(depositForm);
@@ -210,14 +216,15 @@ export default function GeneratorClient({ locale, category, company }: Props) {
     if (category === "seguro") return buildInsuranceCancelFacts(insuranceCancelForm, company);
     if (category === "denegacion") return buildClaimDeniedFacts(claimDeniedForm, company);
     if (category === "comisiones") return buildFeesRefundFacts(feesRefundForm, company);
-    if (category === "trafico" && company === "multa")
+    if (category === "trafico" && (parsedCompany.variant ?? company) === "multa")
       return buildTrafficFineAppealFacts(trafficFineAppealForm);
-    if (category === "trafico" && company === "venta")
+    if (category === "trafico" && (parsedCompany.variant ?? company) === "venta")
       return buildCarSaleNotificationFacts(carSaleNotificationForm);
-    if (category === "trabajo" && company === "salarios") return buildUnpaidWagesFacts(unpaidWagesForm);
-    if (category === "trabajo" && company === "baja")
+    if (category === "trabajo" && (parsedCompany.variant ?? company) === "salarios")
+      return buildUnpaidWagesFacts(unpaidWagesForm);
+    if (category === "trabajo" && (parsedCompany.variant ?? company) === "baja")
       return buildVoluntaryResignationFacts(voluntaryResignationForm);
-    if (category === "trabajo" && company === "vacaciones")
+    if (category === "trabajo" && (parsedCompany.variant ?? company) === "vacaciones")
       return buildVacationRequestFacts(vacationRequestForm);
     return facts;
   }, [
@@ -241,12 +248,16 @@ export default function GeneratorClient({ locale, category, company }: Props) {
     unpaidWagesForm,
     voluntaryResignationForm,
     vacationRequestForm,
+    parsedCompany.variant,
   ]);
 
   const canGenerate = useMemo(() => builtFacts.trim().length >= 10, [builtFacts]);
-
+  const effectiveVariant =
+    category === "trafico" || category === "trabajo"
+      ? (parsedCompany.variant ?? company)
+      : company;
   const configKey =
-    category === "trafico" || category === "trabajo" ? `${category}_${company}` : category;
+    category === "trafico" || category === "trabajo" ? `${category}_${effectiveVariant}` : category;
   const config = useCaseConfig[configKey];
   const useCaseTitle = config ? tHome(`cards.${config.cardKey}.title`) : tGen("title");
   const useCaseDesc = config ? tHome(`cards.${config.cardKey}.desc`) : "";
@@ -489,7 +500,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
           }));
         } else if (category === "comisiones") {
           setFeesRefundForm((prev) => ({ ...prev, extra_details: String(snap.facts ?? "") }));
-        } else if (category === "trafico" && company === "multa" && snap.form) {
+        } else if (category === "trafico" && (parsedCompany.variant ?? company) === "multa" && snap.form) {
           const f = snap.form as Partial<TrafficFineAppealForm>;
           setTrafficFineAppealForm((prev) => ({
             ...prev,
@@ -502,17 +513,17 @@ export default function GeneratorClient({ locale, category, company }: Props) {
                 ? f.appeal_reason
                 : "",
           }));
-        } else if (category === "trafico" && company === "multa") {
+        } else if (category === "trafico" && (parsedCompany.variant ?? company) === "multa") {
           setTrafficFineAppealForm((prev) => ({ ...prev, additional_details: String(snap.facts ?? "") }));
-        } else if (category === "trafico" && company === "venta" && snap.form) {
+        } else if (category === "trafico" && (parsedCompany.variant ?? company) === "venta" && snap.form) {
           const f = snap.form as Partial<CarSaleNotificationForm>;
           setCarSaleNotificationForm((prev) => ({
             ...prev,
             ...Object.fromEntries(Object.entries(f).map(([k, v]) => [k, String(v ?? "")])),
           }));
-        } else if (category === "trafico" && company === "venta") {
+        } else if (category === "trafico" && (parsedCompany.variant ?? company) === "venta") {
           setCarSaleNotificationForm((prev) => ({ ...prev, additional_details: String(snap.facts ?? "") }));
-        } else if (category === "trabajo" && company === "salarios" && snap.form) {
+        } else if (category === "trabajo" && (parsedCompany.variant ?? company) === "salarios" && snap.form) {
           const f = snap.form as Partial<UnpaidWagesForm>;
           setUnpaidWagesForm((prev) => ({
             ...prev,
@@ -522,9 +533,9 @@ export default function GeneratorClient({ locale, category, company }: Props) {
                 ? f.contract_type
                 : "",
           }));
-        } else if (category === "trabajo" && company === "salarios") {
+        } else if (category === "trabajo" && (parsedCompany.variant ?? company) === "salarios") {
           setUnpaidWagesForm((prev) => ({ ...prev, additional_details: String(snap.facts ?? "") }));
-        } else if (category === "trabajo" && company === "baja" && snap.form) {
+        } else if (category === "trabajo" && (parsedCompany.variant ?? company) === "baja" && snap.form) {
           const f = snap.form as Partial<VoluntaryResignationForm>;
           setVoluntaryResignationForm((prev) => ({
             ...prev,
@@ -535,15 +546,15 @@ export default function GeneratorClient({ locale, category, company }: Props) {
                 : "",
             request_settlement: f.request_settlement === "yes" || f.request_settlement === "no" ? f.request_settlement : "yes",
           }));
-        } else if (category === "trabajo" && company === "baja") {
+        } else if (category === "trabajo" && (parsedCompany.variant ?? company) === "baja") {
           setVoluntaryResignationForm((prev) => ({ ...prev, additional_details: String(snap.facts ?? "") }));
-        } else if (category === "trabajo" && company === "vacaciones" && snap.form) {
+        } else if (category === "trabajo" && (parsedCompany.variant ?? company) === "vacaciones" && snap.form) {
           const f = snap.form as Partial<VacationRequestForm>;
           setVacationRequestForm((prev) => ({
             ...prev,
             ...Object.fromEntries(Object.entries(f).map(([k, v]) => [k, String(v ?? "")])),
           }));
-        } else if (category === "trabajo" && company === "vacaciones") {
+        } else if (category === "trabajo" && (parsedCompany.variant ?? company) === "vacaciones") {
           setVacationRequestForm((prev) => ({ ...prev, additional_details: String(snap.facts ?? "") }));
         }
         setEs(String(snap.spanish_legal_text ?? ""));
@@ -663,7 +674,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
                                     form: feesRefundForm,
                                     facts: builtFacts,
                                   }
-                                : category === "trafico" && company === "multa"
+                                : category === "trafico" && (parsedCompany.variant ?? company) === "multa"
                                   ? {
                                       locale,
                                       category,
@@ -671,7 +682,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
                                       form: trafficFineAppealForm,
                                       facts: builtFacts,
                                     }
-                                  : category === "trafico" && company === "venta"
+                                  : category === "trafico" && (parsedCompany.variant ?? company) === "venta"
                                     ? {
                                         locale,
                                         category,
@@ -679,7 +690,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
                                         form: carSaleNotificationForm,
                                         facts: builtFacts,
                                       }
-                                    : category === "trabajo" && company === "salarios"
+                                    : category === "trabajo" && (parsedCompany.variant ?? company) === "salarios"
                                       ? {
                                           locale,
                                           category,
@@ -687,7 +698,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
                                           form: unpaidWagesForm,
                                           facts: builtFacts,
                                         }
-                                      : category === "trabajo" && company === "baja"
+                                      : category === "trabajo" && (parsedCompany.variant ?? company) === "baja"
                                         ? {
                                             locale,
                                             category,
@@ -695,7 +706,7 @@ export default function GeneratorClient({ locale, category, company }: Props) {
                                             form: voluntaryResignationForm,
                                             facts: builtFacts,
                                           }
-                                        : category === "trabajo" && company === "vacaciones"
+                                        : category === "trabajo" && (parsedCompany.variant ?? company) === "vacaciones"
                                           ? {
                                               locale,
                                               category,
@@ -864,31 +875,31 @@ export default function GeneratorClient({ locale, category, company }: Props) {
             setForm={(u) => setFeesRefundForm(u)}
             builtFacts={builtFacts}
           />
-        ) : category === "trafico" && company === "multa" ? (
+        ) : category === "trafico" && (parsedCompany.variant ?? company) === "multa" ? (
           <TrafficFineAppealFormSection
             form={trafficFineAppealForm}
             setForm={(u) => setTrafficFineAppealForm(u)}
             builtFacts={builtFacts}
           />
-        ) : category === "trafico" && company === "venta" ? (
+        ) : category === "trafico" && (parsedCompany.variant ?? company) === "venta" ? (
           <CarSaleNotificationFormSection
             form={carSaleNotificationForm}
             setForm={(u) => setCarSaleNotificationForm(u)}
             builtFacts={builtFacts}
           />
-        ) : category === "trabajo" && company === "salarios" ? (
+        ) : category === "trabajo" && (parsedCompany.variant ?? company) === "salarios" ? (
           <UnpaidWagesFormSection
             form={unpaidWagesForm}
             setForm={(u) => setUnpaidWagesForm(u)}
             builtFacts={builtFacts}
           />
-        ) : category === "trabajo" && company === "baja" ? (
+        ) : category === "trabajo" && (parsedCompany.variant ?? company) === "baja" ? (
           <VoluntaryResignationFormSection
             form={voluntaryResignationForm}
             setForm={(u) => setVoluntaryResignationForm(u)}
             builtFacts={builtFacts}
           />
-        ) : category === "trabajo" && company === "vacaciones" ? (
+        ) : category === "trabajo" && (parsedCompany.variant ?? company) === "vacaciones" ? (
           <VacationRequestFormSection
             form={vacationRequestForm}
             setForm={(u) => setVacationRequestForm(u)}

@@ -582,5 +582,16 @@
       "totalDays": "Total de días laborables solicitados",
       "comments": "Comentarios (p. ej., acordado verbalmente con el responsable…) "
     }
+  },
+  "pseo": {
+    "meta": {
+      "titleSuffix": "Modelo legal ({year})",
+      "titleTemplate": "{useCase} {entity} en España: {titleSuffix}",
+      "descriptionTemplate": "{useCaseDesc}Genera un documento legal oficial en español y su traducción para {useCase} ({entity})."
+    },
+    "directory": {
+      "title": "Directorio de documentos legales",
+      "intro": "Explora páginas programáticas por tema y entidad. Cada página enlaza a un generador adaptado."
+    }
   }
 }

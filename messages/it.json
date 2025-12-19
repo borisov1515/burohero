@@ -582,5 +582,16 @@
       "totalDays": "Totale giorni lavorativi richiesti",
       "comments": "Commenti (es. concordato verbalmente con il manager…) "
     }
+  },
+  "pseo": {
+    "meta": {
+      "titleSuffix": "Modello ({year})",
+      "titleTemplate": "{useCase} {entity} in Spagna: {titleSuffix}",
+      "descriptionTemplate": "{useCaseDesc}Genera un documento legale ufficiale in spagnolo e la traduzione per {useCase} ({entity})."
+    },
+    "directory": {
+      "title": "Directory dei documenti legali",
+      "intro": "Sfoglia le pagine per tema ed entità. Ogni pagina rimanda a un generatore dedicato."
+    }
   }
 }

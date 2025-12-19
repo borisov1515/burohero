@@ -582,5 +582,16 @@
       "totalDays": "Aantal werkbare dagen",
       "comments": "Opmerkingen (bijv. mondeling afgesproken met manager…) "
     }
+  },
+  "pseo": {
+    "meta": {
+      "titleSuffix": "Sjabloon ({year})",
+      "titleTemplate": "{useCase} {entity} in Spanje: {titleSuffix}",
+      "descriptionTemplate": "{useCaseDesc}Genereer een officieel Spaans juridisch document en een vertaling voor {useCase} ({entity})."
+    },
+    "directory": {
+      "title": "Directory met juridische documenten",
+      "intro": "Blader door programmatic pagina's per onderwerp en entiteit. Elke pagina linkt naar een passende generator."
+    }
   }
 }

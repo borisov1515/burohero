@@ -1,0 +1,43 @@
+{
+  "companies": [
+    { "slug": "vodafone", "name": "Vodafone", "category": "telecom" },
+    { "slug": "orange", "name": "Orange", "category": "telecom" },
+    { "slug": "movistar", "name": "Movistar", "category": "telecom" },
+    { "slug": "endesa", "name": "Endesa", "category": "energy" },
+    { "slug": "iberdrola", "name": "Iberdrola", "category": "energy" },
+    { "slug": "naturgy", "name": "Naturgy", "category": "energy" },
+    { "slug": "bbva", "name": "BBVA", "category": "bank" },
+    { "slug": "santander", "name": "Santander", "category": "bank" },
+    { "slug": "caixabank", "name": "CaixaBank", "category": "bank" }
+  ],
+  "retailers": [
+    { "slug": "amazon", "name": "Amazon", "category": "ecommerce" },
+    { "slug": "zara", "name": "Zara", "category": "fashion" },
+    { "slug": "mediamarkt", "name": "MediaMarkt", "category": "electronics" },
+    { "slug": "apple", "name": "Apple", "category": "electronics" }
+  ],
+  "airlines": [
+    { "slug": "ryanair", "name": "Ryanair", "category": "airline" },
+    { "slug": "vueling", "name": "Vueling", "category": "airline" },
+    { "slug": "iberia", "name": "Iberia", "category": "airline" },
+    { "slug": "easyjet", "name": "easyJet", "category": "airline" }
+  ],
+  "insurers": [
+    { "slug": "mapfre", "name": "MAPFRE", "category": "insurance" },
+    { "slug": "allianz", "name": "Allianz", "category": "insurance" },
+    { "slug": "axa", "name": "AXA", "category": "insurance" },
+    { "slug": "generali", "name": "Generali", "category": "insurance" }
+  ],
+  "cities": [
+    { "slug": "madrid", "name": "Madrid", "category": "city" },
+    { "slug": "barcelona", "name": "Barcelona", "category": "city" },
+    { "slug": "valencia", "name": "Valencia", "category": "city" },
+    { "slug": "sevilla", "name": "Sevilla", "category": "city" },
+    { "slug": "zaragoza", "name": "Zaragoza", "category": "city" },
+    { "slug": "malaga", "name": "Málaga", "category": "city" },
+    { "slug": "murcia", "name": "Murcia", "category": "city" },
+    { "slug": "alicante", "name": "Alicante", "category": "city" },
+    { "slug": "bilbao", "name": "Bilbao", "category": "city" },
+    { "slug": "palma", "name": "Palma", "category": "city" }
+  ]
+}

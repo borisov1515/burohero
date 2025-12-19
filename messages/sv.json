@@ -582,5 +582,16 @@
       "totalDays": "Antal arbetsdagar",
       "comments": "Kommentarer (t.ex. muntligt överenskommet med chefen…) "
     }
+  },
+  "pseo": {
+    "meta": {
+      "titleSuffix": "Mall ({year})",
+      "titleTemplate": "{useCase} {entity} i Spanien: {titleSuffix}",
+      "descriptionTemplate": "{useCaseDesc}Skapa ett officiellt spanskt juridiskt dokument och en översättning för {useCase} ({entity})."
+    },
+    "directory": {
+      "title": "Katalog över juridiska dokument",
+      "intro": "Bläddra bland sidor efter ämne och entitet. Varje sida länkar till en anpassad generator."
+    }
   }
 }

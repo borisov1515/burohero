@@ -582,5 +582,16 @@
       "totalDays": "Total working days requested",
       "comments": "Comments (e.g., As agreed verbally with manager…) "
     }
+  },
+  "pseo": {
+    "meta": {
+      "titleSuffix": "Legal Template ({year})",
+      "titleTemplate": "{useCase} {entity} in Spain: {titleSuffix}",
+      "descriptionTemplate": "{useCaseDesc}Generate an official Spanish legal document and a translation for {useCase} ({entity})."
+    },
+    "directory": {
+      "title": "Legal Document Directory",
+      "intro": "Browse programmatic pages by topic and entity. Each page links to a tailored generator."
+    }
   }
 }

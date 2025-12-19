@@ -582,5 +582,16 @@
       "totalDays": "Număr total de zile lucrătoare",
       "comments": "Comentarii (ex. convenit verbal cu managerul…) "
     }
+  },
+  "pseo": {
+    "meta": {
+      "titleSuffix": "Model ({year})",
+      "titleTemplate": "{useCase} {entity} în Spania: {titleSuffix}",
+      "descriptionTemplate": "{useCaseDesc}Generează un document legal oficial în spaniolă și traducerea pentru {useCase} ({entity})."
+    },
+    "directory": {
+      "title": "Director de documente legale",
+      "intro": "Răsfoiește paginile după subiect și entitate. Fiecare pagină duce la un generator adaptat."
+    }
   }
 }
