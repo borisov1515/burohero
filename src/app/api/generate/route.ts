@@ -3,6 +3,7 @@ import { z } from "zod";
 import { generateDualLanguageLegalText } from "@/lib/deepseek";
 import { getCompanyBySlug } from "@/lib/companies";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
+import { parsePseoCompany } from "@/lib/pseoSlug";
 
 const RATE_LIMIT_PER_HOUR = Number(process.env.RATE_LIMIT_PER_HOUR ?? "5");
 const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
@@ -876,6 +877,11 @@ export async function POST(req: Request) {
 
     let parsedForm: unknown = null;
     let facts: string | undefined = input.facts;
+    const parsedCompany = parsePseoCompany({ category: input.category, company: input.company });
+    const effectiveCompanyForRouting =
+      input.category === "trafico" || input.category === "trabajo"
+        ? (parsedCompany.variant ?? input.company)
+        : input.company;
 
     if (input.category === "cancel" && input.form) {
       const parsed = CancelTelcoFormSchema.safeParse(input.form);
@@ -1033,7 +1039,7 @@ export async function POST(req: Request) {
       });
     }
 
-    if (input.category === "trafico" && input.company === "multa" && input.form) {
+    if (input.category === "trafico" && effectiveCompanyForRouting === "multa" && input.form) {
       const parsed = TrafficFineAppealFormSchema.safeParse(input.form);
       if (!parsed.success) {
         throw new Error(JSON.stringify(parsed.error.issues, null, 2));
@@ -1046,7 +1052,7 @@ export async function POST(req: Request) {
       });
     }
 
-    if (input.category === "trafico" && input.company === "venta" && input.form) {
+    if (input.category === "trafico" && effectiveCompanyForRouting === "venta" && input.form) {
       const parsed = CarSaleNotificationFormSchema.safeParse(input.form);
       if (!parsed.success) {
         throw new Error(JSON.stringify(parsed.error.issues, null, 2));
@@ -1059,7 +1065,7 @@ export async function POST(req: Request) {
       });
     }
 
-    if (input.category === "trabajo" && input.company === "salarios" && input.form) {
+    if (input.category === "trabajo" && effectiveCompanyForRouting === "salarios" && input.form) {
       const parsed = UnpaidWagesFormSchema.safeParse(input.form);
       if (!parsed.success) {
         throw new Error(JSON.stringify(parsed.error.issues, null, 2));
@@ -1072,7 +1078,7 @@ export async function POST(req: Request) {
       });
     }
 
-    if (input.category === "trabajo" && input.company === "baja" && input.form) {
+    if (input.category === "trabajo" && effectiveCompanyForRouting === "baja" && input.form) {
       const parsed = VoluntaryResignationFormSchema.safeParse(input.form);
       if (!parsed.success) {
         throw new Error(JSON.stringify(parsed.error.issues, null, 2));
@@ -1085,7 +1091,7 @@ export async function POST(req: Request) {
       });
     }
 
-    if (input.category === "trabajo" && input.company === "vacaciones" && input.form) {
+    if (input.category === "trabajo" && effectiveCompanyForRouting === "vacaciones" && input.form) {
       const parsed = VacationRequestFormSchema.safeParse(input.form);
       if (!parsed.success) {
         throw new Error(JSON.stringify(parsed.error.issues, null, 2));
