@@ -16,6 +16,8 @@ export function getEntityNameBySlug(slug: string): string | null {
     findBySlug(pseoData.airlines as any, slug)?.name ??
     findBySlug(pseoData.insurers as any, slug)?.name ??
     findBySlug(pseoData.cities as any, slug)?.name ??
+    findBySlug((pseoData as any).gyms as any, slug)?.name ??
+    findBySlug((pseoData as any).alarms as any, slug)?.name ??
     null
   );
 }
@@ -32,12 +34,21 @@ export function getPseoPaths(): PseoPath[] {
   const airlines = pseoData.airlines as any as NamedEntity[];
   const insurers = pseoData.insurers as any as NamedEntity[];
   const cities = pseoData.cities as any as NamedEntity[];
+  const gyms = (pseoData as any).gyms as any as NamedEntity[];
+  const alarms = (pseoData as any).alarms as any as NamedEntity[];
 
-  // Companies (telco/utilities/banks) — reuse the same pool
-  for (const c of companies) {
+  // Companies (telco/utilities/banks + gyms + alarms) — reuse the same pool for "cancel"
+  const allSubscriptionCompanies = [...companies, ...gyms, ...alarms];
+  for (const c of allSubscriptionCompanies) {
     paths.push({ category: "cancel", company: c.slug });
-    paths.push({ category: "factura", company: c.slug });
-    paths.push({ category: "comisiones", company: c.slug });
+    // Gyms and Alarms are mostly for cancellation, but might have billing issues too
+    if (c.category !== "gym" && c.category !== "alarm") {
+        paths.push({ category: "factura", company: c.slug });
+        paths.push({ category: "comisiones", company: c.slug });
+    } else {
+        // Gyms/Alarms also have invoices, so allow bill dispute
+        paths.push({ category: "factura", company: c.slug });
+    }
   }
 
   // Retailers
